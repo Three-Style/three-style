@@ -33,11 +33,11 @@ const Support = () => {
   </a>
   {/* End skippy */}
   {/* Preload */}
-  <div id="loading" className="loading-preloader">
+  {/* <div id="loading" className="loading-preloader">
     <div className="spinner-border text-primary" role="status">
       <span className="visually-hidden">Loading...</span>
     </div>
-  </div>
+  </div> */}
   {/* End Preload */}
   {/* Edn Skippy & Prload */}
   {/* Size Chart  */}
