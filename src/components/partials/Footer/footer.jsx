@@ -1,216 +1,140 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import {
-  faInstagram,
-  faYoutube,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
 
 function HomeFooter() {
   return (
     <>
-      <footer>
-        <div
-          className="container-fluid pt-5 pb-3"
-          style={{ backgroundColor: "black" }}
-        >
-          <div className="container ">
-            <div className="row ">
-              <div className="col-md-3 f1 f2">
-                <h2 className="h4-fs">
-                  GOMZI CONSULTING SERVICES PRIVATE LIMITED
-                </h2>
-                <p>
-                  Boost your fitness with expert training, diets, and top fitness products. Learn, train, and achieve with the best equipment!
-                </p>
-              </div>
-              <div className="col-md-2 f2">
-                <h2 className="h4-fs">FG Brands</h2>
-                <p className="mb-4">
-                  <Link to="fitnesswithgomzi/rapid-weight-loss">
-                    Fitness With Gomzi
-                  </Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="fgiit/fitness-and-nutrition-courses">FGIIT</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="fgdigital/online-digital-marketing-training">
-                    FGDIGITAL
-                  </Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="recipe/free-weight-loss-recipe-videos">
-                    FGMEALS
-                  </Link>
-                </p>
-              </div>
-              <div className="col-md-2 f2">
-                <h2 className="h4-fs">Links</h2>
-                <p className="mb-4">
-                  <Link to="/contact">CONTACT US</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/blogs/benefits-of-protein">BLOG</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/fitness-brand-franchise">FRANCHISE</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/career">CAREERS</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/best-fitness-podcast">
-                    Health & Fitness Podcast
-                  </Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/fitnesswithgomzi/fwg-chatbot">
-                    Fwg Complaint System
-                  </Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/fgiit/chatbot">Fgiit Complaint System</Link>
-                </p>
-              </div>
-              <div className="col-md-2 f2">
-                <h2 className="h4-fs">Information</h2>
-                <p className="mb-4">
-                  <Link to="/terms-condition">Terms & Condition</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/return-refund">Return & Refund</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/privacy-policy">Privacy Policy</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/cancellation-policy">Cancellation Policy</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/">About us</Link>
-                </p>
-                <p className="mb-4">
-                  <Link to="/app-privacy-policy">App Privacy Policy</Link>
-                </p>
-              </div>
-              <div className="col-md-2 f3 pl-2">
-                <div>
-                  <h2 className="h4-fs">Follow Us</h2>
-                  <Link
-                    to="https://www.facebook.com/gajani2/"
-                    aria-label="Fg Group"
-                    className="fb"
-                  >
-                    <FontAwesomeIcon icon={faFacebook} />
-                  </Link>
-                  <Link
-                    to="https://www.instagram.com/fitnesswithgomzi/"
-                    className="insta"
-                    aria-label="Fg Group"
-                  >
-                    <FontAwesomeIcon icon={faInstagram} />
-                  </Link>
-                  <Link
-                    to="https://www.youtube.com/channel/UCLyvtq55YZORdV-SN8OQSzQ"
-                    className="you"
-                    aria-label="Fg Group"
-                  >
-                    <FontAwesomeIcon icon={faYoutube} />
-                  </Link>
-                  <Link
-                    to="https://www.linkedin.com/in/dt-gautam-jani-561a50161/"
-                    className="in"
-                    aria-label="Fg Group"
-                  >
-                    <FontAwesomeIcon icon={faLinkedinIn} />
-                  </Link>
+      <footer className="bg-dark footer border-top">
+        <div className="footer-top py-6">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-6 col-lg-4 my-3">
+                <div className="pb-3">
+                  <img src="assets/images/logo-light.svg" title="" alt="" />
                 </div>
-                <div className="mt-4">
-                  <h2 className="mb-3 h4-fs">Location</h2>
-                  <iframe
-                    title="Fg Group"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.3152737271894!2d72.770764!3d21.139848000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0530a562711f1%3A0x3f5ec296b19e2f33!2sFGIIT%20-%20Nutrition%20%26%20Dietitian%20Courses%20In%20Surat%2C%20Personal%20Trainer%20Courses%20In%20Surat%2C%20Diploma%20Courses%20In%20Surat!5e0!3m2!1sen!2sin!4v1711457729537!5m2!1sen!2sin"
-                    style={{ border: "0", borderRadius: "10px" }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                <address className="white-link mb-4">
+                  <p className="text-white text-opacity-85 mb-2">
+                    301 The Greenhouse London,
+                    <br />
+                    E2 8DY UK
+                  </p>
+                  <p className="text-white mb-2">
+                    <a
+                      className="border-bottom border-secondary"
+                      href="mailto:support@domain.com"
+                    >
+                      support@domain.com
+                    </a>
+                  </p>
+                  <p className="text-white mb-2">
+                    <a
+                      className="border-bottom border-secondary"
+                      href="tel:820-885-3321"
+                    >
+                      820-885-3321
+                    </a>
+                  </p>
+                </address>
+                <div className="nav white-link fs-5 social-icon-list">
+                  <a className="me-3" href="#">
+                    <i className="bi bi-facebook" />
+                  </a>
+                  <a className="me-3" href="#">
+                    <i className="bi bi-twitter" />{" "}
+                  </a>
+                  <a className="me-3" href="#">
+                    <i className="bi bi-instagram" />{" "}
+                  </a>
+                  <a className="me-3" href="#">
+                    <i className="bi bi-linkedin" />
+                  </a>
                 </div>
+              </div>
+              <div className="col-sm-6 col-lg-2 my-3">
+                <h6 className="text-white text-uppercase mb-5">Support</h6>
+                <ul className="list-unstyled white-link footer-link-1 m-0 ">
+                  <li className="pb-2">
+                    <a href="#">Help</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Contact Us</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Feedback</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Unsubscribe</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Reservations</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-sm-6 col-lg-2 my-3">
+                <h6 className="text-white text-uppercase mb-5">Policies</h6>
+                <ul className="list-unstyled white-link footer-link-1 m-0">
+                  <li className="pb-2">
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Terms of use</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Gift card conditions</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Shipping</a>
+                  </li>
+                  <li className="pb-2">
+                    <a href="#">Return</a>
+                  </li>
+                </ul>
+              </div>
+              <div className="col-sm-6 col-lg-4 my-3">
+                <h6 className="text-white text-uppercase mb-5">
+                  Stay up to date
+                </h6>
+                <p className="text-white text-opacity-85">
+                  Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan.
+                </p>
+                <form>
+                  <div className="d-flex flex-column flex-md-row mb-2">
+                    <input
+                      type="email"
+                      className="form-control me-md-2 mb-2 mb-md-0"
+                      placeholder="Enter your username"
+                    />
+                    <button
+                      className="btn btn-primary flex-shrink-0"
+                      type="submit"
+                    >
+                      Get Started
+                    </button>
+                  </div>
+                  <p className="text-white text-opacity-85 m-0">
+                    New UI kits or big discounts. Never spam.
+                  </p>
+                </form>
               </div>
             </div>
-            <div className="row ft">
-              <div className="col-sm-12 p-0 mb-3">
-                <h2 className="h4-fs">RELATED SEARCHES</h2>
+          </div>
+        </div>
+        <div className="footer-bottom py-3 footer-border-top light small">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 text-center text-md-start py-1">
+                <p className="m-0 text-white text-opacity-85">
+                  © 2024 copyright by{" "}
+                  <a
+                    href="https://www.pxdraft.com/"
+                    target="_blank"
+                    className="text-reset"
+                  >
+                    pxdraft
+                  </a>
+                </p>
               </div>
-              <div className="col-lg-4 col-md-6 c p-0">
-                <div>
-                  <Link to="/fitnesswithgomzi/rapid-weight-loss">
-                    Best Dietitian In Surat
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fitnesswithgomzi/rapid-weight-loss">
-                    Online Dietitian Consultation
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fitnesswithgomzi/online-personal-training">
-                    Gyms In Surat
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fitnesswithgomzi/online-personal-training">
-                    Personal Training Gyms Near Me
-                  </Link>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 c p-0">
-                <div>
-                  <Link to="/fgiit/fitness-and-nutrition-courses">
-                    Certified Nutritionist Course
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgiit/fitness-and-nutrition-courses">
-                    Fitness Trainer Course In India
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgiit/online-fitness-courses">
-                    Online Fitness Courses
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgiit/online-fitness-courses">
-                    Nutritionist Course Online India
-                  </Link>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 c p-0">
-                <div>
-                  <Link to="/fgiit/flexible-fitness-courses">
-                    Certification For Fitness Trainer
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgiit/flexible-fitness-courses">
-                    Nutritionist Online Course
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgdigital/online-digital-marketing-training">
-                    Best Digital Marketing Course
-                  </Link>
-                </div>
-                <div>
-                  <Link to="/fgdigital/online-digital-marketing-training">
-                    Best Digital Marketing Course Online
-                  </Link>
-                </div>
+              <div className="col-md-6 text-center text-md-end py-1">
+                <img src="assets/images/payments.png" title="" alt="" />
               </div>
             </div>
           </div>
