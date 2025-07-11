@@ -2,7 +2,6 @@ import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { useLocation, useNavigate, BrowserRouter } from "react-router-dom";
 import "./assets/css/home.css";
-import "./assets/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/css/css2.css";
 import "./assets/css/media.css";
@@ -10,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import $ from "jquery";
 const App = lazy(() => import("./App"));
 

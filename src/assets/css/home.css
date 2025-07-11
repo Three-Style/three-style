@@ -18229,21 +18229,21 @@ fieldset:disabled .btn {
     --bs-aspect-ratio: calc(9 / 21 * 100%)
 }
 
-.fixed-top {
+/* .fixed-top {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030
-}
+} */
 
-.fixed-bottom {
+/* .fixed-bottom {
     position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 1030
-}
+} */
 
 .sticky-top {
     position: sticky;
