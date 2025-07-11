@@ -2,8 +2,26 @@ import HomeFooter from "../components/partials/Footer/footer";
 import { Helmet } from "react-helmet";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import HomeHeader from "../components/partials/Header/header";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 
 function Home() {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+  var categorySetting = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1
+  };
   return (
     <>
       <Helmet>
@@ -25,39 +43,6 @@ function Home() {
       </Helmet>
 
       <>
-        {/* metas */}
-        <meta charSet="utf-8" />
-        <meta name="author" content="pxdraft" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no"
-        />
-        <meta
-          name="keywords"
-          content="ShopApp - eCommerce Bootstrap 5 Template"
-        />
-        <meta
-          name="description"
-          content="ShopApp - eCommerce Bootstrap 5 Template"
-        />
-        {/* title */}
-        <title>ShopApp - eCommerce Bootstrap 5 Template</title>
-        {/* Favicon */}
-        <link rel="shortcut icon" href="assets/images/favicon.ico" />
-        {/* CSS Template */}
-        <link href="assets/css/swimwear.css" rel="stylesheet" />
-        {/* Skippy & Prload */}
-        {/* skippy */}
-        <a
-          id="skippy"
-          className="skippy visually-hidden-focusable overflow-hidden"
-          href="#content"
-        >
-          <div className="container">
-            <span className="u-skiplink-text">Skip to main content</span>
-          </div>
-        </a>
         {/* <div id="loading" className="loading-preloader">
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -144,8 +129,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Ask Form */}
-        {/* Header Search */}
         <div
           className="offcanvas offcanvas-end"
           tabIndex={-1}
@@ -227,8 +210,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Header Side Search */}
-        {/* Login Popup  */}
         <div className="modal fade" id="topbarlogin">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
@@ -310,8 +291,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Login Popup  */}
-        {/* Mini Cart  */}
         <div
           className="offcanvas offcanvas-end"
           tabIndex={-1}
@@ -566,8 +545,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Mini Cart  */}
-        {/* Quick View  */}
         <div
           className="modal-quick-view modal fade"
           id="px-quick-view"
@@ -770,8 +747,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Quick View  */}
-        {/* Sipping Popup  */}
         <div
           className="modal-shipping-view modal fade"
           id="px_shipping_modal"
@@ -862,8 +837,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Sipping Popup  */}
-        {/* Size Chart  */}
         <div
           className="modal-size-chart modal fade"
           id="px_size_chart_modal"
@@ -1017,13 +990,6 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* End Size Chart  */}
-        {/* End Size Chart  */}
-        {/* 
-   ========================
-       Wrapper 
-   ========================
-   */}
         <div className="wrapper">
           <div className="header-height-bar" />
           <div className="mob-header-btn-fixed-01 d-lg-none">
@@ -4018,103 +3984,74 @@ function Home() {
             </div>
           </div>
           <main>
-            {/* Home Slider */}
-            <div
-              className="swiper swiper-container"
-              data-swiper-options='{
-   "slidesPerView": 1,
-   "spaceBetween": 0,
-   "loop": true,
-   "pagination": {
-       "el": ".swiper-pagination",
-       "clickable": true
-   },
-   "navigation": {
-       "nextEl": ".swiper-next-01",
-       "prevEl": ".swiper-prev-01"
-   }
-     }'
-            >
-              <div className="swiper-wrapper">
-                {/* Slide 1 */}
-                <div className="swiper-slide">
-                  <div
-                    className="bg-no-repeat bg-cover bg-center px-8"
-                    style={{
-                      backgroundImage:
-                        "url(assets/images/goggles-home-banner-1.jpg)",
-                    }}
-                  >
-                    <div className="container">
-                      <div className="row min-vh-75 align-items-center py-12 justify-content-lg-end">
-                        <div className="col-lg-6">
-                          <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
-                            TRENDING NOW
-                          </h6>
-                          <h1 className="display-4 fw-600 mb-4 text-white">
-                            New Trending
-                            <br />
-                            Goggles For Women
-                          </h1>
-                          <div className="h4 fw-400 text-white text-opacity-85">
-                            Up To 50% Off Best Selling At $151.00
-                          </div>
-                          <div className="pt-3">
-                            <a className="btn btn-outline-light" href="#">
-                              Discover More
-                            </a>
-                          </div>
+            <Slider {...settings}>
+              {/* Slide 1 */}
+              <div className="">
+                <div
+                  className="bg-no-repeat bg-cover bg-center px-8"
+                  style={{
+                    backgroundImage:
+                      "url(assets/images/goggles-home-banner-1.jpg)",
+                  }}
+                >
+                  <div className="container">
+                    <div className="row min-vh-75 align-items-center py-12 justify-content-lg-end">
+                      <div className="col-lg-6">
+                        <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
+                          TRENDING NOW
+                        </h6>
+                        <h1 className="display-4 fw-600 mb-4 text-white">
+                          New Trending
+                          <br />
+                          Goggles For Women
+                        </h1>
+                        <div className="h4 fw-400 text-white text-opacity-85">
+                          Up To 50% Off Best Selling At $151.00
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Slide 2 */}
-                <div className="swiper-slide">
-                  <div
-                    className="bg-no-repeat bg-cover bg-center px-8"
-                    style={{
-                      backgroundImage:
-                        "url(assets/images/goggles-home-banner-2.jpg)",
-                    }}
-                  >
-                    <div className="container">
-                      <div className="row min-vh-75 align-items-center py-12">
-                        <div className="col-lg-6">
-                          <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
-                            TRENDING NOW
-                          </h6>
-                          <h1 className="display-4 fw-600 mb-4 text-white">
-                            New Trending
-                            <br />
-                            Goggles For Women
-                          </h1>
-                          <div className="h4 fw-400 text-white text-opacity-85">
-                            Up To 50% Off Best Selling At $151.00
-                          </div>
-                          <div className="pt-3">
-                            <a className="btn btn-outline-light" href="#">
-                              Discover More
-                            </a>
-                          </div>
+                        <div className="pt-3">
+                          <a className="btn btn-outline-light" href="#">
+                            Discover More
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* Navigation Arrows */}
-              <div className="swiper-arrow-style-01 swiper-next swiper-next-01">
-                <i className="bi bi-chevron-right" />
+              {/* Slide 2 */}
+              <div className="">
+                <div
+                  className="bg-no-repeat bg-cover bg-center px-8"
+                  style={{
+                    backgroundImage:
+                      "url(assets/images/goggles-home-banner-2.jpg)",
+                  }}
+                >
+                  <div className="container">
+                    <div className="row min-vh-75 align-items-center py-12">
+                      <div className="col-lg-6">
+                        <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
+                          TRENDING NOW
+                        </h6>
+                        <h1 className="display-4 fw-600 mb-4 text-white">
+                          New Trending
+                          <br />
+                          Goggles For Women
+                        </h1>
+                        <div className="h4 fw-400 text-white text-opacity-85">
+                          Up To 50% Off Best Selling At $151.00
+                        </div>
+                        <div className="pt-3">
+                          <a className="btn btn-outline-light" href="#">
+                            Discover More
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="swiper-arrow-style-01 swiper-prev swiper-prev-01">
-                <i className="bi bi-chevron-left" />
-              </div>
-              {/* Pagination Dots */}
-              <div className="swiper-pagination swiper-pagination-white" />
-            </div>
-            {/* End Home Slider */}
-            {/* section */}
+            </Slider>
             <section className="section pb-0">
               <div className="container">
                 <div className="row justify-content-center">
@@ -4131,168 +4068,122 @@ function Home() {
             {/* section */}
             <section className="section overflow-hidden">
               <div className="container-fluid">
-                <div className="swiper-hover-arrow position-relative">
-                  <div
-                    className="swiper swiper-container swiper-no-scroll"
-                    data-swiper-options='{
-                  "slidesPerView": 2,
-                  "spaceBetween": 24,
-                  "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "progressbar"
-                  },
-                  "navigation": {
-                  "nextEl": ".swiper-next-02",
-                  "prevEl": ".swiper-prev-02"
-                  },
-                  "breakpoints": {
-                  "600": {
-                  "slidesPerView": 2
-                  },
-                  "991": {
-                  "slidesPerView": 3
-                  },
-                  "1300": {
-                  "slidesPerView": 5
-                  }
-                  }
-                  }'
-                  >
-                    <div className="swiper-wrapper">
-                      {/* category */}
-                      <div className="swiper-slide">
-                        <div className="category-card-01">
-                          <a href="#">
-                            <div className="category-card-img">
-                              <img
-                                src="assets/images/swimwear-cat-1.jpg"
-                                title=""
-                                alt=""
-                              />
-                            </div>
-                            <div className="category-card-info">
-                              <div className="small letter-spacing-2 mb-1 text-white">
-                                WOMEN"S
-                              </div>
-                              <h5 className="font-alt h4">
-                                <span className="link-effect-02 text-white">
-                                  Tees &amp; Tanks
-                                </span>
-                              </h5>
-                            </div>
-                          </a>
-                        </div>
+                <Slider {...categorySetting}>
+                  {/* category */}
+                  <div className="px-3">
+                    <div className="category-card-01">
+                      <div className="category-card-img">
+                        <img
+                          src="assets/images/swimwear-cat-1.jpg"
+                          title=""
+                          alt=""
+                        />
                       </div>
-                      {/* End category */}
-                      {/* category */}
-                      <div className="swiper-slide">
-                        <div className="category-card-01">
-                          <a href="#">
-                            <div className="category-card-img">
-                              <img
-                                src="assets/images/swimwear-cat-2.jpg"
-                                title=""
-                                alt=""
-                              />
-                            </div>
-                            <div className="category-card-info">
-                              <div className="small letter-spacing-2 mb-1 text-white">
-                                WOMEN"S
-                              </div>
-                              <h5 className="font-alt h4">
-                                <span className="link-effect-02 text-white">
-                                  Tees &amp; Tanks
-                                </span>
-                              </h5>
-                            </div>
-                          </a>
+                      <div className="category-card-info">
+                        <div className="small letter-spacing-2 mb-1 text-white">
+                          WOMEN"S
                         </div>
-                      </div>
-                      {/* End category */}
-                      {/* category */}
-                      <div className="swiper-slide">
-                        <div className="category-card-01">
-                          <a href="#">
-                            <div className="category-card-img">
-                              <img
-                                src="assets/images/swimwear-cat-3.jpg"
-                                title=""
-                                alt=""
-                              />
-                            </div>
-                            <div className="category-card-info">
-                              <div className="small letter-spacing-2 mb-1 text-white">
-                                WOMEN"S
-                              </div>
-                              <h5 className="font-alt h4">
-                                <span className="link-effect-02 text-white">
-                                  Tees &amp; Tanks
-                                </span>
-                              </h5>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                      {/* End category */}
-                      {/* category */}
-                      <div className="swiper-slide">
-                        <div className="category-card-01">
-                          <a href="#">
-                            <div className="category-card-img">
-                              <img
-                                src="assets/images/swimwear-cat-4.jpg"
-                                title=""
-                                alt=""
-                              />
-                            </div>
-                            <div className="category-card-info">
-                              <div className="small letter-spacing-2 mb-1 text-white">
-                                WOMEN"S
-                              </div>
-                              <h5 className="font-alt h4">
-                                <span className="link-effect-02 text-white">
-                                  Tees &amp; Tanks
-                                </span>
-                              </h5>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                      {/* End category */}
-                      {/* category */}
-                      <div className="swiper-slide">
-                        <div className="category-card-01">
-                          <a href="#">
-                            <div className="category-card-img">
-                              <img
-                                src="assets/images/swimwear-cat-5.jpg"
-                                title=""
-                                alt=""
-                              />
-                            </div>
-                            <div className="category-card-info">
-                              <div className="small letter-spacing-2 mb-1 text-white">
-                                WOMEN"S
-                              </div>
-                              <h5 className="font-alt h4">
-                                <span className="link-effect-02 text-white">
-                                  Tees &amp; Tanks
-                                </span>
-                              </h5>
-                            </div>
-                          </a>
-                        </div>
+                        <h5 className="font-alt h4">
+                          <span className="link-effect-02 text-white">
+                            Tees &amp; Tanks
+                          </span>
+                        </h5>
                       </div>
                     </div>
-                    <div className="swiper-pagination mt-4 position-relative" />
                   </div>
-                  <div className="swiper-arrow-style-01 swiper-next swiper-next-02 d-xl-none">
-                    <i className="bi bi-chevron-right" />
+                  {/* End category */}
+                  {/* category */}
+                  <div className="px-3">
+                    <div className="category-card-01">
+                      <div className="category-card-img">
+                        <img
+                          src="assets/images/swimwear-cat-2.jpg"
+                          title=""
+                          alt=""
+                        />
+                      </div>
+                      <div className="category-card-info">
+                        <div className="small letter-spacing-2 mb-1 text-white">
+                          WOMEN"S
+                        </div>
+                        <h5 className="font-alt h4">
+                          <span className="link-effect-02 text-white">
+                            Tees &amp; Tanks
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
                   </div>
-                  <div className="swiper-arrow-style-01 swiper-prev swiper-prev-02 d-xl-none">
-                    <i className="bi bi-chevron-left" />
+                  {/* End category */}
+                  {/* category */}
+                  <div className="px-3">
+                    <div className="category-card-01">
+                      <div className="category-card-img">
+                        <img
+                          src="assets/images/swimwear-cat-3.jpg"
+                          title=""
+                          alt=""
+                        />
+                      </div>
+                      <div className="category-card-info">
+                        <div className="small letter-spacing-2 mb-1 text-white">
+                          WOMEN"S
+                        </div>
+                        <h5 className="font-alt h4">
+                          <span className="link-effect-02 text-white">
+                            Tees &amp; Tanks
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  {/* End category */}
+                  {/* category */}
+                  <div className="px-3">
+                    <div className="category-card-01">
+                      <div className="category-card-img">
+                        <img
+                          src="assets/images/swimwear-cat-4.jpg"
+                          title=""
+                          alt=""
+                        />
+                      </div>
+                      <div className="category-card-info">
+                        <div className="small letter-spacing-2 mb-1 text-white">
+                          WOMEN"S
+                        </div>
+                        <h5 className="font-alt h4">
+                          <span className="link-effect-02 text-white">
+                            Tees &amp; Tanks
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  {/* End category */}
+                  {/* category */}
+                  <div className="px-3">
+                    <div className="category-card-01">
+                      <div className="category-card-img">
+                        <img
+                          src="assets/images/swimwear-cat-5.jpg"
+                          title=""
+                          alt=""
+                        />
+                      </div>
+                      <div className="category-card-info">
+                        <div className="small letter-spacing-2 mb-1 text-white">
+                          WOMEN"S
+                        </div>
+                        <h5 className="font-alt h4">
+                          <span className="link-effect-02 text-white">
+                            Tees &amp; Tanks
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </Slider>
               </div>
             </section>
             {/* End section */}
@@ -4713,326 +4604,290 @@ function Home() {
                     <h3 className="h1 font-alt m-0">New Collection</h3>
                   </div>
                 </div>
-                <div className="swiper-hover-arrow position-relative">
-                  <div
-                    className="swiper swiper-container swiper-no-scroll"
-                    data-swiper-options='{
-                  "slidesPerView": 2,
-                  "spaceBetween": 24,
-                  "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "progressbar"
-                  },
-                  "navigation": {
-                  "nextEl": ".swiper-next-02",
-                  "prevEl": ".swiper-prev-02"
-                  },
-                  "breakpoints": {
-                  "600": {
-                  "slidesPerView": 2
-                  },
-                  "991": {
-                  "slidesPerView": 3
-                  },
-                  "1300": {
-                  "slidesPerView": 5
-                  }
-                  }
-                  }'
-                  >
-                    <div className="swiper-wrapper">
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
+                <Slider {...categorySetting}>
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
                         </div>
                       </div>
-                      {/* End Product */}
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
                         </div>
                       </div>
-                      {/* End Product */}
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* End Product */}
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* End Product */}
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* End Product */}
-                      {/* Product */}
-                      <div className="swiper-slide">
-                        <div className="product-card-9">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span>15%</span>
-                            </div>
-                            <div className="product-action">
-                              <a href="#" className="btn">
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a href="#" className="btn">
-                                <i className="fi-shopping-cart" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#">
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/swimwear-product-2.jpg"
-                                  title=""
-                                  alt=""
-                                />{" "}
-                                <img
-                                  className="product-media-hover"
-                                  src="assets/images/swimwear-product-hover-2.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <h6 className="product-title">
-                              <a href="#">
-                                Laxmipati Cocktail K-055 Satin Silk Navy Blue
-                                Saree
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">$28</span>
-                              <del className="small text-muted">$38</del>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* End Product */}
                     </div>
-                    <div className="swiper-pagination mt-4 position-relative" />
                   </div>
-                  <div className="swiper-arrow-style-01 swiper-next swiper-next-02">
-                    <i className="bi bi-chevron-right" />
+                  {/* End Product */}
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="swiper-arrow-style-01 swiper-prev swiper-prev-02">
-                    <i className="bi bi-chevron-left" />
+                  {/* End Product */}
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  {/* End Product */}
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* End Product */}
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* End Product */}
+                  {/* Product */}
+                  <div className="px-3">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
+                          </a>
+                        </div>
+                        <div className="product-media">
+                          <a href="#">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                          <a href="#">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue
+                            Saree
+                          </a>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {/* End Product */}
+                </Slider>
               </div>
             </section>
             {/* End section */}
@@ -5580,25 +5435,41 @@ function Home() {
             </section>
             {/* End section */}
             {/* section */}
-            <div
-              className="parallax section bg-dark"
-              data-jarallax=""
-              data-video-src="mp4:assets/images/home/brand-promotion-vd.mp4"
-            >
-              <div className="position-absolute top-0 bottom-0 end-0 start-0 bg-black opacity-3 z-n1" />
+            <div style={{ position: 'relative', zIndex: 0, overflow: 'hidden' }}>
+              {/* Background Video */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  minWidth: '100%',
+                  minHeight: 'auto',
+                  zIndex: -2,
+                }}
+              >
+                <source src="/assets/images/home/brand-promotion-vd.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              {/* Overlay */}
+              <div
+                className="position-absolute top-0 bottom-0 end-0 start-0 bg-black opacity-3"
+                style={{ zIndex: -1 }}
+              />
+
+              {/* Content */}
               <div className="container">
                 <div className="row justify-content-center py-10">
                   <div className="col-lg-6 text-center">
-                    <h6 className="text-uppercase text-white letter-spacing-3">
-                      Exclusive
-                    </h6>
-                    <h3 className="display-2 text-white font-alt mb-3">
-                      Best Summer Collection
-                    </h3>
+                    <h6 className="text-uppercase text-white letter-spacing-3">Exclusive</h6>
+                    <h3 className="display-2 text-white font-alt mb-3">Best Summer Collection</h3>
                     <p className="lead text-white">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                      incididunt ut labore et dolore magna aliqua.
                     </p>
                     <div className="pt-2">
                       <a className="btn btn-outline-white" href="#">

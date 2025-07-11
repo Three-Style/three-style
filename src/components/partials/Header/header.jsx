@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 function HomeHeader() {
   return (
     <>
+    
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
         <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
           <div className="d-flex justify-content-between align-items-center">
