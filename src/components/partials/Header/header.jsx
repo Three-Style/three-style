@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HomeHeader() {
   return (
     <>
@@ -33,7 +35,7 @@ function HomeHeader() {
         <nav className="navbar navbar-expand-lg navbar-light d-none d-lg-flex">
           <div className="container">
             {/* Logo */}{" "}
-            <a className="navbar-brand" href="../../index.html">
+            <Link className="navbar-brand" to={"../../index.html"}>
               <img
                 className="logo-dark"
                 src="assets/images/logo.svg"
@@ -46,7 +48,7 @@ function HomeHeader() {
                 title=""
                 alt=""
               />{" "}
-            </a>
+            </Link>
             {/* Logo */}
             {/* Menu */}
             <div
@@ -68,7 +70,7 @@ function HomeHeader() {
                           </h6>
                           <ul className="list-unstyled link-list-style-02 m-0">
                             <li>
-                              <a href="../home/index.html">Home Option 1</a>
+                              <Link to="../home/index.html">Home Option 1</Link>
                             </li>
                             <li>
                               <a href="../home/index-02.html">Home Option 2</a>
