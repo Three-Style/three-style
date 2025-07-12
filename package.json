@@ -36,6 +36,7 @@
     "react-helmet": "^6.1.0",
     "react-hot-toast": "^2.4.1",
     "react-inner-image-zoom": "^3.0.2",
+    "react-intersection-observer": "^9.16.0",
     "react-lazy-load-image-component": "^1.6.2",
     "react-loader-spinner": "^6.1.6",
     "react-modal": "^3.16.3",

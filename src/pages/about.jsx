@@ -1,48 +1,19 @@
 import React from 'react'
 import HomeHeader from '../components/partials/Header/header'
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+
 
 const About = () => {
+
+    const { ref, inView } = useInView({
+    triggerOnce: true, 
+    threshold: 0.3,     // trigger when 30% of component is visible
+  });
+
   return (
     <>
-    <>
-  {/* metas */}
-  <meta charSet="utf-8" />
-  <meta name="author" content="pxdraft" />
-  <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1,shrink-to-fit=no"
-  />
-  <meta name="keywords" content="ShopApp - eCommerce Bootstrap 5 Template" />
-  <meta name="description" content="ShopApp - eCommerce Bootstrap 5 Template" />
-  {/* title */}
-  <title>ShopApp - eCommerce Bootstrap 5 Template</title>
-  {/* Favicon */}
-  <link rel="shortcut icon" href="assets/images/favicon.ico" />
-  {/* CSS Template */}
-  <link href="assets/css/swimwear.css" rel="stylesheet" />
-  {/* Skippy & Prload */}
-  {/* skippy */}{" "}
-  <a
-    id="skippy"
-    className="skippy visually-hidden-focusable overflow-hidden"
-    href="#content"
-  >
-    <div className="container">
-      <span className="u-skiplink-text">Skip to main content</span>
-    </div>
-  </a>
-  {/* End skippy */}
-  {/* Preload */}
-  {/* <div id="loading" className="loading-preloader">
-    <div className="spinner-border text-primary" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </div>
-  </div> */}
-  {/* End Preload */}
-  {/* Edn Skippy & Prload */}
-  {/* Size Chart  */}
-  {/* Ask Form */}
+    
   <div
     className="modal-askform-view modal fade"
     id="px_ask_modal"
@@ -118,8 +89,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Ask Form */}
-  {/* Header Search */}
+ 
   <div
     className="px-search-full collapse bg-body p-3 position-fixed w-100 top-0"
     id="search-open"
@@ -195,8 +165,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Header Search */}
-  {/* Header Side Search */}
+
   <div
     className="offcanvas offcanvas-end"
     tabIndex={-1}
@@ -278,8 +247,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Header Side Search */}
-  {/* Login Popup  */}
+
   <div className="modal fade" id="topbarlogin">
     <div className="modal-dialog modal-dialog-centered">
       <div className="modal-content">
@@ -352,8 +320,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Login Popup  */}
-  {/* Mini Cart  */}
+
   <div
     className="offcanvas offcanvas-end"
     tabIndex={-1}
@@ -482,8 +449,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Mini Cart  */}
-  {/* Quick View  */}
+
   <div className="modal-quick-view modal fade" id="px-quick-view" tabIndex={-1}>
     <div className="modal-dialog modal-dialog-centered modal-xl">
       <div className="modal-content">
@@ -665,8 +631,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Quick View  */}
-  {/* Sipping Popup  */}
+
   <div
     className="modal-shipping-view modal fade"
     id="px_shipping_modal"
@@ -750,8 +715,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Sipping Popup  */}
-  {/* Size Chart  */}
+
   <div
     className="modal-size-chart modal fade"
     id="px_size_chart_modal"
@@ -905,13 +869,7 @@ const About = () => {
       </div>
     </div>
   </div>
-  {/* End Size Chart  */}
-  {/* End Size Chart  */}
-  {/* 
-    ========================
-  Wrapper 
-    ========================
-    */}
+
   <div className="wrapper">
     {/* heder height */}
     <div className="header-height-bar" />
@@ -4060,48 +4018,30 @@ const About = () => {
       </section>
       {/* End Section */}
       {/* Section */}
-      <section className="section bg-gray-100">
-        <div className="container">
-          <div className="row g-4">
-            <div className="col-lg-3 col-6">
+    <section className="section bg-gray-100" ref={ref}>
+      <div className="container">
+        <div className="row g-4">
+          {[
+            { icon: "bi-briefcase", end: 86, label: "project done" },
+            { icon: "bi-trophy", end: 168, label: "cups of coffee" },
+            { icon: "bi-intersect", end: 101, label: "branding" },
+            { icon: "bi-emoji-smile", end: 24, label: "happy clients" },
+          ].map((item, i) => (
+            <div className="col-lg-3 col-6" key={i}>
               <div className="text-center mb-30">
                 <div className="display-5 mb-3 text-primary">
-                  <i className="bi bi-briefcase" />
+                  <i className={`bi ${item.icon}`} />
                 </div>
-                <h2 className="count">86</h2>
-                <span>project done</span>
+                <h2 className="count">
+                  {inView ? <CountUp end={item.end} duration={2} /> : 0}+
+                </h2>
+                <span>{item.label}</span>
               </div>
             </div>
-            <div className="col-lg-3 col-6">
-              <div className="text-center mb-30">
-                <div className="display-5 mb-3 text-primary">
-                  <i className="bi bi-trophy" />
-                </div>
-                <h2 className="count">168</h2>
-                <span>cups of coffee</span>
-              </div>
-            </div>
-            <div className="col-lg-3 col-6">
-              <div className="text-center mb-30">
-                <div className="display-5 mb-3 text-primary">
-                  <i className="bi bi-intersect" />
-                </div>
-                <h2 className="count">101</h2>
-                <span>branding</span>
-              </div>
-            </div>
-            <div className="col-lg-3 col-6">
-              <div className="text-center mb-30 mrgn-none">
-                <div className="display-5 mb-3 text-primary">
-                  <i className="bi bi-emoji-smile" />
-                </div>
-                <h2 className="count">24</h2>
-                <span>happy clients</span>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
       {/* End Section */}
       {/* About us Start */}
       <div className="section">
@@ -4479,24 +4419,8 @@ const About = () => {
     </footer>
     {/* End Footer */}
   </div>
-  {/* 
-    ========================
- End Wrapper 
-    ========================
-    */}
-  {/* script start */}
-  {/* jquery */}
-  {/*bootstrap*/}
-  {/* swiper carousel */}
-  {/* magnific */}
-  {/* isotope */}
-  {/* count-down */}
-  {/* count-down */}
-  {/* Theme Js */}
-  {/* End script start */}
-</>
 
-    </>
+</>
   )
 }
 

@@ -3985,7 +3985,6 @@ function Home() {
           </div>
           <main>
             <Slider {...settings}>
-              {/* Slide 1 */}
               <div className="">
                 <div
                   className="bg-no-repeat bg-cover bg-center px-8"
@@ -4018,7 +4017,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              {/* Slide 2 */}
+             
               <div className="">
                 <div
                   className="bg-no-repeat bg-cover bg-center px-8"
@@ -4064,12 +4063,9 @@ function Home() {
                 </div>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
             <section className="section overflow-hidden">
               <div className="container-fluid">
                 <Slider {...categorySetting}>
-                  {/* category */}
                   <div className="px-3">
                     <div className="category-card-01">
                       <div className="category-card-img">
@@ -4091,8 +4087,6 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  {/* End category */}
-                  {/* category */}
                   <div className="px-3">
                     <div className="category-card-01">
                       <div className="category-card-img">
@@ -4114,8 +4108,6 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  {/* End category */}
-                  {/* category */}
                   <div className="px-3">
                     <div className="category-card-01">
                       <div className="category-card-img">
@@ -4137,8 +4129,6 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  {/* End category */}
-                  {/* category */}
                   <div className="px-3">
                     <div className="category-card-01">
                       <div className="category-card-img">
@@ -4160,8 +4150,6 @@ function Home() {
                       </div>
                     </div>
                   </div>
-                  {/* End category */}
-                  {/* category */}
                   <div className="px-3">
                     <div className="category-card-01">
                       <div className="category-card-img">
@@ -4186,8 +4174,7 @@ function Home() {
                 </Slider>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
+        
             <section className="section">
               <div className="container">
                 <div className="row justify-content-center section-heading">
@@ -4559,8 +4546,7 @@ function Home() {
                 </div>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
+
             <section
               className="section parallax overflow-hidden position-relative"
               style={{
@@ -4568,32 +4554,32 @@ function Home() {
                 backgroundPosition: "50% 0%",
               }}
             >
-              <div className="position-absolute top-0 bottom-0 end-0 start-0 bg-black opacity-3" />
-              <div className="container position-relative section">
-                <div className="row justify-content-center">
-                  <div className="col-lg-6 text-center">
-                    <h6 className="text-uppercase text-white letter-spacing-3">
-                      Exclusive
-                    </h6>
-                    <h3 className="display-2 text-white font-alt mb-3">
-                      Get Ready for a Bright Season
-                    </h3>
-                    <p className="lead text-white">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                    <div className="pt-2">
-                      <a className="btn btn-outline-white" href="#">
-                        Let's Shop Now
-                      </a>
+              <div className="position-absolute top-0 bottom-0 end-0 start-0 bg-black opacity-3" >
+                <div className="container position-relative section">
+                  <div className="row justify-content-center">
+                    <div className="col-lg-6 text-center">
+                      <h6 className="text-uppercase text-white letter-spacing-3">
+                        Exclusive
+                      </h6>
+                      <h3 className="display-2 text-white font-alt mb-3">
+                        Get Ready for a Bright Season
+                      </h3>
+                      <p className="lead text-white">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua.
+                      </p>
+                      <div className="pt-2">
+                        <a className="btn btn-outline-white" href="#">
+                          Let's Shop Now
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
+
             <section className="section overflow-hidden">
               <div className="container-fluid">
                 <div className="row justify-content-center section-heading">
@@ -4890,8 +4876,7 @@ function Home() {
                 </Slider>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
+
             <section className="section">
               <div className="container">
                 <div className="row gy-4 align-items-center">
@@ -4919,149 +4904,6 @@ function Home() {
                 </div>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
-            {/* <section class="section">
-      <div class="container">
-         <div class="row justify-content-center section-heading">
-            <div class="col-lg-6 text-center">
-               <div class="fs-6 text-uppercase letter-spacing-3 text-primary mb-2">Testimonials</div>
-               <h3 class="h1 font-alt m-0">What Customer Says?</h3>
-            </div>
-         </div>
-         <div class="swiper-hover-arrow position-relative">
-            <div class="swiper swiper-container" data-swiper-options='{
-                  "slidesPerView": 1,
-                  "spaceBetween": 24,
-                  "pagination": {
-                  "el": ".swiper-pagination"
-                  },
-                  "breakpoints": {
-                  "600": {
-                  "slidesPerView": 1
-                  },
-                  "991": {
-                  "slidesPerView": 2
-                  }
-                  }
-                  }'>
-               <div class="swiper-wrapper">
-                  
-                  <div class="swiper-slide">
-                     <div class="bg-gray-200 p-4 p-lg-5">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-8">
-                              <h6 class="h5 mb-4">Awesome Products</h6>
-                              <div class="fs-2 lh-sm font-alt text-mode mb-4">“I have never loved a
-                                 shirt as much as this one! I've worn it with jeans and trousers, and
-                                 both look great.”
-                              </div>
-                              <div class="rating-star text"><i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i>
-                              </div>
-                              <p class="m-0">Jennifer Lawrence</p>
-                           </div>
-                           <div class="col-md-5 col-lg-4 d-none d-md-block"><img
-                                 src="assets/images/swimwear-testimonial-1.jpg" title="" alt=""></div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                     <div class="bg-gray-200 p-4 p-lg-5">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-8">
-                              <h6 class="h5 mb-4">Awesome Products</h6>
-                              <div class="fs-2 lh-sm font-alt text-mode mb-4">“I have never loved a
-                                 shirt as much as this one! I've worn it with jeans and trousers, and
-                                 both look great.”
-                              </div>
-                              <div class="rating-star text"><i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i>
-                              </div>
-                              <p class="m-0">Jennifer Lawrence</p>
-                           </div>
-                           <div class="col-md-5 col-lg-4 d-none d-md-block"><img
-                                 src="assets/images/swimwear-testimonial-2.jpg" title="" alt=""></div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                     <div class="bg-gray-200 p-4 p-lg-5">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-8">
-                              <h6 class="h5 mb-4">Awesome Products</h6>
-                              <div class="fs-2 lh-sm font-alt text-mode mb-4">“I have never loved a
-                                 shirt as much as this one! I've worn it with jeans and trousers, and
-                                 both look great.”
-                              </div>
-                              <div class="rating-star text"><i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i>
-                              </div>
-                              <p class="m-0">Jennifer Lawrence</p>
-                           </div>
-                           <div class="col-md-5 col-lg-4 d-none d-md-block"><img
-                                 src="assets/images/swimwear-testimonial-3.jpg" title="" alt=""></div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                     <div class="bg-gray-200 p-4 p-lg-5">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-8">
-                              <h6 class="h5 mb-4">Awesome Products</h6>
-                              <div class="fs-2 lh-sm font-alt text-mode mb-4">“I have never loved a
-                                 shirt as much as this one! I've worn it with jeans and trousers, and
-                                 both look great.”
-                              </div>
-                              <div class="rating-star text"><i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i>
-                              </div>
-                              <p class="m-0">Jennifer Lawrence</p>
-                           </div>
-                           <div class="col-md-5 col-lg-4 d-none d-md-block"><img
-                                 src="assets/images/swimwear-testimonial-4.jpg" title="" alt=""></div>
-                        </div>
-                     </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                     <div class="bg-gray-200 p-4 p-lg-5">
-                        <div class="row">
-                           <div class="col-md-7 col-lg-8">
-                              <h6 class="h5 mb-4">Awesome Products</h6>
-                              <div class="fs-2 lh-sm font-alt text-mode mb-4">“I have never loved a
-                                 shirt as much as this one! I've worn it with jeans and trousers, and
-                                 both look great.”
-                              </div>
-                              <div class="rating-star text"><i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i> <i
-                                    class="bi bi-star-fill active"></i> <i class="bi bi-star-fill active"></i>
-                              </div>
-                              <p class="m-0">Jennifer Lawrence</p>
-                           </div>
-                           <div class="col-md-5 col-lg-4 d-none d-md-block"><img
-                                 src="assets/images/swimwear-testimonial-5.jpg" title="" alt=""></div>
-                        </div>
-                     </div>
-                  </div>
-                  
-               </div>
-               <div class="swiper-pagination mt-4 position-relative"></div>
-            </div>
-         </div>
-      </div>
-   </section> */}
-            {/* End section */}
-            {/* section */}
-            {/* End section */}
-            {/* section */}
             <section className="section">
               <div className="container">
                 <div className="row justify-content-center section-heading">
@@ -5433,10 +5275,8 @@ function Home() {
                 </div>
               </div>
             </section>
-            {/* End section */}
-            {/* section */}
-            <div style={{ position: 'relative', zIndex: 0, overflow: 'hidden' }}>
-              {/* Background Video */}
+
+            <div className="section " style={{ position: 'relative', zIndex: 0, overflow: 'hidden' }}>
               <video
                 autoPlay
                 muted
@@ -5480,81 +5320,8 @@ function Home() {
                 </div>
               </div>
             </div>
-            {/* End section */}
-            {/* section */}
-            {/* <section class="section">
-      <div class="container">
-         <div class="row justify-content-center section-heading">
-            <div class="col-lg-6 text-center">
-               <div class="fs-6 text-uppercase letter-spacing-3 text-primary mb-2">BLOG POST</div>
-               <h3 class="h1 font-alt m-0">Latest News</h3>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-lg-4">
-               <div class="hover-scale position-relative">
-                  <div class="hover-scale-in position-relative"><img src="assets/images/swimwear-blog-1.jpg"
-                        title="" alt=""> <span
-                        class="position-absolute top-0 start-0 ms-3 mt-3 bg-primary px-3 py-2 text-white small rounded-3 fw-700">30
-                        Aug, 2022</span>
-                  </div>
-                  <div class="pt-3">
-                     <span class="d-block mb-2"><a class="letter-spacing-3 text-primary text-uppercase small"
-                           href="#">Business</a></span>
-                     <div class="fs-4 text-mode mb-2 lh-sm font-alt"><a class="text-reset stretched-link"
-                           href="#">How to take beautiful photos with phone?</a></div>
-                     <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4">
-               <div class="hover-scale position-relative">
-                  <div class="hover-scale-in position-relative"><img src="assets/images/swimwear-blog-2.jpg"
-                        title="" alt=""> <span
-                        class="position-absolute top-0 start-0 ms-3 mt-3 bg-primary px-3 py-2 text-white small rounded-3 fw-700">30
-                        Aug, 2022</span>
-                  </div>
-                  <div class="pt-3">
-                     <span class="d-block mb-2"><a class="letter-spacing-3 text-primary text-uppercase small"
-                           href="#">Business</a></span>
-                     <div class="fs-4 text-mode mb-2 lh-sm font-alt"><a class="text-reset stretched-link"
-                           href="#">How to take beautiful photos with phone?</a></div>
-                     <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4">
-               <div class="hover-scale position-relative">
-                  <div class="hover-scale-in position-relative"><img src="assets/images/swimwear-blog-3.jpg"
-                        title="" alt=""> <span
-                        class="position-absolute top-0 start-0 ms-3 mt-3 bg-primary px-3 py-2 text-white small rounded-3 fw-700">30
-                        Aug, 2022</span>
-                  </div>
-                  <div class="pt-3">
-                     <span class="d-block mb-2"><a class="letter-spacing-3 text-primary text-uppercase small"
-                           href="#">Business</a></span>
-                     <div class="fs-4 text-mode mb-2 lh-sm font-alt"><a class="text-reset stretched-link"
-                           href="#">How to take beautiful photos with phone?</a></div>
-                     <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                        eiusmod tempor incididunt
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section> */}
-            {/* End section */}
           </main>
-          {/* End Main */}
-          {/* Footer */}
           <HomeFooter />
-
-          {/* End Footer */}
         </div>
       </>
     </>
