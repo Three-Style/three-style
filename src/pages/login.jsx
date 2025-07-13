@@ -6,13 +6,9 @@ const Login = () => {
   return (
     <>
       <>
-        {/* Header */}
         <HomeHeader />
-        {/* End Header */}
 
-        {/* Main */}
 
-        
         <main>
           {/* Breadcrumb */}
           <div className="section">
@@ -97,11 +93,8 @@ const Login = () => {
           </div>
           {/* end login */}
         </main>
-        {/* End Main */}
 
-        {/* Footer */}
         <HomeFooter />
-        {/* End Footer */}
 
       </>
 
