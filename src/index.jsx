@@ -1,7 +1,12 @@
 import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { useLocation, useNavigate, BrowserRouter } from "react-router-dom";
+// CSS imports in priority order
 import "./assets/css/home.css";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./assets/css/css2.css";
 import "./assets/css/media.css";
@@ -11,6 +16,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import $ from "jquery";
+// Import Magnific Popup
+import "./assets/js/jquery.magnific-popup.min.js";
 const App = lazy(() => import("./App"));
 
 window.BASE_URL = process.env.PUBLIC_URL;

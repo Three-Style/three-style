@@ -3,6 +3,8 @@ import HomeFooter from "../components/partials/Footer/footer";
 import HomeHeader from "../components/partials/Header/header";
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 
 const About = () => {
@@ -11,6 +13,95 @@ const About = () => {
     triggerOnce: true,
     threshold: 0.3,     // trigger when 30% of component is visible
   });
+
+  useEffect(() => {
+    // Initialize Swiper sliders after component mounts
+    const initializeSwipers = () => {
+      // Initialize all swiper containers
+      const swiperContainers = document.querySelectorAll('.swiper-container');
+      
+      swiperContainers.forEach((container, index) => {
+        // Get data-swiper-options if available
+        const dataOptions = container.getAttribute('data-swiper-options');
+        let options = {
+          modules: [Navigation, Pagination, Autoplay],
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-next-02',
+            prevEl: '.swiper-prev-02',
+          }
+        };
+
+        // If data-swiper-options exists, parse and merge it
+        if (dataOptions) {
+          try {
+            const parsedOptions = JSON.parse(dataOptions);
+            options = { ...options, ...parsedOptions };
+          } catch (e) {
+            console.warn('Failed to parse swiper options:', e);
+          }
+        }
+
+        // Create unique navigation selectors for multiple sliders
+        if (swiperContainers.length > 1) {
+          const nextEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-next-02');
+          const prevEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-prev-02');
+          const paginationEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-pagination');
+          
+          if (nextEl && prevEl) {
+            options.navigation = {
+              nextEl: nextEl,
+              prevEl: prevEl,
+            };
+          }
+          
+          if (paginationEl) {
+            options.pagination = {
+              ...options.pagination,
+              el: paginationEl,
+            };
+          }
+        }
+
+        new Swiper(container, options);
+      });
+    };
+
+    // Initialize lightbox gallery
+    const initializeLightbox = () => {
+      // Check if jQuery and Magnific Popup are available
+      if (window.$ && window.$.fn.magnificPopup) {
+        const GalleryPopup = window.$('.lightbox-gallery');
+        if (GalleryPopup.length > 0) {
+          window.$('.lightbox-gallery').magnificPopup({
+            delegate: '.gallery-link',
+            type: 'image',
+            tLoading: 'Loading image #%curr%...',
+            mainClass: 'mfp-fade',
+            fixedContentPos: true,
+            closeBtnInside: false,
+            gallery: {
+              enabled: true,
+              navigateByImgClick: true,
+              preload: [0, 1]
+            }
+          });
+        }
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      initializeSwipers();
+      initializeLightbox();
+    }, 100);
+  }, []);
 
   return (
     <>

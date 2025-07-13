@@ -1,9 +1,159 @@
-import React from 'react'
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
+import React, { useEffect } from 'react'
+import Swiper from 'swiper'
+import { Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules'
 
 const ProductDetails = () => {
+  useEffect(() => {
+    // Initialize Swiper sliders after component mounts
+    const initializeSwipers = () => {
+      // Initialize all swiper containers
+      const swiperContainers = document.querySelectorAll('.swiper-container');
+      
+      swiperContainers.forEach((container, index) => {
+        // Get data-swiper-options if available
+        const dataOptions = container.getAttribute('data-swiper-options');
+        let options = {
+          modules: [Navigation, Pagination, Autoplay],
+          slidesPerView: 2,
+          spaceBetween: 24,
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'progressbar',
+          },
+          navigation: {
+            nextEl: '.swiper-next-02',
+            prevEl: '.swiper-prev-02',
+          },
+          breakpoints: {
+            600: {
+              slidesPerView: 2
+            },
+            991: {
+              slidesPerView: 3
+            },
+            1300: {
+              slidesPerView: 5
+            }
+          }
+        };
+
+        // If data-swiper-options exists, parse and merge it
+        if (dataOptions) {
+          try {
+            const parsedOptions = JSON.parse(dataOptions);
+            options = { ...options, ...parsedOptions };
+          } catch (e) {
+            console.warn('Failed to parse swiper options:', e);
+          }
+        }
+
+        // Create unique navigation selectors for multiple sliders
+        if (swiperContainers.length > 1) {
+          const nextEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-next-02');
+          const prevEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-prev-02');
+          const paginationEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-pagination');
+          
+          if (nextEl && prevEl) {
+            options.navigation = {
+              nextEl: nextEl,
+              prevEl: prevEl,
+            };
+          }
+          
+          if (paginationEl) {
+            options.pagination = {
+              ...options.pagination,
+              el: paginationEl,
+            };
+          }
+        }
+
+        new Swiper(container, options);
+      });
+
+      // Initialize product gallery sliders if they exist
+      const swiperGallery = document.querySelector('.swiper_gallery');
+      const swiperThumbGallery = document.querySelector('.swiper_thumb_gallery');
+      
+      if (swiperThumbGallery && swiperGallery) {
+        const swiper_gallery = new Swiper('.swiper_thumb_gallery', {
+          modules: [Navigation, Thumbs],
+          spaceBetween: 10,
+          slidesPerView: 5,
+          freeMode: true,
+          watchSlidesProgress: true,
+          navigation: {
+            nextEl: '.swiper-next-pd-details_thumb',
+            prevEl: '.swiper-prev-pd-details_thumb',
+          },
+        });
+        
+        const swiper2 = new Swiper('.swiper_gallery', {
+          modules: [Navigation, Thumbs],
+          spaceBetween: 10,
+          effect: 'fade',
+          thumbs: {
+            swiper: swiper_gallery,
+          },
+        });
+      }
+    };
+
+    // Initialize lightbox gallery
+    const initializeLightbox = () => {
+      // Check if jQuery and Magnific Popup are available
+      if (window.$ && window.$.fn.magnificPopup) {
+        const GalleryPopup = window.$('.lightbox-gallery');
+        if (GalleryPopup.length > 0) {
+          window.$('.lightbox-gallery').magnificPopup({
+            delegate: '.gallery-link',
+            type: 'image',
+            tLoading: 'Loading image #%curr%...',
+            mainClass: 'mfp-fade',
+            fixedContentPos: true,
+            closeBtnInside: false,
+            gallery: {
+              enabled: true,
+              navigateByImgClick: true,
+              preload: [0, 1] // Will preload 0 - before current, and 1 after current image
+            }
+          });
+        }
+      } else {
+        // Fallback: try to load Magnific Popup dynamically
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js';
+        script.onload = () => {
+          if (window.$ && window.$.fn.magnificPopup) {
+            window.$('.lightbox-gallery').magnificPopup({
+              delegate: '.gallery-link',
+              type: 'image',
+              tLoading: 'Loading image #%curr%...',
+              mainClass: 'mfp-fade',
+              fixedContentPos: true,
+              closeBtnInside: false,
+              gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0, 1]
+              }
+            });
+          }
+        };
+        document.head.appendChild(script);
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      initializeSwipers();
+      initializeLightbox();
+    }, 100);
+  }, []);
   return (
+
     <>
 
       <HomeHeader />

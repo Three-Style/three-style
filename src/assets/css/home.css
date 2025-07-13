@@ -39270,3 +39270,10 @@ input[type="search"]::-webkit-search-cancel-button {
 .category-card-01:hover .category-card-img img {
     transform: scale(1.15);
 }
+.attachment{
+        background-attachment: fixed;
+}
+
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background:var(--bs-primary-color) !important;
+}
