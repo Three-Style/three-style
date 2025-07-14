@@ -10,7 +10,7 @@ const ProductDetails = () => {
     const initializeSwipers = () => {
       // Initialize all swiper containers
       const swiperContainers = document.querySelectorAll('.swiper-container');
-      
+
       swiperContainers.forEach((container, index) => {
         // Get data-swiper-options if available
         const dataOptions = container.getAttribute('data-swiper-options');
@@ -54,14 +54,14 @@ const ProductDetails = () => {
           const nextEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-next-02');
           const prevEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-prev-02');
           const paginationEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-pagination');
-          
+
           if (nextEl && prevEl) {
             options.navigation = {
               nextEl: nextEl,
               prevEl: prevEl,
             };
           }
-          
+
           if (paginationEl) {
             options.pagination = {
               ...options.pagination,
@@ -76,7 +76,7 @@ const ProductDetails = () => {
       // Initialize product gallery sliders if they exist
       const swiperGallery = document.querySelector('.swiper_gallery');
       const swiperThumbGallery = document.querySelector('.swiper_thumb_gallery');
-      
+
       if (swiperThumbGallery && swiperGallery) {
         const swiper_gallery = new Swiper('.swiper_thumb_gallery', {
           modules: [Navigation, Thumbs],
@@ -89,7 +89,7 @@ const ProductDetails = () => {
             prevEl: '.swiper-prev-pd-details_thumb',
           },
         });
-        
+
         const swiper2 = new Swiper('.swiper_gallery', {
           modules: [Navigation, Thumbs],
           spaceBetween: 10,
@@ -164,7 +164,7 @@ const ProductDetails = () => {
           <div className="container">
             <div className="row">
               {/* Product Gallery */}
-              <div className="col-lg-6 lightbox-gallery product-gallery">
+              <div className="col-lg-6 lightbox-gallery product-gallery sticky-top fit-height">
                 <div className="swiper swiper_gallery">
                   <div className="swiper-wrapper">
                     <div className="swiper-slide">
@@ -585,217 +585,8 @@ const ProductDetails = () => {
                       </a>
                     </p>
                   </div>
-                </div>
-              </div>
-              {/* End Product Details */}
-            </div>
-          </div>
-        </section>
-        {/* End Product Details */}
-        {/* Product Tabs */}
-        <section className="pb-6 py-md-6 pb-lg-10 pt-lg-5">
-          <div className="container">
-            <div className="product-tabs">
-              <ul className="nav product-nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item" role="presentation">
-                  <a
-                    href="#"
-                    className="nav-link active"
-                    id="pd_description_tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#pd_description"
-                    role="tab"
-                    aria-controls="pd_description"
-                    aria-selected="true"
-                  >
-                    Description
-                  </a>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <a
-                    href="#"
-                    className="nav-link"
-                    id="pd_information_tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#px_information"
-                    role="tab"
-                    aria-controls="px_information"
-                    aria-selected="false"
-                  >
-                    Information
-                  </a>
-                </li>
-                <li className="nav-item" role="presentation">
-                  <a
-                    href="#"
-                    className="nav-link"
-                    id="pd_reviews_tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#pd_reviews"
-                    role="tab"
-                    aria-controls="pd_reviews"
-                    aria-selected="false"
-                  >
-                    Reviews
-                  </a>
-                </li>
-              </ul>
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active"
-                  id="pd_description"
-                  role="tabpanel"
-                  aria-labelledby="pd_description_tab"
-                >
-                  <div className="row">
-                    <div className="col-lg-7 pe-lg-10">
-                      <h5>Details Description</h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit
-                        esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit
-                        esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                        sint occaecat cupidatat non proident, sunt in culpa qui
-                        officia deserunt mollit anim id est laborum.
-                      </p>
-                      <h5 className="pt-3">Sample Unordered List</h5>
-                      <ul className="mb-5">
-                        <li>Comodous in tempor ullamcorper miaculis</li>
-                        <li>
-                          Pellentesque vitae neque mollis urna mattis laoreet.
-                        </li>
-                        <li>Divamus sit amet purus justo.</li>
-                        <li>
-                          Proin molestie egestas orci ac suscipit risus posuere
-                          loremous
-                        </li>
-                      </ul>
-                      <h5>Sample Ordered Lista</h5>
-                      <ol>
-                        <li>Comodous in tempor ullamcorper miaculis</li>
-                        <li>
-                          Pellentesque vitae neque mollis urna mattis laoreet.
-                        </li>
-                        <li>Divamus sit amet purus justo.</li>
-                        <li>
-                          Proin molestie egestas orci ac suscipit risus posuere
-                          loremous
-                        </li>
-                      </ol>
-                      <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam
-                      </blockquote>
-                    </div>
-                    <div className="col-lg-5">
-                      <div className="pb-3">
-                        <img
-                          src="assets/images/product-6.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="px_information"
-                  role="tabpanel"
-                  aria-labelledby="pd_information_tab"
-                >
-                  <div className="row">
-                    <div className="col-lg-6">
-                      <table className="table text-sm">
-                        <tbody>
-                          <tr>
-                            <th className="fw-500 text-mode">Product #</th>
-                            <td className="text-muted">
-                              Lorem ipsum dolor sit amet, consectetur adipisic
-                              elit
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">
-                              Available packaging
-                            </th>
-                            <td className="text-muted">
-                              consectetur adipisic elit eiusm tempor
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">Weight</th>
-                            <td className="text-muted">
-                              Ut enim ad minim venialo quis nostrud
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">
-                              Sunt in culpa qui
-                            </th>
-                            <td className="text-muted">
-                              labore et dolore magna aliqua.
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="col-lg-6">
-                      <table className="table text-sm">
-                        <tbody>
-                          <tr>
-                            <th className="fw-500 text-mode">Weight</th>
-                            <td className="text-muted">dolor sit amet</td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">
-                              Sunt in culpa qui
-                            </th>
-                            <td className="text-muted">
-                              Lorem ipsum dolor sit amet
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">Product #</th>
-                            <td className="text-muted">
-                              Lorem ipsum dolor sit amet
-                            </td>
-                          </tr>
-                          <tr>
-                            <th className="fw-500 text-mode">
-                              Available packaging
-                            </th>
-                            <td className="text-muted">
-                              Lorem ipsum dolor sit amet
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="pd_reviews"
-                  role="tabpanel"
-                  aria-labelledby="pd_reviews_tab"
-                >
-                  <div className="row">
-                    <div className="col-lg-8 pe-lg-8">
+                  <div className="row mt-3">
+                    <div className="col-lg-12">
                       <div className="row align-items-end">
                         <div className="col-sm-6">
                           <h5 className="m-0">Reviews</h5>
@@ -833,7 +624,7 @@ const ProductDetails = () => {
                             <i className="bi small bi-star" />{" "}
                             <span>13 April 2012</span>
                           </div>
-                          <p className="m-0 pt-3">
+                          <p className="m-0 pt-3 reviews-description">
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit, sed do eiusmod tempor incididunt ut labore et
                             dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -863,67 +654,7 @@ const ProductDetails = () => {
                             <i className="bi small bi-star" />{" "}
                             <span>13 April 2012</span>
                           </div>
-                          <p className="m-0 pt-3">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor
-                          </p>
-                        </div>
-                      </div>
-                      <div className="d-flex review-box border-top mt-4 pt-4">
-                        <div>
-                          <div className="review-image">
-                            <img
-                              className="img-fluid"
-                              src="assets/images/product-1.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="col ps-3">
-                          <h6>Nancy Bayer</h6>
-                          <div className="rating-star small">
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star" />{" "}
-                            <span>13 April 2012</span>
-                          </div>
-                          <p className="m-0 pt-3">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor
-                          </p>
-                        </div>
-                      </div>
-                      <div className="d-flex review-box border-top mt-4 pt-4">
-                        <div>
-                          <div className="review-image">
-                            <img
-                              className="img-fluid"
-                              src="assets/images/product-1.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="col ps-3">
-                          <h6>Nancy Bayer</h6>
-                          <div className="rating-star small">
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star" />{" "}
-                            <span>13 April 2012</span>
-                          </div>
-                          <p className="m-0 pt-3">
+                          <p className="m-0 pt-3 reviews-description">
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit, sed do eiusmod tempor incididunt ut labore et
                             dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -933,271 +664,85 @@ const ProductDetails = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-4">
-                      <div className="border p-4 sticky-lg-top review-form mt-4 mt-lg-0">
-                        <h5 className="mb-3 pb-3 border-bottom">
-                          WRITE A REVIEW
-                        </h5>
-                        <form>
-                          <div className="row g-2">
-                            <div className="col-sm-6">
-                              <label className="form-label">Name</label>{" "}
-                              <input
-                                type="text"
-                                name="name"
-                                className="form-control form-control-sm"
-                              />
-                            </div>
-                            <div className="col-sm-6">
-                              <label className="form-label">Email</label>{" "}
-                              <input
-                                type="text"
-                                name="email"
-                                className="form-control form-control-sm"
-                              />
-                            </div>
-                            <div className="col-sm-12">
-                              <label className="form-label m-0 pe-3 w-100">
-                                Rating
-                              </label>
-                              <div className="rating-star">
-                                <i className="bi small bi-star-fill" />
-                                <i className="bi small bi-star-fill" />{" "}
-                                <i className="bi small bi-star-fill" />{" "}
-                                <i className="bi small bi-star-fill" />{" "}
-                                <i className="bi small bi-star-fill" />
-                              </div>
-                            </div>
-                            <div className="col-sm-12">
-                              <label className="form-label">Review Title</label>{" "}
-                              <input
-                                type="text"
-                                name="review"
-                                className="form-control form-control-sm"
-                              />
-                            </div>
-                            <div className="col-sm-12">
-                              <label className="form-label">
-                                Body of Review (1500)
-                              </label>{" "}
-                              <textarea
-                                rows={5}
-                                className="form-control"
-                                defaultValue={""}
-                              />
-                            </div>
-                            <div className="col-sm-12 pt-2">
-                              <button className="btn btn-primary">
-                                Submit Review
-                              </button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
+
                   </div>
+
+                </div>
+              </div>
+              {/* End Product Details */}
+            </div>
+          </div>
+        </section>
+
+        <section className="pb-6 py-md-6 pb-lg-10 pt-lg-5">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-7 pe-lg-10">
+                <h5>Details Description</h5>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate velit
+                  esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                  sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate velit
+                  esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                  sint occaecat cupidatat non proident, sunt in culpa qui
+                  officia deserunt mollit anim id est laborum.
+                </p>
+                <h5 className="pt-3">Sample Unordered List</h5>
+                <ul className="mb-5">
+                  <li>Comodous in tempor ullamcorper miaculis</li>
+                  <li>
+                    Pellentesque vitae neque mollis urna mattis laoreet.
+                  </li>
+                  <li>Divamus sit amet purus justo.</li>
+                  <li>
+                    Proin molestie egestas orci ac suscipit risus posuere
+                    loremous
+                  </li>
+                </ul>
+                <h5>Sample Ordered Lista</h5>
+                <ol>
+                  <li>Comodous in tempor ullamcorper miaculis</li>
+                  <li>
+                    Pellentesque vitae neque mollis urna mattis laoreet.
+                  </li>
+                  <li>Divamus sit amet purus justo.</li>
+                  <li>
+                    Proin molestie egestas orci ac suscipit risus posuere
+                    loremous
+                  </li>
+                </ol>
+                <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam
+                </blockquote>
+              </div>
+              <div className="col-lg-5">
+                <div className="pb-3">
+                  <img
+                    src="assets/images/product-6.jpg"
+                    className="img-fluid"
+                    title=""
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* End Product Tabs */}
-        {/* You may also like */}
-        {/* <section class="section bg-gray-100">
-          <div class="container">
-              <div class="row justify-content-center mb-4 mb-lg-6">
-                  <div class="col-lg-6 text-center">
-                      <h3 class="h2 mb-2">You might also like these</h3>
-                      <p class="fs-6 m-0">Read Today’s News.</p>
-                  </div>
-              </div>
-              <div class="swiper-hover-arrow position-relative">
-                  <div class="swiper swiper-container" data-swiper-options='{
-                      "slidesPerView": 2,
-                      "spaceBetween": 24,
-                      "loop": true,
-                      "pagination": {
-                        "el": ".swiper-pagination",
-                        "clickable": true
-                      },
-                      "navigation": {
-                        "nextEl": ".swiper-next-02",
-                        "prevEl": ".swiper-prev-02"
-                      },
-                      "autoplay": {
-                        "delay": 3500,
-                        "disableOnInteraction": false
-                      },
-                      "breakpoints": {
-                        "600": {
-                          "slidesPerView": 2
-                        },
-                        "991": {
-                          "slidesPerView": 3
-                        },
-                        "1200": {
-                          "slidesPerView": 4
-                        }
-                      }
-                    }'>
-                      <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
 
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
-
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
-
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
-
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
-
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="swiper-slide">
-                              <div class="product-card-9">
-                                  <div class="product-card-image">
-                                      <div class="badge-ribbon"><span>15%</span></div>
-                                      <div class="product-action"><a href="#" class="btn"><i class="fi-heart"></i>
-                                          </a> </a> </a><a href="#" class="btn"><i
-                                                  class="fi-shopping-cart"></i></a>
-                                      </div>
-                                      <div class="product-media"><a href="#"><img class="img-fluid"
-                                                  src="assets/images/swimwear-product-1.jpg" title="" alt=""> </a>
-                                      </div>
-                                  </div>
-                                  <div class="product-card-info">
-
-                                      <h6 class="product-title"><a href="#">Laxmipati Cocktail K-055 Satin Silk
-                                              Navy Blue Saree</a>
-                                      </h6>
-
-                                      <div class="product-price"><span class="text-primary">$28</span>
-                                          <del class="small text-muted">$38</del>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="swiper-pagination mt-4 d-lg-none position-relative"></div>
-                  </div>
-                  <div class="swiper-arrow-style-02 swiper-next swiper-next-02"><i
-                          class="bi bi-chevron-right"></i></div>
-                  <div class="swiper-arrow-style-02 swiper-prev swiper-prev-02"><i class="bi bi-chevron-left"></i>
-                  </div>
-              </div>
-          </div>
-      </section> */}
-        {/* End You may also like */}
-        {/* End section */}
-        {/* section */}
         <section className="section overflow-hidden">
           <div className="container-fluid">
             <div className="row justify-content-center section-heading">

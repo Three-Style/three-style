@@ -39277,3 +39277,18 @@ input[type="search"]::-webkit-search-cancel-button {
 .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
     background:var(--bs-primary-color) !important;
 }
+.fit-height{
+    height: fit-content;
+}
+.reviews-description{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width:991px) {
+    .product-details .product-gallery.sticky-top{
+        position: unset;
+    }
+}
