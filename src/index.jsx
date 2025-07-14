@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import $ from "jquery";
 // Import Magnific Popup
-import "./assets/js/jquery.magnific-popup.min.js";
+// import "./assets/js/jquery.magnific-popup.min.js";
 const App = lazy(() => import("./App"));
 
 window.BASE_URL = process.env.PUBLIC_URL;

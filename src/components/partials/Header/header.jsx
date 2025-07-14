@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 function HomeHeader() {
   return (
     <>
-    
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
         <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
           <div className="d-flex justify-content-between align-items-center">
@@ -57,11 +56,11 @@ function HomeHeader() {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav mx-auto">
-                <li className="dropdown dropdown-full nav-item">
-                  <a href="#" className="nav-link">
-                    Demos
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Home
+                  </Link>{" "}
+                  {/* <label className="px-dropdown-toggle mob-menu" />
                   <div className="dropdown-menu dropdown-mega-menu py-0">
                     <div className="container p-3 p-lg-4">
                       <div className="row gy-4">
@@ -332,279 +331,17 @@ function HomeHeader() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </li>
-                <li className="dropdown dropdown-full nav-item">
+                <li className="nav-item">
                   <a href="#" className="nav-link">
                     Latest
                   </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="dropdown-menu dropdown-mega-menu py-0">
-                    <div className="container-fluid p-3 p-lg-4">
-                      <div className="row gy-4">
-                        <div className="col-6 col-md-3">
-                          <ul className="list-unstyled link-list-style-04 m-0">
-                            <li>
-                              <a href="#">WHAT’S NEW</a>
-                            </li>
-                            <li>
-                              <a href="#">BEST SELLING</a>
-                            </li>
-                            <li>
-                              <a href="#">TOP RATED</a>
-                            </li>
-                            <li>
-                              <a href="#">MOST POPULAR</a>
-                            </li>
-                            <li>
-                              <a href="#">EDITOR’S PICKS</a>
-                            </li>
-                            <li>
-                              <a href="#">ON SALE</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-05 mb-3 fw-500">Women's</h6>
-                          <ul className="list-unstyled link-list-style-05 m-0">
-                            <li>
-                              <a href="#">Fusion Wear</a>
-                            </li>
-                            <li>
-                              <a href="#">Dress Materials</a>
-                            </li>
-                            <li>
-                              <a href="#">Dupattas &amp; Shawls</a>
-                            </li>
-                            <li>
-                              <a href="#">Ethnic Dresses</a>
-                            </li>
-                            <li>
-                              <a href="#">Jackets &amp; Waistcoats</a>
-                            </li>
-                            <li>
-                              <a href="#">Kurtas &amp; Suits</a>
-                            </li>
-                            <li>
-                              <a href="#">Sarees</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-05 mb-3 fw-500">
-                            Living Room
-                          </h6>
-                          <ul className="list-unstyled link-list-style-05 m-0">
-                            <li>
-                              <a href="#">Sofa</a>
-                            </li>
-                            <li>
-                              <a href="#">Love Seat</a>
-                            </li>
-                            <li>
-                              <a href="#">Settee Sofa</a>
-                            </li>
-                            <li>
-                              <a href="#">Sleeper Sofas</a>
-                            </li>
-                            <li>
-                              <a href="#">Tuxedo</a>
-                            </li>
-                            <li>
-                              <a href="#">Chair &amp; Ottomans</a>
-                            </li>
-                            <li>
-                              <a href="#">Wing Chair</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-12 col-md-3 col-xl-5 d-flex flex-row">
-                          <div
-                            className="min-h-200px bg-center bg-cover d-flex align-items-center justify-content-center h-100 w-100"
-                            style={{
-                              backgroundImage:
-                                "url(assets/images/blog-home-2.jpg)",
-                            }}
-                          >
-                            <div className="text-center px-4 py-3">
-                              <h6 className="text-uppercase text-white mb-0 letter-spacing-4 fw-300">
-                                NEW IN
-                              </h6>
-                              <h3 className="fw-600 h4 text-white">
-                                2022 Collection
-                              </h3>
-                              <div className="pt-2">
-                                <a className="btn btn-white btn-sm" href="#">
-                                  Shop Now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </li>
-                <li className="dropdown dropdown-full nav-item">
+                <li className="nav-item">
                   <a href="#" className="nav-link">
                     Collection
                   </a>
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="dropdown-menu dropdown-mega-menu py-0">
-                    <div className="container-fluid p-3 p-lg-4">
-                      <div className="row gy-4">
-                        <div className="col-lg-6">
-                          <div className="row gy-4">
-                            <div className="col-6">
-                              <h6 className="sm-title-04">
-                                <a className="text-reset" href="#">
-                                  Harum Quidem
-                                </a>
-                              </h6>
-                              <ul className="list-unstyled link-list-style-03">
-                                <li>
-                                  <a href="#">All Harum Quidem</a>
-                                </li>
-                                <li>
-                                  <a href="#">Cosmopolis</a>
-                                </li>
-                                <li>
-                                  <a href="#">Suitó</a>
-                                </li>
-                                <li>
-                                  <a href="#">Milancélos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Blazéro</a>
-                                </li>
-                                <li>
-                                  <a href="#">Glamos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Metropolis</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-6">
-                              <h6 className="sm-title-04">
-                                <a className="text-reset" href="#">
-                                  Harum Quidem
-                                </a>
-                              </h6>
-                              <ul className="list-unstyled link-list-style-03">
-                                <li>
-                                  <a href="#">All Harum Quidem</a>
-                                </li>
-                                <li>
-                                  <a href="#">Cosmopolis</a>
-                                </li>
-                                <li>
-                                  <a href="#">Suitó</a>
-                                </li>
-                                <li>
-                                  <a href="#">Milancélos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Blazéro</a>
-                                </li>
-                                <li>
-                                  <a href="#">Glamos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Metropolis</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-6">
-                              <h6 className="sm-title-04">
-                                <a className="text-reset" href="#">
-                                  Harum Quidem
-                                </a>
-                              </h6>
-                              <ul className="list-unstyled link-list-style-03">
-                                <li>
-                                  <a href="#">All Harum Quidem</a>
-                                </li>
-                                <li>
-                                  <a href="#">Cosmopolis</a>
-                                </li>
-                                <li>
-                                  <a href="#">Suitó</a>
-                                </li>
-                                <li>
-                                  <a href="#">Milancélos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Blazéro</a>
-                                </li>
-                                <li>
-                                  <a href="#">Glamos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Metropolis</a>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-6">
-                              <h6 className="sm-title-04">
-                                <a className="text-reset" href="#">
-                                  Harum Quidem
-                                </a>
-                              </h6>
-                              <ul className="list-unstyled link-list-style-03">
-                                <li>
-                                  <a href="#">All Harum Quidem</a>
-                                </li>
-                                <li>
-                                  <a href="#">Cosmopolis</a>
-                                </li>
-                                <li>
-                                  <a href="#">Suitó</a>
-                                </li>
-                                <li>
-                                  <a href="#">Milancélos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Blazéro</a>
-                                </li>
-                                <li>
-                                  <a href="#">Glamos</a>
-                                </li>
-                                <li>
-                                  <a href="#">Metropolis</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-6 d-flex flex-column">
-                          <div
-                            className="rounded h-100 bg-cover bg-no-repeat d-flex align-items-center justify-content-center py-8 p-xl-5"
-                            style={{
-                              backgroundImage:
-                                "url(assets/images/blog-home-3.jpg)",
-                            }}
-                          >
-                            <div className="w-100 text-center">
-                              <h6 className="text-uppercase fw-300 text-white mb-2">
-                                NEW IN
-                              </h6>
-                              <h3 className="fw-400 h3 text-white">
-                                New Exclusive
-                                <br />
-                                2022 Collection
-                              </h3>
-                              <div className="pt-2">
-                                <a className="btn btn-white btn-sm" href="#">
-                                  Shop Now
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </li>
                 <li className="dropdown dropdown-full nav-item">
                   <a href="#" className="nav-link">
@@ -920,26 +657,10 @@ function HomeHeader() {
                     </li>
                   </ul>
                 </li>
-                <li className="dropdown nav-item">
+                <li className="nav-item">
                   <a href="#" className="nav-link">
                     Blog
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <ul className="dropdown-menu left shadow-lg">
-                    <li>
-                      <a className="dropdown-item" href="../blog/blog.html">
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="dropdown-item"
-                        href="../blog/blog-single.html"
-                      >
-                        Blog Single
-                      </a>
-                    </li>
-                  </ul>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -974,18 +695,18 @@ function HomeHeader() {
                   className="dropdown-menu dropdown-menu-end mt-2 shadow"
                   aria-labelledby="dropdown_myaccount"
                 >
-                  <a className="dropdown-item" href="#">
+                  {/* <a className="dropdown-item" href="#">
                     Login
-                  </a>{" "}
-                  <a className="dropdown-item" href="#">
-                    Register
-                  </a>{" "}
-                  <a className="dropdown-item" href="#">
+                  </a>{" "} */}
+                  <Link className="dropdown-item" to="/account-order">
+                    My Orders
+                  </Link>{" "}
+                  <Link className="dropdown-item" to="/account-wishlist">
                     Wishlist
-                  </a>{" "}
-                  <a className="dropdown-item" href="#">
+                  </Link>{" "}
+                  <Link className="dropdown-item" to="/account-profile">
                     My account
-                  </a>
+                  </Link>
                 </div>
               </div>
               {/* Wishlist */}
@@ -1008,6 +729,262 @@ function HomeHeader() {
             </div>
           </div>
         </nav>
+
+        <div
+          className="offcanvas offcanvas-end"
+          tabIndex={-1}
+          id="modalMiniCart"
+          aria-labelledby="modalMiniCartLabel"
+        >
+          <div className="offcanvas-header border-bottom">
+            <h6 className="offcanvas-title" id="modalMiniCartLabel">
+              Your Cart (2)
+            </h6>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            />
+          </div>
+          <div className="offcanvas-body">
+            <ul className="list-unstyled m-0 p-0">
+              <li className="py-2">
+                <div className="row align-items-center">
+                  <div className="col-4">
+                    {/* Image */}{" "}
+                    <a href="#">
+                      <img
+                        className="img-fluid border"
+                        src="assets/images/product-x-1.jpg"
+                        alt="..."
+                      />
+                    </a>
+                  </div>
+                  <div className="col-8">
+                    {/* Title */}
+                    <p className="mb-2">
+                      <a className="text-mode fw-500" href="#">
+                        Cotton floral print Dress
+                      </a>{" "}
+                      <span className="m-0 text-muted w-100 d-block">
+                        $40.00
+                      </span>
+                    </p>
+                    {/*Footer */}
+                    <div className="d-flex align-items-center">
+                      {/* Select */}
+                      {/* <select class="form-select form-select-sm w-auto">
+                     <option value="1">1</option>
+                     <option value="1">2</option>
+                     <option value="1">3</option>
+                  </select> */}
+                      <div className="cart-qty">
+                        <div className="dec qty-btn">-</div>
+                        <input
+                          className="cart-qty-input form-control"
+                          type="text"
+                          name="qtybutton"
+                          defaultValue={1}
+                        />
+                        <div className="inc qty-btn">+</div>
+                      </div>
+                      {/* Remove */}{" "}
+                      <a className="small text-mode ms-auto" href="#!">
+                        <i className="bi bi-x" /> Remove
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className="py-2">
+                <div className="row align-items-center">
+                  <div className="col-4">
+                    {/* Image */}{" "}
+                    <a href="#">
+                      <img
+                        className="img-fluid border"
+                        src="assets/images/product-x-1.jpg"
+                        alt="..."
+                      />
+                    </a>
+                  </div>
+                  <div className="col-8">
+                    {/* Title */}
+                    <p className="mb-2">
+                      <a className="text-mode fw-500" href="#">
+                        Cotton floral print Dress
+                      </a>{" "}
+                      <span className="m-0 text-muted w-100 d-block">
+                        $40.00
+                      </span>
+                    </p>
+                    {/*Footer */}
+                    <div className="d-flex align-items-center">
+                      {/* Select */}
+                      {/* <select class="form-select form-select-sm w-auto">
+                     <option value="1">1</option>
+                     <option value="1">2</option>
+                     <option value="1">3</option>
+                  </select> */}
+                      <div className="cart-qty">
+                        <div className="dec qty-btn">-</div>
+                        <input
+                          className="cart-qty-input form-control"
+                          type="text"
+                          name="qtybutton"
+                          defaultValue={1}
+                        />
+                        <div className="inc qty-btn">+</div>
+                      </div>
+                      {/* Remove */}{" "}
+                      <a className="small text-mode ms-auto" href="#!">
+                        <i className="bi bi-x" /> Remove
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className="py-2">
+                <div className="row align-items-center">
+                  <div className="col-4">
+                    {/* Image */}{" "}
+                    <a href="#">
+                      <img
+                        className="img-fluid border"
+                        src="assets/images/product-x-1.jpg"
+                        alt="..."
+                      />
+                    </a>
+                  </div>
+                  <div className="col-8">
+                    {/* Title */}
+                    <p className="mb-2">
+                      <a className="text-mode fw-500" href="#">
+                        Cotton floral print Dress
+                      </a>{" "}
+                      <span className="m-0 text-muted w-100 d-block">
+                        $40.00
+                      </span>
+                    </p>
+                    {/*Footer */}
+                    <div className="d-flex align-items-center">
+                      {/* Select */}
+                      {/* <select class="form-select form-select-sm w-auto">
+                     <option value="1">1</option>
+                     <option value="1">2</option>
+                     <option value="1">3</option>
+                  </select> */}
+                      <div className="cart-qty">
+                        <div className="dec qty-btn">-</div>
+                        <input
+                          className="cart-qty-input form-control"
+                          type="text"
+                          name="qtybutton"
+                          defaultValue={1}
+                        />
+                        <div className="inc qty-btn">+</div>
+                      </div>
+                      {/* Remove */}{" "}
+                      <a className="small text-mode ms-auto" href="#!">
+                        <i className="bi bi-x" /> Remove
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className="py-2">
+                <div className="row align-items-center">
+                  <div className="col-4">
+                    {/* Image */}{" "}
+                    <a href="#">
+                      <img
+                        className="img-fluid border"
+                        src="assets/images/product-x-1.jpg"
+                        alt="..."
+                      />
+                    </a>
+                  </div>
+                  <div className="col-8">
+                    {/* Title */}
+                    <p className="mb-2">
+                      <a className="text-mode fw-500" href="#">
+                        Cotton floral print Dress
+                      </a>{" "}
+                      <span className="m-0 text-muted w-100 d-block">
+                        $40.00
+                      </span>
+                    </p>
+                    {/*Footer */}
+                    <div className="d-flex align-items-center">
+                      {/* Select */}
+                      {/* <select class="form-select form-select-sm w-auto">
+                     <option value="1">1</option>
+                     <option value="1">2</option>
+                     <option value="1">3</option>
+                  </select> */}
+                      <div className="cart-qty">
+                        <div className="dec qty-btn">-</div>
+                        <input
+                          className="cart-qty-input form-control"
+                          type="text"
+                          name="qtybutton"
+                          defaultValue={1}
+                        />
+                        <div className="inc qty-btn">+</div>
+                      </div>
+                      {/* Remove */}{" "}
+                      <a className="small text-mode ms-auto" href="#!">
+                        <i className="bi bi-x" /> Remove
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className="offcanvas-footer ">
+            <div className="card">
+              <div className="card-header bg-transparent py-3">
+                <h6 className="m-0 h5">Order Total</h6>
+              </div>
+              <div className="card-body">
+                <ul className="list-unstyled">
+                  <li className="d-flex justify-content-between align-items-center mb-2">
+                    <h6 className="me-2 text-body">Subtotal</h6>
+                    <span className="text-end">$265.00</span>
+                  </li>
+                  <li className="d-flex justify-content-between align-items-center mb-2">
+                    <h6 className="me-2 text-body">Taxes</h6>
+                    <span className="text-end">$265.00</span>
+                  </li>
+                  <li className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                    <h6 className="me-2">Grand Total</h6>
+                    <span className="text-end text-mode">$265.00</span>
+                  </li>
+                </ul>
+                <div className="pt-2 pb-4">
+                  <div className="d-flex">
+                    <input
+                      type="text"
+                      name="promo"
+                      placeholder="Apply promo code"
+                      className="form-control form-control-sm"
+                    />
+                    <button className="btn btn-dark btn-sm ms-2">Apply</button>
+                  </div>
+                </div>
+                <div className="d-grid gap-2 mx-auto">
+                  <a className="btn btn-primary" href="checkout-shipping.html">
+                    <i className="bi-credit-card-2-back me-2" />
+                    Proceed to Checkout
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {/* Mobile Menu */}
         <div className="mobile-header-01 d-lg-none">
           <div className="mob-head-in">
@@ -1314,10 +1291,7 @@ function HomeHeader() {
                         >
                           <div className="col ps-2 pe-4">
                             <h5 className="mb-0">
-                              <a
-                                href="#"
-                                className="stretched-link text-reset"
-                              >
+                              <a href="#" className="stretched-link text-reset">
                                 iPhone 12
                               </a>
                             </h5>
@@ -1340,10 +1314,7 @@ function HomeHeader() {
                         >
                           <div className="col ps-2 pe-4">
                             <h5 className="mb-0">
-                              <a
-                                href="#"
-                                className="stretched-link text-reset"
-                              >
+                              <a href="#" className="stretched-link text-reset">
                                 iPhone 13
                               </a>
                             </h5>
@@ -1366,10 +1337,7 @@ function HomeHeader() {
                         >
                           <div className="col ps-2 pe-4">
                             <h5 className="mb-0">
-                              <a
-                                href="#"
-                                className="stretched-link text-reset"
-                              >
+                              <a href="#" className="stretched-link text-reset">
                                 iOs 15
                               </a>
                             </h5>
@@ -1392,10 +1360,7 @@ function HomeHeader() {
                         >
                           <div className="col ps-2 pe-4">
                             <h5 className="mb-0">
-                              <a
-                                href="#"
-                                className="stretched-link text-reset"
-                              >
+                              <a href="#" className="stretched-link text-reset">
                                 Shop More
                               </a>
                             </h5>
@@ -1667,8 +1632,7 @@ function HomeHeader() {
                                 className="btn btn-primary btn-sm w-100"
                                 tabIndex={0}
                               >
-                                <i className="fi-shopping-cart" /> Add to
-                                cart
+                                <i className="fi-shopping-cart" /> Add to cart
                               </a>
                             </div>
                           </div>
@@ -1743,8 +1707,7 @@ function HomeHeader() {
                                 className="btn btn-primary btn-sm w-100"
                                 tabIndex={0}
                               >
-                                <i className="fi-shopping-cart" /> Add to
-                                cart
+                                <i className="fi-shopping-cart" /> Add to cart
                               </a>
                             </div>
                           </div>
@@ -1819,8 +1782,7 @@ function HomeHeader() {
                                 className="btn btn-primary btn-sm w-100"
                                 tabIndex={0}
                               >
-                                <i className="fi-shopping-cart" /> Add to
-                                cart
+                                <i className="fi-shopping-cart" /> Add to cart
                               </a>
                             </div>
                           </div>
@@ -1895,8 +1857,7 @@ function HomeHeader() {
                                 className="btn btn-primary btn-sm w-100"
                                 tabIndex={0}
                               >
-                                <i className="fi-shopping-cart" /> Add to
-                                cart
+                                <i className="fi-shopping-cart" /> Add to cart
                               </a>
                             </div>
                           </div>
@@ -2039,8 +2000,7 @@ function HomeHeader() {
                     <div
                       className="row g-0 px-4 px-lg-5 py-3 align-items-center rounded bg-cover bg-fiex bg-center border mt-4"
                       style={{
-                        backgroundImage:
-                          "url(assets/images/el-banner-6.jpg)",
+                        backgroundImage: "url(assets/images/el-banner-6.jpg)",
                       }}
                     >
                       <div className="col-md-8 my-3 text-center text-md-start">
@@ -2072,9 +2032,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffe1db" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#f62b22" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#f62b22" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               Accessories
                               <br />
@@ -2096,9 +2054,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#e6ffd6" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#2e6b1c" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#2e6b1c" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               Airpods
                               <br />
@@ -2120,9 +2076,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffdee1" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               Airtag
                               <br />
@@ -2144,9 +2098,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffdee1" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               iphone
                               <br />
@@ -2168,9 +2120,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffe1db" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#f62b22" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#f62b22" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               iPhone 12
                               <br />
@@ -2192,9 +2142,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#e6ffd6" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#2e6b1c" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#2e6b1c" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               iPhone 13
                               <br />
@@ -2216,9 +2164,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffdee1" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               iphone iOs
                               <br />
@@ -2240,9 +2186,7 @@ function HomeHeader() {
                           style={{ backgroundColor: "#ffdee1" }}
                         >
                           <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>
-                              New Arrival
-                            </h6>
+                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
                             <h3 className="m-0 h5">
                               Organic and fresh
                               <br />
@@ -3146,9 +3090,7 @@ function HomeHeader() {
                 <div className="container p-3 p-lg-4">
                   <div className="row gy-4">
                     <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Home Options
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Home Options</h6>
                       <ul className="list-unstyled link-list-style-02 m-0">
                         <li>
                           <a href="../home/index.html">Home Option 1</a>
@@ -3193,17 +3135,13 @@ function HomeHeader() {
                       </ul>
                     </div>
                     <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Shop Option 1
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 1</h6>
                       <ul className="list-unstyled link-list-style-02 mb-4">
                         <li>
                           <a href="../shop-01/shop.html">Shop Page</a>
                         </li>
                         <li>
-                          <a href="../shop-01/shop-filter.html">
-                            Shop Filter
-                          </a>
+                          <a href="../shop-01/shop-filter.html">Shop Filter</a>
                         </li>
                         <li>
                           <a href="../shop-01/shop-fw-left.html">
@@ -3221,66 +3159,48 @@ function HomeHeader() {
                           </a>
                         </li>
                       </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Shop Option 2
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 2</h6>
                       <ul className="list-unstyled link-list-style-02 m-0">
                         <li>
                           <a href="../shop-02/shop.html">Shop Page</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                         <li>
-                          <a href="../shop-02/shop-fw.html">
-                            Shop Full Width
-                          </a>{" "}
+                          <a href="../shop-02/shop-fw.html">Shop Full Width</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                       </ul>
                     </div>
                     <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Shop Option 3
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 3</h6>
                       <ul className="list-unstyled link-list-style-02 mb-4">
                         <li>
                           <a href="../shop-03/shop.html">Shop Page</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                         <li>
-                          <a href="../shop-03/shop-fw.html">
-                            Shop Full Width
-                          </a>{" "}
+                          <a href="../shop-03/shop-fw.html">Shop Full Width</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                       </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Shop Option 4
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 4</h6>
                       <ul className="list-unstyled link-list-style-02 mb-4">
                         <li>
                           <a href="../shop-04/shop.html">Shop Page</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                         <li>
-                          <a href="../shop-04/shop-fw.html">
-                            Shop Full Width
-                          </a>{" "}
+                          <a href="../shop-04/shop-fw.html">Shop Full Width</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                       </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Shopping Cart
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Shopping Cart</h6>
                       <ul className="list-unstyled link-list-style-02 m-0">
                         <li>
-                          <a href="../account/shopping-cart.html">
-                            Cart Page
-                          </a>
+                          <a href="../account/shopping-cart.html">Cart Page</a>
                         </li>
                         <li>
-                          <a href="../account/shop-cart.html">
-                            Cart Page 02
-                          </a>{" "}
+                          <a href="../account/shop-cart.html">Cart Page 02</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                       </ul>
@@ -3330,32 +3250,22 @@ function HomeHeader() {
                       </ul>
                     </div>
                     <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Account Pages
-                      </h6>
+                      <h6 className="sm-title-02 mb-3 fw-500">Account Pages</h6>
                       <ul className="list-unstyled link-list-style-02 mb-0">
                         <li>
-                          <a href="../account/account-address.html">
-                            Address
-                          </a>
+                          <a href="../account/account-address.html">Address</a>
                         </li>
                         <li>
                           <a href="../account/account-order.html">Order</a>
                         </li>
                         <li>
-                          <a href="../account/account-payment.html">
-                            Payment
-                          </a>
+                          <a href="../account/account-payment.html">Payment</a>
                         </li>
                         <li>
-                          <a href="../account/account-profile.html">
-                            Profile
-                          </a>
+                          <a href="../account/account-profile.html">Profile</a>
                         </li>
                         <li>
-                          <a href="../account/account-tickets.html">
-                            Tickets
-                          </a>
+                          <a href="../account/account-tickets.html">Tickets</a>
                         </li>
                         <li>
                           <a href="../account/account-wishlist.html">
@@ -3366,9 +3276,7 @@ function HomeHeader() {
                           <a href="../account/wishlist.html">Wishlist 02</a>
                         </li>
                         <li>
-                          <a href="../account/account-tabs.html">
-                            Account Tab
-                          </a>
+                          <a href="../account/account-tabs.html">Account Tab</a>
                         </li>
                       </ul>
                     </div>
@@ -3386,9 +3294,7 @@ function HomeHeader() {
                           <a href="../account/sign-up.html">Sign Up</a>
                         </li>
                         <li>
-                          <a href="../account/sign-up-02.html">
-                            Sign Up 02
-                          </a>{" "}
+                          <a href="../account/sign-up-02.html">Sign Up 02</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                         <li>
@@ -3403,9 +3309,7 @@ function HomeHeader() {
                           <a href="../account/checkout.html">Checkout</a>
                         </li>
                         <li>
-                          <a href="../account/checkout-02.html">
-                            Checkout 02
-                          </a>{" "}
+                          <a href="../account/checkout-02.html">Checkout 02</a>{" "}
                           <span className="menu-label">New</span>
                         </li>
                       </ul>
@@ -3471,9 +3375,7 @@ function HomeHeader() {
                       </ul>
                     </div>
                     <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-05 mb-3 fw-500">
-                        Living Room
-                      </h6>
+                      <h6 className="sm-title-05 mb-3 fw-500">Living Room</h6>
                       <ul className="list-unstyled link-list-style-05 m-0">
                         <li>
                           <a href="#">Sofa</a>
@@ -3502,8 +3404,7 @@ function HomeHeader() {
                       <div
                         className="min-h-200px bg-center bg-cover d-flex align-items-center justify-content-center h-100 w-100"
                         style={{
-                          backgroundImage:
-                            "url(assets/images/blog-home-2.jpg)",
+                          backgroundImage: "url(assets/images/blog-home-2.jpg)",
                         }}
                       >
                         <div className="text-center px-4 py-3">
@@ -3661,8 +3562,7 @@ function HomeHeader() {
                       <div
                         className="rounded h-100 bg-cover bg-no-repeat d-flex align-items-center justify-content-center py-8 p-xl-5"
                         style={{
-                          backgroundImage:
-                            "url(assets/images/blog-home-3.jpg)",
+                          backgroundImage: "url(assets/images/blog-home-3.jpg)",
                         }}
                       >
                         <div className="w-100 text-center">
@@ -3991,10 +3891,7 @@ function HomeHeader() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    className="dropdown-item"
-                    href="../pages/contact-us.html"
-                  >
+                  <a className="dropdown-item" href="../pages/contact-us.html">
                     Contact Us
                   </a>
                 </li>
@@ -4012,10 +3909,7 @@ function HomeHeader() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    className="dropdown-item"
-                    href="../blog/blog-single.html"
-                  >
+                  <a className="dropdown-item" href="../blog/blog-single.html">
                     Blog Single
                   </a>
                 </li>
