@@ -19,179 +19,49 @@ const AccountOrder = () => {
               {/* End Profile Menu */}
               {/* Content */}
               <div className="col-lg-8 col-xxl-9">
-                <div className="table-responsive fs-md mb-4">
-                  <table className="table table-bordered table-hover mb-0">
-                    <thead className="text-700 bg-gray-200">
-                      <tr>
-                        <th className="fw-600">Order #</th>
-                        <th className="fw-600">Date Purchased</th>
-                        <th className="fw-600">Status</th>
-                        <th className="fw-600 text-end">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-info m-0">In Progress</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-danger m-0">Cancel</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-success m-0">Delivered</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-warning m-0">On Hold</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-info m-0">In Progress</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-info m-0">In Progress</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-info m-0">In Progress</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-danger m-0">Cancel</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-success m-0">Delivered</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                      <tr>
-                        <td className="p-3">
-                          <a
-                            className="text-mode"
-                            href="#order-details"
-                            data-bs-toggle="modal"
-                          >
-                            #8560
-                          </a>
-                        </td>
-                        <td className="p-3">May 21, 2021</td>
-                        <td className="p-3">
-                          <span className="badge bg-warning m-0">On Hold</span>
-                        </td>
-                        <td className="p-3 text-end">$150</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="d-flex align-items-center flex-row w-100 pb-3 mb-3 border-bottom">
+                  <a className="d-inline-block flex-shrink-0 me-3" href="#">
+                    <img
+                      src="assets/images/product-1.jpg"
+                      width={120}
+                      alt="Product"
+                    />
+                  </a>
+                  <div className="d-flex flex-column flex-sm-row col">
+                    <div className="pe-sm-2">
+                      <h3 className="product-title fs-5 mb-1">
+                        <a className="text-reset" href="#">
+                          Fine-knit sweater
+                        </a>
+                      </h3>
+                      <div className="small">
+                        <span className="text-muted me-2">Size:</span>XL
+                      </div>
+                      <div className="small">
+                        <span className="text-muted me-2">Color:</span>White &amp;
+                        Blue
+                      </div>
+                      <div className="lead pt-1">$154.00</div>
+                    </div>
+                    <div className="pt-2 pt-sm-0 d-flex d-sm-block ms-sm-auto">
+                      <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: '#28a745', borderRadius: '50%', verticalAlign: 'middle', marginRight: '8px' }}></span>
+                      <label className="form-label d-none d-sm-inline-block">
+                        Delivered on Feb 13
+                      </label>
+                      <div className="d-block">
+                        <label className="form-label d-none d-sm-inline-block m-0">
+                          Your item has been delivered
+                        </label> 
+                      </div>
+                      <button
+                        className="btn btn-link px-0 text-danger ms-auto"
+                        type="button" style={{ color: '#b96f4a' }}
+                      >
+                        <i className="bi-star-fill me-2" />
+                        <span className="">Rate & Review Product</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
                 <div className="d-flex align-items-center mt-3">
                   <div className="d-none d-lg-block">Showing: 1 - 12 of 17</div>

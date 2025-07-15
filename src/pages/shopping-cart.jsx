@@ -50,36 +50,10 @@ const ShoppingCart = () => {
                       </div>
                       <div className="lead pt-1">$154.00</div>
                     </div>
-                    <div className="pt-2 pt-sm-0 d-flex d-sm-block ms-sm-auto">
-                      <label className="form-label d-none d-sm-inline-block">
-                        Quantity
-                      </label>
-                      {/* <div class="cart-qty-01">
-                                      <div class="dec qty-btn qty_btn"><i class="bi bi-caret-up-fill"></i></div>
-                                      <input class="cart-qty-input form-control" type="text" name="qtybutton"
-                                          value="1">
-                                      <div class="inc qty-btn qty_btn"><i class="bi bi-caret-down-fill"></i></div>
-                                  </div> */}
-                      <div className="cart-qty">
-                        <div className="dec qty-btn">-</div>
-                        <input
-                          className="cart-qty-input form-control"
-                          type="text"
-                          name="qtybutton"
-                          defaultValue={1}
-                        />
-                        <div className="inc qty-btn">+</div>
-                      </div>
-                      <button
-                        className="btn btn-link px-0 text-danger ms-auto"
-                        type="button"
-                      >
-                        <i className="bi-trash3 me-2" />
-                        <span className="">Remove</span>
-                      </button>
-                    </div>
                   </div>
+                  
                 </div>
+                
                 {/* Item*/}
               </div>
               {/* Cart Sidebar */}
