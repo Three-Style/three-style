@@ -23,16 +23,32 @@ const AccountProfile = () => {
                   </div>
                   <div className="card-body">
                     <div className="row">
-                      <div className="col-sm-6 mb-3">
-                        <label htmlFor="formFile" className="form-label">
-                          Change Profile Photo
-                        </label>{" "}
-                        <input
-                          className="form-control"
-                          type="file"
-                          id="formFile"
-                        />
+                      <div className="col-12">
+
+                        <div class="profile-container">
+                          <div class="profile-header">
+                            <div class="profile-image">
+                              <div class="profile-image-placeholder">👤</div>
+                            </div>
+                            <div class="profile-name">Brijesh Prajapati</div>
+                          </div>
+
+                          <div class="profile-options">
+                            <div class="option-item">
+                              <input type="checkbox" id="upload-photo" />
+                              <label for="upload-photo">Upload New Photo</label>
+                            </div>
+
+                            <div class="option-item">
+                              <input type="checkbox" id="remove-photo" />
+                              <label for="remove-photo">Remove</label>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
+                    </div>
+                    <div className="row">
                       <div className="col-sm-6 mb-3">
                         <label className="form-label">
                           First Name<span className="text-danger">*</span>
@@ -74,72 +90,199 @@ const AccountProfile = () => {
                           placeholder="Mobile"
                         />
                       </div>
+
                       <div className="col-sm-6 mb-3">
-                        <label className="form-label">Landline Number</label>
+                        <label className="form-label" htmlFor="address-company">
+                          Company
+                        </label>{" "}
                         <input
-                          type="text"
                           className="form-control"
-                          placeholder="Landline"
+                          type="text"
+                          id="address-company"
                         />
                       </div>
-                      <div className="col-12 pt-2">
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label" htmlFor="address-country">
+                          Country
+                        </label>{" "}
+                        <select
+                          className="form-select"
+                          id="address-country"
+                          required=""
+                        >
+                          <option value="">Select country</option>
+                          <option value="Argentina">Argentina</option>
+                          <option value="Belgium">Belgium</option>
+                          <option value="France">France</option>
+                          <option value="Germany">Germany</option>
+                          <option value="Spain">Spain</option>
+                          <option value="UK">United Kingdom</option>
+                          <option value="USA">USA</option>
+                        </select>
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label" htmlFor="address-city">
+                          City
+                        </label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-city"
+                          required=""
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label" htmlFor="address-line1">
+                          Line 1
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-line1"
+                          required=""
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label" htmlFor="address-line2">
+                          Line 2
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-line2"
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label" htmlFor="address-zip">
+                          ZIP code
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-zip"
+                          required=""
+                        />
+                      </div>
+
+                      <div className="col-12 pt-3">
                         <button className="btn btn-primary">Save changes</button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="card">
+
+
+                {/* <div className="card mt-5">
                   <div className="card-header py-3">
-                    <h5 className="m-0">Change your password</h5>
+                    <h6 className="m-0">Add New Address</h6>
                   </div>
-                  <div className="card-body p-4">
-                    <form>
-                      <div className="row">
-                        <div className="col-sm-12 mb-3">
-                          <div className="form-group">
-                            <label htmlFor="password_old" className="form-label">
-                              Old password
-                            </label>{" "}
-                            <input
-                              type="password"
-                              id="password_old"
-                              className="form-control"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <div className="form-group">
-                            <label htmlFor="password_1" className="form-label">
-                              New password
-                            </label>{" "}
-                            <input
-                              type="password"
-                              id="password_1"
-                              className="form-control"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <div className="form-group">
-                            <label htmlFor="password_2" className="form-label">
-                              Retype new password
-                            </label>
-                            <input
-                              type="password"
-                              id="password_2"
-                              className="form-control"
-                            />
-                          </div>
-                        </div>
-                        <div className="col-12 pt-2">
-                          <button className="btn btn-primary">
-                            Change password
-                          </button>
-                        </div>
+                  <div className="card-body">
+                    <div className="row g-3">
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-fn">
+                          First name
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-fn"
+                          required=""
+                        />
                       </div>
-                    </form>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-ln">
+                          Last name
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-ln"
+                          required=""
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-company">
+                          Company
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-company"
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-country">
+                          Country
+                        </label>{" "}
+                        <select
+                          className="form-select"
+                          id="address-country"
+                          required=""
+                        >
+                          <option value="">Select country</option>
+                          <option value="Argentina">Argentina</option>
+                          <option value="Belgium">Belgium</option>
+                          <option value="France">France</option>
+                          <option value="Germany">Germany</option>
+                          <option value="Spain">Spain</option>
+                          <option value="UK">United Kingdom</option>
+                          <option value="USA">USA</option>
+                        </select>
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-city">
+                          City
+                        </label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-city"
+                          required=""
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-line1">
+                          Line 1
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-line1"
+                          required=""
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-line2">
+                          Line 2
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-line2"
+                        />
+                      </div>
+                      <div className="col-sm-6">
+                        <label className="form-label" htmlFor="address-zip">
+                          ZIP code
+                        </label>{" "}
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="address-zip"
+                          required=""
+                        />
+                      </div>
+
+                      <div className="col-12">
+                        <button className="btn btn-primary">
+                          Add New Address
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </div> */}
+
+
               </div>
               {/* End Content */}
             </div>
