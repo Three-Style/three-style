@@ -25,25 +25,22 @@ const AccountProfile = () => {
                     <div className="row">
                       <div className="col-12">
 
-                        <div class="profile-container">
-                          <div class="profile-header">
-                            <div class="profile-image">
-                              <div class="profile-image-placeholder">👤</div>
-                            </div>
+                        <div class="profile-container d-flex flex-lg-row flex-column mb-2">
+
+                          <div class="profile-image">
+                            <img src="" alt="" />
+                          </div>
+                          <div className='user-photo-access'>
                             <div class="profile-name">Brijesh Prajapati</div>
-                          </div>
-
-                          <div class="profile-options">
-                            <div class="option-item">
-                              <input type="checkbox" id="upload-photo" />
-                              <label for="upload-photo">Upload New Photo</label>
-                            </div>
-
-                            <div class="option-item">
-                              <input type="checkbox" id="remove-photo" />
-                              <label for="remove-photo">Remove</label>
+                            <div className='photos-btn-wrapper'>
+                                <button>
+                                  <i class="fa-solid fa-camera me-2"></i>
+                                  Upload New Photo
+                                  </button>
+                                <button className='remove'>Remove</button>
                             </div>
                           </div>
+
                         </div>
 
                       </div>
