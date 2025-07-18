@@ -26,7 +26,7 @@ const ShoppingCart = () => {
                   </a>
                 </div>
                 {/* Item*/}
-                <div className="d-flex align-items-center flex-row w-100 pb-3 mb-3 border-bottom">
+                <div className="d-flex align-items-center flex-row w-100 ">
                   <a className="d-inline-block flex-shrink-0 me-3" href="#">
                     <img
                       src="assets/images/product-1.jpg"
@@ -51,10 +51,27 @@ const ShoppingCart = () => {
                       <div className="lead pt-1">$154.00</div>
                     </div>
                   </div>
-                  
+                  <div className="row">
+                  </div>
                 </div>
-                
+
                 {/* Item*/}
+                  <div className=" hh-grayBox pt45 pb20 border-bottom">
+                    <div className="row justify-content-between">
+                      <div className="order-tracking completed">
+                        <span className="is-complete"></span>
+                        <p>Ordered<br /><span>Mon, June 24</span></p>
+                      </div>
+                      <div className="order-tracking completed">
+                        <span className="is-complete"></span>
+                        <p>Shipped<br /><span>Tue, June 25</span></p>
+                      </div>
+                      <div className="order-tracking ">
+                        <span className="is-complete"></span>
+                        <p>Delivered<br /><span>Fri, June 28</span></p>
+                      </div>
+                    </div>
+                  </div>
               </div>
               {/* Cart Sidebar */}
               <div className="col-lg-4 ps-xl-7">

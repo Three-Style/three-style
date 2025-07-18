@@ -361,104 +361,7 @@ const ProductDetails = () => {
                       $38.<small>50</small>
                     </del>
                   </div>
-                  <div className="product-attribute">
-                    <label className="fs-6 text-mode pb-2 fw-500">Size</label>
-                    <div className="nav-thumbs nav mb-3">
-                      <div className="form-check radio-text form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="size_d3"
-                          id="xs_2"
-                          defaultChecked=""
-                        />{" "}
-                        <label className="radio-text-label" htmlFor="xs_2">
-                          XS
-                        </label>
-                      </div>
-                      <div className="form-check radio-text form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="size_d3"
-                          id="s_2"
-                        />{" "}
-                        <label className="radio-text-label" htmlFor="s_2">
-                          S
-                        </label>
-                      </div>
-                      <div className="form-check radio-text form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="size_d3"
-                          id="m_2"
-                        />{" "}
-                        <label className="radio-text-label" htmlFor="m_2">
-                          M
-                        </label>
-                      </div>
-                      <div className="form-check radio-text form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="size_d3"
-                          id="l_2"
-                        />{" "}
-                        <label className="radio-text-label" htmlFor="l_2">
-                          L
-                        </label>
-                      </div>
-                    </div>
-                    <label className="fs-6 text-mode pb-2 fw-500">Color</label>
-                    <div className="nav-thumbs nav mb-3">
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_01"
-                          defaultChecked=""
-                        />{" "}
-                        <label className="radio-color-label" htmlFor="color_01">
-                          <span style={{ backgroundColor: "#126532" }} />
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_2"
-                        />
-                        <label className="radio-color-label" htmlFor="color_2">
-                          <span style={{ backgroundColor: "#ff9922" }} />
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_3"
-                        />
-                        <label className="radio-color-label" htmlFor="color_3">
-                          <span style={{ backgroundColor: "#326598" }} />
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_4"
-                        />
-                        <label className="radio-color-label" htmlFor="color_4">
-                          <span style={{ backgroundColor: "#126578" }} />
-                        </label>
-                      </div>
-                    </div>
-                  </div>
+                
                   <div
                     className="count-down count-down-02 mb-3"
                     data-countdown="January 01, 2024 15:00:00"
@@ -477,6 +380,9 @@ const ProductDetails = () => {
                     <div className="cart-button mb-3 d-flex">
                       <button className="btn btn-mode me-3">
                         <i className="fi-shopping-cart" /> Add to cart
+                      </button>
+                      <button className="btn btn-mode me-3">
+                        <i className="bi bi-lightning-fill" /> Buy Now
                       </button>
                       <button className="btn btn-outline-mode me-3">
                         <i className="fi-heart" />
