@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import HomeFooter from "../components/partials/Footer/footer";
 import HomeHeader from "../components/partials/Header/header";
 import ProfileSideMenu from '../components/profile-side';
 
 const AccountProfile = () => {
+  const [profileImage, setProfileImage] = useState("");
+  const fileInputRef = useRef(null);
+
+  const handleUploadClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setProfileImage(event.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <HomeHeader />
@@ -25,19 +45,26 @@ const AccountProfile = () => {
                     <div className="row">
                       <div className="col-12">
 
-                        <div class="profile-container d-flex flex-lg-row flex-column mb-2">
+                        <div className="profile-container d-flex flex-lg-row flex-column mb-2">
 
-                          <div class="profile-image">
-                            <img src="" alt="" />
+                          <div className="profile-image">
+                            <img src={profileImage || ""} alt="" />
                           </div>
                           <div className='user-photo-access'>
-                            <div class="profile-name">Brijesh Prajapati</div>
+                            <div className="profile-name">Brijesh Prajapati</div>
                             <div className='photos-btn-wrapper'>
-                                <button>
-                                  <i class="fa-solid fa-camera me-2"></i>
+                                <button type="button" onClick={handleUploadClick}>
+                                  <i className="fa-solid fa-camera me-2"></i>
                                   Upload New Photo
-                                  </button>
-                                <button className='remove'>Remove</button>
+                                </button>
+                                <button className='remove' type="button" onClick={() => setProfileImage("")}>Remove</button>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  style={{ display: 'none' }}
+                                  ref={fileInputRef}
+                                  onChange={handleFileChange}
+                                />
                             </div>
                           </div>
 

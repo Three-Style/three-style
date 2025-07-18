@@ -3,6 +3,7 @@ import HomeFooter from "../components/partials/Footer/footer";
 import React, { useEffect } from 'react'
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules'
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
   useEffect(() => {
@@ -152,6 +153,8 @@ const ProductDetails = () => {
       initializeLightbox();
     }, 100);
   }, []);
+  const { openCart } = useCart();
+
   return (
 
     <>
@@ -378,10 +381,10 @@ const ProductDetails = () => {
                       <div className="inc qty-btn qty_btn">+</div>
                     </div>
                     <div className="cart-button mb-3 d-flex">
-                      <button className="btn btn-mode me-3">
+                      <button className="btn btn-mode me-3" onClick={openCart}>
                         <i className="fi-shopping-cart" /> Add to cart
                       </button>
-                      <button className="btn btn-mode me-3">
+                      <button className="btn btn-mode me-3" style={{ backgroundColor: '#002147'}}>
                         <i className="bi bi-lightning-fill" /> Buy Now
                       </button>
                       <button className="btn btn-outline-mode me-3">
@@ -687,52 +690,6 @@ const ProductDetails = () => {
                   }'
               >
                 <div className="swiper-wrapper">
-                  {/* Product */}
-                  <div className="swiper-slide">
-                    <div className="product-card-9">
-                      <div className="product-card-image">
-                        <div className="badge-ribbon">
-                          <span>15%</span>
-                        </div>
-                        <div className="product-action">
-                          <a href="#" className="btn">
-                            <i className="fi-heart" />{" "}
-                          </a>
-                          <a href="#" className="btn">
-                            <i className="fi-shopping-cart" />
-                          </a>
-                        </div>
-                        <div className="product-media">
-                          <a href="#">
-                            <img
-                              className="img-fluid"
-                              src="assets/images/swimwear-product-2.jpg"
-                              title=""
-                              alt=""
-                            />{" "}
-                            <img
-                              className="product-media-hover"
-                              src="assets/images/swimwear-product-hover-2.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="product-card-info">
-                        <h6 className="product-title">
-                          <a href="#">
-                            Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
-                        </h6>
-                        <div className="product-price">
-                          <span className="text-primary">$28</span>
-                          <del className="small text-muted">$38</del>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* End Product */}
                   {/* Product */}
                   <div className="swiper-slide">
                     <div className="product-card-9">

@@ -1,6 +1,26 @@
 import { Link } from "react-router-dom";
+import React from "react";
+import { useCart } from "../../../context/CartContext";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+window.bootstrap = bootstrap;
 
 function HomeHeader() {
+  const { openCart, setCartOpen } = useCart();
+
+  const handleOpenCart = () => {
+    console.log("openCart called");
+    setCartOpen(true);
+    const cartOffcanvas = document.getElementById('modalMiniCart');
+    if (cartOffcanvas && window.bootstrap) {
+      const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
+      bsOffcanvas?.show();
+    }
+    console.log("cartOffcanvas", cartOffcanvas);
+  };
+
+  console.log("window.bootstrap", window.bootstrap);
+
   return (
     <>
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
@@ -1627,13 +1647,9 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <a
-                                href="#"
-                                className="btn btn-primary btn-sm w-100"
-                                tabIndex={0}
-                              >
+                              <button className="btn btn-mode me-3" onClick={openCart}>
                                 <i className="fi-shopping-cart" /> Add to cart
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -1702,13 +1718,9 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <a
-                                href="#"
-                                className="btn btn-primary btn-sm w-100"
-                                tabIndex={0}
-                              >
+                              <button className="btn btn-mode me-3" onClick={openCart}>
                                 <i className="fi-shopping-cart" /> Add to cart
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -1777,13 +1789,9 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <a
-                                href="#"
-                                className="btn btn-primary btn-sm w-100"
-                                tabIndex={0}
-                              >
+                              <button className="btn btn-mode me-3" onClick={openCart}>
                                 <i className="fi-shopping-cart" /> Add to cart
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -1852,13 +1860,9 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <a
-                                href="#"
-                                className="btn btn-primary btn-sm w-100"
-                                tabIndex={0}
-                              >
+                              <button className="btn btn-mode me-3" onClick={openCart}>
                                 <i className="fi-shopping-cart" /> Add to cart
-                              </a>
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -2882,36 +2886,6 @@ function HomeHeader() {
                           </li>
                         </ul>
                       </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
                 </li>
@@ -3329,7 +3303,7 @@ function HomeHeader() {
                     <div className="col-6 col-md-3">
                       <ul className="list-unstyled link-list-style-04 m-0">
                         <li>
-                          <a href="#">WHAT’S NEW</a>
+                          <a href="#">WHAT'S NEW</a>
                         </li>
                         <li>
                           <a href="#">BEST SELLING</a>
@@ -3341,7 +3315,7 @@ function HomeHeader() {
                           <a href="#">MOST POPULAR</a>
                         </li>
                         <li>
-                          <a href="#">EDITOR’S PICKS</a>
+                          <a href="#">EDITOR'S PICKS</a>
                         </li>
                         <li>
                           <a href="#">ON SALE</a>

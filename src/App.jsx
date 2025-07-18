@@ -18,8 +18,8 @@ import Policy from "./pages/policy";
 import ProductDetails from "./pages/product-details";
 import ResetPassword from "./pages/reset-password";
 import Shop from "./pages/shop";
-import ShoppingCart from "./pages/shopping-cart";
 import Support from "./pages/support";
+import OrderView from "./pages/order-view";
 const NotFoundPage = lazy(() => import("./pages/404"));
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         <Route path="/product-details" element={<ProductDetails />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/order-view" element={<OrderView />} />
         <Route path="/support" element={<Support />} />
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/order" element={<UserOrder />} />

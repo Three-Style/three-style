@@ -18,6 +18,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import $ from "jquery";
 // Import Magnific Popup
 // import "./assets/js/jquery.magnific-popup.min.js";
+import { CartProvider } from "./context/CartContext";
 const App = lazy(() => import("./App"));
 
 window.BASE_URL = process.env.PUBLIC_URL;
@@ -68,32 +69,34 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <RedirectFromHtml>
-        <Suspense
-          fallback={
-            <div>
-              <div className="main-loading-logo">
-                <div className="d-flex align-items-center">
-                  <img
-                    src={
-                      process.env.PUBLIC_URL +
-                      "../assets/images/logo/fg_group.webp"
-                    }
-                    className="img-fluid"
-                    width={35}
-                    height="auto"
-                    alt="Fg Group"
-                  />
-                  <b className="fs-24">Fg Group</b>
+      <CartProvider>
+        <RedirectFromHtml>
+          <Suspense
+            fallback={
+              <div>
+                <div className="main-loading-logo">
+                  <div className="d-flex align-items-center">
+                    <img
+                      src={
+                        process.env.PUBLIC_URL +
+                        "../assets/images/logo/fg_group.webp"
+                      }
+                      className="img-fluid"
+                      width={35}
+                      height="auto"
+                      alt="Fg Group"
+                    />
+                    <b className="fs-24">Fg Group</b>
+                  </div>
                 </div>
               </div>
-            </div>
-          }
-        >
-          <App />
-        </Suspense>
-      </RedirectFromHtml>
-      <ToastContainer />
+            }
+          >
+            <App />
+          </Suspense>
+        </RedirectFromHtml>
+        <ToastContainer />
+      </CartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

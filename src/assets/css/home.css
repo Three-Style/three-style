@@ -39311,6 +39311,8 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 100%;
     height: 100%;
     flex: 0 0 auto;
+    object-fit: cover;
+    object-position: top;
 }
 .profile-container .user-photo-access .photos-btn-wrapper {
     display: flex;
@@ -39473,3 +39475,57 @@ input[type="checkbox"] {
 /* rating-star */
 
 
+
+
+#full-stars-example-two {
+
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group {
+      display:flex;
+      justify-content: space-between;
+      max-width: 50%;
+    }
+    
+    /* make hover effect work properly in IE */
+    .rating__icon {
+      pointer-events: none;
+    }
+    
+    /* hide radio inputs */
+    .rating__input {
+     position: absolute !important;
+     left: -9999px !important;
+    }
+    
+    /* hide 'none' input from screenreaders */
+    .rating__input--none {
+      display: none
+    }
+  
+    /* set icon padding and size */
+    .rating__label {
+      cursor: pointer;
+      padding: 0 0.1em;
+      font-size: 2rem;
+    }
+    
+    /* set default star color */
+    .rating__icon--star {
+      color: orange;
+    }
+  
+    /* if any input is checked, make its following siblings grey */
+    .rating__input:checked ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+    
+    /* make all stars orange on rating group hover */
+    .rating-group:hover .rating__label .rating__icon--star {
+      color: orange;
+    }
+  
+    /* make hovered input's following siblings grey on hover */
+    .rating__input:hover ~ .rating__label .rating__icon--star {
+      color: #ddd;
+    }
+  }

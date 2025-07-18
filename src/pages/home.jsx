@@ -3224,7 +3224,7 @@ function Home() {
                         <div className="col-6 col-md-3">
                           <ul className="list-unstyled link-list-style-04 m-0">
                             <li>
-                              <a href="#">WHAT’S NEW</a>
+                              <a href="#">WHAT'S NEW</a>
                             </li>
                             <li>
                               <a href="#">BEST SELLING</a>
@@ -3236,7 +3236,7 @@ function Home() {
                               <a href="#">MOST POPULAR</a>
                             </li>
                             <li>
-                              <a href="#">EDITOR’S PICKS</a>
+                              <a href="#">EDITOR'S PICKS</a>
                             </li>
                             <li>
                               <a href="#">ON SALE</a>
@@ -3966,7 +3966,7 @@ function Home() {
                       {/* category */}
                       <div className="swiper-slide">
                         <div className="category-card-01">
-                          <a href="#">
+                          <Link to="/shop">
                             <div className="category-card-img">
                               <img
                                 src="assets/images/swimwear-cat-1.jpg"
@@ -3984,14 +3984,14 @@ function Home() {
                                 </span>
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       {/* End category */}
                       {/* category */}
                       <div className="swiper-slide">
                         <div className="category-card-01">
-                          <a href="#">
+                          <Link to="/shop">
                             <div className="category-card-img">
                               <img
                                 src="assets/images/swimwear-cat-2.jpg"
@@ -4009,14 +4009,14 @@ function Home() {
                                 </span>
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       {/* End category */}
                       {/* category */}
                       <div className="swiper-slide">
                         <div className="category-card-01">
-                          <a href="#">
+                          <Link to="/shop">
                             <div className="category-card-img">
                               <img
                                 src="assets/images/swimwear-cat-3.jpg"
@@ -4034,14 +4034,14 @@ function Home() {
                                 </span>
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       {/* End category */}
                       {/* category */}
                       <div className="swiper-slide">
                         <div className="category-card-01">
-                          <a href="#">
+                          <Link to="/shop">
                             <div className="category-card-img">
                               <img
                                 src="assets/images/swimwear-cat-4.jpg"
@@ -4059,14 +4059,14 @@ function Home() {
                                 </span>
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       {/* End category */}
                       {/* category */}
                       <div className="swiper-slide">
                         <div className="category-card-01">
-                          <a href="#">
+                          <Link to="/shop">
                             <div className="category-card-img">
                               <img
                                 src="assets/images/swimwear-cat-5.jpg"
@@ -4084,7 +4084,7 @@ function Home() {
                                 </span>
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -4162,9 +4162,9 @@ function Home() {
                   })}
                 </div>
                 <div className="text-center mt-lg-4 mt-3">
-                  <a className="btn btn-outline-primary mx-auto" href="#">
+                  <Link to="/shop" className="btn btn-outline-primary mx-auto"> 
                     View all
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -4587,7 +4587,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4600,14 +4600,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4631,7 +4631,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4644,14 +4644,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4675,7 +4675,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4688,14 +4688,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4719,7 +4719,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4732,14 +4732,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4763,7 +4763,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4776,14 +4776,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4807,7 +4807,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4820,14 +4820,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4851,7 +4851,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4864,14 +4864,14 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4895,7 +4895,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                        <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4908,14 +4908,58 @@ function Home() {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                        <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
+                          </Link>
+                        </h6>
+                        <div className="product-price">
+                          <span className="text-primary">$28</span>
+                          <del className="small text-muted">$38</del>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-4 col-6">
+                    <div className="product-card-9">
+                      <div className="product-card-image">
+                        <div className="badge-ribbon">
+                          <span>15%</span>
+                        </div>
+                        <div className="product-action">
+                          <a href="#" className="btn">
+                            <i className="fi-heart" />{" "}
+                          </a>{" "}
+                          <a href="#" className="btn">
+                            <i className="fi-shopping-cart" />
                           </a>
+                        </div>
+                        <div className="product-media">
+                        <Link to="/shop">
+                            <img
+                              className="img-fluid"
+                              src="assets/images/swimwear-product-2.jpg"
+                              title=""
+                              alt=""
+                            />{" "}
+                            <img
+                              className="product-media-hover"
+                              src="assets/images/swimwear-product-hover-2.jpg"
+                              title=""
+                              alt=""
+                            />
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="product-card-info">
+                        <h6 className="product-title">
+                        <Link to="/shop">
+                            Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -4926,9 +4970,9 @@ function Home() {
                   </div>
                 </div>
                 <div className="text-center mt-lg-4 mt-3">
-                  <a className="btn btn-outline-primary mx-auto" href="#">
+                  <Link to="/shop" className="btn btn-outline-primary mx-auto">
                     View all
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>

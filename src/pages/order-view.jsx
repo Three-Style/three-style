@@ -2,7 +2,7 @@ import React from 'react'
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
 
-const ShoppingCart = () => {
+const OrderView = () => {
   return (
     <>
 
@@ -53,25 +53,43 @@ const ShoppingCart = () => {
                   </div>
                   <div className="row">
                   </div>
+
                 </div>
 
                 {/* Item*/}
-                  <div className=" hh-grayBox pt45 pb20 border-bottom">
-                    <div className="row justify-content-between">
-                      <div className="order-tracking completed">
-                        <span className="is-complete"></span>
-                        <p>Ordered<br /><span>Mon, June 24</span></p>
-                      </div>
-                      <div className="order-tracking completed">
-                        <span className="is-complete"></span>
-                        <p>Shipped<br /><span>Tue, June 25</span></p>
-                      </div>
-                      <div className="order-tracking ">
-                        <span className="is-complete"></span>
-                        <p>Delivered<br /><span>Fri, June 28</span></p>
-                      </div>
+                <div className=" hh-grayBox pt45  mb-0">
+                  <div className="row justify-content-between">
+                    <div className="order-tracking completed">
+                      <span className="is-complete"></span>
+                      <p>Ordered<br /><span>Mon, June 24</span></p>
+                    </div>
+                    <div className="order-tracking completed">
+                      <span className="is-complete"></span>
+                      <p>Shipped<br /><span>Tue, June 25</span></p>
+                    </div>
+                    <div className="order-tracking ">
+                      <span className="is-complete"></span>
+                      <p>Delivered<br /><span>Fri, June 28</span></p>
                     </div>
                   </div>
+                </div>
+
+                <div id="full-stars-example-two" className='border-bottom pb-4 text-center '>
+                  <div class="rating-group m-auto">
+                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
+                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
+                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
+                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
+                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
+                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
+                  </div>
+                </div>
+
               </div>
               {/* Cart Sidebar */}
               <div className="col-lg-4 ps-xl-7">
@@ -168,4 +186,4 @@ const ShoppingCart = () => {
   )
 }
 
-export default ShoppingCart
+export default OrderView
