@@ -64,7 +64,7 @@ const LoginModal = ({ onClose }) => {
 
       if (response.data.data.authorization) {
         localStorage.setItem(
-          "fg_group_user_authorization",
+          "three_style_user_authorization",
           response.data.data.authorization
         );
         toast.success("Successfully Login!");
@@ -88,7 +88,7 @@ const LoginModal = ({ onClose }) => {
       });
       if (response.status === 200) {
         localStorage.setItem(
-          "fg_group_user_authorization",
+          "three_style_user_authorization",
           response.data.data.authorization
         );
         await getUserData();
@@ -115,7 +115,7 @@ const LoginModal = ({ onClose }) => {
 
       if (response.status === 200) {
         localStorage.setItem(
-          "fg_group_user_authorization",
+          "three_style_user_authorization",
           response.data.data.authorization
         );
         await getUserData();

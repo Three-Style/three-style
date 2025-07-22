@@ -15,7 +15,7 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const authorization = localStorage.getItem('fg_group_user_authorization');
+    const authorization = localStorage.getItem('three_style_user_authorization');
 
     if (authorization) {
       config.headers['authorization'] = authorization;
@@ -35,7 +35,7 @@ export const axiosInstanceFwg = axios.create({
 
 axiosInstanceFwg.interceptors.request.use(
   (config) => {
-    const authorization = localStorage.getItem('fg_group_user_authorization');
+    const authorization = localStorage.getItem('three_style_user_authorization');
 
     if (authorization) {
       config.headers['authorization'] = authorization;
@@ -55,7 +55,7 @@ export const paymentAxiosInstance = axios.create({
 
 paymentAxiosInstance.interceptors.request.use(
   (config) => {
-    const authorization = localStorage.getItem('fg_group_user_authorization');
+    const authorization = localStorage.getItem('three_style_user_authorization');
 
     if (authorization) {
       config.headers['authorization'] = authorization;
@@ -75,7 +75,7 @@ export const publicAxiosInstance = axios.create({
 
 publicAxiosInstance.interceptors.request.use(
   (config) => {
-    const authorization = localStorage.getItem('fg_group_user_authorization');
+    const authorization = localStorage.getItem('three_style_user_authorization');
 
     if (authorization) {
       config.headers['authorization'] = authorization;

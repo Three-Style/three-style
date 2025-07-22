@@ -85,8 +85,8 @@ function createBookOrder(plan_id, quantity = 1) {
     localStorage.setItem('tmp_BookPurchasePayload', JSON.stringify({ ...payload, expire: new Date().getTime() + (1000 * 60 * 60 * 5) }))
 
     // Check Authentication
-    if (localStorage.getItem("fg_group_user_authorization") == null || localStorage.getItem("user_info") == null) {
-        localStorage.removeItem('fg_group_user_authorization')
+    if (localStorage.getItem("three_style_user_authorization") == null || localStorage.getItem("user_info") == null) {
+        localStorage.removeItem('three_style_user_authorization')
         localStorage.removeItem('user_info')
 
         // Store Payload in Local Storage

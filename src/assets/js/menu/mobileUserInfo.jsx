@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const MobileUserInfo = () => {
   const redirectDir = "";
-  const auth = localStorage.getItem("fg_group_user_authorization");
+  const auth = localStorage.getItem("three_style_user_authorization");
   const [userInfo, setUserInfo] = useState(null);
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);

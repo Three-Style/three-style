@@ -27,7 +27,7 @@ const ScholarshipModal = () => {
   let timeDifference, ticker, scholarshipResult, whatsappMsg;
 
   useEffect(() => {
-    const userAuthorization = localStorage.getItem("fg_group_user_authorization");
+    const userAuthorization = localStorage.getItem("three_style_user_authorization");
 
     if (userAuthorization === null) {
       Swal.fire({

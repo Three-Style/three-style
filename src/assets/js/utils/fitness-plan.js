@@ -15,10 +15,10 @@ export const createPlanOrder = async (program_id) => {
 
     // Check Authentication
     if (
-      localStorage.getItem("fg_group_user_authorization") === null ||
+      localStorage.getItem("three_style_user_authorization") === null ||
       localStorage.getItem("user_info") === null
     ) {
-      localStorage.removeItem("fg_group_user_authorization");
+      localStorage.removeItem("three_style_user_authorization");
       localStorage.removeItem("user_info");
 
       // expire in 5h

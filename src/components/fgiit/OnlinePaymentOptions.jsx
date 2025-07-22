@@ -10,7 +10,7 @@ const OnlinePaymentOptions = ({ courseData, basePrice, whatsappMessage }) => {
 	const [finalPrice, setFinalPrice] = useState(basePrice)
 	const [showLoginModal, setShowLoginModal] = useState(false)
 	const [isAuthenticated, setIsAuthenticated] = useState(
-		!!localStorage.getItem("fg_group_user_authorization")
+		!!localStorage.getItem("three_style_user_authorization")
 	)
 
 	const closeModal = () => {

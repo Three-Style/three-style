@@ -4,18 +4,27 @@ import { useCart } from "../../../context/CartContext";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import MegaMenu from "../../MenuItem";
+import LoginModal from "../../popup/login";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
   const { openCart, setCartOpen } = useCart();
-  const [isLogin, setIsLogin] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const isAuthenticated = !!localStorage.getItem(
+    "three_style_user_authorization"
+  );
+
+  const closeModal = () => {
+    setShowLoginModal(false);
+  };
 
   const handleOpenCart = () => {
     console.log("openCart called");
     setCartOpen(true);
-    const cartOffcanvas = document.getElementById('modalMiniCart');
+    const cartOffcanvas = document.getElementById("modalMiniCart");
     if (cartOffcanvas && window.bootstrap) {
-      const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
+      const bsOffcanvas =
+        window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
       bsOffcanvas?.show();
     }
     console.log("cartOffcanvas", cartOffcanvas);
@@ -25,6 +34,7 @@ function HomeHeader() {
 
   return (
     <>
+      {showLoginModal && <LoginModal onClose={closeModal} />}
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
         <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
           <div className="d-flex justify-content-between align-items-center">
@@ -701,74 +711,67 @@ function HomeHeader() {
                 </a>
               </div>
 
-              {
-                isLogin ? (
-                  <>
-                    {/* Acount */}
-                    <div className="nav-item dropdown">
-                      <a
-                        className="nav-link"
-                        href="#"
-                        role="button"
-                        id="dropdown_myaccount"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fi-user" />
-                      </a>
-                      <div
-                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                        aria-labelledby="dropdown_myaccount"
-                      >
-                        {/* <a className="dropdown-item" href="#">
+              {isAuthenticated ? (
+                <>
+                  {/* Acount */}
+                  <div className="nav-item dropdown">
+                    <a
+                      className="nav-link"
+                      href="#"
+                      role="button"
+                      id="dropdown_myaccount"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i className="fi-user" />
+                    </a>
+                    <div
+                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                      aria-labelledby="dropdown_myaccount"
+                    >
+                      {/* <a className="dropdown-item" href="#">
                     Login
                   </a>{" "} */}
-                        <Link className="dropdown-item" to="/account-order">
-                          My Orders
-                        </Link>{" "}
-                        <Link className="dropdown-item" to="/account-wishlist">
-                          Wishlist
-                        </Link>{" "}
-                        <Link className="dropdown-item" to="/account-profile">
-                          My account
-                        </Link>
-                      </div>
+                      <Link className="dropdown-item" to="/account-order">
+                        My Orders
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-wishlist">
+                        Wishlist
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-profile">
+                        My account
+                      </Link>
                     </div>
-                    {/* Cart */}
-                    <div className="nav-item">
-                      <a
-                        className="nav-link"
-                        data-bs-toggle="offcanvas"
-                        href="#modalMiniCart"
-                        role="button"
-                        aria-controls="modalMiniCart"
-                      >
-                        <span className="" data-cart-items={8}>
-                          <i className="fi-shopping-cart" />
-                        </span>
-                      </a>
-                    </div>
-
-                  </>
-                ) : (
-                  <>
-                    {/* Login */}
-                    <div className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center gap-2"
-                        data-bs-toggle="modal"
-                        data-bs-target="#loginAuthModal"
-                        style={{ cursor: 'pointer' }}
-                      >
-                        Login
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                      </a>
-                    </div>
-
-                  </>
-                )
-              }
+                  </div>
+                  {/* Cart */}
+                  <div className="nav-item">
+                    <a
+                      className="nav-link"
+                      data-bs-toggle="offcanvas"
+                      href="#modalMiniCart"
+                      role="button"
+                      aria-controls="modalMiniCart"
+                    >
+                      <span className="" data-cart-items={8}>
+                        <i className="fi-shopping-cart" />
+                      </span>
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Login */}
+                  <a
+                    className="nav-link d-flex align-items-center gap-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    Login
+                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </nav>
@@ -1059,60 +1062,62 @@ function HomeHeader() {
               </a>
             </div>
             <div className="mob-end d-flex gap-sm-3 gap-2">
-              {
-                isLogin ? (
-                  <>
-                    {/* PROFILE */}
-                    <div className="nav-item dropdown">
-                      <a
-                        className="nav-link"
-                        href="#"
-                        role="button"
-                        id="dropdown_myaccount"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fi-user" />
+              {isAuthenticated ? (
+                <>
+                  {/* PROFILE */}
+                  <div className="nav-item dropdown">
+                    <a
+                      className="nav-link"
+                      href="#"
+                      role="button"
+                      id="dropdown_myaccount"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i className="fi-user" />
+                    </a>
+                    <div
+                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                      aria-labelledby="dropdown_myaccount"
+                    >
+                      <a className="dropdown-item" href="#">
+                        Register
+                      </a>{" "}
+                      <a className="dropdown-item" href="#">
+                        Wishlist
+                      </a>{" "}
+                      <a className="dropdown-item" href="#">
+                        My account
                       </a>
-                      <div
-                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                        aria-labelledby="dropdown_myaccount"
-                      >
-                        <a className="dropdown-item" href="#">
-                          Register
-                        </a>{" "}
-                        <a className="dropdown-item" href="#">
-                          Wishlist
-                        </a>{" "}
-                        <a className="dropdown-item" href="#">
-                          My account
-                        </a>
-                      </div>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Login */}
-                    <a class="nav-item d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#loginAuthModal">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                  </>
-                )
-              }
-
-
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Login */}
+                  <a
+                    class="nav-item d-flex align-items-center gap-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    Login<i class="fa-solid fa-arrow-right-to-bracket"></i>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
         {/* End Mobile Menu */}
-      </header >
+      </header>
 
       {/* Mobile  */}
       <div
         className="offcanvas-lg mobile-nav-offcanvas offcanvas-start d-lg-none @@MobExtraClass"
-        tabIndex={- 1
-        }
+        tabIndex={-1}
         id="offcanvas_mobile_header_01"
-        aria-labelledby="offcanvas_mobile_header_01">
+        aria-labelledby="offcanvas_mobile_header_01"
+      >
         <div className="offcanvas-header">
           <div className="offcanvas-header-overlay" />
           <button
@@ -1671,7 +1676,10 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <button className="btn btn-mode me-3" onClick={openCart}>
+                              <button
+                                className="btn btn-mode me-3"
+                                onClick={openCart}
+                              >
                                 <i className="fi-shopping-cart" /> Add to cart
                               </button>
                             </div>
@@ -1742,7 +1750,10 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <button className="btn btn-mode me-3" onClick={openCart}>
+                              <button
+                                className="btn btn-mode me-3"
+                                onClick={openCart}
+                              >
                                 <i className="fi-shopping-cart" /> Add to cart
                               </button>
                             </div>
@@ -1813,7 +1824,10 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <button className="btn btn-mode me-3" onClick={openCart}>
+                              <button
+                                className="btn btn-mode me-3"
+                                onClick={openCart}
+                              >
                                 <i className="fi-shopping-cart" /> Add to cart
                               </button>
                             </div>
@@ -1884,7 +1898,10 @@ function HomeHeader() {
                               </del>
                             </div>
                             <div className="product-cart-btn">
-                              <button className="btn btn-mode me-3" onClick={openCart}>
+                              <button
+                                className="btn btn-mode me-3"
+                                onClick={openCart}
+                              >
                                 <i className="fi-shopping-cart" /> Add to cart
                               </button>
                             </div>
@@ -3902,69 +3919,6 @@ function HomeHeader() {
           
         </div>
       </div>
-
-
-      <div
-        className="modal fade"
-        id="loginAuthModal"
-        tabIndex="-1"
-        aria-labelledby="loginAuthModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content p-3">
-            <div className="modal-header border-0">
-              <h5 className="modal-title w-100 text-center" id="loginAuthModalLabel">
-                <img src="assets/images/logo.svg" alt="Logo"></img>
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form className="login-authentication-form">
-                <div className="row mb-3">
-                  <div className="col-12">
-                    <label htmlFor="mobileNumber" className="form-label">
-                      Enter Mobile Number
-                    </label>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      id="mobileNumber"
-                      placeholder="Enter your mobile"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <div className="col-12">
-                    <label htmlFor="otpCode" className="form-label">
-                      Enter OTP
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="otpCode"
-                      placeholder="Enter OTP"
-                    />
-                  </div>
-                </div>
-                <div className="row justify-content-center ">
-                  <div className="col-lg-6 col-8 text-center">
-                    <button type="submit" className="btn btn-primary w-100">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </>
   );
 }
