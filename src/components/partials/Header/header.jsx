@@ -1128,7 +1128,7 @@ function HomeHeader() {
               <i className="fi-user" /> <span>Login</span>
             </a>
           </div>
-          <ul className="mob-extra">
+          {/* <ul className="mob-extra">
             <li className="nav-item">
               <a href="#" className="nav-link">
                 <i className="fi-heart" /> <span>Wishlist</span>
@@ -1188,7 +1188,7 @@ function HomeHeader() {
                 </a>
               </div>
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="offcanvas-body">
           <ul className="navbar-nav mx-auto">
