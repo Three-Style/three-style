@@ -3,7 +3,7 @@
 function HomeFooter() {
   return (
     <>
-      <footer className="bg-dark footer border-top">
+      <footer className="bg-dark footer">
         <div className="footer-top py-6">
           <div className="container">
             <div className="row">
@@ -120,8 +120,8 @@ function HomeFooter() {
         </div>
         <div className="footer-bottom py-3 footer-border-top light small">
           <div className="container">
-            <div className="row">
-              <div className="col-md-6 text-center text-md-start py-1">
+            <div className="row justify-content-center">
+              <div className="col-md-6 text-center py-1">
                 <p className="m-0 text-white text-opacity-85">
                   © 2024 copyright by{" "}
                   <a
@@ -132,9 +132,6 @@ function HomeFooter() {
                     pxdraft
                   </a>
                 </p>
-              </div>
-              <div className="col-md-6 text-center text-md-end py-1">
-                <img src="assets/images/payments.png" title="" alt="" />
               </div>
             </div>
           </div>

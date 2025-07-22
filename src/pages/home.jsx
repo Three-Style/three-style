@@ -1,3 +1,5 @@
+// import offerOne from '.../assets/';
+// import offerTwo from '.../assets/images/home/offer-image-two.webp';
 import HomeFooter from "../components/partials/Footer/footer";
 import { Helmet } from "react-helmet";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -4162,7 +4164,7 @@ function Home() {
                   })}
                 </div>
                 <div className="text-center mt-lg-4 mt-3">
-                  <Link to="/shop" className="btn btn-outline-primary mx-auto"> 
+                  <Link to="/shop" className="btn btn-outline-primary mx-auto">
                     View all
                   </Link>
                 </div>
@@ -4534,33 +4536,35 @@ function Home() {
               </div>
             </section>
 
-            <section className="section">
+            <section className="under-price-section section">
               <div className="container">
                 <div className="row gy-4 align-items-center">
-                  <div className="col-lg-6">
-                    <h6 className="letter-spacing-2 text-primary mb-2">
-                      UNIQUE MATERIALS
-                    </h6>
-                    <h3 className="display-2 font-alt mb-3 lh-1">
-                      Fashion is a dirty business.
-                    </h3>
-                    <p className="lead w-lg-80">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                    <div className="pt-3">
-                      <a className="btn btn-outline-primary" href="#">
-                        Lear More About
-                      </a>
-                    </div>
+                  <div className="col-md-6">
+                    <a href="#" className="under-price-section__card">
+                      <div className="under-price-section__image-container">
+                        <img src="./assets/images/home/offer-image-one.webp" alt="Sarees Under ₹2000" className="img-fluid" />
+                        <div className="under-price-section__text-overlay text-end">
+                          <h3>Sarees</h3>
+                          <p>Under ₹2000</p>
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                  <div className="col-lg-6">
-                    <img src="assets/images/cta.png" title="" alt="" />
+                  <div className="col-md-6">
+                    <a href="#" className="under-price-section__card">
+                      <div className="under-price-section__image-container">
+                        <img src="./assets/images/home/offer-image-two.webp" alt="Kurtis Under ₹1500" className="img-fluid" />
+                        <div className="under-price-section__text-overlay text-start">
+                          <h3>Kurtis</h3>
+                          <p>Under ₹1500</p>
+                        </div>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
             </section>
+
             <section className="section">
               <div className="container">
                 <div className="row justify-content-center section-heading">
@@ -4587,7 +4591,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4605,7 +4609,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4631,7 +4635,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4649,7 +4653,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4675,7 +4679,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4693,7 +4697,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4719,7 +4723,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4737,7 +4741,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4763,7 +4767,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4781,7 +4785,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4807,7 +4811,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4825,7 +4829,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4851,7 +4855,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4869,7 +4873,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4895,7 +4899,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4913,7 +4917,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>
@@ -4939,7 +4943,7 @@ function Home() {
                           </a>
                         </div>
                         <div className="product-media">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -4957,7 +4961,7 @@ function Home() {
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                        <Link to="/shop">
+                          <Link to="/shop">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
                           </Link>
                         </h6>

@@ -1109,7 +1109,7 @@ function HomeHeader() {
             </li>
             <li className="nav-item">
               <a
-                className="nav-link dropdown-toggle text-white"
+                className="nav-link dropdown-toggle text-white d-none"
                 href="#"
                 role="button"
                 id="dropdown_language"

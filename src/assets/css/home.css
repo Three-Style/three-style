@@ -35399,7 +35399,7 @@ article blockquote+h5 {
 
 .theme-link a:focus,
 .theme-link a:hover {
-    color: rgba(var(--bs-primary-color-rgb), var(--bs-text-opacity))
+    color: var(--bs-primary-color);
 }
 
 .link-list-style-01 li+li {
@@ -39258,6 +39258,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .footer-link-1 li {
     color: var(--bs-white);
 }
+.footer-link-1 li a{
+    transition: all 0.4s ease;
+}
+.footer-link-1 li a:hover{
+    color: var(--bs-link-color);
+}
 
 .social-icon-list i {
     color: var(--bs-white);
@@ -39300,6 +39306,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .profile-container {
     gap: 20px;
 }
+
 .profile-container .profile-image {
     max-width: 70px;
     height: 70px;
@@ -39307,6 +39314,7 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 50%;
     overflow: hidden;
 }
+
 .profile-container .profile-image img {
     width: 100%;
     height: 100%;
@@ -39314,12 +39322,14 @@ input[type="search"]::-webkit-search-cancel-button {
     object-fit: cover;
     object-position: top;
 }
+
 .profile-container .user-photo-access .photos-btn-wrapper {
     display: flex;
     align-items: center;
     gap: 5px;
 }
-.profile-container .user-photo-access .photos-btn-wrapper button{
+
+.profile-container .user-photo-access .photos-btn-wrapper button {
     display: inline-block;
     padding: 4px 10px;
     border-radius: 6px;
@@ -39330,15 +39340,18 @@ input[type="search"]::-webkit-search-cancel-button {
 
 
 }
-.profile-container .user-photo-access .photos-btn-wrapper .remove{
+
+.profile-container .user-photo-access .photos-btn-wrapper .remove {
     background-color: unset;
     color: #0166ff;
 }
-.profile-container .user-photo-access .photos-btn-wrapper button:hover{
+
+.profile-container .user-photo-access .photos-btn-wrapper button:hover {
     background-color: #b96f4a;
     border-color: #b96f4a;
 }
-.profile-container .user-photo-access .photos-btn-wrapper .remove:hover{
+
+.profile-container .user-photo-access .photos-btn-wrapper .remove:hover {
     color: var(--bs-white);
 }
 
@@ -39399,78 +39412,100 @@ input[type="checkbox"] {
 
 /* order-track */
 .hh-grayBox {
-	margin-bottom: 20px;
-	padding: 35px;
+    margin-bottom: 20px;
+    padding: 35px;
 }
-.pt45{padding-top:45px;}
-.order-tracking{
-	text-align: center;
-	width: 33.33%;
-	position: relative;
-	display: block;
+
+.pt45 {
+    padding-top: 45px;
 }
-.order-tracking .is-complete{
-	display: block;
-	position: relative;
-	border-radius: 50%;
-	height: 30px;
-	width: 30px;
-	border: 0px solid #AFAFAF;
-	background-color: #f7be16;
-	margin: 0 auto;
-	transition: background 0.25s linear;
-	-webkit-transition: background 0.25s linear;
-	z-index: 2;
+
+.order-tracking {
+    text-align: center;
+    width: 33.33%;
+    position: relative;
+    display: block;
 }
+
+.order-tracking .is-complete {
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    border: 0px solid #AFAFAF;
+    background-color: #f7be16;
+    margin: 0 auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+    z-index: 2;
+}
+
 .order-tracking .is-complete:after {
-	display: block;
-	position: absolute;
-	content: '';
-	height: 14px;
-	width: 7px;
-	top: -2px;
-	bottom: 0;
-	left: 5px;
-	margin: auto 0;
-	border: 0px solid #AFAFAF;
-	border-width: 0px 2px 2px 0;
-	transform: rotate(45deg);
-	opacity: 0;
+    display: block;
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 7px;
+    top: -2px;
+    bottom: 0;
+    left: 5px;
+    margin: auto 0;
+    border: 0px solid #AFAFAF;
+    border-width: 0px 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
 }
-.order-tracking.completed .is-complete{
-	border-color: #27aa80;
-	border-width: 0px;
-	background-color: #27aa80;
+
+.order-tracking.completed .is-complete {
+    border-color: #27aa80;
+    border-width: 0px;
+    background-color: #27aa80;
 }
+
 .order-tracking.completed .is-complete:after {
-	border-color: #fff;
-	border-width: 0px 3px 3px 0;
-	width: 7px;
-	left: 11px;
-	opacity: 1;
+    border-color: #fff;
+    border-width: 0px 3px 3px 0;
+    width: 7px;
+    left: 11px;
+    opacity: 1;
 }
+
 .order-tracking p {
-	color: #A4A4A4;
-	font-size: 16px;
-	margin-top: 8px;
-	margin-bottom: 0;
-	line-height: 20px;
+    color: #A4A4A4;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    line-height: 20px;
 }
-.order-tracking p span{font-size: 14px;}
-.order-tracking.completed p{color: #000;}
+
+.order-tracking p span {
+    font-size: 14px;
+}
+
+.order-tracking.completed p {
+    color: #000;
+}
+
 .order-tracking::before {
-	content: '';
-	display: block;
-	height: 3px;
-	width: calc(100% - 40px);
-	background-color: #f7be16;
-	top: 13px;
-	position: absolute;
-	left: calc(-50% + 20px);
-	z-index: 0;
+    content: '';
+    display: block;
+    height: 3px;
+    width: calc(100% - 40px);
+    background-color: #f7be16;
+    top: 13px;
+    position: absolute;
+    left: calc(-50% + 20px);
+    z-index: 0;
 }
-.order-tracking:first-child:before{display: none;}
-.order-tracking.completed:before{background-color: #27aa80;}
+
+.order-tracking:first-child:before {
+    display: none;
+}
+
+.order-tracking.completed:before {
+    background-color: #27aa80;
+}
 
 /* rating-star */
 
@@ -39481,51 +39516,139 @@ input[type="checkbox"] {
 
     /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
     .rating-group {
-      display:flex;
-      justify-content: space-between;
-      max-width: 50%;
+        display: flex;
+        justify-content: space-between;
+        max-width: 50%;
     }
-    
+
     /* make hover effect work properly in IE */
     .rating__icon {
-      pointer-events: none;
+        pointer-events: none;
     }
-    
+
     /* hide radio inputs */
     .rating__input {
-     position: absolute !important;
-     left: -9999px !important;
+        position: absolute !important;
+        left: -9999px !important;
     }
-    
+
     /* hide 'none' input from screenreaders */
     .rating__input--none {
-      display: none
+        display: none
     }
-  
+
     /* set icon padding and size */
     .rating__label {
-      cursor: pointer;
-      padding: 0 0.1em;
-      font-size: 2rem;
+        cursor: pointer;
+        padding: 0 0.1em;
+        font-size: 2rem;
     }
-    
+
     /* set default star color */
     .rating__icon--star {
-      color: orange;
+        color: orange;
     }
-  
+
     /* if any input is checked, make its following siblings grey */
-    .rating__input:checked ~ .rating__label .rating__icon--star {
-      color: #ddd;
+    .rating__input:checked~.rating__label .rating__icon--star {
+        color: #ddd;
     }
-    
+
     /* make all stars orange on rating group hover */
     .rating-group:hover .rating__label .rating__icon--star {
-      color: orange;
+        color: orange;
     }
-  
+
     /* make hovered input's following siblings grey on hover */
-    .rating__input:hover ~ .rating__label .rating__icon--star {
-      color: #ddd;
+    .rating__input:hover~.rating__label .rating__icon--star {
+        color: #ddd;
     }
-  }
+}
+
+
+
+.under-price-section__card {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.under-price-section__card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.under-price-section__image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.under-price-section__text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    color: white;
+    text-align: center;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+    padding: 60px;
+    transition: all 1.6s ease;
+}
+
+.under-price-section__text-overlay h3 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.under-price-section__text-overlay p {
+    font-size: 24px;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.under-price-section__card img {
+    transition: transform 1.6s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.under-price-section__card:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width:1199px) {
+    .under-price-section__text-overlay {
+        padding: 40px;
+    }
+
+    .under-price-section__text-overlay h3 {
+        font-size: 52px;
+    }
+
+    .under-price-section__text-overlay p {
+        font-size: 22px;
+    }
+}
+@media (max-width:480px) {
+    .under-price-section__text-overlay {
+        padding: 20px;
+    }
+
+    .under-price-section__text-overlay h3 {
+        font-size: 36px;
+        margin-bottom: 0px;
+    }
+
+    .under-price-section__text-overlay p {
+        font-size: 20px;
+    }
+}
