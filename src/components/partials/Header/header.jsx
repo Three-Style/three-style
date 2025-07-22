@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../../context/CartContext";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -7,6 +7,7 @@ window.bootstrap = bootstrap;
 
 function HomeHeader() {
   const { openCart, setCartOpen } = useCart();
+  const { isLogin, setIsLogin } = useState(false);
 
   const handleOpenCart = () => {
     console.log("openCart called");
@@ -698,54 +699,69 @@ function HomeHeader() {
                   <i className="fi-search" />
                 </a>
               </div>
-              {/* Acount */}
-              <div className="nav-item dropdown">
-                <a
-                  className="nav-link"
-                  href="#"
-                  role="button"
-                  id="dropdown_myaccount"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="fi-user" />
-                </a>
-                <div
-                  className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                  aria-labelledby="dropdown_myaccount"
-                >
-                  {/* <a className="dropdown-item" href="#">
+
+              {
+                isLogin ? (
+                  <>
+                    {/* Acount */}
+                    <div className="nav-item dropdown">
+                      <a
+                        className="nav-link"
+                        href="#"
+                        role="button"
+                        id="dropdown_myaccount"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i className="fi-user" />
+                      </a>
+                      <div
+                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                        aria-labelledby="dropdown_myaccount"
+                      >
+                        {/* <a className="dropdown-item" href="#">
                     Login
                   </a>{" "} */}
-                  <Link className="dropdown-item" to="/account-order">
-                    My Orders
-                  </Link>{" "}
-                  <Link className="dropdown-item" to="/account-wishlist">
-                    Wishlist
-                  </Link>{" "}
-                  <Link className="dropdown-item" to="/account-profile">
-                    My account
-                  </Link>
-                </div>
-              </div>
-              {/* Wishlist */}
-              {/* <div class="nav-item d-none d-xl-block"><a class="nav-link" href="#"><i class="fi-heart"></i></a>
-                  </div> */}
-              {/* Cart */}
-              <div className="nav-item">
-                <a
-                  className="nav-link"
-                  data-bs-toggle="offcanvas"
-                  href="#modalMiniCart"
-                  role="button"
-                  aria-controls="modalMiniCart"
-                >
-                  <span className="" data-cart-items={8}>
-                    <i className="fi-shopping-cart" />
-                  </span>
-                </a>
-              </div>
+                        <Link className="dropdown-item" to="/account-order">
+                          My Orders
+                        </Link>{" "}
+                        <Link className="dropdown-item" to="/account-wishlist">
+                          Wishlist
+                        </Link>{" "}
+                        <Link className="dropdown-item" to="/account-profile">
+                          My account
+                        </Link>
+                      </div>
+                    </div>
+                    {/* Cart */}
+                    <div className="nav-item">
+                      <a
+                        className="nav-link"
+                        data-bs-toggle="offcanvas"
+                        href="#modalMiniCart"
+                        role="button"
+                        aria-controls="modalMiniCart"
+                      >
+                        <span className="" data-cart-items={8}>
+                          <i className="fi-shopping-cart" />
+                        </span>
+                      </a>
+                    </div>
+
+                  </>
+                ) : (
+                  <>
+                    {/* Login */}
+                    <div className="nav-item dropdown">
+                      <a
+                        className="nav-link">
+                        <i className="fi-user" />
+                      </a>
+                    </div>
+                  </>
+                )
+              }
             </div>
           </div>
         </nav>
@@ -1004,7 +1020,7 @@ function HomeHeader() {
             </div>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         <div className="mobile-header-01 d-lg-none">
           <div className="mob-head-in">
@@ -1076,15 +1092,15 @@ function HomeHeader() {
           </div>
         </div>
         {/* End Mobile Menu */}
-      </header>
+      </header >
 
       {/* Mobile  */}
       <div
         className="offcanvas-lg mobile-nav-offcanvas offcanvas-start d-lg-none @@MobExtraClass"
-        tabIndex={-1}
+        tabIndex={- 1
+        }
         id="offcanvas_mobile_header_01"
-        aria-labelledby="offcanvas_mobile_header_01"
-      >
+        aria-labelledby="offcanvas_mobile_header_01">
         <div className="offcanvas-header">
           <div className="offcanvas-header-overlay" />
           <button
@@ -1109,7 +1125,7 @@ function HomeHeader() {
             </li>
             <li className="nav-item">
               <a
-                className="nav-link dropdown-toggle text-white d-none"
+                className="nav-link dropdown-toggle text-white"
                 href="#"
                 role="button"
                 id="dropdown_language"

@@ -1,6 +1,7 @@
 import React from 'react'
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
+import { Link } from 'react-router-dom';
 
 const OrderView = () => {
   return (
@@ -165,13 +166,13 @@ const OrderView = () => {
                       </div>
                     </div>
                     <div className="d-grid gap-2 mx-auto">
-                      <a
+                      <Link
                         className="btn btn-primary"
-                        href="checkout-shipping.html"
+                        to="checkout"
                       >
                         <i className="bi-credit-card-2-back me-2" />
                         Proceed to Checkout
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

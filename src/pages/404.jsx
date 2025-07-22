@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import HomeFooter from "../components/partials/Footer/footer";
 import HomeHeader from "../components/partials/Header/header";
+import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
@@ -26,9 +27,9 @@ const NotFoundPage = () => {
               <p className="mt-0">Maybe You Can Find What You Need Here ?</p>
               <div className="row justify-content-center">
                 <div className="mb-5">
-                  <a href="/" className="btn" target="_blank">
+                  <Link to='' className="btn" target="_blank">
                     Go To Homepage
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
