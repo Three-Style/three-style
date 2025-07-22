@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useCart } from "../../../context/CartContext";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import MegaMenu from "../../MenuItem";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
@@ -1191,15 +1192,17 @@ function HomeHeader() {
           </ul> */}
         </div>
         <div className="offcanvas-body">
-          <ul className="navbar-nav mx-auto">
-            {/* Cat Menu */}
+
+          <MegaMenu />
+
+          {/* <ul className="navbar-nav mx-auto">
+            
             <li className="dropdown nav-item vertical-dropdown">
               <a href="index.html" className="nav-link">
                 <i className="bi bi-grid-3x3-gap" /> Categories
               </a>{" "}
               <label className="px-dropdown-toggle mob-menu" />
               <ul className="vertical-dropdown-menu dropdown-menu left shadow-none">
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-gift me-2" />{" "}
@@ -1329,7 +1332,6 @@ function HomeHeader() {
                         </ul>
                       </div>
                     </div>
-                    {/* Product section */}
                     <div className="row gy-4 pt-5">
                       <div className="col-sm-6 col-md-4 col-lg-3">
                         <div
@@ -1424,11 +1426,8 @@ function HomeHeader() {
                         </div>
                       </div>
                     </div>
-                    {/* End Product section */}
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-laptop me-2" />
@@ -1600,8 +1599,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-octagon-half me-2" />{" "}
@@ -1897,8 +1894,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-bag me-2" />{" "}
@@ -2047,8 +2042,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-watch me-2" />{" "}
@@ -2236,8 +2229,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="fi-heart me-2" />{" "}
@@ -2369,8 +2360,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-house-door me-2" />{" "}
@@ -2531,8 +2520,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-droplet me-2" />
@@ -2693,8 +2680,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-badge-ad me-2" />
@@ -2916,8 +2901,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
-                {/* v menu item */}
                 <li>
                   <a className="dropdown-item" href="#">
                     <i className="bi bi-command me-2" />{" "}
@@ -3079,7 +3062,6 @@ function HomeHeader() {
                     </div>
                   </div>
                 </li>
-                {/* End v menu item */}
               </ul>
             </li>
             <li className="dropdown dropdown-full nav-item">
@@ -3916,7 +3898,8 @@ function HomeHeader() {
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> */}
+          
         </div>
       </div>
 
