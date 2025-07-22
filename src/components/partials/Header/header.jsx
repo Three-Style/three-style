@@ -7,7 +7,7 @@ window.bootstrap = bootstrap;
 
 function HomeHeader() {
   const { openCart, setCartOpen } = useCart();
-  const { isLogin, setIsLogin } = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   const handleOpenCart = () => {
     console.log("openCart called");
@@ -753,12 +753,18 @@ function HomeHeader() {
                 ) : (
                   <>
                     {/* Login */}
-                    <div className="nav-item dropdown">
+                    <div className="nav-item">
                       <a
-                        className="nav-link">
-                        <i className="fi-user" />
+                        className="nav-link d-flex align-items-center gap-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#loginAuthModal"
+                        style={{ cursor: 'pointer' }}
+                      >
+                        Login
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
                       </a>
                     </div>
+
                   </>
                 )
               }
@@ -1051,43 +1057,48 @@ function HomeHeader() {
                 />
               </a>
             </div>
-            <div className="mob-end d-flex">
-              {/* PROFILE */}
-              <div className="nav-item dropdown">
-                <a
-                  className="nav-link"
-                  href="#"
-                  role="button"
-                  id="dropdown_myaccount"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="fi-user" />
-                </a>
-                <div
-                  className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                  aria-labelledby="dropdown_myaccount"
-                >
-                  <a className="dropdown-item" href="#">
-                    Login
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Register
-                  </a>{" "}
-                  <a className="dropdown-item" href="#">
-                    Wishlist
-                  </a>{" "}
-                  <a className="dropdown-item" href="#">
-                    My account
-                  </a>
-                </div>
-              </div>
-              {/* Cart */}
-              {/* <div class="nav-item"><a class="nav-link" data-bs-toggle="offcanvas" href="#modalMiniCart"
-                  role="button" aria-controls="modalMiniCart"><i class="fi-shopping-cart"></i>
-                  <sub>08</sub></a>
-            </div> */}
+            <div className="mob-end d-flex gap-sm-3 gap-2">
+              {
+                isLogin ? (
+                  <>
+                    {/* PROFILE */}
+                    <div className="nav-item dropdown">
+                      <a
+                        className="nav-link"
+                        href="#"
+                        role="button"
+                        id="dropdown_myaccount"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i className="fi-user" />
+                      </a>
+                      <div
+                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                        aria-labelledby="dropdown_myaccount"
+                      >
+                        <a className="dropdown-item" href="#">
+                          Register
+                        </a>{" "}
+                        <a className="dropdown-item" href="#">
+                          Wishlist
+                        </a>{" "}
+                        <a className="dropdown-item" href="#">
+                          My account
+                        </a>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Login */}
+                    <a class="nav-item d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#loginAuthModal">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                  </>
+                )
+              }
+
+
             </div>
           </div>
         </div>
@@ -3908,6 +3919,69 @@ function HomeHeader() {
           </ul>
         </div>
       </div>
+
+
+      <div
+        className="modal fade"
+        id="loginAuthModal"
+        tabIndex="-1"
+        aria-labelledby="loginAuthModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content p-3">
+            <div className="modal-header border-0">
+              <h5 className="modal-title w-100 text-center" id="loginAuthModalLabel">
+                <img src="assets/images/logo.svg" alt="Logo"></img>
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form className="login-authentication-form">
+                <div className="row mb-3">
+                  <div className="col-12">
+                    <label htmlFor="mobileNumber" className="form-label">
+                      Enter Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="mobileNumber"
+                      placeholder="Enter your mobile"
+                    />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <div className="col-12">
+                    <label htmlFor="otpCode" className="form-label">
+                      Enter OTP
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="otpCode"
+                      placeholder="Enter OTP"
+                    />
+                  </div>
+                </div>
+                <div className="row justify-content-center ">
+                  <div className="col-lg-6 col-8 text-center">
+                    <button type="submit" className="btn btn-primary w-100">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </>
   );
 }

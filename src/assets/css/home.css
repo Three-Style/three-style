@@ -32023,11 +32023,15 @@ header [data-cart-items]:before {
 }
 
 .header-option-1 .header-right .nav-link {
-    padding: .3rem .6rem
+    padding: .3rem .6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
 }
 
 .header-option-1 .header-right .nav-link i {
-    font-size: 1.3rem
+    font-size: 1.2rem
 }
 
 .header-option-1 .navbar-toggler {
@@ -34080,9 +34084,16 @@ header [data-cart-items]:before {
     position: relative;
     color: var(--bs-text-mode)
 }
+.mobile-header-01 .mob-end .nav-item  {
+    color: rgba(var(--bs-emphasis-color-rgb), .65);
+}
+.mobile-header-01 .mob-end .nav-item:hover {
+    color: var(--bs-primary-color);
+}
+
 
 .header-transparent:not(.fixed-header) .mobile-header-01 .mob-end .nav-link {
-    color: var(--bs-white)
+    color: var(--bs-white);
 }
 
 .mobile-header-01 .mob-end .nav-link sub {
