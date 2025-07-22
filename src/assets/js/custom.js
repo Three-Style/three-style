@@ -247,33 +247,3 @@
     });
 
 })(jQuery);
-
-
-  $(document).ready(function(){
-    $('.slick-slider').slick({
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: true,
-      responsive: [
-        {
-          breakpoint: 1300,
-          settings: {
-            slidesToShow: 5
-          }
-        },
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2
-          }
-        }
-      ]
-    });
-  });

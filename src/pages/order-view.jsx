@@ -18,13 +18,6 @@ const OrderView = () => {
               <div className="col-lg-8">
                 <div className="d-flex justify-content-between align-items-center pb-4 border-bottom mb-4">
                   <h2 className="h5 mb-0">Products</h2>
-                  <a
-                    className="btn btn-outline-primary btn-sm ps-2"
-                    href="shop-grid-ls.html"
-                  >
-                    <i className="ci-arrow-left me-2" />
-                    Continue Shopping
-                  </a>
                 </div>
                 {/* Item*/}
                 <div className="d-flex align-items-center flex-row w-100 ">

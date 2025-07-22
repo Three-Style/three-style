@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import Swiper from 'swiper'
 import { Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules'
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
   useEffect(() => {
@@ -706,7 +707,7 @@ const ProductDetails = () => {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                          <Link to="/product-details">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -719,14 +720,14 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                          <Link to="/product-details">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -752,7 +753,7 @@ const ProductDetails = () => {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                          <Link to="/product-details">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -765,14 +766,14 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                          <Link to="/product-details">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -798,7 +799,7 @@ const ProductDetails = () => {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                          <Link to="/product-details">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -811,14 +812,14 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                          <Link to="/product-details">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -844,7 +845,7 @@ const ProductDetails = () => {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                          <Link to="/product-details">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -857,14 +858,14 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                          </a>
+                            </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                          <Link to="/product-details">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>
@@ -890,7 +891,7 @@ const ProductDetails = () => {
                           </a>
                         </div>
                         <div className="product-media">
-                          <a href="#">
+                          <Link to="/product-details">
                             <img
                               className="img-fluid"
                               src="assets/images/swimwear-product-2.jpg"
@@ -903,14 +904,14 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
                         <h6 className="product-title">
-                          <a href="#">
+                          <Link to="/product-details">
                             Laxmipati Cocktail K-055 Satin Silk Navy Blue Saree
-                          </a>
+                          </Link>
                         </h6>
                         <div className="product-price">
                           <span className="text-primary">$28</span>

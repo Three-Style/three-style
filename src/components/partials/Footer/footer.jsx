@@ -1,5 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
+
 function HomeFooter() {
   return (
     <>
@@ -53,10 +56,10 @@ function HomeFooter() {
                 <h6 className="text-white text-uppercase mb-5">Support</h6>
                 <ul className="list-unstyled white-link footer-link-1 m-0 ">
                   <li className="pb-2">
-                    <a href="#">Help</a>
+                    <Link to="/support">Help</Link>
                   </li>
                   <li className="pb-2">
-                    <a href="#">Contact Us</a>
+                    <Link to="/contact">Contact Us</Link>
                   </li>
                   <li className="pb-2">
                     <a href="#">Feedback</a>

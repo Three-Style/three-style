@@ -2,8 +2,29 @@ import React from 'react'
 import HomeFooter from "../components/partials/Footer/footer";
 import HomeHeader from "../components/partials/Header/header";
 import ProfileSideMenu from '../components/profile-side';
+import { useNavigate } from "react-router-dom";
 
 const AccountOrder = () => {
+  const navigate = useNavigate();
+  const products = [
+    {
+      id: 1,
+      image: "assets/images/product-1.jpg",
+      title: "Fine-knit sweater",
+      size: "XL",
+      color: "White & Blue",
+      price: "$154.00"
+    },
+    {
+      id: 2,
+      image: "assets/images/product-2.jpg",
+      title: "Another Product",
+      size: "L",
+      color: "Black",
+      price: "$120.00"
+    }
+    // ...add more products as needed
+  ];
   return (
     <>
       <HomeHeader />
@@ -20,28 +41,36 @@ const AccountOrder = () => {
               {/* Content */}
               <div className="col-lg-8 col-xxl-9">
                 <div className="d-flex align-items-center flex-row w-100 pb-3 mb-3 border-bottom">
-                  <a className="d-inline-block flex-shrink-0 me-3" href="#">
-                    <img
-                      src="assets/images/product-1.jpg"
-                      width={120}
-                      alt="Product"
-                    />
-                  </a>
-                  <div className="d-flex flex-column flex-sm-row col">
-                    <div className="pe-sm-2">
-                      <h3 className="product-title fs-5 mb-1">
-                        <a className="text-reset" href="#">
-                          Fine-knit sweater
-                        </a>
-                      </h3>
-                      <div className="small">
-                        <span className="text-muted me-2">Size:</span>XL
-                      </div>
-                      <div className="small">
-                        <span className="text-muted me-2">Color:</span>White &amp;
-                        Blue
-                      </div>
-                      <div className="lead pt-1">$154.00</div>
+                  <div className="d-flex align-items-start flex-row w-100">
+                    <div className="d-flex flex-column">
+                      {products.map((product, idx) => (
+                        <div
+                          key={product.id}
+                          className={`pe-sm-2 d-flex flex-column flex-sm-row${idx !== products.length - 1 ? ' pb-3' : ''}`}
+                        >
+                          <a className="d-inline-block flex-shrink-0 me-3" href="#">
+                            <img
+                              src={product.image}
+                              width={120}
+                              alt="Product"
+                            />
+                          </a>
+                          <div>
+                            <h3 className="product-title fs-5 mb-1">
+                              <a className="text-reset" href="#">
+                                {product.title}
+                              </a>
+                            </h3>
+                            <div className="small">
+                              <span className="text-muted me-2">Size:</span>{product.size}
+                            </div>
+                            <div className="small">
+                              <span className="text-muted me-2">Color:</span>{product.color}
+                            </div>
+                            <div className="lead pt-1">{product.price}</div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                     <div className="pt-2 pt-sm-0 d-flex d-sm-block ms-sm-auto">
                       <span style={{ display: 'inline-block', width: '10px', height: '10px', backgroundColor: '#28a745', borderRadius: '50%', verticalAlign: 'middle', marginRight: '8px' }}></span>
@@ -51,14 +80,16 @@ const AccountOrder = () => {
                       <div className="d-block">
                         <label className="form-label d-none d-sm-inline-block m-0">
                           Your item has been delivered
-                        </label> 
+                        </label>
                       </div>
                       <button
                         className="btn btn-link px-0 text-danger ms-auto"
-                        type="button" style={{ color: '#b96f4a' }}
+                        type="button"
+                        style={{ color: '#b96f4a' }}
+                        onClick={() => navigate('/order-view')}
                       >
-                        <i className="bi-star-fill me-2" />
-                        <span className="">Rate & Review Product</span>
+                        <i class="fa-solid fa-truck-fast me-2"></i>
+                        <span className="">Where’s My Order?</span>
                       </button>
                     </div>
                   </div>
