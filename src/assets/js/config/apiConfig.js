@@ -14,8 +14,8 @@ if (hostname === "threestyle.in" || hostname === "www.threestyle.in") {
   baseUrl = "https://dev-api.threestyle.in";
   fwgBaseUrl = 'https://fg-app-dev-api.threestyle.in';
 } else {
-  baseUrl = "https://dev-api.threestyle.in";
-  // baseUrl = 'http://localhost';
+  // baseUrl = "https://dev-api.threestyle.in";
+  baseUrl = 'http://localhost';
   fwgBaseUrl = 'https://fg-app-dev-api.threestyle.in';
   // fwgBaseUrl = 'http://localhost:82';
 }

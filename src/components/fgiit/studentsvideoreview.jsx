@@ -22,8 +22,8 @@ const StudentTestimonial = ({
     dots: false,
     nav: true,
     navText: [
-      '<i class="fas fa-arrow-left"></i>',
-      '<i class="fas fa-arrow-right"></i>',
+      '<i className="fas fa-arrow-left"></i>',
+      '<i className="fas fa-arrow-right"></i>',
     ],
     responsive: {
       0: {
@@ -61,8 +61,8 @@ const StudentTestimonial = ({
                   // autoplay
                   // nav={true}
                   // navText={
-                  //   '<i class="fas fa-arrow-left"></i>',
-                  //   '<i class="fas fa-arrow-right"></i>',
+                  //   '<i className="fas fa-arrow-left"></i>',
+                  //   '<i className="fas fa-arrow-right"></i>',
                   // }
                   id="studentReview"
                   className="owl-carousel new-owl-btn owl-theme"

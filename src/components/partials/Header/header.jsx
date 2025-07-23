@@ -1,21 +1,30 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useCart } from "../../../context/CartContext";
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import MegaMenu from "../../MenuItem";
+import LoginModal from "../../popup/login";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
   const { openCart, setCartOpen } = useCart();
-  const [isLogin, setIsLogin] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const isAuthenticated = !!localStorage.getItem(
+    "three_style_user_authorization"
+  );
+
+  const closeModal = () => {
+    setShowLoginModal(false);
+  };
 
   const handleOpenCart = () => {
     console.log("openCart called");
     setCartOpen(true);
-    const cartOffcanvas = document.getElementById('modalMiniCart');
+    const cartOffcanvas = document.getElementById("modalMiniCart");
     if (cartOffcanvas && window.bootstrap) {
-      const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
+      const bsOffcanvas =
+        window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
       bsOffcanvas?.show();
     }
     console.log("cartOffcanvas", cartOffcanvas);
@@ -25,6 +34,7 @@ function HomeHeader() {
 
   return (
     <>
+      {showLoginModal && <LoginModal onClose={closeModal} />}
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
         <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
           <div className="d-flex justify-content-between align-items-center">
@@ -701,71 +711,69 @@ function HomeHeader() {
                 </a>
               </div>
 
-              {
-                isLogin ? (
-                  <>
-                    {/* Acount */}
-                    <div className="nav-item dropdown">
-                      <a
-                        className="nav-link"
-                        href="#"
-                        role="button"
-                        id="dropdown_myaccount"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fi-user" />
-                      </a>
-                      <div
-                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                        aria-labelledby="dropdown_myaccount"
-                      >
-                        <Link className="dropdown-item" to="/account-order">
-                          My Orders
-                        </Link>{" "}
-                        <Link className="dropdown-item" to="/account-wishlist">
-                          Wishlist
-                        </Link>{" "}
-                        <Link className="dropdown-item" to="/account-profile">
-                          My account
-                        </Link>
-                      </div>
+              {isAuthenticated ? (
+                <>
+                  {/* Acount */}
+                  <div className="nav-item dropdown">
+                    <a
+                      className="nav-link"
+                      href="#"
+                      role="button"
+                      id="dropdown_myaccount"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i className="fi-user" />
+                    </a>
+                    <div
+                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                      aria-labelledby="dropdown_myaccount"
+                    >
+                      {/* <a className="dropdown-item" href="#">
+                    Login
+                  </a>{" "} */}
+                      <Link className="dropdown-item" to="/account-order">
+                        My Orders
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-wishlist">
+                        Wishlist
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-profile">
+                        My account
+                      </Link>
                     </div>
-                    {/* Cart */}
-                    <div className="nav-item">
-                      <a
-                        className="nav-link"
-                        data-bs-toggle="offcanvas"
-                        href="#modalMiniCart"
-                        role="button"
-                        aria-controls="modalMiniCart"
-                      >
-                        <span className="" data-cart-items={8}>
-                          <i className="fi-shopping-cart" />
-                        </span>
-                      </a>
-                    </div>
-
-                  </>
-                ) : (
-                  <>
-                    {/* Login */}
-                    <div className="nav-item">
-                      <a
-                        className="nav-link d-flex align-items-center gap-2"
-                        data-bs-toggle="modal"
-                        data-bs-target="#loginAuthModal"
-                        style={{ cursor: 'pointer' }}
-                      >
-                        Login
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                      </a>
-                    </div>
-
-                  </>
-                )
-              }
+                  </div>
+                  {/* Cart */}
+                  <div className="nav-item">
+                    <a
+                      className="nav-link"
+                      data-bs-toggle="offcanvas"
+                      href="#modalMiniCart"
+                      role="button"
+                      aria-controls="modalMiniCart"
+                    >
+                      <span className="" data-cart-items={8}>
+                        <i className="fi-shopping-cart" />
+                      </span>
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Login */}
+                  <div className="nav-item">
+                    <a
+                      className="nav-link d-flex align-items-center gap-2"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setShowLoginModal(true)}
+                    >
+                      Login
+                      <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                    </a>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </nav>
@@ -814,7 +822,7 @@ function HomeHeader() {
                     {/*Footer */}
                     <div className="d-flex align-items-center">
                       {/* Select */}
-                      {/* <select class="form-select form-select-sm w-auto">
+                      {/* <select className="form-select form-select-sm w-auto">
                      <option value="1">1</option>
                      <option value="1">2</option>
                      <option value="1">3</option>
@@ -862,7 +870,7 @@ function HomeHeader() {
                     {/*Footer */}
                     <div className="d-flex align-items-center">
                       {/* Select */}
-                      {/* <select class="form-select form-select-sm w-auto">
+                      {/* <select className="form-select form-select-sm w-auto">
                      <option value="1">1</option>
                      <option value="1">2</option>
                      <option value="1">3</option>
@@ -910,7 +918,7 @@ function HomeHeader() {
                     {/*Footer */}
                     <div className="d-flex align-items-center">
                       {/* Select */}
-                      {/* <select class="form-select form-select-sm w-auto">
+                      {/* <select className="form-select form-select-sm w-auto">
                      <option value="1">1</option>
                      <option value="1">2</option>
                      <option value="1">3</option>
@@ -958,7 +966,7 @@ function HomeHeader() {
                     {/*Footer */}
                     <div className="d-flex align-items-center">
                       {/* Select */}
-                      {/* <select class="form-select form-select-sm w-auto">
+                      {/* <select className="form-select form-select-sm w-auto">
                      <option value="1">1</option>
                      <option value="1">2</option>
                      <option value="1">3</option>
@@ -1056,61 +1064,62 @@ function HomeHeader() {
               </a>
             </div>
             <div className="mob-end d-flex gap-sm-3 gap-2">
-              {
-                isLogin ? (
-                  <>
-                    {/* PROFILE */}
-                    <div className="nav-item dropdown">
-                      <a
-                        className="nav-link"
-                        href="#"
-                        role="button"
-                        id="dropdown_myaccount"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i className="fi-user" />
-                      </a>
-                      <div
-                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                        aria-labelledby="dropdown_myaccount"
-                      >
-                        <Link className="dropdown-item" to="/account-order">
-                          My Orders
-                        </Link>
-                        <Link className="dropdown-item" to="/account-wishlist">
-                          Wishlist
-                        </Link>
-                         <Link className="dropdown-item" to="/account-profile">
-                          My account
-                        </Link>
-                        
-                      </div>
+              {isAuthenticated ? (
+                <>
+                  {/* PROFILE */}
+                  <div className="nav-item dropdown">
+                    <a
+                      className="nav-link"
+                      href="#"
+                      role="button"
+                      id="dropdown_myaccount"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i className="fi-user" />
+                    </a>
+                    <div
+                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                      aria-labelledby="dropdown_myaccount"
+                    >
+                      <Link className="dropdown-item" to="/account-order">
+                        Register
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-wishlist">
+                        Wishlist
+                      </Link>{" "}
+                      <Link className="dropdown-item" to="/account-profile">
+                        My account
+                      </Link>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Login */}
-                    <a class="nav-item d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#loginAuthModal">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-                  </>
-                )
-              }
-
-
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Login */}
+                  <a
+                    className="nav-item d-flex align-items-center gap-2"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    Login<i className="fa-solid fa-arrow-right-to-bracket"></i>
+                  </a>
+                </>
+              )}
             </div>
           </div>
         </div>
         {/* End Mobile Menu */}
-      </header >
+      </header>
 
       {/* Mobile  */}
       <div
         className="offcanvas-lg mobile-nav-offcanvas offcanvas-start d-lg-none @@MobExtraClass"
-        tabIndex={- 1
-        }
+        tabIndex={-1}
         id="offcanvas_mobile_header_01"
-        aria-labelledby="offcanvas_mobile_header_01">
+        aria-labelledby="offcanvas_mobile_header_01"
+      >
         <div className="offcanvas-header">
           <div className="offcanvas-header-overlay" />
           <button
@@ -1190,7 +1199,6 @@ function HomeHeader() {
           </ul> */}
         </div>
         <div className="offcanvas-body">
-
           <MegaMenu />
 
           {/* <ul className="navbar-nav mx-auto">
@@ -1368,11 +1376,8 @@ function HomeHeader() {
               <a href="#" className="nav-link">Blog</a>
             </li>
           </ul> */}
-
-
         </div>
       </div>
-
 
       <div
         className="modal fade"
@@ -1384,7 +1389,10 @@ function HomeHeader() {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-3">
             <div className="modal-header border-0">
-              <h5 className="modal-title w-100 text-center" id="loginAuthModalLabel">
+              <h5
+                className="modal-title w-100 text-center"
+                id="loginAuthModalLabel"
+              >
                 <img src="assets/images/logo.svg" alt="Logo"></img>
               </h5>
               <button
@@ -1434,7 +1442,6 @@ function HomeHeader() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

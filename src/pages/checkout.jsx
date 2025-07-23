@@ -40,8 +40,8 @@ const Checkout = () => {
                               </span>
                             </p>
                             {/* Remove */}
-                            {/* <a class="small link-danger ms-auto" href="#!"><i
-                                                      class="bi bi-x"></i> Remove</a> */}
+                            {/* <a className="small link-danger ms-auto" href="#!"><i
+                                                      className="bi bi-x"></i> Remove</a> */}
                           </div>
                         </div>
                       </li>
@@ -68,8 +68,8 @@ const Checkout = () => {
                               </span>
                             </p>
                             {/* Remove */}
-                            {/* <a class="small link-danger ms-auto" href="#!"><i
-                                                      class="bi bi-x"></i> Remove</a> */}
+                            {/* <a className="small link-danger ms-auto" href="#!"><i
+                                                      className="bi bi-x"></i> Remove</a> */}
                           </div>
                         </div>
                       </li>
@@ -96,8 +96,8 @@ const Checkout = () => {
                               </span>
                             </p>
                             {/* Remove */}
-                            {/* <a class="small link-danger ms-auto" href="#!"><i
-                                                      class="bi bi-x"></i> Remove</a> */}
+                            {/* <a className="small link-danger ms-auto" href="#!"><i
+                                                      className="bi bi-x"></i> Remove</a> */}
                           </div>
                         </div>
                       </li>

@@ -134,7 +134,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -371,7 +371,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -450,7 +450,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -529,7 +529,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -608,7 +608,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -686,7 +686,7 @@ const OfflineFitnessCourse = () => {
                     </Link>
                     <a className="mb-1 ml-3 btn-whats btn btn-success btn-english"
                       href={DownloadPdf} download>
-                      <span class="button__text">Download PDF</span>
+                      <span className="button__text">Download PDF</span>
                     </a>
                   </div>
                 </div>

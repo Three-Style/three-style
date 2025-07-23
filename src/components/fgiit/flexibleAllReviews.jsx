@@ -585,8 +585,8 @@ const FlexibleAllReviews = () => {
                     dots={false}
                     className="owl-carousel owl-theme owl-nav-1"
                     navText={[
-                      '<i class="fas fa-arrow-left owl-nav-arrow"></i>',
-                      '<i class="fas fa-arrow-right owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-left owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-right owl-nav-arrow"></i>',
                     ]}
                     responsive={{
                       0: {

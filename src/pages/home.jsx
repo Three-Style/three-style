@@ -853,8 +853,8 @@ function Home() {
                   <span>Search</span>
                 </a>
               </div>
-              {/* <div class="mob-hb-item"><a href="#" class="mob-hb-link" data-bs-toggle="modal"
-            data-bs-target="#topbarlogin"><i class="fi-user"></i> <span>Login</span></a></div> */}
+              {/* <div className="mob-hb-item"><a href="#" className="mob-hb-link" data-bs-toggle="modal"
+            data-bs-target="#topbarlogin"><i className="fi-user"></i> <span>Login</span></a></div> */}
               <div className="mob-hb-item">
                 <a href="#" className="mob-hb-link">
                   <i className="fi-heart">

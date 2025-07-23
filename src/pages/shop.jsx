@@ -136,24 +136,24 @@ const Shop = () => {
                       </ul>
                     </div>
                   </div>
-                  {/* <div class="shop-sidebar-block">
-                        <div class="shop-sidebar-title"><a class="h5" data-bs-toggle="collapse"
+                  {/* <div className="shop-sidebar-block">
+                        <div className="shop-sidebar-title"><a className="h5" data-bs-toggle="collapse"
                                 href="#shop_Gender" role="button" aria-expanded="true"
-                                aria-controls="shop_Gender">Gender <i class="bi bi-chevron-up"></i></a>
+                                aria-controls="shop_Gender">Gender <i className="bi bi-chevron-up"></i></a>
                         </div>
-                        <div class="shop-sidebar-list collapse show" id="shop_Gender">
+                        <div className="shop-sidebar-list collapse show" id="shop_Gender">
                             <ul>
-                                <li class="custom-radio"><input class="custom-control-input" id="gen1"
+                                <li className="custom-radio"><input className="custom-control-input" id="gen1"
                                         type="radio" name="Gender" checked="checked"> <label
-                                        class="custom-control-label" for="gen1">Men</label></li>
-                                <li class="custom-radio"><input class="custom-control-input" id="gen2"
-                                        type="radio" name="Gender"> <label class="custom-control-label"
+                                        className="custom-control-label" for="gen1">Men</label></li>
+                                <li className="custom-radio"><input className="custom-control-input" id="gen2"
+                                        type="radio" name="Gender"> <label className="custom-control-label"
                                         for="gen2">Women</label></li>
-                                <li class="custom-radio"><input class="custom-control-input" id="gen3"
-                                        type="radio" name="Gender"> <label class="custom-control-label"
+                                <li className="custom-radio"><input className="custom-control-input" id="gen3"
+                                        type="radio" name="Gender"> <label className="custom-control-label"
                                         for="gen3">Boys</label></li>
-                                <li class="custom-radio"><input class="custom-control-input" id="gen4"
-                                        type="radio" name="Gender"> <label class="custom-control-label"
+                                <li className="custom-radio"><input className="custom-control-input" id="gen4"
+                                        type="radio" name="Gender"> <label className="custom-control-label"
                                         for="gen4">Girls</label></li>
                             </ul>
                         </div>

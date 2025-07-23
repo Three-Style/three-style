@@ -107,7 +107,7 @@ const AccountOrder = () => {
                         style={{ color: '#b96f4a' }}
                         onClick={() => navigate('/order-view')}
                       >
-                        <i class="fa-solid fa-truck-fast me-2"></i>
+                        <i className="fa-solid fa-truck-fast me-2"></i>
                         <span className="">Where’s My Order?</span>
                       </button>
                     </div>
@@ -161,7 +161,7 @@ const AccountOrder = () => {
                         style={{ color: '#b96f4a' }}
                         onClick={() => navigate('/order-view')}
                       >
-                        <i class="fa-solid fa-truck-fast me-2"></i>
+                        <i className="fa-solid fa-truck-fast me-2"></i>
                         <span className="">Where’s My Order?</span>
                       </button>
                     </div>

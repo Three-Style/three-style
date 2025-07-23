@@ -69,18 +69,18 @@ const OrderView = () => {
                 </div>
 
                 <div id="full-stars-example-two" className='border-bottom pb-4 text-center '>
-                  <div class="rating-group m-auto">
-                    <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
-                    <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
-                    <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
-                    <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
-                    <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
-                    <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                    <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
+                  <div className="rating-group m-auto">
+                    <input disabled checked className="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
+                    <label aria-label="1 star" className="rating__label" for="rating3-1"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input className="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
+                    <label aria-label="2 stars" className="rating__label" for="rating3-2"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input className="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
+                    <label aria-label="3 stars" className="rating__label" for="rating3-3"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input className="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
+                    <label aria-label="4 stars" className="rating__label" for="rating3-4"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input className="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
+                    <label aria-label="5 stars" className="rating__label" for="rating3-5"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <input className="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
                   </div>
                 </div>
 
@@ -88,12 +88,12 @@ const OrderView = () => {
               {/* Cart Sidebar */}
               <div className="col-lg-4 ps-xl-7">
                 {/* Shipping estimates */}
-                {/* <div class="card mb-4">
-                          <div class="card-header bg-transparent py-3">
-                              <h6 class="m-0 h5">Shipping estimates</h6>
+                {/* <div className="card mb-4">
+                          <div className="card-header bg-transparent py-3">
+                              <h6 className="m-0 h5">Shipping estimates</h6>
                           </div>
-                          <div class="card-body">
-                              <div class="mb-3"><select class="form-select" required="">
+                          <div className="card-body">
+                              <div className="mb-3"><select className="form-select" required="">
                                       <option value="">Choose your country</option>
                                       <option value="Australia">Australia</option>
                                       <option value="Belgium">Belgium</option>
@@ -104,9 +104,9 @@ const OrderView = () => {
                                       <option value="Switzerland">Switzerland</option>
                                       <option value="United States">United States</option>
                                   </select>
-                                  <div class="invalid-feedback">Please choose your country!</div>
+                                  <div className="invalid-feedback">Please choose your country!</div>
                               </div>
-                              <div class="mb-3"><select class="form-select" required="">
+                              <div className="mb-3"><select className="form-select" required="">
                                       <option value="">Choose your city</option>
                                       <option value="Bern">Bern</option>
                                       <option value="Brussels">Brussels</option>
@@ -117,12 +117,12 @@ const OrderView = () => {
                                       <option value="Washington D.C.">Washington D.C.</option>
                                       <option value="Wellington">Wellington</option>
                                   </select>
-                                  <div class="invalid-feedback">Please choose your city!</div>
+                                  <div className="invalid-feedback">Please choose your city!</div>
                               </div>
-                              <div class="mb-3"><input class="form-control" type="text"
+                              <div className="mb-3"><input className="form-control" type="text"
                                       placeholder="ZIP / Postal code" required="">
-                                  <div class="invalid-feedback">Please provide a valid zip!</div>
-                              </div><button class="btn btn-outline-primary d-block w-100" type="submit">Calculate
+                                  <div className="invalid-feedback">Please provide a valid zip!</div>
+                              </div><button className="btn btn-outline-primary d-block w-100" type="submit">Calculate
                                   shipping</button>
                           </div>
                       </div> */}

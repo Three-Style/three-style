@@ -73,17 +73,17 @@ const Login = () => {
                           </button>
                         </div>
                       </form>
-                      {/* <div class="text-center pt-4 pb-5" style=""><span
-                                      class="px-3 bg-body d-inline-block align-top lh-sm">OR</span>
-                                  <div class="border-bottom mt-n3"></div>
+                      {/* <div className="text-center pt-4 pb-5" style=""><span
+                                      className="px-3 bg-body d-inline-block align-top lh-sm">OR</span>
+                                  <div className="border-bottom mt-n3"></div>
                               </div> */}
-                      {/* <div class="row g-2">
-                                  <div class="col"><button class="btn w-100 btn-mode" type="button"><i
-                                              class="bi bi-facebook me-2"></i> Facebook</button></div>
-                                  <div class="col"><button class="btn w-100 btn-mode" type="button"><i
-                                              class="bi bi-twitter me-2"></i> Twitter</button></div>
+                      {/* <div className="row g-2">
+                                  <div className="col"><button className="btn w-100 btn-mode" type="button"><i
+                                              className="bi bi-facebook me-2"></i> Facebook</button></div>
+                                  <div className="col"><button className="btn w-100 btn-mode" type="button"><i
+                                              className="bi bi-twitter me-2"></i> Twitter</button></div>
                               </div> */}
-                      {/* <div class="pt-4 text-center"><span class="text-muted">Don't have an account? <a
+                      {/* <div className="pt-4 text-center"><span className="text-muted">Don't have an account? <a
                                           href="sign-up.html">Signup here</a></span></div> */}
                     </div>
                   </div>

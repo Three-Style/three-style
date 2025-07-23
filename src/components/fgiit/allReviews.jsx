@@ -18,8 +18,8 @@ const AllReviews = () => {
 
   useEffect(() => {
     const $ = window.$;
-    $(".owl-prev").html('<i class="fas fa-arrow-left"></i>');
-    $(".owl-next").html('<i class="fas fa-arrow-right"></i>');
+    $(".owl-prev").html('<i className="fas fa-arrow-left"></i>');
+    $(".owl-next").html('<i className="fas fa-arrow-right"></i>');
   }, []);
 
   const testimonials = [
@@ -433,12 +433,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Its A Great Experience To Learn Nutrition With
                             FGIIT. Easy Teaching Patterns, Co-Operative
                             Faculties, This Certified Nutritionist Course Help
                             Me Lots In My Career Graph.. Thnx To FGIIT.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -478,12 +478,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>I Am So
+                            <i className="fas fa-quote-left left-icon"></i>I Am So
                             Much Happy That After 25 Years I Did Something New
                             And Good.At This Moment I Appreciate FGIIT For
                             Provide Me Best Coaching Best Support And Best
                             Friends Also.Thanks Gautam.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -523,12 +523,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             FGIIT is one of best institution in india. Just
                             because of there Training skill, individually Doubt
                             Clearance and well Knowledgeable teachers. If anyone
                             is looking for Fitness related course...
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -568,11 +568,11 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Without Your Guidance I Never Been A Good
                             Nutritionist Thanks A Lot For Sharing Knowledge With
                             Us.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -612,11 +612,11 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Awesome excellent amazing study coordinator and
                             study module am happy for value for money return
                             every single single Myth clear.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -656,12 +656,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Firstly I want to thank you Gautam sir and his team
                             It's a great time and I am happy to enrol myself in
                             FGIIT institute and I have been gained a lot of
                             knowledge from them all teachers specially...
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -701,10 +701,10 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             knowledgeable n very informative course (AAS). Thank
                             u so much FGIIT Gautam sir n other facilities…🙏🏻🙏🏻
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -767,12 +767,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Its A Great Experience To Learn Nutrition With
                             FGIIT. Easy Teaching Patterns, Co-Operative
                             Faculties, This Certified Nutritionist Course Help
                             Me Lots In My Career Graph.. Thnx To FGIIT.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -812,12 +812,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>I Am So
+                            <i className="fas fa-quote-left left-icon"></i>I Am So
                             Much Happy That After 25 Years I Did Something New
                             And Good.At This Moment I Appreciate FGIIT For
                             Provide Me Best Coaching Best Support And Best
                             Friends Also.Thanks Gautam.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -857,12 +857,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             FGIIT is one of best institution in india. Just
                             because of there Training skill, individually Doubt
                             Clearance and well Knowledgeable teachers. If anyone
                             is looking for Fitness related course...
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -902,10 +902,10 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Without Your Guidance I Never Been A Good
                             Nutritionist Thanks A Lot For Sharing Knowledge...
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -945,11 +945,11 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Awesome excellent amazing study coordinator and
                             study module am happy for value for money return
                             every single single Myth clear.
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -989,12 +989,12 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             Firstly I want to thank you Gautam sir and his team
                             It's a great time and I am happy to enrol myself in
                             FGIIT institute and I have been gained a lot of
                             knowledge from them all teachers specially...
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -1034,10 +1034,10 @@ const AllReviews = () => {
                         <div className="g-reviews-text text-center">
                           <p className="text-muted mb-0">
                             {" "}
-                            <i class="fas fa-quote-left left-icon"></i>
+                            <i className="fas fa-quote-left left-icon"></i>
                             knowledgeable n very informative course (AAS). Thank
                             u so much FGIIT Gautam sir n other facilities…🙏🏻🙏🏻
-                            <i class="fas fa-quote-right right-icon"></i>
+                            <i className="fas fa-quote-right right-icon"></i>
                           </p>
                         </div>
                         <div className="g-reviews-img">
@@ -1436,8 +1436,8 @@ const AllReviews = () => {
                     dots={false}
                     className="owl-carousel owl-theme owl-nav-1"
                     navText={[
-                      '<i class="fas fa-arrow-left owl-nav-arrow"></i>',
-                      '<i class="fas fa-arrow-right owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-left owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-right owl-nav-arrow"></i>',
                     ]}
                     responsive={{
                       0: {
@@ -1904,8 +1904,8 @@ const AllReviews = () => {
                     dots={false}
                     className="owl-carousel owl-theme owl-nav-1"
                     navText={[
-                      '<i class="fas fa-arrow-left owl-nav-arrow"></i>',
-                      '<i class="fas fa-arrow-right owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-left owl-nav-arrow"></i>',
+                      '<i className="fas fa-arrow-right owl-nav-arrow"></i>',
                     ]}
                     responsive={{
                       0: {
