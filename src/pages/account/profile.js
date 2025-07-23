@@ -48,7 +48,7 @@
 
 //       setFormData((prevData) => ({
 //         ...prevData,
-//         profilePhoto: "https://files.fggroup.in/" + photoUrl,
+//         profilePhoto: "https://files.threestyle.in/" + photoUrl,
 //         profile_image: photoUrl,
 //       }));
 
@@ -119,7 +119,7 @@
 //           mobile: userData.user.mobile || "",
 //           email: userData.user.email || "",
 //           profilePhoto:
-//             "https://files.fggroup.in/" + (userData.user.profile_image || ""),
+//             "https://files.threestyle.in/" + (userData.user.profile_image || ""),
 //         }));
 //       }
 //     } catch (error) {
@@ -144,8 +144,8 @@
 //         <meta name="keyword" content="" />
 //         <meta property="og:title" content="User Profile" />
 //         <meta property="og:description" content="These Are The Diseases Is Can Not Be Controlled By Medicine Only, You Need To Have The Support Of Nutrition, Exercises, Recovery, And Rehab Parts Also." />
-//         <meta property="og:image" content="https://fggroup.in/assets/images/logo/fg_group.webp" />
-//         <meta property="og:url" content="https://fggroup.in" />
+//         <meta property="og:image" content="https://threestyle.in/assets/images/logo/fg_group.webp" />
+//         <meta property="og:url" content="https://threestyle.in" />
 //         <link rel="canonical" href={{ canonicalUrl }} />
 //       </Helmet>
 //       <HomeHeader />

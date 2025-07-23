@@ -6,7 +6,7 @@ let PUBLIC_ROUTE = '/public/v1';
 let BASE_URL = apiConfig.BASE_URL + USER_ROUTE;
 let FWG_BASE_URL = apiConfig.FWG_BASE_URL + USER_ROUTE;
 let PUBLIC_URL = apiConfig.BASE_URL + PUBLIC_ROUTE;
-const FILE_BASE_URL = 'https://files.fggroup.in/';
+const FILE_BASE_URL = 'https://files.threestyle.in/';
 
 //User URL
 export const axiosInstance = axios.create({

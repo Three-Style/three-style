@@ -169,7 +169,7 @@ app.get('/sitemap.xml', (req, res) => {
       .map(
         (route) => `
               <url>
-                <loc>https://fggroup.in${route.path}</loc>
+                <loc>https://threestyle.in${route.path}</loc>
                 <lastmod>${route.lastmod}</lastmod>
                 <priority>${route.priority}</priority>
               </url>

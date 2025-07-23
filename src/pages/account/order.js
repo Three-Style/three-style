@@ -84,8 +84,8 @@ function UserOrder() {
         <meta name="keyword" content="" />
         <meta property="og:title" content="User Order" />
         <meta property="og:description" content="These Are The Diseases Is Can Not Be Controlled By Medicine Only, You Need To Have The Support Of Nutrition, Exercises, Recovery, And Rehab Parts Also." />
-        <meta property="og:image" content="https://fggroup.in/assets/images/logo/fg_group.webp" />
-        <meta property="og:url" content="https://fggroup.in/user/order" />
+        <meta property="og:image" content="https://threestyle.in/assets/images/logo/fg_group.webp" />
+        <meta property="og:url" content="https://threestyle.in/user/order" />
         <link rel="canonical" href={{ canonicalUrl }} />
         <script>
           {`!function(f,b,e,v,n,t,s)
@@ -144,7 +144,7 @@ function UserOrder() {
                     <div className="Grocery2 float-left mt-3 w-100">
                       <div className="relet text-center">
                         <img
-                          src={`https://files.fggroup.in/${ItemDetails.cover_image}`}
+                          src={`https://files.threestyle.in/${ItemDetails.cover_image}`}
                           width="100px"
                           alt={ItemDetails.book_title}
                         />
@@ -172,7 +172,7 @@ function UserOrder() {
                     <div className="Grocery2 float-left mt-3 w-100">
                       <div className="relet text-center">
                         <img
-                          src={`https://files.fggroup.in/${ItemDetails.cover_image}`}
+                          src={`https://files.threestyle.in/${ItemDetails.cover_image}`}
                           width="100px"
                           alt={ItemDetails.book_title}
                         />
@@ -833,7 +833,7 @@ function UserOrder() {
                 SECTION 20 - CONTACT INFORMATION
               </h2>
               <br /> Questions about the Terms of Service should be sent to us
-              at info@fggroup.in.
+              at info@threestyle.in.
             </p>
           </div>
         </section>
@@ -881,7 +881,7 @@ function UserOrder() {
               opportunity to say no. How do I withdraw my consent? If after you
               opt-in, you change your mind, you may withdraw your consent for us
               to contact you, for the continued collection, use or disclosure of
-              your information, at anytime, by contacting us at info@fggroup.in
+              your information, at anytime, by contacting us at info@threestyle.in
               or mailing us at: A- 301, Ambrosia Business Hub, VIP Road, beside
               SMC Garden, Vesu, Surat, Gujarat 395007
               <br />
@@ -1022,7 +1022,7 @@ function UserOrder() {
               If you would like to: access, correct, amend or delete any
               personal information we have about you, register a complaint, or
               simply want more information contact our Privacy Compliance
-              Officer at info@fggroup.in or by mail at Address:- A- 301,
+              Officer at info@threestyle.in or by mail at Address:- A- 301,
               Ambrosia Business Hub, VIP Road, beside SMC Garden, Vesu, Surat,
               Gujarat 395007
             </p>
@@ -1085,7 +1085,7 @@ function UserOrder() {
               officially posted. Next contact your bank. There is often some
               processing time before a refund is posted. If you've done all of
               this and you still have not received your refund yet, please
-              contact us at info@fggroup.in.
+              contact us at info@threestyle.in.
             </p>
             <p>
               <br />
@@ -1111,7 +1111,7 @@ function UserOrder() {
               </h2>
               <br /> We only replace items if they are defective or damaged. If
               you need to exchange it for the same item, send us an email at
-              info@fggroup.in and send your item to: A- 301, Ambrosia Business
+              info@threestyle.in and send your item to: A- 301, Ambrosia Business
               Hub, VIP Road, beside SMC Garden, Vesu, Surat, Gujarat 395007.
               <br />
               <br />

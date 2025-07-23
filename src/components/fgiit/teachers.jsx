@@ -35,7 +35,7 @@ const Teachers = () => {
                   />
                 </div>
                 <div className="reviews-text text-center">
-                  <h2 className="h6-fs"><a href="http://gcsconsultant.fggroup.in/gautam_jani_official" style={{ color: 'black', textDecoration: 'underline' }}>Dr. Gautam Jani</a></h2>
+                  <h2 className="h6-fs"><a href="http://gcsconsultant.threestyle.in/gautam_jani_official" style={{ color: 'black', textDecoration: 'underline' }}>Dr. Gautam Jani</a></h2>
                   <p className="text-muted">
                     <b>
                       Founder & CEO of FG Group / CEO GCS PVT LTD / Core member

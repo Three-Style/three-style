@@ -5,18 +5,18 @@ let fwgBaseUrl = "http://localhost:82";
 let razorpayMerchantId = "rzp_test_F0TUZmabOwKkhe";
 let environment = "development";
 
-if (hostname === "fggroup.in" || hostname === "www.fggroup.in") {
-  baseUrl = "https://api.fggroup.in";
-  fwgBaseUrl = 'https://app-api.fggroup.in';
+if (hostname === "threestyle.in" || hostname === "www.threestyle.in") {
+  baseUrl = "https://api.threestyle.in";
+  fwgBaseUrl = 'https://app-api.threestyle.in';
   environment = 'production'
   razorpayMerchantId = "rzp_live_tdfTCMm8C9gJNN";
-} else if (hostname === "test.fggroup.in") {
-  baseUrl = "https://dev-api.fggroup.in";
-  fwgBaseUrl = 'https://fg-app-dev-api.fggroup.in';
+} else if (hostname === "test.threestyle.in") {
+  baseUrl = "https://dev-api.threestyle.in";
+  fwgBaseUrl = 'https://fg-app-dev-api.threestyle.in';
 } else {
-  baseUrl = "https://dev-api.fggroup.in";
+  baseUrl = "https://dev-api.threestyle.in";
   // baseUrl = 'http://localhost';
-  fwgBaseUrl = 'https://fg-app-dev-api.fggroup.in';
+  fwgBaseUrl = 'https://fg-app-dev-api.threestyle.in';
   // fwgBaseUrl = 'http://localhost:82';
 }
 

@@ -3,7 +3,7 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 
 const routes = require('./src/routes');
 
-const hostname = 'https://fggroup.in';
+const hostname = 'https://threestyle.in';
 
 async function generateSitemap() {
     const sitemap = new SitemapStream({ hostname });
