@@ -4,27 +4,18 @@ import { useCart } from "../../../context/CartContext";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import * as bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import MegaMenu from "../../MenuItem";
-import LoginModal from "../../popup/login";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
   const { openCart, setCartOpen } = useCart();
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const isAuthenticated = !!localStorage.getItem(
-    "three_style_user_authorization"
-  );
-
-  const closeModal = () => {
-    setShowLoginModal(false);
-  };
+  const [isLogin, setIsLogin] = useState(true);
 
   const handleOpenCart = () => {
     console.log("openCart called");
     setCartOpen(true);
-    const cartOffcanvas = document.getElementById("modalMiniCart");
+    const cartOffcanvas = document.getElementById('modalMiniCart');
     if (cartOffcanvas && window.bootstrap) {
-      const bsOffcanvas =
-        window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
+      const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
       bsOffcanvas?.show();
     }
     console.log("cartOffcanvas", cartOffcanvas);
@@ -34,7 +25,6 @@ function HomeHeader() {
 
   return (
     <>
-      {showLoginModal && <LoginModal onClose={closeModal} />}
       <header className="header-main bg-mode-re header-light fixed-top header-height header-option-1">
         <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
           <div className="d-flex justify-content-between align-items-center">
@@ -711,67 +701,74 @@ function HomeHeader() {
                 </a>
               </div>
 
-              {isAuthenticated ? (
-                <>
-                  {/* Acount */}
-                  <div className="nav-item dropdown">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      role="button"
-                      id="dropdown_myaccount"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="fi-user" />
-                    </a>
-                    <div
-                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                      aria-labelledby="dropdown_myaccount"
-                    >
-                      {/* <a className="dropdown-item" href="#">
+              {
+                isLogin ? (
+                  <>
+                    {/* Acount */}
+                    <div className="nav-item dropdown">
+                      <a
+                        className="nav-link"
+                        href="#"
+                        role="button"
+                        id="dropdown_myaccount"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i className="fi-user" />
+                      </a>
+                      <div
+                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                        aria-labelledby="dropdown_myaccount"
+                      >
+                        {/* <a className="dropdown-item" href="#">
                     Login
                   </a>{" "} */}
-                      <Link className="dropdown-item" to="/account-order">
-                        My Orders
-                      </Link>{" "}
-                      <Link className="dropdown-item" to="/account-wishlist">
-                        Wishlist
-                      </Link>{" "}
-                      <Link className="dropdown-item" to="/account-profile">
-                        My account
-                      </Link>
+                        <Link className="dropdown-item" to="/account-order">
+                          My Orders
+                        </Link>{" "}
+                        <Link className="dropdown-item" to="/account-wishlist">
+                          Wishlist
+                        </Link>{" "}
+                        <Link className="dropdown-item" to="/account-profile">
+                          My account
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  {/* Cart */}
-                  <div className="nav-item">
-                    <a
-                      className="nav-link"
-                      data-bs-toggle="offcanvas"
-                      href="#modalMiniCart"
-                      role="button"
-                      aria-controls="modalMiniCart"
-                    >
-                      <span className="" data-cart-items={8}>
-                        <i className="fi-shopping-cart" />
-                      </span>
-                    </a>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Login */}
-                  <a
-                    className="nav-link d-flex align-items-center gap-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => setShowLoginModal(true)}
-                  >
-                    Login
-                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                  </a>
-                </>
-              )}
+                    {/* Cart */}
+                    <div className="nav-item">
+                      <a
+                        className="nav-link"
+                        data-bs-toggle="offcanvas"
+                        href="#modalMiniCart"
+                        role="button"
+                        aria-controls="modalMiniCart"
+                      >
+                        <span className="" data-cart-items={8}>
+                          <i className="fi-shopping-cart" />
+                        </span>
+                      </a>
+                    </div>
+
+                  </>
+                ) : (
+                  <>
+                    {/* Login */}
+                    <div className="nav-item">
+                      <a
+                        className="nav-link d-flex align-items-center gap-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#loginAuthModal"
+                        style={{ cursor: 'pointer' }}
+                      >
+                        Login
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                      </a>
+                    </div>
+
+                  </>
+                )
+              }
             </div>
           </div>
         </nav>
@@ -1062,62 +1059,60 @@ function HomeHeader() {
               </a>
             </div>
             <div className="mob-end d-flex gap-sm-3 gap-2">
-              {isAuthenticated ? (
-                <>
-                  {/* PROFILE */}
-                  <div className="nav-item dropdown">
-                    <a
-                      className="nav-link"
-                      href="#"
-                      role="button"
-                      id="dropdown_myaccount"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <i className="fi-user" />
-                    </a>
-                    <div
-                      className="dropdown-menu dropdown-menu-end mt-2 shadow"
-                      aria-labelledby="dropdown_myaccount"
-                    >
-                      <a className="dropdown-item" href="#">
-                        Register
-                      </a>{" "}
-                      <a className="dropdown-item" href="#">
-                        Wishlist
-                      </a>{" "}
-                      <a className="dropdown-item" href="#">
-                        My account
+              {
+                isLogin ? (
+                  <>
+                    {/* PROFILE */}
+                    <div className="nav-item dropdown">
+                      <a
+                        className="nav-link"
+                        href="#"
+                        role="button"
+                        id="dropdown_myaccount"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i className="fi-user" />
                       </a>
+                      <div
+                        className="dropdown-menu dropdown-menu-end mt-2 shadow"
+                        aria-labelledby="dropdown_myaccount"
+                      >
+                        <a className="dropdown-item" href="#">
+                          Register
+                        </a>{" "}
+                        <a className="dropdown-item" href="#">
+                          Wishlist
+                        </a>{" "}
+                        <a className="dropdown-item" href="#">
+                          My account
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  {/* Login */}
-                  <a
-                    class="nav-item d-flex align-items-center gap-2"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => setShowLoginModal(true)}
-                  >
-                    Login<i class="fa-solid fa-arrow-right-to-bracket"></i>
-                  </a>
-                </>
-              )}
+                  </>
+                ) : (
+                  <>
+                    {/* Login */}
+                    <a class="nav-item d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#loginAuthModal">Login<i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                  </>
+                )
+              }
+
+
             </div>
           </div>
         </div>
         {/* End Mobile Menu */}
-      </header>
+      </header >
 
       {/* Mobile  */}
       <div
         className="offcanvas-lg mobile-nav-offcanvas offcanvas-start d-lg-none @@MobExtraClass"
-        tabIndex={-1}
+        tabIndex={- 1
+        }
         id="offcanvas_mobile_header_01"
-        aria-labelledby="offcanvas_mobile_header_01"
-      >
+        aria-labelledby="offcanvas_mobile_header_01">
         <div className="offcanvas-header">
           <div className="offcanvas-header-overlay" />
           <button
@@ -1201,2724 +1196,247 @@ function HomeHeader() {
           <MegaMenu />
 
           {/* <ul className="navbar-nav mx-auto">
-            
-            <li className="dropdown nav-item vertical-dropdown">
-              <a href="index.html" className="nav-link">
-                <i className="bi bi-grid-3x3-gap" /> Categories
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
-              <ul className="vertical-dropdown-menu dropdown-menu left shadow-none">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-gift me-2" />{" "}
-                    <span>Gifts &amp; Toys</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="row gy-4 pt-5">
-                      <div className="col-sm-6 col-md-4 col-lg-3">
-                        <div
-                          className="p-2 rounded d-flex align-items-center position-relative hover-scale"
-                          style={{ backgroundColor: "#eee" }}
-                        >
-                          <div className="col ps-2 pe-4">
-                            <h5 className="mb-0">
-                              <a href="#" className="stretched-link text-reset">
-                                iPhone 12
-                              </a>
-                            </h5>
-                            <span>2 items</span>
-                          </div>
-                          <div className="avatar avatar-xl hover-scale-in">
-                            <img
-                              height={80}
-                              src="assets/images/iphone_12.png"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-4 col-lg-3">
-                        <div
-                          className="p-2 rounded d-flex align-items-center position-relative hover-scale"
-                          style={{ backgroundColor: "#eee" }}
-                        >
-                          <div className="col ps-2 pe-4">
-                            <h5 className="mb-0">
-                              <a href="#" className="stretched-link text-reset">
-                                iPhone 13
-                              </a>
-                            </h5>
-                            <span>2 items</span>
-                          </div>
-                          <div className="avatar avatar-xl hover-scale-in">
-                            <img
-                              height={80}
-                              src="assets/images/iphone_13.png"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-4 col-lg-3">
-                        <div
-                          className="p-2 rounded d-flex align-items-center position-relative hover-scale"
-                          style={{ backgroundColor: "#eee" }}
-                        >
-                          <div className="col ps-2 pe-4">
-                            <h5 className="mb-0">
-                              <a href="#" className="stretched-link text-reset">
-                                iOs 15
-                              </a>
-                            </h5>
-                            <span>2 items</span>
-                          </div>
-                          <div className="avatar avatar-xl hover-scale-in">
-                            <img
-                              height={80}
-                              src="assets/images/iphone_ios.png"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-4 col-lg-3">
-                        <div
-                          className="p-2 rounded d-flex align-items-center position-relative hover-scale"
-                          style={{ backgroundColor: "#eee" }}
-                        >
-                          <div className="col ps-2 pe-4">
-                            <h5 className="mb-0">
-                              <a href="#" className="stretched-link text-reset">
-                                Shop More
-                              </a>
-                            </h5>
-                            <span>2 items</span>
-                          </div>
-                          <div className="avatar avatar-xl hover-scale-in">
-                            <img
-                              height={80}
-                              src="assets/images/shop_iphone.png"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-laptop me-2" />
-                    <span>Electronics</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="hover-scale overflow-hidden mb-4 rounded">
-                          <a href="#" className="hover-scale-in d-block">
-                            <img
-                              className="card-img-top"
-                              src="assets/images/el-blog-1.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="hover-scale overflow-hidden mb-4 rounded">
-                          <a href="#" className="hover-scale-in d-block">
-                            <img
-                              className="card-img-top"
-                              src="assets/images/el-blog-2.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="hover-scale overflow-hidden mb-4 rounded">
-                          <a href="#" className="hover-scale-in d-block">
-                            <img
-                              className="card-img-top"
-                              src="assets/images/el-blog-3.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="hover-scale overflow-hidden mb-4 rounded">
-                          <a href="#" className="hover-scale-in d-block">
-                            <img
-                              className="card-img-top"
-                              src="assets/images/el-blog-4.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-octagon-half me-2" />{" "}
-                    <span>Fashion &amp; Accessories</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="product-card-8">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span className="badge bg-danger">Sale</span>
-                            </div>
-                            <div className="product-action">
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-repeat" />
-                              </a>
-                              <a
-                                data-bs-toggle="modal"
-                                data-bs-target="#px-quick-view"
-                                href="javascript:void(0)"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-eye" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#" tabIndex={0}>
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/air-pod.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <div className="rating-star text">
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star" />
-                            </div>
-                            <h6 className="product-title">
-                              <a href="#" tabIndex={0}>
-                                Fine-knit sweater
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">
-                                $28.<small>50</small>
-                              </span>{" "}
-                              <del className="fs-sm text-muted">
-                                $38.<small>50</small>
-                              </del>
-                            </div>
-                            <div className="product-cart-btn">
-                              <button
-                                className="btn btn-mode me-3"
-                                onClick={openCart}
-                              >
-                                <i className="fi-shopping-cart" /> Add to cart
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="product-card-8">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span className="badge bg-danger">Sale</span>
-                            </div>
-                            <div className="product-action">
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-repeat" />
-                              </a>
-                              <a
-                                data-bs-toggle="modal"
-                                data-bs-target="#px-quick-view"
-                                href="javascript:void(0)"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-eye" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#" tabIndex={0}>
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/air-pod.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <div className="rating-star text">
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star" />
-                            </div>
-                            <h6 className="product-title">
-                              <a href="#" tabIndex={0}>
-                                Fine-knit sweater
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">
-                                $28.<small>50</small>
-                              </span>{" "}
-                              <del className="fs-sm text-muted">
-                                $38.<small>50</small>
-                              </del>
-                            </div>
-                            <div className="product-cart-btn">
-                              <button
-                                className="btn btn-mode me-3"
-                                onClick={openCart}
-                              >
-                                <i className="fi-shopping-cart" /> Add to cart
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="product-card-8">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span className="badge bg-danger">Sale</span>
-                            </div>
-                            <div className="product-action">
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-repeat" />
-                              </a>
-                              <a
-                                data-bs-toggle="modal"
-                                data-bs-target="#px-quick-view"
-                                href="javascript:void(0)"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-eye" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#" tabIndex={0}>
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/air-pod.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <div className="rating-star text">
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star" />
-                            </div>
-                            <h6 className="product-title">
-                              <a href="#" tabIndex={0}>
-                                Fine-knit sweater
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">
-                                $28.<small>50</small>
-                              </span>{" "}
-                              <del className="fs-sm text-muted">
-                                $38.<small>50</small>
-                              </del>
-                            </div>
-                            <div className="product-cart-btn">
-                              <button
-                                className="btn btn-mode me-3"
-                                onClick={openCart}
-                              >
-                                <i className="fi-shopping-cart" /> Add to cart
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <div className="product-card-8">
-                          <div className="product-card-image">
-                            <div className="badge-ribbon">
-                              <span className="badge bg-danger">Sale</span>
-                            </div>
-                            <div className="product-action">
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-heart" />{" "}
-                              </a>
-                              <a
-                                href="#"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-repeat" />
-                              </a>
-                              <a
-                                data-bs-toggle="modal"
-                                data-bs-target="#px-quick-view"
-                                href="javascript:void(0)"
-                                className="btn btn-outline-primary"
-                                tabIndex={0}
-                              >
-                                <i className="fi-eye" />
-                              </a>
-                            </div>
-                            <div className="product-media">
-                              <a href="#" tabIndex={0}>
-                                <img
-                                  className="img-fluid"
-                                  src="assets/images/air-pod.jpg"
-                                  title=""
-                                  alt=""
-                                />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="product-card-info">
-                            <div className="rating-star text">
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star-fill active" />
-                              <i className="bi bi-star-fill active" />{" "}
-                              <i className="bi bi-star" />
-                            </div>
-                            <h6 className="product-title">
-                              <a href="#" tabIndex={0}>
-                                Fine-knit sweater
-                              </a>
-                            </h6>
-                            <div className="product-price">
-                              <span className="text-primary">
-                                $28.<small>50</small>
-                              </span>{" "}
-                              <del className="fs-sm text-muted">
-                                $38.<small>50</small>
-                              </del>
-                            </div>
-                            <div className="product-cart-btn">
-                              <button
-                                className="btn btn-mode me-3"
-                                onClick={openCart}
-                              >
-                                <i className="fi-shopping-cart" /> Add to cart
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-bag me-2" />{" "}
-                    <span>Bags &amp; Shoes</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Smartphone
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Towels Cloud
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Electronics
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div
-                      className="row g-0 px-4 px-lg-5 py-3 align-items-center rounded bg-cover bg-fiex bg-center border mt-4"
-                      style={{
-                        backgroundImage: "url(assets/images/el-banner-6.jpg)",
-                      }}
-                    >
-                      <div className="col-md-8 my-3 text-center text-md-start">
-                        <h3 className="h3 text-white m-0">
-                          Eat clean &amp; green. Eat Organic.
-                        </h3>
-                      </div>
-                      <div className="col-md-4 my-3 text-center text-md-end">
-                        <a className="btn btn-white" href="#" tabIndex={0}>
-                          Discover More
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-watch me-2" />{" "}
-                    <span>Optimum Electronics</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffe1db" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#f62b22" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              Accessories
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/accessories.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#e6ffd6" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#2e6b1c" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              Airpods
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/airpods.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffdee1" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              Airtag
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/airtag.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffdee1" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              iphone
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/iphone.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffe1db" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#f62b22" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              iPhone 12
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/iphone_12.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#e6ffd6" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#2e6b1c" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              iPhone 13
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/iphone_13.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffdee1" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              iphone iOs
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/iphone_ios.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                      <div className="col-lg-3">
-                        <div
-                          className="px-4 position-relative pt-5 text-center rounded"
-                          style={{ backgroundColor: "#ffdee1" }}
-                        >
-                          <div className="pb-1">
-                            <h6 style={{ color: "#fe0d25" }}>New Arrival</h6>
-                            <h3 className="m-0 h5">
-                              Organic and fresh
-                              <br />
-                              30% off
-                            </h3>
-                          </div>
-                          <a href="#" className="stretched-link">
-                            <img
-                              src="assets/images/accessories.png"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="fi-heart me-2" />{" "}
-                    <span>Health &amp; Beauty</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-house-door me-2" />{" "}
-                    <span>Home &amp; Lights</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-lg-6">
-                        <div className="row gy-4">
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6 d-flex flex-column">
-                        <div
-                          className="rounded h-100 bg-cover bg-no-repeat d-flex align-items-center justify-content-center py-8 p-xl-5"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-2.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-droplet me-2" />
-                    <span>Metallurgy</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-lg-6 d-flex flex-column">
-                        <div
-                          className="rounded h-100 bg-cover bg-no-repeat d-flex align-items-center justify-content-center py-8 p-xl-5"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-1.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-6">
-                        <div className="row gy-4">
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div className="col-6">
-                            <h6 className="sm-title-04">
-                              <a className="text-reset" href="#">
-                                Harum Quidem
-                              </a>
-                            </h6>
-                            <ul className="list-unstyled link-list-style-03">
-                              <li>
-                                <a href="#">All Harum Quidem</a>
-                              </li>
-                              <li>
-                                <a href="#">Cosmopolis</a>
-                              </li>
-                              <li>
-                                <a href="#">Suitó</a>
-                              </li>
-                              <li>
-                                <a href="#">Milancélos</a>
-                              </li>
-                              <li>
-                                <a href="#">Blazéro</a>
-                              </li>
-                              <li>
-                                <a href="#">Glamos</a>
-                              </li>
-                              <li>
-                                <a href="#">Metropolis</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-badge-ad me-2" />
-                    <span>Bedroom</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row gy-4">
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-6 col-md-4 col-lg-3">
-                        <h6 className="sm-title-04">
-                          <a className="text-reset" href="#">
-                            Harum Quidem
-                          </a>
-                        </h6>
-                        <ul className="list-unstyled link-list-style-03">
-                          <li>
-                            <a href="#">All Harum Quidem</a>
-                          </li>
-                          <li>
-                            <a href="#">Cosmopolis</a>
-                          </li>
-                          <li>
-                            <a href="#">Suitó</a>
-                          </li>
-                          <li>
-                            <a href="#">Milancélos</a>
-                          </li>
-                          <li>
-                            <a href="#">Blazéro</a>
-                          </li>
-                          <li>
-                            <a href="#">Glamos</a>
-                          </li>
-                          <li>
-                            <a href="#">Metropolis</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    <i className="bi bi-command me-2" />{" "}
-                    <span>Industrial Parts</span>
-                  </a>{" "}
-                  <label className="px-dropdown-toggle mob-menu" />
-                  <div className="vertical-mm-in">
-                    <div className="row g-3">
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-1.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-2.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-3.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-4.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-5.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-lg-4">
-                        <div
-                          className="min-h-250px bg-center bg-cover rounded d-flex flex-column align-items-center justify-content-center"
-                          style={{
-                            backgroundImage:
-                              "url(assets/images/el-banner-6.jpg)",
-                          }}
-                        >
-                          <div className="w-100 text-center">
-                            <h6 className="text-uppercase fw-300 text-white mb-2">
-                              NEW IN
-                            </h6>
-                            <h3 className="fw-400 h3 text-white">
-                              Canyon
-                              <br />
-                              Star Raider
-                            </h3>
-                            <div className="pt-2">
-                              <a className="btn btn-white btn-sm" href="#">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+            <li className="nav-item">
+              <a className="nav-link" href="/">Home</a>
             </li>
-            <li className="dropdown dropdown-full nav-item">
-              <a href="#" className="nav-link">
-                Demos
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
-              <div className="dropdown-menu dropdown-mega-menu py-0">
-                <div className="container p-3 p-lg-4">
-                  <div className="row gy-4">
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">Home Options</h6>
-                      <ul className="list-unstyled link-list-style-02 m-0">
-                        <li>
-                          <a href="../home/index.html">Home Option 1</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-02.html">Home Option 2</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-03.html">Home Option 3</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-04.html">Home Option 4</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-05.html">Home Option 5</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-06.html">Home Option 6</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-07.html">Home Option 7</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-08.html">Home Option 8</a>
-                        </li>
-                        <li>
-                          <a href="../home/index-09.html">Home Option 9</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../home/index-10.html">Home Option 10</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../home/index-11.html">Home Option 11</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../home/index-12.html">Home Option 12</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 1</h6>
-                      <ul className="list-unstyled link-list-style-02 mb-4">
-                        <li>
-                          <a href="../shop-01/shop.html">Shop Page</a>
-                        </li>
-                        <li>
-                          <a href="../shop-01/shop-filter.html">Shop Filter</a>
-                        </li>
-                        <li>
-                          <a href="../shop-01/shop-fw-left.html">
-                            Shop Full Width
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../shop-01/shop-fw-right.html">
-                            Shop Right Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../shop-01/shop-fw-without-filtres.html">
-                            Shop No Sidebar
-                          </a>
-                        </li>
-                      </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 2</h6>
-                      <ul className="list-unstyled link-list-style-02 m-0">
-                        <li>
-                          <a href="../shop-02/shop.html">Shop Page</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../shop-02/shop-fw.html">Shop Full Width</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 3</h6>
-                      <ul className="list-unstyled link-list-style-02 mb-4">
-                        <li>
-                          <a href="../shop-03/shop.html">Shop Page</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../shop-03/shop-fw.html">Shop Full Width</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">Shop Option 4</h6>
-                      <ul className="list-unstyled link-list-style-02 mb-4">
-                        <li>
-                          <a href="../shop-04/shop.html">Shop Page</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../shop-04/shop-fw.html">Shop Full Width</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">Shopping Cart</h6>
-                      <ul className="list-unstyled link-list-style-02 m-0">
-                        <li>
-                          <a href="../account/shopping-cart.html">Cart Page</a>
-                        </li>
-                        <li>
-                          <a href="../account/shop-cart.html">Cart Page 02</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">
-                        Product Detail Page
-                      </h6>
-                      <ul className="list-unstyled link-list-style-02 mb-0">
-                        <li>
-                          <a href="../product-details/product-details.html">
-                            Product Detail 01
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-02.html">
-                            Product Detail 01
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-03.html">
-                            Product Detail 03
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-04.html">
-                            Product Detail 04
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-05.html">
-                            Product Detail 05
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-06.html">
-                            Product Detail 06
-                          </a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../product-details/product-details-07.html">
-                            Product Detail 07
-                          </a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">Account Pages</h6>
-                      <ul className="list-unstyled link-list-style-02 mb-0">
-                        <li>
-                          <a href="../account/account-address.html">Address</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-order.html">Order</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-payment.html">Payment</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-profile.html">Profile</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-tickets.html">Tickets</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-wishlist.html">
-                            Wishlist
-                          </a>
-                        </li>
-                        <li>
-                          <a href="../account/wishlist.html">Wishlist 02</a>
-                        </li>
-                        <li>
-                          <a href="../account/account-tabs.html">Account Tab</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-02 mb-3 fw-500">Login</h6>
-                      <ul className="list-unstyled link-list-style-02 mb-4">
-                        <li>
-                          <a href="../account/login.html">Login</a>
-                        </li>
-                        <li>
-                          <a href="../account/login-02.html">Login 02</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../account/sign-up.html">Sign Up</a>
-                        </li>
-                        <li>
-                          <a href="../account/sign-up-02.html">Sign Up 02</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                        <li>
-                          <a href="../account/reset-password.html">
-                            Reset Password
-                          </a>
-                        </li>
-                      </ul>
-                      <h6 className="sm-title-02 mb-3 fw-500">Checkout</h6>
-                      <ul className="list-unstyled link-list-style-02 m-0">
-                        <li>
-                          <a href="../account/checkout.html">Checkout</a>
-                        </li>
-                        <li>
-                          <a href="../account/checkout-02.html">Checkout 02</a>{" "}
-                          <span className="menu-label">New</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">Latest</a>
             </li>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">Collection</a>
+            </li>
+
             <li className="dropdown dropdown-full nav-item">
-              <a href="#" className="nav-link">
-                Latest
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
+              <a href="#" className="nav-link">Categories</a>
+              <label className="px-dropdown-toggle mob-menu"></label>
               <div className="dropdown-menu dropdown-mega-menu py-0">
                 <div className="container-fluid p-3 p-lg-4">
                   <div className="row gy-4">
-                    <div className="col-6 col-md-3">
-                      <ul className="list-unstyled link-list-style-04 m-0">
-                        <li>
-                          <a href="#">WHAT'S NEW</a>
-                        </li>
-                        <li>
-                          <a href="#">BEST SELLING</a>
-                        </li>
-                        <li>
-                          <a href="#">TOP RATED</a>
-                        </li>
-                        <li>
-                          <a href="#">MOST POPULAR</a>
-                        </li>
-                        <li>
-                          <a href="#">EDITOR'S PICKS</a>
-                        </li>
-                        <li>
-                          <a href="#">ON SALE</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-05 mb-3 fw-500">Women's</h6>
-                      <ul className="list-unstyled link-list-style-05 m-0">
-                        <li>
-                          <a href="#">Fusion Wear</a>
-                        </li>
-                        <li>
-                          <a href="#">Dress Materials</a>
-                        </li>
-                        <li>
-                          <a href="#">Dupattas &amp; Shawls</a>
-                        </li>
-                        <li>
-                          <a href="#">Ethnic Dresses</a>
-                        </li>
-                        <li>
-                          <a href="#">Jackets &amp; Waistcoats</a>
-                        </li>
-                        <li>
-                          <a href="#">Kurtas &amp; Suits</a>
-                        </li>
-                        <li>
-                          <a href="#">Sarees</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-3 col-xl-2">
-                      <h6 className="sm-title-05 mb-3 fw-500">Living Room</h6>
-                      <ul className="list-unstyled link-list-style-05 m-0">
-                        <li>
-                          <a href="#">Sofa</a>
-                        </li>
-                        <li>
-                          <a href="#">Love Seat</a>
-                        </li>
-                        <li>
-                          <a href="#">Settee Sofa</a>
-                        </li>
-                        <li>
-                          <a href="#">Sleeper Sofas</a>
-                        </li>
-                        <li>
-                          <a href="#">Tuxedo</a>
-                        </li>
-                        <li>
-                          <a href="#">Chair &amp; Ottomans</a>
-                        </li>
-                        <li>
-                          <a href="#">Wing Chair</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-12 col-md-3 col-xl-5 d-flex flex-row">
-                      <div
-                        className="min-h-200px bg-center bg-cover d-flex align-items-center justify-content-center h-100 w-100"
-                        style={{
-                          backgroundImage: "url(assets/images/blog-home-2.jpg)",
-                        }}
-                      >
-                        <div className="text-center px-4 py-3">
-                          <h6 className="text-uppercase text-white mb-0 letter-spacing-4 fw-300">
-                            NEW IN
-                          </h6>
-                          <h3 className="fw-600 h4 text-white">
-                            2022 Collection
-                          </h3>
-                          <div className="pt-2">
-                            <a className="btn btn-white btn-sm" href="#">
-                              Shop Now
-                            </a>
-                          </div>
+
+                    
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/shop-banner-12.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Living Room</a>
+                          </h5>
                         </div>
                       </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Sofa</a></li>
+                        <li><a href="#">Love Seat</a></li>
+                        <li><a href="#">Settee Sofa</a></li>
+                        <li><a href="#">Sleeper Sofas</a></li>
+                        <li><a href="#">Tuxedo</a></li>
+                        <li><a href="#">Chair & Ottomans</a></li>
+                        <li><a href="#">Wing Chair</a></li>
+                      </ul>
                     </div>
+
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/shop-banner-13.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Women</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Fusion Wear</a></li>
+                        <li><a href="#">Dress Materials</a></li>
+                        <li><a href="#">Dupattas & Shawls</a></li>
+                        <li><a href="#">Ethnic Dresses</a></li>
+                        <li><a href="#">Jackets & Waistcoats</a></li>
+                        <li><a href="#">Kurtas & Suits</a></li>
+                        <li><a href="#">Sarees</a></li>
+                      </ul>
+                    </div>
+
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/shop-banner-14.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Western Wear</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Blazers & Waistcoats</a></li>
+                        <li><a href="#">Dresses</a></li>
+                        <li><a href="#">Jackets & Coats</a></li>
+                        <li><a href="#">Jeans & Jeggings</a></li>
+                        <li><a href="#">Jumpsuits</a></li>
+                        <li><a href="#">Shorts & Skirts</a></li>
+                        <li><a href="#">Shrugs</a></li>
+                      </ul>
+                    </div>
+
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/shop-banner-15.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Footwear</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Boots</a></li>
+                        <li><a href="#">Casual Shoes</a></li>
+                        <li><a href="#">Heels</a></li>
+                        <li><a href="#">Sports Shoes</a></li>
+                        <li><a href="#">Sports Wear</a></li>
+                        <li><a href="#">Gym Wear</a></li>
+                        <li><a href="#">Vintage</a></li>
+                      </ul>
+                    </div>
+
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/shop-banner-16.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Kids</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Boys Clothing</a></li>
+                        <li><a href="#">Clothing Sets</a></li>
+                        <li><a href="#">Jacket & Sweater</a></li>
+                        <li><a href="#">Jeans</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">Sleepwear</a></li>
+                        <li><a href="#">T-Shirts</a></li>
+                      </ul>
+                    </div>
+
+                    <div className="col-6 col-md-4 col-lg-2">
+                      <div className="hover-scale position-relative mb-3">
+                        <div className="hover-scale-in">
+                          <a href="#"><img src="assets/images/home-banner-6.jpg" alt="" /></a>
+                        </div>
+                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
+                          <h5 className="m-0 h6 bg-body px-3 py-2">
+                            <a className="text-reset link-effect" href="#">Accessories</a>
+                          </h5>
+                        </div>
+                      </div>
+                      <ul className="list-unstyled link-list-style-02">
+                        <li><a href="#">Handbags</a></li>
+                        <li><a href="#">Hand Purse</a></li>
+                        <li><a href="#">Laptop Bag</a></li>
+                        <li><a href="#">Leather Purse</a></li>
+                        <li><a href="#">Saddle Cross Bag</a></li>
+                        <li><a href="#">Shoulder Bag</a></li>
+                        <li><a href="#">Vintage</a></li>
+                      </ul>
+                    </div>
+
                   </div>
                 </div>
               </div>
             </li>
-            <li className="dropdown dropdown-full nav-item">
-              <a href="#" className="nav-link">
-                Collection
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
-              <div className="dropdown-menu dropdown-mega-menu py-0">
-                <div className="container-fluid p-3 p-lg-4">
-                  <div className="row gy-4">
-                    <div className="col-lg-6">
-                      <div className="row gy-4">
-                        <div className="col-6">
-                          <h6 className="sm-title-04">
-                            <a className="text-reset" href="#">
-                              Harum Quidem
-                            </a>
-                          </h6>
-                          <ul className="list-unstyled link-list-style-03">
-                            <li>
-                              <a href="#">All Harum Quidem</a>
-                            </li>
-                            <li>
-                              <a href="#">Cosmopolis</a>
-                            </li>
-                            <li>
-                              <a href="#">Suitó</a>
-                            </li>
-                            <li>
-                              <a href="#">Milancélos</a>
-                            </li>
-                            <li>
-                              <a href="#">Blazéro</a>
-                            </li>
-                            <li>
-                              <a href="#">Glamos</a>
-                            </li>
-                            <li>
-                              <a href="#">Metropolis</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6">
-                          <h6 className="sm-title-04">
-                            <a className="text-reset" href="#">
-                              Harum Quidem
-                            </a>
-                          </h6>
-                          <ul className="list-unstyled link-list-style-03">
-                            <li>
-                              <a href="#">All Harum Quidem</a>
-                            </li>
-                            <li>
-                              <a href="#">Cosmopolis</a>
-                            </li>
-                            <li>
-                              <a href="#">Suitó</a>
-                            </li>
-                            <li>
-                              <a href="#">Milancélos</a>
-                            </li>
-                            <li>
-                              <a href="#">Blazéro</a>
-                            </li>
-                            <li>
-                              <a href="#">Glamos</a>
-                            </li>
-                            <li>
-                              <a href="#">Metropolis</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6">
-                          <h6 className="sm-title-04">
-                            <a className="text-reset" href="#">
-                              Harum Quidem
-                            </a>
-                          </h6>
-                          <ul className="list-unstyled link-list-style-03">
-                            <li>
-                              <a href="#">All Harum Quidem</a>
-                            </li>
-                            <li>
-                              <a href="#">Cosmopolis</a>
-                            </li>
-                            <li>
-                              <a href="#">Suitó</a>
-                            </li>
-                            <li>
-                              <a href="#">Milancélos</a>
-                            </li>
-                            <li>
-                              <a href="#">Blazéro</a>
-                            </li>
-                            <li>
-                              <a href="#">Glamos</a>
-                            </li>
-                            <li>
-                              <a href="#">Metropolis</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6">
-                          <h6 className="sm-title-04">
-                            <a className="text-reset" href="#">
-                              Harum Quidem
-                            </a>
-                          </h6>
-                          <ul className="list-unstyled link-list-style-03">
-                            <li>
-                              <a href="#">All Harum Quidem</a>
-                            </li>
-                            <li>
-                              <a href="#">Cosmopolis</a>
-                            </li>
-                            <li>
-                              <a href="#">Suitó</a>
-                            </li>
-                            <li>
-                              <a href="#">Milancélos</a>
-                            </li>
-                            <li>
-                              <a href="#">Blazéro</a>
-                            </li>
-                            <li>
-                              <a href="#">Glamos</a>
-                            </li>
-                            <li>
-                              <a href="#">Metropolis</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-6 d-flex flex-column">
-                      <div
-                        className="rounded h-100 bg-cover bg-no-repeat d-flex align-items-center justify-content-center py-8 p-xl-5"
-                        style={{
-                          backgroundImage: "url(assets/images/blog-home-3.jpg)",
-                        }}
-                      >
-                        <div className="w-100 text-center">
-                          <h6 className="text-uppercase fw-300 text-white mb-2">
-                            NEW IN
-                          </h6>
-                          <h3 className="fw-400 h3 text-white">
-                            New Exclusive
-                            <br />
-                            2022 Collection
-                          </h3>
-                          <div className="pt-2">
-                            <a className="btn btn-white btn-sm" href="#">
-                              Shop Now
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li className="dropdown dropdown-full nav-item">
-              <a href="#" className="nav-link">
-                Categories
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
-              <div className="dropdown-menu dropdown-mega-menu py-0">
-                <div className="container-fluid p-3 p-lg-4">
-                  <div className="row gy-4">
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/shop-banner-12.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Living Room
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Sofa</a>
-                        </li>
-                        <li>
-                          <a href="#">Love Seat</a>
-                        </li>
-                        <li>
-                          <a href="#">Settee Sofa</a>
-                        </li>
-                        <li>
-                          <a href="#">Sleeper Sofas</a>
-                        </li>
-                        <li>
-                          <a href="#">Tuxedo</a>
-                        </li>
-                        <li>
-                          <a href="#">Chair &amp; Ottomans</a>
-                        </li>
-                        <li>
-                          <a href="#">Wing Chair</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/shop-banner-13.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Women
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Fusion Wear</a>
-                        </li>
-                        <li>
-                          <a href="#">Dress Materials</a>
-                        </li>
-                        <li>
-                          <a href="#">Dupattas &amp; Shawls</a>
-                        </li>
-                        <li>
-                          <a href="#">Ethnic Dresses</a>
-                        </li>
-                        <li>
-                          <a href="#">Jackets &amp; Waistcoats</a>
-                        </li>
-                        <li>
-                          <a href="#">Kurtas &amp; Suits</a>
-                        </li>
-                        <li>
-                          <a href="#">Sarees</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/shop-banner-14.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Western Wear
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Blazers &amp; Waistcoats</a>
-                        </li>
-                        <li>
-                          <a href="#">Dresses</a>
-                        </li>
-                        <li>
-                          <a href="#">Jackets &amp; Coats</a>
-                        </li>
-                        <li>
-                          <a href="#">Jeans &amp; Jeggings</a>
-                        </li>
-                        <li>
-                          <a href="#">Jumpsuits</a>
-                        </li>
-                        <li>
-                          <a href="#">Shorts &amp; Skirts</a>
-                        </li>
-                        <li>
-                          <a href="#">Shrugs</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/shop-banner-15.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Footwear
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Boots</a>
-                        </li>
-                        <li>
-                          <a href="#">Casual Shoes</a>
-                        </li>
-                        <li>
-                          <a href="#">Heels</a>
-                        </li>
-                        <li>
-                          <a href="#">Sports Shoes</a>
-                        </li>
-                        <li>
-                          <a href="#">Sports Wear</a>
-                        </li>
-                        <li>
-                          <a href="#">Gym Wear</a>
-                        </li>
-                        <li>
-                          <a href="#">Vintage</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/shop-banner-16.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Kids
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Boys Clothing</a>
-                        </li>
-                        <li>
-                          <a href="#">Clothing Sets</a>
-                        </li>
-                        <li>
-                          <a href="#">Jacket &amp; Sweater</a>
-                        </li>
-                        <li>
-                          <a href="#">Jeans</a>
-                        </li>
-                        <li>
-                          <a href="#">Shirts</a>
-                        </li>
-                        <li>
-                          <a href="#">Sleepwear</a>
-                        </li>
-                        <li>
-                          <a href="#">T-Shirts</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#">
-                            <img
-                              src="assets/images/home-banner-6.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">
-                              Accessories
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li>
-                          <a href="#">Handbags</a>
-                        </li>
-                        <li>
-                          <a href="#">Hand Purse</a>
-                        </li>
-                        <li>
-                          <a href="#">Laptop Bag</a>
-                        </li>
-                        <li>
-                          <a href="#">Leather Purse</a>
-                        </li>
-                        <li>
-                          <a href="#">Saddle Cross Bag</a>
-                        </li>
-                        <li>
-                          <a href="#">Shoulder Bag</a>
-                        </li>
-                        <li>
-                          <a href="#">Vintage</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+
             <li className="dropdown nav-item">
-              <a href="#" className="nav-link">
-                Pages
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
+              <a href="#" className="nav-link">Pages</a>
+              <label className="px-dropdown-toggle mob-menu"></label>
               <ul className="dropdown-menu left shadow-lg">
-                <li>
-                  <a className="dropdown-item" href="../pages/about.html">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="../pages/faq.html">
-                    FAQ's
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="../pages/policy.html">
-                    Policy
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="../pages/support.html">
-                    Support
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    href="../pages/support-topic.html"
-                  >
-                    Support Topic
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="../pages/contact-us.html">
-                    Contact Us
-                  </a>
-                </li>
+                <li><a className="dropdown-item" href="../pages/about.html">About</a></li>
+                <li><a className="dropdown-item" href="../pages/faq.html">FAQ's</a></li>
+                <li><a className="dropdown-item" href="../pages/policy.html">Policy</a></li>
+                <li><a className="dropdown-item" href="../pages/support.html">Support</a></li>
+                <li><a className="dropdown-item" href="../pages/support-topic.html">Support Topic</a></li>
+                <li><a className="dropdown-item" href="../pages/contact-us.html">Contact Us</a></li>
               </ul>
             </li>
-            <li className="dropdown nav-item">
-              <a href="#" className="nav-link">
-                Blog
-              </a>{" "}
-              <label className="px-dropdown-toggle mob-menu" />
-              <ul className="dropdown-menu left shadow-lg">
-                <li>
-                  <a className="dropdown-item" href="../blog/blog.html">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="../blog/blog-single.html">
-                    Blog Single
-                  </a>
-                </li>
-              </ul>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">Blog</a>
             </li>
           </ul> */}
-          
+
+
         </div>
       </div>
+
+
+      <div
+        className="modal fade"
+        id="loginAuthModal"
+        tabIndex="-1"
+        aria-labelledby="loginAuthModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content p-3">
+            <div className="modal-header border-0">
+              <h5 className="modal-title w-100 text-center" id="loginAuthModalLabel">
+                <img src="assets/images/logo.svg" alt="Logo"></img>
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form className="login-authentication-form">
+                <div className="row mb-3">
+                  <div className="col-12">
+                    <label htmlFor="mobileNumber" className="form-label">
+                      Enter Mobile Number
+                    </label>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="mobileNumber"
+                      placeholder="Enter your mobile"
+                    />
+                  </div>
+                </div>
+                <div className="row mb-3">
+                  <div className="col-12">
+                    <label htmlFor="otpCode" className="form-label">
+                      Enter OTP
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="otpCode"
+                      placeholder="Enter OTP"
+                    />
+                  </div>
+                </div>
+                <div className="row justify-content-center ">
+                  <div className="col-lg-6 col-8 text-center">
+                    <button type="submit" className="btn btn-primary w-100">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </>
   );
 }
