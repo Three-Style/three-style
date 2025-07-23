@@ -259,12 +259,12 @@ function Home() {
             </form>
             <div className="pt-3">
               <div className="nav tag-cloud">
-                <a
+                <Link
                   className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
-                  href="#"
+                  href="shop"
                 >
                   Design
-                </a>{" "}
+                </Link>{" "}
                 <a
                   className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
                   href="#"
@@ -4542,7 +4542,7 @@ function Home() {
                   <div className="col-md-6">
                     <a href="#" className="under-price-section__card">
                       <div className="under-price-section__image-container">
-                        <img src="./assets/images/home/offer-image-one.webp" alt="Sarees Under ₹2000" className="img-fluid" />
+                        <img src="/assets/images/home/offer-image-one.webp" alt="Sarees Under ₹2000" className="img-fluid" />
                         <div className="under-price-section__text-overlay text-end">
                           <h3>Sarees</h3>
                           <p>Under ₹2000</p>
@@ -4553,7 +4553,7 @@ function Home() {
                   <div className="col-md-6">
                     <a href="#" className="under-price-section__card">
                       <div className="under-price-section__image-container">
-                        <img src="./assets/images/home/offer-image-two.webp" alt="Kurtis Under ₹1500" className="img-fluid" />
+                        <img src="/assets/images/home/offer-image-two.webp" alt="Kurtis Under ₹1500" className="img-fluid" />
                         <div className="under-price-section__text-overlay text-start">
                           <h3>Kurtis</h3>
                           <p>Under ₹1500</p>

@@ -57,7 +57,7 @@ function HomeHeader() {
         <nav className="navbar navbar-expand-lg navbar-light d-none d-lg-flex">
           <div className="container">
             {/* Logo */}{" "}
-            <Link className="navbar-brand" to={"../../index.html"}>
+            <Link className="navbar-brand" to={"/"}>
               <img
                 className="logo-dark"
                 src="assets/images/logo.svg"
@@ -721,9 +721,6 @@ function HomeHeader() {
                         className="dropdown-menu dropdown-menu-end mt-2 shadow"
                         aria-labelledby="dropdown_myaccount"
                       >
-                        {/* <a className="dropdown-item" href="#">
-                    Login
-                  </a>{" "} */}
                         <Link className="dropdown-item" to="/account-order">
                           My Orders
                         </Link>{" "}
@@ -1018,10 +1015,10 @@ function HomeHeader() {
                   </div>
                 </div>
                 <div className="d-grid gap-2 mx-auto">
-                  <a className="btn btn-primary" href="checkout-shipping.html">
+                  <Link className="btn btn-primary"  to="/checkout">
                     <i className="bi-credit-card-2-back me-2" />
                     Proceed to Checkout
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1079,15 +1076,16 @@ function HomeHeader() {
                         className="dropdown-menu dropdown-menu-end mt-2 shadow"
                         aria-labelledby="dropdown_myaccount"
                       >
-                        <a className="dropdown-item" href="#">
-                          Register
-                        </a>{" "}
-                        <a className="dropdown-item" href="#">
+                        <Link className="dropdown-item" to="/account-order">
+                          My Orders
+                        </Link>
+                        <Link className="dropdown-item" to="/account-wishlist">
                           Wishlist
-                        </a>{" "}
-                        <a className="dropdown-item" href="#">
+                        </Link>
+                         <Link className="dropdown-item" to="/account-profile">
                           My account
-                        </a>
+                        </Link>
+                        
                       </div>
                     </div>
                   </>

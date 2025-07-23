@@ -34178,13 +34178,12 @@ header [data-cart-items]:before {
 
 .mobile-nav-offcanvas .mob-menu {
     position: absolute;
-    top: 0;
+    top: 15px;
     right: 0;
-    width: 40px;
-    height: 52px;
     text-align: center;
-    line-height: 52px;
-    color: var(--bs-text-mode)
+    color: var(--bs-text-mode);
+    background-color: unset;
+    border: unset;
 }
 
 .mobile-nav-offcanvas .mob-menu:after {
@@ -39662,4 +39661,12 @@ input[type="checkbox"] {
     .under-price-section__text-overlay p {
         font-size: 20px;
     }
+}
+
+.not-found-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Optional, for full vertical centering */
+  margin: 0;
 }

@@ -64,15 +64,7 @@ function ProfileSideMenu() {
                 Profile info
               </a>
             </li>
-            <li className="border-bottom mb-0">
-              <a
-                className="nav-link-style d-flex align-items-center p-3"
-                href="account-address"
-              >
-                <i className="bi bi-map-fill me-2" />
-                Addresses
-              </a>
-            </li>
+           
             <li className="border-bottom mb-0">
               <a
                 className="nav-link-style d-flex align-items-center p-3"
