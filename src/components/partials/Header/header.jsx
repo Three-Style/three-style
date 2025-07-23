@@ -27,10 +27,7 @@ function HomeHeader() {
         window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
       bsOffcanvas?.show();
     }
-    console.log("cartOffcanvas", cartOffcanvas);
   };
-
-  console.log("window.bootstrap", window.bootstrap);
 
   return (
     <>

@@ -6,7 +6,6 @@ import { axiosInstance } from "../assets/js/config/api";
 import { toast } from "react-toastify";
 
 const AccountProfile = () => {
-  const [profileImage, setProfileImage] = useState("");
   const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
     user_id: "",
@@ -42,7 +41,7 @@ const AccountProfile = () => {
 
       setFormData((prevData) => ({
         ...prevData,
-        profilePhoto: "https://files.fggroup.in/" + photoUrl,
+        profilePhoto: "https://files.threestyle.in/" + photoUrl,
         profile_image: photoUrl,
       }));
 
@@ -112,8 +111,14 @@ const AccountProfile = () => {
           last_name: userData.user.last_name || "",
           mobile: userData.user.mobile || "",
           email: userData.user.email || "",
+          address_line_1: userData.user.address.address_line_1 || "",
+          address_line_2: userData.user.address.address_line_2 || "",
+          city: userData.user.address.city || "",
+          state: userData.user.address.state || "",
+          country: userData.user.address.country || "",
+          pin_code: userData.user.address.pin_code || "",
           profilePhoto:
-            "https://files.fggroup.in/" + (userData.user.profile_image || ""),
+            "https://files.threestyle.in/" + (userData.user.profile_image || ""),
         }));
       }
     } catch (error) {
@@ -169,11 +174,11 @@ const AccountProfile = () => {
                       <div className="col-12">
                         <div className="profile-container d-flex flex-lg-row flex-column mb-2">
                           <div className="profile-image">
-                            <img src={profileImage || ""} alt="" />
+                            <img src={formData.profilePhoto || ""} alt="" />
                           </div>
                           <div className="user-photo-access">
                             <div className="profile-name">
-                              Brijesh Prajapati
+                              {formData.first_name ? (formData.first_name + ' ' + formData.last_name) : 'Three Style'} 
                             </div>
                             <div className="photos-btn-wrapper">
                               <button type="button" onClick={handleUploadClick}>
@@ -209,6 +214,7 @@ const AccountProfile = () => {
                           name="user_id"
                           value={formData.user_id}
                           onChange={handleChange}
+                          disabled
                         />
                       </div>
                       <div className="col-sm-6 mb-3">
@@ -272,9 +278,9 @@ const AccountProfile = () => {
                           className="form-control"
                           type="text"
                           id="address-company"
-                          name="officeName"
+                          name="address_line_1"
                           placeholder="House No/Building Name/Office Name"
-                          value={formData.officeName}
+                          value={formData.address_line_1}
                           onChange={handleChange}
                         />
                       </div>
@@ -286,9 +292,9 @@ const AccountProfile = () => {
                           className="form-control"
                           type="text"
                           id="address-city"
-                          name="roadName"
+                          name="address_line_2"
                           placeholder="Road Name/Area/Colony"
-                          value={formData.roadName}
+                          value={formData.address_line_2}
                           onChange={handleChange}
                         />
                       </div>
@@ -346,8 +352,8 @@ const AccountProfile = () => {
                           id="address-zip"
                           required=""
                           placeholder="Postal Code"
-                          name="postalCode"
-                          value={formData.postalCode}
+                          name="pin_code"
+                          value={formData.pin_code}
                           onChange={handleChange}
                         />
                       </div>

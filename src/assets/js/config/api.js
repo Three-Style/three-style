@@ -4,7 +4,6 @@ import apiConfig from './apiConfig';
 let USER_ROUTE = '/user/v1';
 let PUBLIC_ROUTE = '/public/v1';
 let BASE_URL = apiConfig.BASE_URL + USER_ROUTE;
-let FWG_BASE_URL = apiConfig.FWG_BASE_URL + USER_ROUTE;
 let PUBLIC_URL = apiConfig.BASE_URL + PUBLIC_ROUTE;
 const FILE_BASE_URL = 'https://files.threestyle.in/';
 
@@ -14,26 +13,6 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(
-  (config) => {
-    const authorization = localStorage.getItem('three_style_user_authorization');
-
-    if (authorization) {
-      config.headers['authorization'] = authorization;
-    }
-
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  },
-);
-
-//FWG User URL
-export const axiosInstanceFwg = axios.create({
-  baseURL: FWG_BASE_URL,
-});
-
-axiosInstanceFwg.interceptors.request.use(
   (config) => {
     const authorization = localStorage.getItem('three_style_user_authorization');
 
