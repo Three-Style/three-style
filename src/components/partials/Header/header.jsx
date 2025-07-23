@@ -1084,7 +1084,7 @@ function HomeHeader() {
                       aria-labelledby="dropdown_myaccount"
                     >
                       <Link className="dropdown-item" to="/account-order">
-                        Register
+                        My Orders
                       </Link>{" "}
                       <Link className="dropdown-item" to="/account-wishlist">
                         Wishlist

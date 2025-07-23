@@ -837,9 +837,9 @@ function Home() {
           <div className="mob-header-btn-fixed-01 d-lg-none">
             <div className="mob-hb-in">
               <div className="mob-hb-item">
-                <a className="mob-hb-link" href="#">
+                <Link className="mob-hb-link" to="shop">
                   <i className="fi-grid" /> <span>Shop</span>
-                </a>
+                </Link>
               </div>
               <div className="mob-hb-item">
                 <a
@@ -853,15 +853,14 @@ function Home() {
                   <span>Search</span>
                 </a>
               </div>
-              {/* <div className="mob-hb-item"><a href="#" className="mob-hb-link" data-bs-toggle="modal"
-            data-bs-target="#topbarlogin"><i className="fi-user"></i> <span>Login</span></a></div> */}
+
               <div className="mob-hb-item">
-                <a href="#" className="mob-hb-link">
+                <Link to="/account-wishlist" className="mob-hb-link">
                   <i className="fi-heart">
                     <sub>08</sub>
                   </i>
                   <span>Wishlist</span>
-                </a>
+                </Link>
               </div>
               <div className="mob-hb-item">
                 <a
