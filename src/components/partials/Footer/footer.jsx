@@ -59,7 +59,7 @@ function HomeFooter() {
                     <Link to="/support">Help</Link>
                   </li>
                   <li className="pb-2">
-                    <Link to="/contact">Contact Us</Link>
+                    <Link to="/contact-us">Contact Us</Link>
                   </li>
                   <li className="pb-2">
                     <a href="#">Feedback</a>
