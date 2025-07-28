@@ -64,28 +64,6 @@ const Policy = () => {
           </div>
         </section>
         {/* End Section */}
-        {/* Section */}
-        <section className="section border-top bg-primary">
-          <div className="container">
-            <div className="row gy-4 align-items-center">
-              <div className="col-lg-6 text-center text-lg-start">
-                <h3 className="h1 fw-500 ">Need Any Helps?</h3>
-                <p className=" text-opacity-85 m-0">
-                  Contact us and we’ll get back to you as soon as we can.
-                </p>
-              </div>
-              <div className="col-lg-6 text-center text-lg-end">
-                <a className="btn btn-white me-3" href="#">
-                  Discord More
-                </a>{" "}
-                <a className="btn btn-outline-white text-black" href="#">
-                  Help Center
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* End Section */}
       </main>
 
       <HomeFooter />

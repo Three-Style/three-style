@@ -48,9 +48,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Buying and Item Support
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -68,9 +68,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Licensing
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -88,9 +88,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Your Account
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -108,9 +108,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Copyright and Trademarks
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -128,9 +128,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Tax &amp; Compliance
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -148,9 +148,9 @@ const Support = () => {
                     </div>
                     <div className="ps-3 col">
                       <h5 className="h6 mb-2">
-                        <a className="stretched-link text-reset" href="#">
+                        <div className="stretched-link text-reset">
                           Licensing
-                        </a>
+                        </div>
                       </h5>
                       <p className="m-0">
                         Sed ut perspiciatis unde omnis iste natus error sit
@@ -768,28 +768,7 @@ const Support = () => {
           </div>
         </section>
         {/* End Section */}
-        {/* Section */}
-        <section className="section border-top bg-primary">
-          <div className="container">
-            <div className="row gy-4 align-items-center">
-              <div className="col-lg-6 text-center text-lg-start">
-                <h3 className="h1 fw-500 text-white">Need Any Helps?</h3>
-                <p className="text-white text-opacity-85 m-0">
-                  Contact us and we’ll get back to you as soon as we can.
-                </p>
-              </div>
-              <div className="col-lg-6 text-center text-lg-end">
-                <a className="btn btn-white me-3" href="#">
-                  Discord More
-                </a>{" "}
-                <a className="btn btn-outline-white" href="#">
-                  Help Center
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* End Section */}
+ 
       </main>
 
       <HomeFooter />

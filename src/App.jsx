@@ -13,10 +13,8 @@ import AccountWishlist from "./pages/account-wishlist";
 import Account from "./pages/account";
 import Checkout from "./pages/checkout";
 import ContactUs from "./pages/contact-us";
-import Login from "./pages/login";
 import Policy from "./pages/policy";
 import ProductDetails from "./pages/product-details";
-import ResetPassword from "./pages/reset-password";
 import Shop from "./pages/shop";
 import Support from "./pages/support";
 import OrderView from "./pages/order-view";
@@ -36,10 +34,8 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/product-details" element={<ProductDetails />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/order-view" element={<OrderView />} />
         <Route path="/support" element={<Support />} />

@@ -3847,14 +3847,14 @@ function Home() {
                 {/* Slide 1 */}
                 <div className="swiper-slide">
                   <div
-                    className="bg-no-repeat bg-cover bg-center px-8"
+                    className="bg-no-repeat bg-cover bg-center"
                     style={{
                       backgroundImage:
-                        "url(assets/images/goggles-home-banner-1.jpg)",
+                        "url(assets/images/home/banner-one.png)",
                     }}
                   >
                     <div className="container">
-                      <div className="row min-vh-75 align-items-center py-12 justify-content-lg-end">
+                      <div className="row align-items-center py-12 justify-content-lg-end">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -3880,14 +3880,47 @@ function Home() {
                 {/* Slide 2 */}
                 <div className="swiper-slide">
                   <div
-                    className="bg-no-repeat bg-cover bg-center px-8"
+                    className="bg-no-repeat bg-cover bg-center"
                     style={{
                       backgroundImage:
-                        "url(assets/images/goggles-home-banner-2.jpg)",
+                        "url(assets/images/home/banner-two.jpg)",
                     }}
                   >
                     <div className="container">
-                      <div className="row min-vh-75 align-items-center py-12">
+                      <div className="row align-items-center py-12 justify-content-lg-end">
+                        <div className="col-lg-6">
+                          <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
+                            TRENDING NOW
+                          </h6>
+                          <h1 className="display-4 fw-600 mb-4 text-white">
+                            New Trending
+                            <br />
+                            Goggles For Women
+                          </h1>
+                          <div className="h4 fw-400 text-white text-opacity-85">
+                            Up To 50% Off Best Selling At $151.00
+                          </div>
+                          <div className="pt-3">
+                            <a className="btn btn-outline-light" href="#">
+                              Discover More
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Slide 3 */}
+                <div className="swiper-slide">
+                  <div
+                    className="bg-no-repeat bg-cover bg-center"
+                    style={{
+                      backgroundImage:
+                        "url(assets/images/home/banner-three.jpg)",
+                    }}
+                  >
+                    <div className="container">
+                      <div className="row align-items-center py-12 justify-content-lg-end">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -3912,6 +3945,8 @@ function Home() {
                 </div>
               </div>
               {/* Navigation Arrows */}
+
+
               <div className="swiper-arrow-style-01 swiper-next swiper-next-01">
                 <i className="bi bi-chevron-right" />
               </div>
@@ -4457,7 +4492,7 @@ function Home() {
                       </div>
                       {/* End Product */}
                     </div>
-                    <div className="swiper-pagination mt-4 position-relative" />
+                    {/* <div className="swiper-pagination mt-4 position-relative" /> */}
                   </div>
                   <div className="swiper-arrow-style-01 swiper-next swiper-next-02">
                     <i className="bi bi-chevron-right" />
