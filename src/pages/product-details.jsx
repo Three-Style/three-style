@@ -1,44 +1,45 @@
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
-import React, { useEffect } from 'react'
-import Swiper from 'swiper'
-import { Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules'
+import React, { useEffect, useState } from "react";
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, Thumbs } from "swiper/modules";
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { publicAxiosInstance } from "../assets/js/config/api";
 
 const ProductDetails = () => {
   useEffect(() => {
     // Initialize Swiper sliders after component mounts
     const initializeSwipers = () => {
       // Initialize all swiper containers
-      const swiperContainers = document.querySelectorAll('.swiper-container');
+      const swiperContainers = document.querySelectorAll(".swiper-container");
 
       swiperContainers.forEach((container, index) => {
         // Get data-swiper-options if available
-        const dataOptions = container.getAttribute('data-swiper-options');
+        const dataOptions = container.getAttribute("data-swiper-options");
         let options = {
           modules: [Navigation, Pagination, Autoplay],
           slidesPerView: 2,
           spaceBetween: 24,
           pagination: {
-            el: '.swiper-pagination',
-            type: 'progressbar',
+            el: ".swiper-pagination",
+            type: "progressbar",
           },
           navigation: {
-            nextEl: '.swiper-next-02',
-            prevEl: '.swiper-prev-02',
+            nextEl: ".swiper-next-02",
+            prevEl: ".swiper-prev-02",
           },
           breakpoints: {
             600: {
-              slidesPerView: 2
+              slidesPerView: 2,
             },
             991: {
-              slidesPerView: 3
+              slidesPerView: 3,
             },
             1300: {
-              slidesPerView: 5
-            }
-          }
+              slidesPerView: 5,
+            },
+          },
         };
 
         // If data-swiper-options exists, parse and merge it
@@ -47,15 +48,21 @@ const ProductDetails = () => {
             const parsedOptions = JSON.parse(dataOptions);
             options = { ...options, ...parsedOptions };
           } catch (e) {
-            console.warn('Failed to parse swiper options:', e);
+            console.warn("Failed to parse swiper options:", e);
           }
         }
 
         // Create unique navigation selectors for multiple sliders
         if (swiperContainers.length > 1) {
-          const nextEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-next-02');
-          const prevEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-prev-02');
-          const paginationEl = container.closest('.swiper-hover-arrow')?.querySelector('.swiper-pagination');
+          const nextEl = container
+            .closest(".swiper-hover-arrow")
+            ?.querySelector(".swiper-next-02");
+          const prevEl = container
+            .closest(".swiper-hover-arrow")
+            ?.querySelector(".swiper-prev-02");
+          const paginationEl = container
+            .closest(".swiper-hover-arrow")
+            ?.querySelector(".swiper-pagination");
 
           if (nextEl && prevEl) {
             options.navigation = {
@@ -76,26 +83,28 @@ const ProductDetails = () => {
       });
 
       // Initialize product gallery sliders if they exist
-      const swiperGallery = document.querySelector('.swiper_gallery');
-      const swiperThumbGallery = document.querySelector('.swiper_thumb_gallery');
+      const swiperGallery = document.querySelector(".swiper_gallery");
+      const swiperThumbGallery = document.querySelector(
+        ".swiper_thumb_gallery"
+      );
 
       if (swiperThumbGallery && swiperGallery) {
-        const swiper_gallery = new Swiper('.swiper_thumb_gallery', {
+        const swiper_gallery = new Swiper(".swiper_thumb_gallery", {
           modules: [Navigation, Thumbs],
           spaceBetween: 10,
           slidesPerView: 5,
           freeMode: true,
           watchSlidesProgress: true,
           navigation: {
-            nextEl: '.swiper-next-pd-details_thumb',
-            prevEl: '.swiper-prev-pd-details_thumb',
+            nextEl: ".swiper-next-pd-details_thumb",
+            prevEl: ".swiper-prev-pd-details_thumb",
           },
         });
 
-        const swiper2 = new Swiper('.swiper_gallery', {
+        const swiper2 = new Swiper(".swiper_gallery", {
           modules: [Navigation, Thumbs],
           spaceBetween: 10,
-          effect: 'fade',
+          effect: "fade",
           thumbs: {
             swiper: swiper_gallery,
           },
@@ -107,40 +116,41 @@ const ProductDetails = () => {
     const initializeLightbox = () => {
       // Check if jQuery and Magnific Popup are available
       if (window.$ && window.$.fn.magnificPopup) {
-        const GalleryPopup = window.$('.lightbox-gallery');
+        const GalleryPopup = window.$(".lightbox-gallery");
         if (GalleryPopup.length > 0) {
-          window.$('.lightbox-gallery').magnificPopup({
-            delegate: '.gallery-link',
-            type: 'image',
-            tLoading: 'Loading image #%curr%...',
-            mainClass: 'mfp-fade',
+          window.$(".lightbox-gallery").magnificPopup({
+            delegate: ".gallery-link",
+            type: "image",
+            tLoading: "Loading image #%curr%...",
+            mainClass: "mfp-fade",
             fixedContentPos: true,
             closeBtnInside: false,
             gallery: {
               enabled: true,
               navigateByImgClick: true,
-              preload: [0, 1] // Will preload 0 - before current, and 1 after current image
-            }
+              preload: [0, 1], // Will preload 0 - before current, and 1 after current image
+            },
           });
         }
       } else {
         // Fallback: try to load Magnific Popup dynamically
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js';
+        const script = document.createElement("script");
+        script.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js";
         script.onload = () => {
           if (window.$ && window.$.fn.magnificPopup) {
-            window.$('.lightbox-gallery').magnificPopup({
-              delegate: '.gallery-link',
-              type: 'image',
-              tLoading: 'Loading image #%curr%...',
-              mainClass: 'mfp-fade',
+            window.$(".lightbox-gallery").magnificPopup({
+              delegate: ".gallery-link",
+              type: "image",
+              tLoading: "Loading image #%curr%...",
+              mainClass: "mfp-fade",
               fixedContentPos: true,
               closeBtnInside: false,
               gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0, 1]
-              }
+                preload: [0, 1],
+              },
             });
           }
         };
@@ -156,10 +166,30 @@ const ProductDetails = () => {
   }, []);
   const { openCart } = useCart();
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const product_id = searchParams.get("id");
+  const [productData, setProductData] = useState({});
+
+  const getUserData = async () => {
+    try {
+      const response = await publicAxiosInstance.get(
+        `/products?id=${product_id}`
+      );
+      const filteredData = response.data.data;
+      setProductData(filteredData);
+      console.log("filteredData :- ", filteredData);
+    } catch (error) {
+      console.error("Error in getUserData:", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
-
     <>
-
       <HomeHeader />
 
       <main>
@@ -348,24 +378,17 @@ const ProductDetails = () => {
                     <span>Brand name</span>
                   </div>
                   <div className="products-title mb-2">
-                    <h4 className="h4">Fine-knit sweater</h4>
+                    <h4 className="h4">{productData.name}</h4>
                   </div>
                   <div className="product-description">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm
-                      tempor incidid ut labore et dolore magna aliqua. Ut enim ad
-                      minim venialo quis nostrud exercitation ullamco
-                    </p>
+                    <p>{productData.short_description}</p>
                   </div>
                   <div className="product-price fs-3 fw-500 mb-2">
-                    <span className="text-primary">
-                      $28.<small>50</small>
+                    <span className="text-primary me-1">
+                      ₹{productData.discount_price}
                     </span>
-                    <del className="text-muted fs-6">
-                      $38.<small>50</small>
-                    </del>
+                    <del className="text-muted fs-6">₹{productData.price}</del>
                   </div>
-                
                   <div
                     className="count-down count-down-02 mb-3"
                     data-countdown="January 01, 2024 15:00:00"
@@ -385,7 +408,10 @@ const ProductDetails = () => {
                       <button className="btn btn-mode me-3" onClick={openCart}>
                         <i className="fi-shopping-cart" /> Add to cart
                       </button>
-                      <button className="btn btn-mode me-3" style={{ backgroundColor: '#002147'}}>
+                      <button
+                        className="btn btn-mode me-3"
+                        style={{ backgroundColor: "#002147" }}
+                      >
                         <i className="bi bi-lightning-fill" /> Buy Now
                       </button>
                       <button className="btn btn-outline-mode me-3">
@@ -475,9 +501,16 @@ const ProductDetails = () => {
                       <a href="#">Shorts</a>, <a href="#">Cool</a>
                     </p>
                     <p className="theme-link mb-2">
-                      <label className="m-0 text-mode">Tags:</label>{" "}
-                      <a href="#">Fashion</a>, <a href="#">Women</a>,{" "}
-                      <a href="#">Winter</a>
+                      <label className="m-0 text-mode me-1">Tags:</label>
+                      {productData?.tags?.map((data, index) => {
+                        return (
+                          <>
+                            <a href={`#${data}`} key={index}>
+                              {data}
+                            </a>, {' '}
+                          </>
+                        );
+                      })}
                     </p>
                     <p className="theme-link m-0">
                       <label className="m-0 text-mode">Share:</label>{" "}
@@ -574,9 +607,7 @@ const ProductDetails = () => {
                         </div>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </div>
               {/* End Product Details */}
@@ -590,31 +621,29 @@ const ProductDetails = () => {
               <div className="col-lg-7 pe-lg-10">
                 <h5>Details Description</h5>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                  sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim id est laborum.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
                 </p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                  sint occaecat cupidatat non proident, sunt in culpa qui
-                  officia deserunt mollit anim id est laborum.
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
                 </p>
                 <h5 className="pt-3">Sample Unordered List</h5>
                 <ul className="mb-5">
                   <li>Comodous in tempor ullamcorper miaculis</li>
-                  <li>
-                    Pellentesque vitae neque mollis urna mattis laoreet.
-                  </li>
+                  <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
                   <li>Divamus sit amet purus justo.</li>
                   <li>
                     Proin molestie egestas orci ac suscipit risus posuere
@@ -624,9 +653,7 @@ const ProductDetails = () => {
                 <h5>Sample Ordered Lista</h5>
                 <ol>
                   <li>Comodous in tempor ullamcorper miaculis</li>
-                  <li>
-                    Pellentesque vitae neque mollis urna mattis laoreet.
-                  </li>
+                  <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
                   <li>Divamus sit amet purus justo.</li>
                   <li>
                     Proin molestie egestas orci ac suscipit risus posuere
@@ -634,9 +661,9 @@ const ProductDetails = () => {
                   </li>
                 </ol>
                 <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
                 </blockquote>
               </div>
               <div className="col-lg-5">
@@ -858,7 +885,7 @@ const ProductDetails = () => {
                               title=""
                               alt=""
                             />
-                            </Link>
+                          </Link>
                         </div>
                       </div>
                       <div className="product-card-info">
@@ -939,7 +966,7 @@ const ProductDetails = () => {
 
       <HomeFooter />
     </>
-  )
-}
+  );
+};
 
-export default ProductDetails
+export default ProductDetails;

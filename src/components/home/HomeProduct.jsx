@@ -48,7 +48,7 @@ const HomeProduct = () => {
                         </a>
                       </div>
                       <div className="product-media">
-                        <Link to="/product-details">
+                        <Link to={"/product-details?id="+data._id}>
                           <img
                             className="img-fluid"
                             src={data?.display_image ? `https://files.threestyle.in/${data?.display_image?.[0]}` : "assets/images/swimwear-product-2.jpg"}
@@ -66,7 +66,7 @@ const HomeProduct = () => {
                     </div>
                     <div className="product-card-info">
                       <h6 className="product-title">
-                        <Link to="/product-details">
+                        <Link to={"/product-details?id="+data._id}>
                           {data.name}
                         </Link>
                       </h6>
