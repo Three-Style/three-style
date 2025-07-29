@@ -13,7 +13,10 @@ import AccountWishlist from "./pages/account-wishlist";
 import Account from "./pages/account";
 import Checkout from "./pages/checkout";
 import ContactUs from "./pages/contact-us";
-import Policy from "./pages/policy";
+import PrivacyPolicy from "./pages/privacy-policy";
+import ShippingPolicy from "./pages/shipping-policy";
+import ReturnandRefundPolicy from "./pages/return-and-refund-policy";
+import TermsandConditions from "./pages/terms-and-conditions";
 import ProductDetails from "./pages/product-details";
 import Shop from "./pages/shop";
 import Support from "./pages/support";
@@ -34,7 +37,10 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/policy" element={<Policy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/shipping-policy" element={<ShippingPolicy />} />
+        <Route path="/return-and-refund-policy" element={<ReturnandRefundPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsandConditions />} />
         <Route path="/product-details" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/order-view" element={<OrderView />} />
