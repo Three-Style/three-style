@@ -315,7 +315,10 @@ const ProductDetails = () => {
                       <div className="pd-gallery-slide-thumb">
                         <img
                           src="assets/images/product-x-2.jpg"
-                          className="img-fluid"
+                          className="img-fluid
+                          
+                          
+                          "
                           title=""
                           alt=""
                         />
@@ -543,7 +546,7 @@ const ProductDetails = () => {
                           </div>
                         </div>
                         <div className="col-sm-6 text-sm-end">
-                          <a href="#">View all review</a>
+                          <a href="#view_all_review">View all review</a>
                         </div>
                       </div>
                       <div className="d-flex review-box border-top mt-4 pt-4">
@@ -615,9 +618,9 @@ const ProductDetails = () => {
           </div>
         </section>
 
-        <section className="pb-6 py-md-6 pb-lg-10 pt-lg-5">
+        <section className="pb-6 py-md-6 pb-lg-8 pt-lg-5">
           <div className="container">
-            <div className="row">
+            <div className="row justify-content-center">
               <div className="col-lg-7 pe-lg-10">
                 <h5>Details Description</h5>
                 <p>
@@ -660,13 +663,13 @@ const ProductDetails = () => {
                     loremous
                   </li>
                 </ol>
-                <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
+                {/* <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam
-                </blockquote>
+                </blockquote> */}
               </div>
-              <div className="col-lg-5">
+              <div className="col-lg-5 col-md-8 col-sm-10">
                 <div className="pb-3">
                   <img
                     src="assets/images/product-6.jpg"
@@ -677,6 +680,582 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="view-all-review  py-md-3 py-lg-5
+        
+        
+        " id="view_all_review">
+          <div className="container">
+
+            <div class="text-center section-heading">
+              <h3 class="h1 font-alt">Hear From Our Happy Customers</h3>
+            </div>
+
+            <div className="all-reviews-main-wrapper">
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div className="all-reviews-main-wrapper ani-reverse">
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div className="all-reviews-main-wrapper">
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+              <div className="d-flex review-box">
+                <div>
+                  <div className="review-image">
+                    <img
+                      className="img-fluid"
+                      src="assets/images/product-1.jpg"
+                      title=""
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="col ps-3">
+                  <h6>Nancy Bayer</h6>
+                  <div className="rating-star small">
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star-fill active" />{" "}
+                    <i className="bi small bi-star" />{" "}
+                    <span>13 April 2012</span>
+                  </div>
+                  <p className="m-0 pt-3 reviews-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip
+                    ex ea commodo consequat. Duis aute irure dolor
+                  </p>
+                </div>
+              </div>
+
+
+            </div>
+
+
+
           </div>
         </section>
 

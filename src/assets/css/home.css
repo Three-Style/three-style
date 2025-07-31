@@ -10123,13 +10123,13 @@ button.swiper-pagination-bullet {
     --bs-gray: #4e5562;
     --bs-gray-300: #cad0d9;
 
-  
+
 
 
 
     --bs-black: #000;
     --bs-dark: #02010a;
-    
+
 
 
     /* IMPLIMENTED FONT FAMILY */
@@ -10227,7 +10227,7 @@ body {
     text-align: var(--bs-body-text-align);
     background-color: var(--bs-body-bg);
     -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent
+    -webkit-tap-highlight-color: transparent;
 }
 
 hr {
@@ -34011,9 +34011,11 @@ header [data-cart-items]:before {
     position: relative;
     color: var(--bs-text-mode)
 }
-.mobile-header-01 .mob-end .nav-item  {
+
+.mobile-header-01 .mob-end .nav-item {
     color: rgba(var(--bs-emphasis-color-rgb), .65);
 }
+
 .mobile-header-01 .mob-end .nav-item:hover {
     color: var(--bs-primary-color);
 }
@@ -34488,7 +34490,9 @@ header [data-cart-items]:before {
 body,
 html {
     width: 100%;
-    height: 100%
+    height: 100%;
+    overflow-x: hidden;
+    
 }
 
 .wrapper {
@@ -39196,10 +39200,12 @@ input[type="search"]::-webkit-search-cancel-button {
 .footer-link-1 li {
     color: var(--bs-white);
 }
-.footer-link-1 li a{
+
+.footer-link-1 li a {
     transition: all 0.4s ease;
 }
-.footer-link-1 li a:hover{
+
+.footer-link-1 li a:hover {
     color: var(--bs-link-color);
 }
 
@@ -39576,6 +39582,7 @@ input[type="checkbox"] {
         font-size: 22px;
     }
 }
+
 @media (max-width:480px) {
     .under-price-section__text-overlay {
         padding: 20px;
@@ -39592,9 +39599,113 @@ input[type="checkbox"] {
 }
 
 .not-found-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; /* Optional, for full vertical centering */
-  margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Optional, for full vertical centering */
+    margin: 0;
+}
+
+/* Main Review Section Container */
+
+.view-all-review {
+    overflow-x: hidden;
+}
+/* Scrolling wrapper - contains all review boxes */
+.view-all-review .all-reviews-main-wrapper {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+    padding-bottom: 16px;
+    /* Double the content for seamless looping */
+}
+
+/* Create duplicate content for infinite effect */
+
+
+/* Individual Review Box Styling */
+.view-all-review .review-box {
+    flex: 0 0 auto;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Animation Keyframes */
+@keyframes scrollReviews {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+        /* Only translate half way for seamless loop */
+    }
+}
+
+/* Apply animation to both original and duplicated content */
+.view-all-review .all-reviews-main-wrapper {
+    animation: scrollReviews 30s linear infinite;
+}
+.view-all-review .all-reviews-main-wrapper.ani-reverse {
+  animation-direction: reverse;
+}
+
+
+
+/* Review Image Styles */
+.view-all-review .review-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.view-all-review .review-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Review Content */
+.view-all-review .reviews-description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+
+/* Hover State - Pause Animation */
+/* .view-all-review:hover .all-reviews-main-wrapper,
+.view-all-review:hover .all-reviews-main-wrapper::after {
+    animation-play-state: paused;
+} */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .view-all-review .review-box {
+        width: 280px;
+    }
+
+
+    @keyframes scrollReviews {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+}
+
+/* Hide Scrollbar */
+.view-all-review::-webkit-scrollbar {
+    display: none;
 }
