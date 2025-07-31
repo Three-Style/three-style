@@ -6,6 +6,8 @@ import { Navigation, Pagination, Autoplay, Thumbs } from "swiper/modules";
 import { useCart } from "../context/CartContext";
 import { Link, useLocation } from "react-router-dom";
 import { publicAxiosInstance } from "../assets/js/config/api";
+import ProductReviews from "../components/ProductReviews";
+import dayjs from "dayjs";
 
 const ProductDetails = () => {
   useEffect(() => {
@@ -170,6 +172,17 @@ const ProductDetails = () => {
   const searchParams = new URLSearchParams(location.search);
   const product_id = searchParams.get("id");
   const [productData, setProductData] = useState({});
+  const [selectedImage, setSelectedImage] = useState();
+  const [averageRating, setAverageRating] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
+  const [starPercentages, setStarPercentages] = useState({
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  });
+  const [reviews, setReviews] = useState([]);
 
   const getUserData = async () => {
     try {
@@ -178,7 +191,6 @@ const ProductDetails = () => {
       );
       const filteredData = response.data.data;
       setProductData(filteredData);
-      console.log("filteredData :- ", filteredData);
     } catch (error) {
       console.error("Error in getUserData:", error);
     }
@@ -188,16 +200,53 @@ const ProductDetails = () => {
     getUserData();
   }, []);
 
+  useEffect(() => {
+    getBookFeedback();
+  }, []);
+
+  const getBookFeedback = () => {
+    publicAxiosInstance
+      .get(`/feedback/products?product_id=${product_id}`)
+      .then((response) => {
+        const { data } = response;
+        if (data && data.status === 200) {
+          const feedback = data.data;
+          if (feedback && feedback.length > 0) {
+            let totalPoints = 0;
+            let feedbackCount = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+            feedback.forEach((feedbackItem) => {
+              totalPoints += feedbackItem.feedback_point;
+              feedbackCount[feedbackItem.feedback_point]++;
+            });
+
+            const averagePoints = totalPoints / feedback.length;
+            setAverageRating(averagePoints.toFixed(1));
+            setTotalReviews(feedback.length);
+
+            const feedbackCountPercentage = {};
+            for (let i = 1; i <= 5; i++) {
+              feedbackCountPercentage[i] =
+                (feedbackCount[i] / feedback.length) * 100 || 0;
+            }
+            setStarPercentages(feedbackCountPercentage);
+
+            setReviews(feedback);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching product feedback:", error);
+      });
+  };
+
   return (
     <>
       <HomeHeader />
 
       <main>
-        {/* Breadcrumb */}
         <section className="product-details py-6">
           <div className="container">
             <div className="row">
-              {/* Product Gallery */}
               <div className="col-lg-6 lightbox-gallery product-gallery sticky-top fit-height">
                 <div className="swiper swiper_gallery">
                   <div className="swiper-wrapper">
@@ -205,95 +254,25 @@ const ProductDetails = () => {
                       <div className="pd-gallery-slide">
                         <a
                           className="gallery-link"
-                          href="assets/images/product-x-1.jpg"
+                          href={`https://files.threestyle.in/${
+                            selectedImage
+                              ? selectedImage
+                              : productData?.display_image?.[0]
+                          }`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
+                        </a>
                         <img
-                          src="assets/images/product-x-1.jpg"
+                          src={`https://files.threestyle.in/${
+                            selectedImage
+                              ? selectedImage
+                              : productData?.display_image?.[0]
+                          }`}
                           className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide">
-                        <a
-                          className="gallery-link"
-                          href="assets/images/product-x-2.jpg"
-                        >
-                          <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
-                        <img
-                          src="assets/images/product-x-2.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide">
-                        <a
-                          className="gallery-link"
-                          href="assets/images/product-x-3.jpg"
-                        >
-                          <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
-                        <img
-                          src="assets/images/product-x-3.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide">
-                        <a
-                          className="gallery-link"
-                          href="assets/images/product-x-4.jpg"
-                        >
-                          <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
-                        <img
-                          src="assets/images/product-x-4.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide">
-                        <a
-                          className="gallery-link"
-                          href="assets/images/product-x-5.jpg"
-                        >
-                          <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
-                        <img
-                          src="assets/images/product-x-5.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide">
-                        <a
-                          className="gallery-link"
-                          href="assets/images/product-x-6.jpg"
-                        >
-                          <i className="bi bi-arrows-fullscreen" />
-                        </a>{" "}
-                        <img
-                          src="assets/images/product-x-6.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
+                          alt="Selected"
+                          width="100%"
                         />
                       </div>
                     </div>
@@ -301,69 +280,21 @@ const ProductDetails = () => {
                 </div>
                 <div className="swiper swiper_thumb_gallery product-thumb">
                   <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-1.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
+                    {productData?.display_image?.map((data, index) => (
+                      <div className="swiper-slide" key={index}>
+                        <div
+                          className="pd-gallery-slide-thumb"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setSelectedImage(data)}
+                        >
+                          <img
+                            src={`https://files.threestyle.in/${data}`}
+                            className="img-fluid"
+                            alt={`Thumbnail ${index + 1}`}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-2.jpg"
-                          className="img-fluid
-                          
-                          
-                          "
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-3.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-4.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-5.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="swiper-slide">
-                      <div className="pd-gallery-slide-thumb">
-                        <img
-                          src="assets/images/product-x-6.jpg"
-                          className="img-fluid"
-                          title=""
-                          alt=""
-                        />
-                      </div>
-                    </div>
+                    ))}
                   </div>
                   <div className="swiper-arrow-style-03 swiper-next swiper-next-pd-details_thumb">
                     <i className="bi bi-chevron-right" />
@@ -373,8 +304,6 @@ const ProductDetails = () => {
                   </div>
                 </div>
               </div>
-              {/* End Product Gallery */}
-              {/* Product Details */}
               <div className="col-lg-6 ps-lg-5">
                 <div className="product-detail pt-4 pt-lg-0">
                   <div className="products-brand pb-2">
@@ -500,20 +429,16 @@ const ProductDetails = () => {
                   <div className="pt-3 border-top mt-3 small">
                     <p className="theme-link mb-2">
                       <label className="m-0 text-mode">Categories:</label>{" "}
-                      <a href="#">Sunglasses</a>, <a href="#">Winter</a>,{" "}
-                      <a href="#">Shorts</a>, <a href="#">Cool</a>
+                      {productData?.categories?.name || "-"}
                     </p>
                     <p className="theme-link mb-2">
                       <label className="m-0 text-mode me-1">Tags:</label>
-                      {productData?.tags?.map((data, index) => {
-                        return (
-                          <>
-                            <a href={`#${data}`} key={index}>
-                              {data}
-                            </a>, {' '}
-                          </>
-                        );
-                      })}
+                      {productData?.tags?.map((data, index) => (
+                        <span key={index}>
+                          <a href={`#${data}`}>{data}</a>
+                          {index !== productData.tags.length - 1 && ", "}
+                        </span>
+                      ))}
                     </p>
                     <p className="theme-link m-0">
                       <label className="m-0 text-mode">Share:</label>{" "}
@@ -549,71 +474,45 @@ const ProductDetails = () => {
                           <a href="#view_all_review">View all review</a>
                         </div>
                       </div>
-                      <div className="d-flex review-box border-top mt-4 pt-4">
-                        <div>
-                          <div className="review-image">
-                            <img
-                              className="img-fluid"
-                              src="assets/images/product-1.jpg"
-                              title=""
-                              alt=""
-                            />
+                      {reviews.map((feedback, index) => (
+                        <div
+                          key={index}
+                          className="d-flex review-box border-top mt-4 pt-4"
+                        >
+                          <div>
+                            <div className="review-image">
+                              <img
+                                className="img-fluid"
+                                src={feedback?.user?.profile_image ? `https://files.threestyle.in/${feedback?.user?.profile_image}` : "assets/images/product-1.jpg"}
+                                title=""
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div className="col ps-3">
+                            <h6>
+                              {feedback?.user?.first_name || "TS User"}{" "}
+                              {feedback?.user?.last_name || ""}
+                            </h6>
+                            <div className="rating-star small">
+                              {[1, 2, 3, 4, 5].map((value) => (
+                                <i
+                                  key={value}
+                                  className={`bi small ${feedback.feedback_point >= value ? 'bi-star-fill active' : 'bi-star'} `}
+                                />
+                              ))}
+                              <span className="ms-1">{dayjs(feedback.createdAt).format('D MMMM YYYY')}</span>
+                            </div>
+                            <p className="m-0 pt-3 reviews-description">
+                              {feedback.feedback_comment}
+                            </p>
                           </div>
                         </div>
-                        <div className="col ps-3">
-                          <h6>Nancy Bayer</h6>
-                          <div className="rating-star small">
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star" />{" "}
-                            <span>13 April 2012</span>
-                          </div>
-                          <p className="m-0 pt-3 reviews-description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor
-                          </p>
-                        </div>
-                      </div>
-                      <div className="d-flex review-box border-top mt-4 pt-4">
-                        <div>
-                          <div className="review-image">
-                            <img
-                              className="img-fluid"
-                              src="assets/images/product-1.jpg"
-                              title=""
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <div className="col ps-3">
-                          <h6>Nancy Bayer</h6>
-                          <div className="rating-star small">
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star-fill active" />{" "}
-                            <i className="bi small bi-star" />{" "}
-                            <span>13 April 2012</span>
-                          </div>
-                          <p className="m-0 pt-3 reviews-description">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
-              {/* End Product Details */}
             </div>
           </div>
         </section>
@@ -663,11 +562,6 @@ const ProductDetails = () => {
                     loremous
                   </li>
                 </ol>
-                {/* <blockquote className="bg-gray-100 p-3 lead fw-400 mt-5 text-mode border-start border-primary border-5">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam
-                </blockquote> */}
               </div>
               <div className="col-lg-5 col-md-8 col-sm-10">
                 <div className="pb-3">
@@ -682,583 +576,7 @@ const ProductDetails = () => {
             </div>
           </div>
         </section>
-
-        <section className="view-all-review  py-md-3 py-lg-5
-        
-        
-        " id="view_all_review">
-          <div className="container">
-
-            <div class="text-center section-heading">
-              <h3 class="h1 font-alt">Hear From Our Happy Customers</h3>
-            </div>
-
-            <div className="all-reviews-main-wrapper">
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div className="all-reviews-main-wrapper ani-reverse">
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div className="all-reviews-main-wrapper">
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex review-box">
-                <div>
-                  <div className="review-image">
-                    <img
-                      className="img-fluid"
-                      src="assets/images/product-1.jpg"
-                      title=""
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="col ps-3">
-                  <h6>Nancy Bayer</h6>
-                  <div className="rating-star small">
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star-fill active" />{" "}
-                    <i className="bi small bi-star" />{" "}
-                    <span>13 April 2012</span>
-                  </div>
-                  <p className="m-0 pt-3 reviews-description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor
-                  </p>
-                </div>
-              </div>
-
-
-            </div>
-
-
-
-          </div>
-        </section>
-
+        <ProductReviews />
         <section className="section overflow-hidden">
           <div className="container-fluid">
             <div className="row justify-content-center section-heading">
@@ -1539,8 +857,6 @@ const ProductDetails = () => {
             </div>
           </div>
         </section>
-        {/* End section */}
-        {/* section */}
       </main>
 
       <HomeFooter />
