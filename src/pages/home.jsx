@@ -3854,7 +3854,7 @@ function Home() {
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end">
+                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -3887,7 +3887,7 @@ function Home() {
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end">
+                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -3920,7 +3920,7 @@ function Home() {
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end">
+                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW

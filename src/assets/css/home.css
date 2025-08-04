@@ -35628,6 +35628,24 @@ article blockquote+h5 {
     border-radius: 50%;
     background: var(--bs-bg-mode)
 }
+@media (max-width:991px) {
+    .swiper-arrow-style-01 {
+        width: 35px;
+        height: 35px;
+    }
+    .swiper-arrow-style-01 .bi{
+        font-size: 20px;
+    }
+}
+@media (max-width:575px) {
+    .swiper-arrow-style-01 {
+        width: 30px;
+        height: 30px;
+    }
+    .swiper-arrow-style-01 .bi{
+        font-size: 16px;
+    }
+}
 
 .swiper-arrow-style-01.swiper-button-disabled {
     opacity: .5 !important;
