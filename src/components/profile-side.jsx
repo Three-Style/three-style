@@ -24,15 +24,15 @@ function ProfileSideMenu() {
           last_name: userData.user.last_name || "",
           mobile: userData.user.mobile || "",
           email: userData.user.email || "",
-          address_line_1: userData.user.address.address_line_1 || "",
-          address_line_2: userData.user.address.address_line_2 || "",
-          city: userData.user.address.city || "",
-          state: userData.user.address.state || "",
-          country: userData.user.address.country || "",
-          pin_code: userData.user.address.pin_code || "",
+          address_line_1: userData.user.address?.address_line_1 || "",
+          address_line_2: userData.user.address?.address_line_2 || "",
+          city: userData.user.address?.city || "",
+          state: userData.user.address?.state || "",
+          country: userData.user.address?.country || "",
+          pin_code: userData.user.address?.pin_code || "",
           profilePhoto:
             "https://files.threestyle.in/" +
-            (userData.user.profile_image || ""),
+            (userData.user?.profile_image || ""),
         }));
       }
     } catch (error) {

@@ -111,14 +111,14 @@ const AccountProfile = () => {
           last_name: userData.user.last_name || "",
           mobile: userData.user.mobile || "",
           email: userData.user.email || "",
-          address_line_1: userData.user.address.address_line_1 || "",
-          address_line_2: userData.user.address.address_line_2 || "",
-          city: userData.user.address.city || "",
-          state: userData.user.address.state || "",
-          country: userData.user.address.country || "",
-          pin_code: userData.user.address.pin_code || "",
+          address_line_1: userData.user.address?.address_line_1 || "",
+          address_line_2: userData.user.address?.address_line_2 || "",
+          city: userData.user.address?.city || "",
+          state: userData.user.address?.state || "",
+          country: userData.user.address?.country || "",
+          pin_code: userData.user.address?.pin_code || "",
           profilePhoto:
-            "https://files.threestyle.in/" + (userData.user.profile_image || ""),
+            "https://files.threestyle.in/" + (userData.user?.profile_image || ""),
         }));
       }
     } catch (error) {
@@ -280,7 +280,7 @@ const AccountProfile = () => {
                           id="address-company"
                           name="address_line_1"
                           placeholder="House No/Building Name/Office Name"
-                          value={formData.address_line_1}
+                          value={formData?.address_line_1}
                           onChange={handleChange}
                         />
                       </div>
@@ -294,7 +294,7 @@ const AccountProfile = () => {
                           id="address-city"
                           name="address_line_2"
                           placeholder="Road Name/Area/Colony"
-                          value={formData.address_line_2}
+                          value={formData?.address_line_2}
                           onChange={handleChange}
                         />
                       </div>
@@ -309,7 +309,7 @@ const AccountProfile = () => {
                           required=""
                           placeholder="City"
                           name="city"
-                          value={formData.city}
+                          value={formData?.city}
                           onChange={handleChange}
                         />
                       </div>
@@ -324,7 +324,7 @@ const AccountProfile = () => {
                           required=""
                           placeholder="Enter State Name"
                           name="state"
-                          value={formData.state}
+                          value={formData?.state}
                           onChange={handleChange}
                         />
                       </div>
@@ -338,7 +338,7 @@ const AccountProfile = () => {
                           id="address-line2"
                           placeholder="Enter Country"
                           name="country"
-                          value={formData.country}
+                          value={formData?.country}
                           onChange={handleChange}
                         />
                       </div>
@@ -353,7 +353,7 @@ const AccountProfile = () => {
                           required=""
                           placeholder="Postal Code"
                           name="pin_code"
-                          value={formData.pin_code}
+                          value={formData?.pin_code}
                           onChange={handleChange}
                         />
                       </div>

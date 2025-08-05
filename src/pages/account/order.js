@@ -201,14 +201,14 @@ function UserOrder() {
                     Delivery Address :-
                   </p>
                   <span>
-                    {order.notes.address_line_1 +
-                      (order.notes.address_line_2
-                        ? ", " + order.notes.address_line_2
+                    {order.notes?.address_line_1 +
+                      (order.notes?.address_line_2
+                        ? ", " + order.notes?.address_line_2
                         : "")}
                     ,
                   </span>
                   <span>
-                    {order.notes.city}, {order.notes.pin_code}
+                    {order.notes?.city}, {order.notes?.pin_code}
                   </span>
                 </div>
               </div>

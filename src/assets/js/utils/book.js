@@ -163,7 +163,7 @@ export const createBookOrder = async (book_id, quantity = 1, address) => {
       throw new Error("Address, city, and pin code are required!");
     }
 
-    if (!address.address_line_1 || !address.city || !address.pin_code) {
+    if (!address?.address_line_1 || !address?.city || !address?.pin_code) {
       throw new Error("Address, city, and pin code are required!");
     }
 
@@ -204,13 +204,13 @@ export const createBookOrder = async (book_id, quantity = 1, address) => {
         throw new Error("Pin Code is invalid!");
       }
 
-      payload.address_line_1 = address_line_1;
-      payload.city = city;
-      payload.pin_code = pin_code;
+      payload?.address_line_1 = address_line_1;
+      payload?.city = city;
+      payload?.pin_code = pin_code;
     }
 
     if (address_line_2) {
-      payload.address_line_2 = String(address_line_2).trim();
+      payload?.address_line_2 = String(address_line_2).trim();
     }
     // Will use after authentication
     localStorage.setItem(

@@ -119,7 +119,7 @@
 //           mobile: userData.user.mobile || "",
 //           email: userData.user.email || "",
 //           profilePhoto:
-//             "https://files.threestyle.in/" + (userData.user.profile_image || ""),
+//             "https://files.threestyle.in/" + (userData.user?.profile_image || ""),
 //         }));
 //       }
 //     } catch (error) {

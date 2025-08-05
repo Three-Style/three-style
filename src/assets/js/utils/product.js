@@ -50,12 +50,12 @@ export const directBuyBookAction = () => {
 
 export const createPaymentProduct = (product_id, data, coupon_id, payment_mode) => {
   let quantity = data.quantity
-  let address_line_1 = data.address_line_1
-  let address_line_2 = data.address_line_2
-  let city = data.city
-  let pin_code = data.pin_code
-  let state = data.state
-  let country = data.country
+  let address_line_1 = data?.address_line_1
+  let address_line_2 = data?.address_line_2
+  let city = data?.city
+  let pin_code = data?.pin_code
+  let state = data?.state
+  let country = data?.country
 
   let address = {
     address_line_1: address_line_1,
@@ -87,7 +87,7 @@ export const createProductOrder = async (product_id, quantity = 1, address, coup
       throw new Error('Address, city, and pin code are required!')
     }
 
-    if (!address.address_line_1 || !address.city || !address.pin_code) {
+    if (!address?.address_line_1 || !address?.city || !address?.pin_code) {
       throw new Error('Address, city, and pin code are required!')
     }
 
@@ -136,16 +136,16 @@ export const createProductOrder = async (product_id, quantity = 1, address, coup
         throw new Error('Pin Code is invalid!')
       }
 
-      payload.address_line_1 = address_line_1
-      payload.city = city
-      payload.pin_code = pin_code
-      payload.state = state
-      payload.country = country
+      payload?.address_line_1 = address_line_1
+      payload?.city = city
+      payload?.pin_code = pin_code
+      payload?.state = state
+      payload?.country = country
       payload.payment_mode = payment_mode
     }
 
     if (address_line_2) {
-      payload.address_line_2 = String(address_line_2).trim()
+      payload?.address_line_2 = String(address_line_2).trim()
     }
     // Will use after authentication
     localStorage.setItem(

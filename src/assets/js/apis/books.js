@@ -35,10 +35,10 @@ if (bookSearchParams.has('action') && bookSearchParams.get('action') == 'directB
         try {
             findPayload = JSON.parse(findPayload);
             createBookOrder(findPayload.book_id, findPayload.quantity, {
-                address_line_1: findPayload.address_line_1,
-                address_line_2: findPayload.address_line_2,
-                city: findPayload.city,
-                pin_code: findPayload.pin_code,
+                address_line_1: findPayload?.address_line_1,
+                address_line_2: findPayload?.address_line_2,
+                city: findPayload?.city,
+                pin_code: findPayload?.pin_code,
             });
         } catch (error) {
             console.log(error);
@@ -90,7 +90,7 @@ function createBookOrder(book_id, quantity = 1, address) {
         })
     }
 
-    if (!address.address_line_1 || !address.city || !address.pin_code) {
+    if (!address?.address_line_1 || !address?.city || !address?.pin_code) {
         return Swal.fire({
             title: 'Error',
             text: 'Address, city and pin code are required!',
@@ -148,13 +148,13 @@ function createBookOrder(book_id, quantity = 1, address) {
             })
         }
 
-        payload.address_line_1 = address_line_1
-        payload.city = city
-        payload.pin_code = pin_code
+        payload?.address_line_1 = address_line_1
+        payload?.city = city
+        payload?.pin_code = pin_code
     }
 
     if (address_line_2) {
-        payload.address_line_2 = String(address_line_2).trim()
+        payload?.address_line_2 = String(address_line_2).trim()
     }
 
     // Will use after authentication
