@@ -30949,7 +30949,8 @@ header [data-cart-items]:before {
     }
 
     .navbar-expand-lg .navbar-nav>.nav-item:hover>.dropdown-menu {
-        display: block
+        display: block;
+        z-index: 9999;
     }
 
     .navbar-expand-lg .navbar-nav>.nav-item .mob-menu {
@@ -39726,3 +39727,5 @@ input[type="checkbox"] {
 .view-all-review::-webkit-scrollbar {
     display: none;
 }
+
+
