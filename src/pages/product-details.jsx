@@ -5,7 +5,7 @@ import Swiper from "swiper";
 import { Navigation, Pagination, Autoplay, Thumbs } from "swiper/modules";
 import { useCart } from "../context/CartContext";
 import { Link, useLocation } from "react-router-dom";
-import { publicAxiosInstance } from "../assets/js/config/api";
+import { axiosInstance, publicAxiosInstance } from "../assets/js/config/api";
 import ProductReviews from "../components/ProductReviews";
 import dayjs from "dayjs";
 
@@ -173,6 +173,7 @@ const ProductDetails = () => {
   const product_id = searchParams.get("id");
   const [productData, setProductData] = useState({});
   const [selectedImage, setSelectedImage] = useState();
+  const [productQuantity, setProductQuantity] = useState(1);
   const [averageRating, setAverageRating] = useState(0);
   const [totalReviews, setTotalReviews] = useState(0);
   const [starPercentages, setStarPercentages] = useState({
@@ -237,6 +238,18 @@ const ProductDetails = () => {
       .catch((error) => {
         console.error("Error fetching product feedback:", error);
       });
+  };
+
+  const addToCartProduct = async (data) => {
+    const response = await axiosInstance.post("/order-cart/add-item", {
+      item_id: data._id,
+      quantity: productQuantity || 1,
+      item_type: "CLOTHING_PRODUCT",
+    });
+    if (response.data.response === "OK") {
+      localStorage.setItem('is_cart_product', true)
+      openCart();
+    }
   };
 
   return (
@@ -373,17 +386,23 @@ const ProductDetails = () => {
 
                   <div className="product-detail-actions d-flex flex-wrap pt-3">
                     <div className="cart-qty me-3 mb-3">
-                      <div className="dec qty-btn qty_btn">-</div>
+                      <div className="dec qty-btn qty_btn" onClick={() => setProductQuantity(productQuantity - 1)}>-</div>
                       <input
                         className="cart-qty-input form-control"
                         type="text"
                         name="qtybutton"
                         defaultValue={1}
+                        value={productQuantity}
                       />
-                      <div className="inc qty-btn qty_btn">+</div>
+                      <div className="inc qty-btn qty_btn" onClick={() => setProductQuantity(productQuantity + 1)}>+</div>
                     </div>
                     <div className="cart-button mb-3 d-flex">
-                      <button className="btn btn-mode me-3" onClick={openCart}>
+                      <button
+                        className="btn btn-mode me-3"
+                        onClick={() => {
+                          addToCartProduct(productData);
+                        }}
+                      >
                         <i className="fi-shopping-cart" /> Add to cart
                       </button>
                       <button
@@ -529,7 +548,11 @@ const ProductDetails = () => {
                             <div className="review-image">
                               <img
                                 className="img-fluid"
-                                src={feedback?.user?.profile_image ? `https://files.threestyle.in/${feedback?.user?.profile_image}` : "assets/images/product-1.jpg"}
+                                src={
+                                  feedback?.user?.profile_image
+                                    ? `https://files.threestyle.in/${feedback?.user?.profile_image}`
+                                    : "assets/images/product-1.jpg"
+                                }
                                 title=""
                                 alt=""
                               />
@@ -544,10 +567,18 @@ const ProductDetails = () => {
                               {[1, 2, 3, 4, 5].map((value) => (
                                 <i
                                   key={value}
-                                  className={`bi small ${feedback.feedback_point >= value ? 'bi-star-fill active' : 'bi-star'} `}
+                                  className={`bi small ${
+                                    feedback.feedback_point >= value
+                                      ? "bi-star-fill active"
+                                      : "bi-star"
+                                  } `}
                                 />
                               ))}
-                              <span className="ms-1">{dayjs(feedback.createdAt).format('D MMMM YYYY')}</span>
+                              <span className="ms-1">
+                                {dayjs(feedback.createdAt).format(
+                                  "D MMMM YYYY"
+                                )}
+                              </span>
                             </div>
                             <p className="m-0 pt-3 reviews-description">
                               {feedback.feedback_comment}

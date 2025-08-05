@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCart } from "../../../context/CartContext";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import MegaMenu from "../../MenuItem";
 import LoginModal from "../../popup/login";
+import { axiosInstance } from "../../../assets/js/config/api";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
@@ -13,19 +14,165 @@ function HomeHeader() {
   const isAuthenticated = !!localStorage.getItem(
     "three_style_user_authorization"
   );
+  const [loading, setLoading] = useState(false);
+  const [serverDataID, setServerDataID] = React.useState("");
+  const [productDataGet, setProductDataGet] = React.useState([]);
+  const [previousProductData, setPreviousProductData] = useState([]);
+  const [totalMRP, setTotalMRP] = React.useState(0);
+  const [totalAmount, setTotalAmount] = React.useState(0);
+  const [productQuantity, setProductQuantity] = useState(1);
 
   const closeModal = () => {
     setShowLoginModal(false);
   };
 
-  const handleOpenCart = () => {
-    console.log("openCart called");
-    setCartOpen(true);
-    const cartOffcanvas = document.getElementById("modalMiniCart");
-    if (cartOffcanvas && window.bootstrap) {
-      const bsOffcanvas =
-        window.bootstrap.Offcanvas.getOrCreateInstance(cartOffcanvas);
-      bsOffcanvas?.show();
+  const fetchProductData = async () => {
+    setLoading(true);
+    try {
+      const response = await axiosInstance.get(
+        "/order-cart/get-carts?item_type=CLOTHING_PRODUCT&is_purchase=true"
+      );
+      const serverData = response.data.data[0];
+      setServerDataID(serverData._id);
+      const existingData = JSON.parse(
+        localStorage.getItem("addItemInCart")
+      ) || { products: [] };
+
+      const priceMap = existingData.products.reduce((map, product) => {
+        map[product.product_id] = product.mrpPrice;
+        return map;
+      }, {});
+
+      const itemDataForGetQty = serverData?.items || [];
+      const itemDataForGetImgName = serverData?.items_details || [];
+
+      const combinedData = itemDataForGetQty.map((item) => {
+        const itemDetails = itemDataForGetImgName.find(
+          (details) => details._id === item.item_id
+        );
+        if (!itemDetails) {
+          console.warn(`No details found for item with id: ${item.item_id}`);
+          return item;
+        }
+
+        return {
+          ...item,
+          ...itemDetails,
+          items_id: item._id,
+        };
+      });
+
+      const updatedServerData = combinedData.map((product) => {
+        return {
+          ...product,
+          mrpPrice: priceMap[product.item_id] || product.mrpPrice,
+        };
+      });
+      setPreviousProductData(updatedServerData);
+      totalMRPCalculation(updatedServerData);
+      setProductDataGet(updatedServerData);
+      totalAmountCalculation(updatedServerData);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+    setLoading(false);
+  };
+
+  const totalMRPCalculation = (data) => {
+    const totalMrp = data.map((product) => {
+      const mrp = product.mrpPrice * product.quantity;
+      return mrp;
+    });
+    const amount = totalMrp.reduce((sum, product) => sum + product, 0);
+    setTotalMRP(amount || 0);
+    return amount;
+  };
+
+  const totalAmountCalculation = (data) => {
+    const amount = data.reduce(
+      (sum, product) => sum + product.price * product.quantity,
+      0
+    );
+    setTotalAmount(amount || 0);
+  };
+
+  const is_cart_product = localStorage.getItem("is_cart_product");
+  useEffect(() => {
+    if (is_cart_product) {
+      fetchProductData();
+    }
+  }, [is_cart_product]);
+
+  const handleRemoveProduct = async (cart_id, product_id) => {
+    try {
+      await axiosInstance.delete(
+        `/order-cart/remove-item?item_id=${product_id}&cart_id=${serverDataID}`
+      );
+      setProductDataGet((prevData) =>
+        prevData.filter((product) => product._id !== cart_id)
+      );
+      const existingData = JSON.parse(
+        localStorage.getItem("addItemInCart")
+      ) || { products: [] };
+      existingData.products = existingData.products.filter(
+        (product) => product.product_id !== product_id
+      );
+      localStorage.setItem("addItemInCart", JSON.stringify(existingData));
+      fetchProductData();
+    } catch (error) {
+      console.error("Error removing product:", error);
+    }
+  };
+
+  const minusQuantity = (productId) => {
+    setProductDataGet((prevData) => {
+      const updatedData = prevData.map((product) =>
+        product._id === productId
+          ? { ...product, quantity: Math.max(1, product.quantity - 1) }
+          : product
+      );
+      const changedProducts = updatedData.filter((product) => {
+        const originalProduct = prevData.find((p) => p._id === product._id);
+        return originalProduct && originalProduct.quantity !== product.quantity;
+      });
+      totalAmountCalculation(updatedData);
+      totalMRPCalculation(updatedData);
+      setTimeout(async () => {
+        handleUpdateCart(changedProducts);
+      }, 1000);
+      return updatedData;
+    });
+  };
+
+  const plusQuantity = (productId) => {
+    setProductDataGet((prevData) => {
+      const updatedData = prevData.map((product) =>
+        product._id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      );
+
+      const changedProducts = updatedData.filter((product) => {
+        const originalProduct = prevData.find((p) => p._id === product._id);
+        return originalProduct && originalProduct.quantity !== product.quantity;
+      });
+
+      totalAmountCalculation(updatedData);
+      totalMRPCalculation(updatedData);
+
+      setTimeout(() => {
+        handleUpdateCart(changedProducts);
+      }, 1000);
+
+      return updatedData;
+    });
+  };
+
+  const handleUpdateCart = async (updatedData) => {
+    try {
+      await axiosInstance.post("/order-cart/add-item", updatedData[0]);
+    } catch (error) {
+      console.error("Error adding to cart:", error);
     }
   };
 
@@ -792,242 +939,129 @@ function HomeHeader() {
               aria-label="Close"
             />
           </div>
-          <div className="offcanvas-body">
-            <ul className="list-unstyled m-0 p-0">
-              <li className="py-2">
-                <div className="row align-items-center">
-                  <div className="col-4">
-                    {/* Image */}{" "}
-                    <a href="#">
-                      <img
-                        className="img-fluid border"
-                        src="assets/images/product-x-1.jpg"
-                        alt="..."
-                      />
-                    </a>
-                  </div>
-                  <div className="col-8">
-                    {/* Title */}
-                    <p className="mb-2">
-                      <a className="text-mode fw-500" href="#">
-                        Cotton floral print Dress
-                      </a>{" "}
-                      <span className="m-0 text-muted w-100 d-block">
-                        $40.00
-                      </span>
-                    </p>
-                    {/*Footer */}
-                    <div className="d-flex align-items-center">
-                      {/* Select */}
-                      {/* <select className="form-select form-select-sm w-auto">
-                     <option value="1">1</option>
-                     <option value="1">2</option>
-                     <option value="1">3</option>
-                  </select> */}
-                      <div className="cart-qty">
-                        <div className="dec qty-btn">-</div>
-                        <input
-                          className="cart-qty-input form-control"
-                          type="text"
-                          name="qtybutton"
-                          defaultValue={1}
-                        />
-                        <div className="inc qty-btn">+</div>
-                      </div>
-                      {/* Remove */}{" "}
-                      <a className="small text-mode ms-auto" href="#!">
-                        <i className="bi bi-x" /> Remove
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className="py-2">
-                <div className="row align-items-center">
-                  <div className="col-4">
-                    {/* Image */}{" "}
-                    <a href="#">
-                      <img
-                        className="img-fluid border"
-                        src="assets/images/product-x-1.jpg"
-                        alt="..."
-                      />
-                    </a>
-                  </div>
-                  <div className="col-8">
-                    {/* Title */}
-                    <p className="mb-2">
-                      <a className="text-mode fw-500" href="#">
-                        Cotton floral print Dress
-                      </a>{" "}
-                      <span className="m-0 text-muted w-100 d-block">
-                        $40.00
-                      </span>
-                    </p>
-                    {/*Footer */}
-                    <div className="d-flex align-items-center">
-                      {/* Select */}
-                      {/* <select className="form-select form-select-sm w-auto">
-                     <option value="1">1</option>
-                     <option value="1">2</option>
-                     <option value="1">3</option>
-                  </select> */}
-                      <div className="cart-qty">
-                        <div className="dec qty-btn">-</div>
-                        <input
-                          className="cart-qty-input form-control"
-                          type="text"
-                          name="qtybutton"
-                          defaultValue={1}
-                        />
-                        <div className="inc qty-btn">+</div>
-                      </div>
-                      {/* Remove */}{" "}
-                      <a className="small text-mode ms-auto" href="#!">
-                        <i className="bi bi-x" /> Remove
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className="py-2">
-                <div className="row align-items-center">
-                  <div className="col-4">
-                    {/* Image */}{" "}
-                    <a href="#">
-                      <img
-                        className="img-fluid border"
-                        src="assets/images/product-x-1.jpg"
-                        alt="..."
-                      />
-                    </a>
-                  </div>
-                  <div className="col-8">
-                    {/* Title */}
-                    <p className="mb-2">
-                      <a className="text-mode fw-500" href="#">
-                        Cotton floral print Dress
-                      </a>{" "}
-                      <span className="m-0 text-muted w-100 d-block">
-                        $40.00
-                      </span>
-                    </p>
-                    {/*Footer */}
-                    <div className="d-flex align-items-center">
-                      {/* Select */}
-                      {/* <select className="form-select form-select-sm w-auto">
-                     <option value="1">1</option>
-                     <option value="1">2</option>
-                     <option value="1">3</option>
-                  </select> */}
-                      <div className="cart-qty">
-                        <div className="dec qty-btn">-</div>
-                        <input
-                          className="cart-qty-input form-control"
-                          type="text"
-                          name="qtybutton"
-                          defaultValue={1}
-                        />
-                        <div className="inc qty-btn">+</div>
-                      </div>
-                      {/* Remove */}{" "}
-                      <a className="small text-mode ms-auto" href="#!">
-                        <i className="bi bi-x" /> Remove
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li className="py-2">
-                <div className="row align-items-center">
-                  <div className="col-4">
-                    {/* Image */}{" "}
-                    <a href="#">
-                      <img
-                        className="img-fluid border"
-                        src="assets/images/product-x-1.jpg"
-                        alt="..."
-                      />
-                    </a>
-                  </div>
-                  <div className="col-8">
-                    {/* Title */}
-                    <p className="mb-2">
-                      <a className="text-mode fw-500" href="#">
-                        Cotton floral print Dress
-                      </a>{" "}
-                      <span className="m-0 text-muted w-100 d-block">
-                        $40.00
-                      </span>
-                    </p>
-                    {/*Footer */}
-                    <div className="d-flex align-items-center">
-                      {/* Select */}
-                      {/* <select className="form-select form-select-sm w-auto">
-                     <option value="1">1</option>
-                     <option value="1">2</option>
-                     <option value="1">3</option>
-                  </select> */}
-                      <div className="cart-qty">
-                        <div className="dec qty-btn">-</div>
-                        <input
-                          className="cart-qty-input form-control"
-                          type="text"
-                          name="qtybutton"
-                          defaultValue={1}
-                        />
-                        <div className="inc qty-btn">+</div>
-                      </div>
-                      {/* Remove */}{" "}
-                      <a className="small text-mode ms-auto" href="#!">
-                        <i className="bi bi-x" /> Remove
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div className="offcanvas-footer ">
-            <div className="card">
-              <div className="card-header bg-transparent py-3">
-                <h6 className="m-0 h5">Order Total</h6>
-              </div>
-              <div className="card-body">
-                <ul className="list-unstyled">
-                  <li className="d-flex justify-content-between align-items-center mb-2">
-                    <h6 className="me-2 text-body">Subtotal</h6>
-                    <span className="text-end">$265.00</span>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center mb-2">
-                    <h6 className="me-2 text-body">Taxes</h6>
-                    <span className="text-end">$265.00</span>
-                  </li>
-                  <li className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
-                    <h6 className="me-2">Grand Total</h6>
-                    <span className="text-end text-mode">$265.00</span>
-                  </li>
-                </ul>
-                <div className="pt-2 pb-4">
-                  <div className="d-flex">
-                    <input
-                      type="text"
-                      name="promo"
-                      placeholder="Apply promo code"
-                      className="form-control form-control-sm"
-                    />
-                    <button className="btn btn-dark btn-sm ms-2">Apply</button>
-                  </div>
-                </div>
-                <div className="d-grid gap-2 mx-auto">
-                  <Link className="btn btn-primary"  to="/checkout">
-                    <i className="bi-credit-card-2-back me-2" />
-                    Proceed to Checkout
-                  </Link>
-                </div>
-              </div>
+          {loading ? (
+            <div className="d-flex justify-content-center align-items-center mb-4 my-7 loader-h">
+              <div class="loader"></div>
             </div>
-          </div>
+          ) : (
+            productDataGet.length > 0 && (
+              <>
+                <div className="offcanvas-body">
+                  <ul className="list-unstyled m-0 p-0">
+                    {productDataGet.map((product, index) => {
+                      const totalPrice = product.price * product.quantity;
+                      return (
+                        <li className="py-2" key={index}>
+                          <div className="row align-items-center">
+                            <div className="col-4">
+                              <a href="#">
+                                <img
+                                  className="img-fluid border"
+                                  src={
+                                    product.display_image
+                                      ? `https://files.threestyle.in/${product?.display_image?.[0]}`
+                                      : "assets/images/product-x-1.jpg"
+                                  }
+                                  alt="..."
+                                />
+                              </a>
+                            </div>
+                            <div className="col-8">
+                              <p className="mb-2">
+                                <a className="text-mode fw-500" href="#">
+                                  {product.name}
+                                </a>{" "}
+                                <span className="m-0 text-muted w-100 d-block">
+                                  ₹{totalPrice.toFixed(2)}
+                                </span>
+                              </p>
+                              <div className="d-flex align-items-center">
+                                <div className="cart-qty">
+                                  <div
+                                    className="dec qty-btn"
+                                    onClick={() => minusQuantity(product._id)}
+                                  >
+                                    -
+                                  </div>
+                                  <input
+                                    className="cart-qty-input form-control"
+                                    type="text"
+                                    name="qtybutton"
+                                    defaultValue={1}
+                                    value={product.quantity}
+                                  />
+                                  <div
+                                    className="inc qty-btn"
+                                    onClick={() => plusQuantity(product._id)}
+                                  >
+                                    +
+                                  </div>
+                                </div>
+                                <a
+                                  className="small text-mode ms-auto"
+                                  href="#!"
+                                  onClick={() =>
+                                    handleRemoveProduct(
+                                      product._id,
+                                      product.items_id
+                                    )
+                                  }
+                                >
+                                  <i className="bi bi-x" /> Remove
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+                <div className="offcanvas-footer ">
+                  <div className="card">
+                    <div className="card-header bg-transparent py-3">
+                      <h6 className="m-0 h5">Order Total</h6>
+                    </div>
+                    <div className="card-body">
+                      <ul className="list-unstyled">
+                        <li className="d-flex justify-content-between align-items-center mb-2">
+                          <h6 className="me-2 text-body">Subtotal</h6>
+                          <span className="text-end">$265.00</span>
+                        </li>
+                        <li className="d-flex justify-content-between align-items-center mb-2">
+                          <h6 className="me-2 text-body">Taxes</h6>
+                          <span className="text-end">$265.00</span>
+                        </li>
+                        <li className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                          <h6 className="me-2">Grand Total</h6>
+                          <span className="text-end text-mode">$265.00</span>
+                        </li>
+                      </ul>
+                      <div className="pt-2 pb-4">
+                        <div className="d-flex">
+                          <input
+                            type="text"
+                            name="promo"
+                            placeholder="Apply promo code"
+                            className="form-control form-control-sm"
+                          />
+                          <button className="btn btn-dark btn-sm ms-2">
+                            Apply
+                          </button>
+                        </div>
+                      </div>
+                      <div className="d-grid gap-2 mx-auto">
+                        <Link className="btn btn-primary" to="/checkout">
+                          <i className="bi-credit-card-2-back me-2" />
+                          Proceed to Checkout
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )
+          )}
         </div>
 
         {/* Mobile Menu */}
