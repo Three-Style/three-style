@@ -247,7 +247,7 @@ const ProductDetails = () => {
         <section className="product-details py-6">
           <div className="container">
             <div className="row">
-              <div className="col-lg-6 lightbox-gallery product-gallery sticky-top fit-height">
+              <div className="col-lg-6 lightbox-gallery product-gallery fit-height">
                 <div className="swiper swiper_gallery">
                   <div className="swiper-wrapper">
                     <div className="swiper-slide">
@@ -398,7 +398,7 @@ const ProductDetails = () => {
                     </div>
                   </div>
                   <div className="product-info-buttons nav pt-4">
-                    <a
+                    {/* <a
                       href="#"
                       className="me-3"
                       data-bs-toggle="modal"
@@ -406,7 +406,7 @@ const ProductDetails = () => {
                     >
                       <i className="bi bi-scissors" />
                       Size guide
-                    </a>{" "}
+                    </a> */}
                     <a
                       href="#"
                       className=""
@@ -428,46 +428,46 @@ const ProductDetails = () => {
                   </div>
                   <div className="row g-3 pt-3 border-top mt-3">
                     <div className="col-sm-6 mt-0">
-                      <div className="d-flex border p-3">
+                      <div className="d-flex border p-3 h-100">
                         <div className="fs-1 text-primary">
                           <i className="bi bi-truck" />
                         </div>
                         <div className="col ps-3">
                           <h6 className="mb-1">Free shipping</h6>
-                          <p className="m-0">Lorem ipsum dolor sit amet</p>
+                          <p className="m-0">Above ₹1999 order</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-sm-6 mt-0">
-                      <div className="d-flex border p-3">
+                      <div className="d-flex border p-3 h-100">
                         <div className="fs-1 text-primary">
                           <i className="bi bi-headphones" />
                         </div>
                         <div className="col ps-3">
                           <h6 className="mb-1">Contact us 24/7</h6>
-                          <p className="m-0">Lorem ipsum dolor sit amet</p>
+                          <p className="m-0">We’re here anytime</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-sm-6">
-                      <div className="d-flex border p-3">
+                      <div className="d-flex border p-3 h-100">
                         <div className="fs-1 text-primary">
                           <i className="bi bi-box-arrow-in-left" />
                         </div>
                         <div className="col ps-3">
-                          <h6 className="mb-1">30 Days Return</h6>
-                          <p className="m-0">Lorem ipsum dolor sit amet</p>
+                          <h6 className="mb-1">7 Days Return</h6>
+                          <p className="m-0">Easy return within 7 days</p>
                         </div>
                       </div>
                     </div>
                     <div className="col-sm-6">
-                      <div className="d-flex border p-3">
+                      <div className="d-flex border p-3 h-100">
                         <div className="fs-1 text-primary">
                           <i className="bi bi-shield-lock" />
                         </div>
                         <div className="col ps-3">
                           <h6 className="mb-1">100% Secure Payment</h6>
-                          <p className="m-0">Lorem ipsum dolor sit amet</p>
+                          <p className="m-0">Your payment is safe</p>
                         </div>
                       </div>
                     </div>
@@ -904,6 +904,332 @@ const ProductDetails = () => {
           </div>
         </section>
       </main>
+
+      {/* MODAL for shipping,size,Ask about product guide */}
+      <div
+        className="modal-shipping-view modal fade"
+        id="px_shipping_modal"
+        tabIndex={-1}
+      >
+        <div className="modal-dialog modal-dialog-centered modal-xl">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Shipping Information</h4>
+              <button
+                className="btn-close"
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+              <ul className="mb-3">
+                <li>Comodous in tempor ullamcorper miaculis</li>
+                <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
+                <li>Divamus sit amet purus justo.</li>
+                <li>
+                  Proin molestie egestas orci ac suscipit risus posuere
+                  loremous
+                </li>
+              </ul>
+              <h4 className="pt-4">Privacy Policy</h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+              <ul className="mb-5">
+                <li>Comodous in tempor ullamcorper miaculis</li>
+                <li>Pellentesque vitae neque mollis urna mattis laoreet.</li>
+                <li>Divamus sit amet purus justo.</li>
+                <li>
+                  Proin molestie egestas orci ac suscipit risus posuere
+                  loremous
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal-size-chart modal fade"
+        id="px_size_chart_modal"
+        tabIndex={-1}
+      >
+        <div className="modal-dialog modal-dialog-centered modal-xl">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Size Chart</h4>
+              <button
+                className="btn-close"
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">
+              <table className="table mb-0">
+                <thead>
+                  <tr className="text-mode">
+                    <th className="border-0 bg-body">US Sizes</th>
+                    <th className="border-0 bg-body">Euro Sizes</th>
+                    <th className="border-0 bg-body">UK Sizes</th>
+                    <th className="border-0 bg-body">Inches</th>
+                    <th className="border-0 bg-body">CM</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="">6</td>
+                    <td>39</td>
+                    <td>5.5</td>
+                    <td>9.25"</td>
+                    <td>23.5</td>
+                  </tr>
+                  <tr>
+                    <td className="">6.5</td>
+                    <td>39</td>
+                    <td>6</td>
+                    <td>9.5"</td>
+                    <td>24.1</td>
+                  </tr>
+                  <tr>
+                    <td className="">7</td>
+                    <td>40</td>
+                    <td>6.5</td>
+                    <td>9.625"</td>
+                    <td>24.4</td>
+                  </tr>
+                  <tr>
+                    <td className="">7.5</td>
+                    <td>40-41</td>
+                    <td>7</td>
+                    <td>9.75"</td>
+                    <td>24.8</td>
+                  </tr>
+                  <tr>
+                    <td className="">8</td>
+                    <td>41</td>
+                    <td>7.5</td>
+                    <td>9.9375"</td>
+                    <td>25.4</td>
+                  </tr>
+                  <tr>
+                    <td className="">8.5</td>
+                    <td>41-42</td>
+                    <td>8</td>
+                    <td>10.125"</td>
+                    <td>25.7</td>
+                  </tr>
+                  <tr>
+                    <td className="">9</td>
+                    <td>42</td>
+                    <td>8.5</td>
+                    <td>10.25"</td>
+                    <td>26</td>
+                  </tr>
+                  <tr>
+                    <td className="">9.5</td>
+                    <td>42-43</td>
+                    <td>9</td>
+                    <td>10.4375"</td>
+                    <td>26.7</td>
+                  </tr>
+                  <tr>
+                    <td className="">10</td>
+                    <td>43</td>
+                    <td>9.5</td>
+                    <td>10.5625"</td>
+                    <td>27</td>
+                  </tr>
+                  <tr>
+                    <td className="">10.5</td>
+                    <td>43-44</td>
+                    <td>10</td>
+                    <td>10.75"</td>
+                    <td>27.3</td>
+                  </tr>
+                  <tr>
+                    <td className="">11</td>
+                    <td>44</td>
+                    <td>10.5</td>
+                    <td>10.9375"</td>
+                    <td>27.9</td>
+                  </tr>
+                  <tr>
+                    <td className="">11.5</td>
+                    <td>44-45</td>
+                    <td>11</td>
+                    <td>11.125"</td>
+                    <td>28.3</td>
+                  </tr>
+                  <tr>
+                    <td className="">12</td>
+                    <td>45</td>
+                    <td>11.5</td>
+                    <td>11.25"</td>
+                    <td>28.6</td>
+                  </tr>
+                  <tr>
+                    <td className="">13</td>
+                    <td>46</td>
+                    <td>12.5</td>
+                    <td>11.5625"</td>
+                    <td>29.4</td>
+                  </tr>
+                  <tr>
+                    <td className="">14</td>
+                    <td>47</td>
+                    <td>13.5</td>
+                    <td>11.875"</td>
+                    <td>30.2</td>
+                  </tr>
+                  <tr>
+                    <td className="">15</td>
+                    <td>48</td>
+                    <td>14.5</td>
+                    <td>12.1875"</td>
+                    <td>31</td>
+                  </tr>
+                  <tr>
+                    <td className="">16</td>
+                    <td>49</td>
+                    <td>15.5</td>
+                    <td>12.5"</td>
+                    <td>31.8</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal-askform-view modal fade"
+        id="px_ask_modal"
+        tabIndex={-1}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Ask about product</h4>
+              <button
+                className="btn-close"
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              />
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-label">Your Name</label>{" "}
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Name"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label className="form-label">Email address</label>{" "}
+                      <input
+                        type="email"
+                        className="form-control"
+                        placeholder="E-mail"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="mb-3">
+                      <label
+                        className="form-label"
+                        htmlFor="exampleInputEmail1"
+                      >
+                        Subject
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Subject"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="mb-3">
+                      <label
+                        className="form-label"
+                        htmlFor="exampleInputEmail1"
+                      >
+                        Your Message
+                      </label>{" "}
+                      <textarea
+                        className="form-control"
+                        rows={5}
+                        placeholder="Your Message"
+                        defaultValue={""}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <button type="submit" className="btn btn-primary">
+                    Send Message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <HomeFooter />
     </>

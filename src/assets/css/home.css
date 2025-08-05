@@ -38631,8 +38631,7 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--bs-dark);
-    background: rgba(var(--bs-white-rgb), .8)
+    color: var(--bs-white);
 }
 
 .product-details .product-gallery .product-thumb {
