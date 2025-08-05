@@ -21,6 +21,7 @@ import ProductDetails from "./pages/product-details";
 import Shop from "./pages/shop";
 import Support from "./pages/support";
 import OrderView from "./pages/order-view";
+import Return from "./pages/return";
 const NotFoundPage = lazy(() => import("./pages/404"));
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/order" element={<UserOrder />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/return" element={<Return />} />
       </Routes>
     </>
   );
