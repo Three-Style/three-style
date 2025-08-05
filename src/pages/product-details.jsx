@@ -254,22 +254,20 @@ const ProductDetails = () => {
                       <div className="pd-gallery-slide">
                         <a
                           className="gallery-link"
-                          href={`https://files.threestyle.in/${
-                            selectedImage
-                              ? selectedImage
-                              : productData?.display_image?.[0]
-                          }`}
+                          href={`https://files.threestyle.in/${selectedImage
+                            ? selectedImage
+                            : productData?.display_image?.[0]
+                            }`}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <i className="bi bi-arrows-fullscreen" />
                         </a>
                         <img
-                          src={`https://files.threestyle.in/${
-                            selectedImage
-                              ? selectedImage
-                              : productData?.display_image?.[0]
-                          }`}
+                          src={`https://files.threestyle.in/${selectedImage
+                            ? selectedImage
+                            : productData?.display_image?.[0]
+                            }`}
                           className="img-fluid"
                           alt="Selected"
                           width="100%"
@@ -321,10 +319,58 @@ const ProductDetails = () => {
                     </span>
                     <del className="text-muted fs-6">₹{productData.price}</del>
                   </div>
-                  <div
-                    className="count-down count-down-02 mb-3"
-                    data-countdown="January 01, 2024 15:00:00"
-                  ></div>
+
+                  <div className="product-attribute">
+                    <label className="fs-6 text-mode pb-2 fw-500">Color</label>
+                    <div className="nav-thumbs nav mb-3">
+                      <div className="form-check radio-color large form-check-inline me-2">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="color_1"
+                          id="color_01"
+                          defaultChecked
+                        />
+                        <label className="radio-color-label" htmlFor="color_01">
+                          <span style={{ backgroundColor: '#126532' }}></span>
+                        </label>
+                      </div>
+                      <div className="form-check radio-color large form-check-inline me-2">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="color_1"
+                          id="color_2"
+                        />
+                        <label className="radio-color-label" htmlFor="color_2">
+                          <span style={{ backgroundColor: '#ff9922' }}></span>
+                        </label>
+                      </div>
+                      <div className="form-check radio-color large form-check-inline me-2">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="color_1"
+                          id="color_3"
+                        />
+                        <label className="radio-color-label" htmlFor="color_3">
+                          <span style={{ backgroundColor: '#326598' }}></span>
+                        </label>
+                      </div>
+                      <div className="form-check radio-color large form-check-inline me-2">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="color_1"
+                          id="color_4"
+                        />
+                        <label className="radio-color-label" htmlFor="color_4">
+                          <span style={{ backgroundColor: '#126578' }}></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="product-detail-actions d-flex flex-wrap pt-3">
                     <div className="cart-qty me-3 mb-3">
                       <div className="dec qty-btn qty_btn">-</div>
