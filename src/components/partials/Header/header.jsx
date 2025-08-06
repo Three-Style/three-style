@@ -658,7 +658,7 @@ function HomeHeader() {
         >
           <div className="offcanvas-header border-bottom">
             <h6 className="offcanvas-title" id="modalMiniCartLabel">
-              Your Cart (2)
+              Your Cart ({productDataGet.length > 0 && productDataGet.length})
             </h6>
             <button
               type="button"
@@ -754,15 +754,15 @@ function HomeHeader() {
                       <ul className="list-unstyled">
                         <li className="d-flex justify-content-between align-items-center mb-2">
                           <h6 className="me-2 text-body">Subtotal</h6>
-                          <span className="text-end">$265.00</span>
+                          <span className="text-end">₹{totalAmount.toFixed(2)}</span>
                         </li>
                         <li className="d-flex justify-content-between align-items-center mb-2">
                           <h6 className="me-2 text-body">Taxes</h6>
-                          <span className="text-end">$265.00</span>
+                          <span className="text-end">₹0</span>
                         </li>
                         <li className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
-                          <h6 className="me-2">Grand Total</h6>
-                          <span className="text-end text-mode">$265.00</span>
+                          <h6 className="me-2">Total Total</h6>
+                          <span className="text-end text-mode">₹{totalAmount.toFixed(2)}</span>
                         </li>
                       </ul>
                       <div className="pt-2 pb-4">
@@ -779,10 +779,13 @@ function HomeHeader() {
                         </div>
                       </div>
                       <div className="d-grid gap-2 mx-auto">
-                        <Link className="btn btn-primary" to="/checkout">
+                        <button className="btn btn-primary" onClick={() => {
+                          localStorage.setItem('productsData', JSON.stringify(productDataGet))
+                          window.location.href = '/checkout'
+                        }}>
                           <i className="bi-credit-card-2-back me-2" />
                           Proceed to Checkout
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>

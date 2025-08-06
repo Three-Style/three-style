@@ -1,8 +1,137 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import HomeFooter from "../components/partials/Footer/footer";
 import HomeHeader from "../components/partials/Header/header";
+import { axiosInstance } from "../assets/js/config/api";
+import { createPaymentProduct } from "../assets/js/utils/product";
+import { useLocation } from "react-router";
 
 const Checkout = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const item_id = searchParams.get("item_id");
+  const [userData, setUserData] = useState({
+    username: "",
+    email: "",
+    pin_code: "",
+    address_line_1: "",
+    address_line_2: "",
+    city: "",
+    state: "",
+    country: "",
+  });
+  const productData = localStorage.getItem("productsData");
+  const [mainPrice, setMainPrice] = useState();
+  const [totalPrice, setTotalPrice] = useState();
+  const [productDatas, setProductDatas] = useState([[]]);
+  const [paymentMode, setPaymentMode] = useState("ONLINE");
+  const [prepaidCouponCode, setPrepaidCouponCode] = useState({});
+
+  useEffect(() => {
+    if (productData) {
+      getUserData();
+      UpdatedData(productData);
+    }
+  }, [productData]);
+
+  const UpdatedData = (productData) => {
+    const data = JSON.parse(productData);
+    setMainPrice(data.totalAmount);
+    setProductDatas(data.products);
+    setTotalPrice(data.totalAmount);
+  };
+
+  const getUserData = async () => {
+    try {
+      console.log('aaaaaaaaaa');
+      
+      const response = await axiosInstance.get("/account/profile");
+      const userData = response.data.data;
+      if (userData) {
+        setUserData({
+          pin_code: userData.user?.address?.pin_code || "",
+          address_line_1: userData.user?.address?.address_line_1 || "",
+          address_line_2: userData.user?.address?.address_line_2 || "",
+          city: userData.user?.address?.city || "",
+          email: userData.user?.email || "",
+          first_name: userData.user?.first_name || "",
+          last_name: userData.user?.last_name || "",
+          state: userData.user?.address?.state || "",
+          country: userData.user?.address?.country || "",
+        });
+      }
+    } catch (error) {
+      console.error("Error in getUserData:", error);
+    }
+  };
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFormSubmit = async (e) => {
+    console.log('1111');
+    e.preventDefault();
+    
+    try {
+      const updatedUserData = {
+        pin_code: userData.postalCode,
+        address_line_1: userData.officeName,
+        address_line_2: userData.roadName,
+        city: userData.city,
+        state: userData.state,
+        country: userData.country,
+        email: userData.email,
+        first_name: userData.first_name,
+        last_name: userData.last_name,
+      };
+      const payment_mode = paymentMode;
+      if (!userData.username) {
+        await updateUserData(updatedUserData);
+      } else if (!compareUserData(updatedUserData)) {
+        await updateUserData(updatedUserData);
+      }
+      try {
+        const coupon_ids = [prepaidCouponCode._id].filter(Boolean);
+        await createPaymentProduct(
+          item_id
+            ? [{ product_id: "670a5a7b9a7dbcdce616398d", quantity: 1 }]
+            : productDatas,
+          updatedUserData,
+          coupon_ids,
+          payment_mode
+        );
+      } catch (error) {
+        console.error("Error during order:", error);
+      }
+      window.Razorpay && window.Razorpay.close && window.Razorpay.close();
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.error("Error in handleFormSubmit:", error);
+    }
+  };
+
+  const updateUserData = async (data) => {
+    try {
+      await axiosInstance.post("/account/update-profile", data);
+      getUserData();
+    } catch (error) {
+      console.error("Error in updateUserData:", error);
+    }
+  };
+
+  const compareUserData = (updatedUserData) => {
+    return (
+      updatedUserData.pin_code === userData.pin_code &&
+      updatedUserData.address_line_1 === userData.address_line_1 &&
+      updatedUserData.address_line_2 === userData.address_line_2 &&
+      updatedUserData.city === userData.city &&
+      updatedUserData.email === userData.email
+    );
+  };
+
   return (
     <>
       <HomeHeader />
@@ -122,75 +251,126 @@ const Checkout = () => {
               <div className="col-lg-7">
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="border-bottom mb-4 pb-3">Shipping address</h5>
-                    <form>
+                    <h5 className="border-bottom mb-4 pb-3">
+                      Shipping address
+                    </h5>
                       <div className="row">
                         <div className="col-sm-6 mb-3">
                           <label className="form-label">First Name</label>
-                          <input type="text" className="form-control" />
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter First Name"
+                            name="first_name"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.first_name}
+                          />
                         </div>
                         <div className="col-sm-6 mb-3">
                           <label className="form-label">Last Name</label>
-                          <input type="text" className="form-control" />
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Last Name"
+                            name="last_name"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.last_name}
+                          />
                         </div>
                         <div className="col-sm-6 mb-3">
                           <label className="form-label">Email Address</label>
-                          <input type="text" className="form-control" />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">Street</label>{" "}
                           <input
-                            type="email"
+                            type="text"
                             className="form-control"
                             id="exampleInputEmail3"
+                            placeholder="Enter Email"
+                            name="email"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.email}
+                          />
+                        </div>
+                        <div className="col-sm-6 mb-3">
+                          <label className="form-label">
+                            House No/Building Name/Office Name
+                          </label>{" "}
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="House No/Building Name/Office Name"
+                            name="officeName"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.address_line_1}
+                          />
+                        </div>
+                        <div className="col-sm-6 mb-3">
+                          <label className="form-label">
+                            Road Name/Area/Colony
+                          </label>{" "}
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Road Name/Area/Colony"
+                            name="roadName"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.address_line_2}
                           />
                         </div>
                         <div className="col-sm-6 mb-3">
                           <label className="form-label">City</label>{" "}
-                          <input type="text" className="form-control" />
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="City"
+                            name="city"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.city}
+                          />
                         </div>
                         <div className="col-sm-6 mb-3">
-                          <label className="form-label">ZIP</label>{" "}
-                          <input type="text" className="form-control" />
+                          <label className="form-label">State</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter State Name"
+                            name="state"
+                            required
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.state}
+                          />
                         </div>
                         <div className="col-sm-6 mb-3">
-                          <label className="form-label">State</label>{" "}
-                          <input type="text" className="form-control" />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">Phone Number</label>
-                          <input type="text" className="form-control" />
-                        </div>
-                        <div className="col-12">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              defaultValue=""
-                              id="flexCheckDefault"
-                            />{" "}
-                            <label
-                              className="form-check-label"
-                              htmlFor="flexCheckDefault"
-                            >
-                              Use a different shipping address
-                            </label>
-                          </div>
+                          <label className="form-label">Pin Code</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Pin Code"
+                            name="pin_code"
+                            required
+                            maxLength="6"
+                            onChange={(e) => handleChange(e)}
+                            defaultValue={userData.pin_code}
+                          />
                         </div>
                       </div>
-                    </form>
                   </div>
                 </div>
                 <div className="pt-4">
-                  <button type="submit" className="btn btn-primary w-100">
-                    Place Order
+                  <button className="btn btn-primary w-100" onClick={handleFormSubmit}>
+                    SAVE & CONTINUE
                   </button>
                   <p className="m-0 pt-3">
                     By placing your order you agree to our{" "}
                     <a href="#">Terms &amp; Conditions</a>,{" "}
-                    <a href="#">privacy and returns</a> policies. You also consent
-                    to some of your data being stored by ShopApp, which may be
-                    used to make future shopping experiences better for you.
+                    <a href="#">privacy and returns</a> policies. You also
+                    consent to some of your data being stored by ShopApp, which
+                    may be used to make future shopping experiences better for
+                    you.
                   </p>
                 </div>
               </div>
@@ -201,9 +381,8 @@ const Checkout = () => {
       </main>
 
       <HomeFooter />
-
     </>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;
