@@ -16,9 +16,7 @@ function HomeFooter() {
                 </div>
                 <address className="white-link mb-4">
                   <p className="text-white text-opacity-85 mb-2">
-                    301 The Greenhouse London,
-                    <br />
-                    E2 8DY UK
+                    XYZ Address
                   </p>
                   <p className="text-white mb-2">
                     <a
@@ -53,22 +51,22 @@ function HomeFooter() {
                 </div>
               </div>
               <div className="col-sm-6 col-lg-2 my-3">
-                <h6 className="text-white text-uppercase mb-5">Support</h6>
+                <h6 className="text-white text-uppercase mb-5">Quick Links</h6>
                 <ul className="list-unstyled white-link footer-link-1 m-0 ">
+                  <li className="pb-2">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="pb-2">
+                    <Link to="/shop">Product</Link>
+                  </li>
                   <li className="pb-2">
                     <Link to="/support">Help</Link>
                   </li>
                   <li className="pb-2">
+                    <Link to="/about">About Us</Link>
+                  </li>
+                  <li className="pb-2">
                     <Link to="/contact-us">Contact Us</Link>
-                  </li>
-                  <li className="pb-2">
-                    <a href="#">Feedback</a>
-                  </li>
-                  <li className="pb-2">
-                    <a href="#">Unsubscribe</a>
-                  </li>
-                  <li className="pb-2">
-                    <a href="#">Reservations</a>
                   </li>
                 </ul>
               </div>
@@ -76,19 +74,13 @@ function HomeFooter() {
                 <h6 className="text-white text-uppercase mb-5">Policies</h6>
                 <ul className="list-unstyled white-link footer-link-1 m-0">
                   <li className="pb-2">
-                    <a href="#">Privacy Policy</a>
+                    <Link to="/privacy-policy">Privacy Policy</Link>
                   </li>
                   <li className="pb-2">
-                    <a href="#">Terms of use</a>
+                    <Link to="/return-and-refund-policy">Return & Refund Policy</Link>
                   </li>
-                  <li className="pb-2">
-                    <a href="#">Gift card conditions</a>
-                  </li>
-                  <li className="pb-2">
-                    <a href="#">Shipping</a>
-                  </li>
-                  <li className="pb-2">
-                    <a href="#">Return</a>
+                    <li className="pb-2">
+                    <Link to="/privacy-policy">Terms of Services</Link>
                   </li>
                 </ul>
               </div>

@@ -236,278 +236,6 @@ function HomeHeader() {
                   <Link to="/" className="nav-link">
                     Home
                   </Link>{" "}
-                  {/* <label className="px-dropdown-toggle mob-menu" />
-                  <div className="dropdown-menu dropdown-mega-menu py-0">
-                    <div className="container p-3 p-lg-4">
-                      <div className="row gy-4">
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Home Options
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 m-0">
-                            <li>
-                              <Link to="../home/index.html">Home Option 1</Link>
-                            </li>
-                            <li>
-                              <a href="../home/index-02.html">Home Option 2</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-03.html">Home Option 3</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-04.html">Home Option 4</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-05.html">Home Option 5</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-06.html">Home Option 6</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-07.html">Home Option 7</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-08.html">Home Option 8</a>
-                            </li>
-                            <li>
-                              <a href="../home/index-09.html">Home Option 9</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../home/index-10.html">Home Option 10</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../home/index-11.html">Home Option 11</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../home/index-12.html">Home Option 12</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Shop Option 1
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 mb-4">
-                            <li>
-                              <a href="../shop-01/shop.html">Shop Page</a>
-                            </li>
-                            <li>
-                              <a href="../shop-01/shop-filter.html">
-                                Shop Filter
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../shop-01/shop-fw-left.html">
-                                Shop Full Width
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../shop-01/shop-fw-right.html">
-                                Shop Right Sidebar
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../shop-01/shop-fw-without-filtres.html">
-                                Shop No Sidebar
-                              </a>
-                            </li>
-                          </ul>
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Shop Option 2
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 m-0">
-                            <li>
-                              <a href="../shop-02/shop.html">Shop Page</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../shop-02/shop-fw.html">
-                                Shop Full Width
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Shop Option 3
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 mb-4">
-                            <li>
-                              <a href="../shop-03/shop.html">Shop Page</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../shop-03/shop-fw.html">
-                                Shop Full Width
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Shop Option 4
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 mb-4">
-                            <li>
-                              <a href="../shop-04/shop.html">Shop Page</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../shop-04/shop-fw.html">
-                                Shop Full Width
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Shopping Cart
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 m-0">
-                            <li>
-                              <a href="../account/shopping-cart.html">
-                                Cart Page
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/shop-cart.html">
-                                Cart Page 02
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Product Detail Page
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 mb-0">
-                            <li>
-                              <a href="../product-details/product-details.html">
-                                Product Detail 01
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-02.html">
-                                Product Detail 01
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-03.html">
-                                Product Detail 03
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-04.html">
-                                Product Detail 04
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-05.html">
-                                Product Detail 05
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-06.html">
-                                Product Detail 06
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../product-details/product-details-07.html">
-                                Product Detail 07
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">
-                            Account Pages
-                          </h6>
-                          <ul className="list-unstyled link-list-style-02 mb-0">
-                            <li>
-                              <a href="../account/account-address.html">
-                                Address
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/account-order.html">Order</a>
-                            </li>
-                            <li>
-                              <a href="../account/account-payment.html">
-                                Payment
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/account-profile.html">
-                                Profile
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/account-tickets.html">
-                                Tickets
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/account-wishlist.html">
-                                Wishlist
-                              </a>
-                            </li>
-                            <li>
-                              <a href="../account/wishlist.html">Wishlist 02</a>
-                            </li>
-                            <li>
-                              <a href="../account/account-tabs.html">
-                                Account Tab
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-6 col-md-3 col-xl-2">
-                          <h6 className="sm-title-02 mb-3 fw-500">Login</h6>
-                          <ul className="list-unstyled link-list-style-02 mb-4">
-                            <li>
-                              <a href="../account/login.html">Login</a>
-                            </li>
-                            <li>
-                              <a href="../account/login-02.html">Login 02</a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../account/sign-up.html">Sign Up</a>
-                            </li>
-                            <li>
-                              <a href="../account/sign-up-02.html">
-                                Sign Up 02
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                            <li>
-                              <a href="../account/reset-password.html">
-                                Reset Password
-                              </a>
-                            </li>
-                          </ul>
-                          <h6 className="sm-title-02 mb-3 fw-500">Checkout</h6>
-                          <ul className="list-unstyled link-list-style-02 m-0">
-                            <li>
-                              <a href="../account/checkout.html">Checkout</a>
-                            </li>
-                            <li>
-                              <a href="../account/checkout-02.html">
-                                Checkout 02
-                              </a>{" "}
-                              <span className="menu-label">New</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                 </li>
                 <li className="nav-item">
                   <a href="#" className="nav-link">
@@ -1410,6 +1138,7 @@ function HomeHeader() {
         </div>
       </div>
 
+      {/* LOGIN MODAL       */}
       <div
         className="modal fade"
         id="loginAuthModal"
@@ -1473,6 +1202,136 @@ function HomeHeader() {
           </div>
         </div>
       </div>
+
+      {/* SEARCH OFFCANAS */}
+      <div
+        className="offcanvas offcanvas-end"
+        tabIndex={-1}
+        id="header_search_popup"
+        aria-labelledby="header_search_popupLabel"
+      >
+        <div className="offcanvas-header border-bottom">
+          <h5 className="offcanvas-title" id="header_search_popupLabel">
+            Search
+          </h5>
+          <button
+            type="button"
+            className="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          />
+        </div>
+        <div className="offcanvas-body">
+          <form className="position-relative w-100">
+            <div className="input-group">
+              {/* Search input */}{" "}
+              <input
+                className="form-control shadow-none"
+                type="text"
+                name="search"
+                placeholder="What are you looking for?"
+              />
+              {/* Search button */}{" "}
+              <button type="button" className="btn btn-primary shadow-none">
+                <i className="fi-search" />
+              </button>
+            </div>
+          </form>
+          <div className="pt-3">
+            <div className="nav tag-cloud">
+              <Link
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="shop"
+              >
+                Design
+              </Link>{" "}
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Development
+              </a>{" "}
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Travel
+              </a>{" "}
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Web Design
+              </a>{" "}
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Marketing
+              </a>{" "}
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Research
+              </a>
+              <a
+                className="rounded-pill px-3 small font-w-500 py-1 bg-gray-200 me-1 mb-1 text-mode"
+                href="#"
+              >
+                Managment
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM MOBILE SCREEN MENU */}
+      <div className="mob-header-btn-fixed-01 d-lg-none">
+        <div className="mob-hb-in">
+          <div className="mob-hb-item">
+            <Link className="mob-hb-link" to="shop">
+              <i className="fi-grid" /> <span>Shop</span>
+            </Link>
+          </div>
+          <div className="mob-hb-item">
+            <a
+              className="mob-hb-link"
+              data-bs-toggle="offcanvas"
+              href="#header_search_popup"
+              role="button"
+              aria-controls="header_search_popup"
+            >
+              <i className="fi-search" />
+              <span>Search</span>
+            </a>
+          </div>
+
+          <div className="mob-hb-item">
+            <Link to="/account-wishlist" className="mob-hb-link">
+              <i className="fi-heart">
+                <sub>08</sub>
+              </i>
+              <span>Wishlist</span>
+            </Link>
+          </div>
+          <div className="mob-hb-item">
+            <a
+              className="mob-hb-link"
+              data-bs-toggle="offcanvas"
+              href="#modalMiniCart"
+              role="button"
+              aria-controls="modalMiniCart"
+            >
+              <i className="fi-shopping-cart">
+                <sub>08</sub>
+              </i>
+              <span>Cart</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </>
   );
 }
