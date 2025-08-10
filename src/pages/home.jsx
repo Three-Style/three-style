@@ -130,7 +130,7 @@ function Home() {
           name="keywords"
           content="best dietitian in surat, online dietitian consultation, gyms in surat, personal training gyms near me, certified nutritionist course, fitness trainer course in india, online fitness courses, nutritionist course online india, certification for fitness trainer, nutritionist online course, best digital marketing course, best digital marketing course online"
         />
-      
+
       </Helmet>
 
       <>
@@ -347,10 +347,10 @@ function Home() {
         </div> */}
 
         <div className="wrapper">
-          
+
           <HomeHeader />
 
-        
+
           <main>
             {/* Home Slider */}
             <div
@@ -502,27 +502,30 @@ function Home() {
                   <div
                     className="swiper swiper-container swiper-no-scroll"
                     data-swiper-options='{
-                  "slidesPerView": 2,
-                  "spaceBetween": 24,
-                  "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "progressbar"
-                  },
-                  "navigation": {
-                  "nextEl": ".swiper-next-02",
-                  "prevEl": ".swiper-prev-02"
-                  },
-                  "breakpoints": {
-                  "600": {
-                  "slidesPerView": 2
-                  },
-                  "991": {
-                  "slidesPerView": 3
-                  },
-                  "1300": {
-                  "slidesPerView": 5
-                  }
-                  }
+                    "slidesPerView": 2,
+                    "spaceBetween": 16,
+                    "pagination": {
+                      "el": ".swiper-pagination",
+                      "type": "progressbar"
+                    },
+                    "navigation": {
+                      "nextEl": ".swiper-next-02",
+                      "prevEl": ".swiper-prev-02"
+                    },
+                    "breakpoints": {
+                      "600": {
+                        "slidesPerView": 2,
+                        "spaceBetween": 16
+                      },
+                      "991": {
+                        "slidesPerView": 3,
+                        "spaceBetween": 16
+                      },
+                      "1300": {
+                        "slidesPerView": 5,
+                        "spaceBetween": 24
+                      }
+                    }
                   }'
                   >
                     <div className="swiper-wrapper">
@@ -541,7 +544,7 @@ function Home() {
                               <div className="small letter-spacing-2 mb-1 text-white">
                                 WOMEN"S
                               </div>
-                              <h5 className="font-alt h4">
+                              <h5 className="font-alt h4 text-center">
                                 <span className="link-effect-02 text-white">
                                   Tees &amp; Tanks
                                 </span>
@@ -566,7 +569,7 @@ function Home() {
                               <div className="small letter-spacing-2 mb-1 text-white">
                                 WOMEN"S
                               </div>
-                              <h5 className="font-alt h4">
+                              <h5 className="font-alt h4 text-center">
                                 <span className="link-effect-02 text-white">
                                   Tees &amp; Tanks
                                 </span>
@@ -591,7 +594,7 @@ function Home() {
                               <div className="small letter-spacing-2 mb-1 text-white">
                                 WOMEN"S
                               </div>
-                              <h5 className="font-alt h4">
+                              <h5 className="font-alt h4 text-center">
                                 <span className="link-effect-02 text-white">
                                   Tees &amp; Tanks
                                 </span>
@@ -616,7 +619,7 @@ function Home() {
                               <div className="small letter-spacing-2 mb-1 text-white">
                                 WOMEN"S
                               </div>
-                              <h5 className="font-alt h4">
+                              <h5 className="font-alt h4 text-center">
                                 <span className="link-effect-02 text-white">
                                   Tees &amp; Tanks
                                 </span>
@@ -641,7 +644,7 @@ function Home() {
                               <div className="small letter-spacing-2 mb-1 text-white">
                                 WOMEN"S
                               </div>
-                              <h5 className="font-alt h4">
+                              <h5 className="font-alt h4 text-center">
                                 <span className="link-effect-02 text-white">
                                   Tees &amp; Tanks
                                 </span>
