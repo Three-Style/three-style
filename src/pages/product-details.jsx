@@ -247,7 +247,10 @@ const ProductDetails = () => {
       item_type: "CLOTHING_PRODUCT",
     });
     if (response.data.response === "OK") {
+      console.log('response.data :- ', response.data.data);
+      
       localStorage.setItem('is_cart_product', true)
+      // localStorage.setItem("productsData", JSON.stringify(response.data.data));
       openCart();
     }
   };

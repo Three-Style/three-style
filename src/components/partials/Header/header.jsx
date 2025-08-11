@@ -68,6 +68,14 @@ function HomeHeader() {
           mrpPrice: priceMap[product.item_id] || product.mrpPrice,
         };
       });
+
+      // const updatedServerData = combinedData.map((product) => ({
+      //   ...product,
+      //   mrpPrice:
+      //     priceMap[product.item_id] || product.mrpPrice || product.price,
+      // }));
+
+      // Transform into final object
       setPreviousProductData(updatedServerData);
       totalMRPCalculation(updatedServerData);
       setProductDataGet(updatedServerData);
@@ -79,6 +87,8 @@ function HomeHeader() {
   };
 
   const totalMRPCalculation = (data) => {
+    console.log("data :- ", data);
+
     const totalMrp = data.map((product) => {
       const mrp = product.mrpPrice * product.quantity;
       return mrp;
@@ -667,7 +677,7 @@ function HomeHeader() {
           </div>
           {loading ? (
             <div className="d-flex justify-content-center align-items-center mb-4 my-7 loader-h">
-              <div class="loader"></div>
+              <div className="loader"></div>
             </div>
           ) : (
             productDataGet.length > 0 && (
@@ -752,7 +762,9 @@ function HomeHeader() {
                       <ul className="list-unstyled">
                         <li className="d-flex justify-content-between align-items-center mb-2">
                           <h6 className="me-2 text-body">Subtotal</h6>
-                          <span className="text-end">₹{totalAmount.toFixed(2)}</span>
+                          <span className="text-end">
+                            ₹{totalAmount.toFixed(2)}
+                          </span>
                         </li>
                         <li className="d-flex justify-content-between align-items-center mb-2">
                           <h6 className="me-2 text-body">Taxes</h6>
@@ -760,7 +772,9 @@ function HomeHeader() {
                         </li>
                         <li className="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
                           <h6 className="me-2">Total Total</h6>
-                          <span className="text-end text-mode">₹{totalAmount.toFixed(2)}</span>
+                          <span className="text-end text-mode">
+                            ₹{totalAmount.toFixed(2)}
+                          </span>
                         </li>
                       </ul>
                       <div className="pt-2 pb-4">
@@ -777,10 +791,32 @@ function HomeHeader() {
                         </div>
                       </div>
                       <div className="d-grid gap-2 mx-auto">
-                        <button className="btn btn-primary" onClick={() => {
-                          localStorage.setItem('productsData', JSON.stringify(productDataGet))
-                          window.location.href = '/checkout'
-                        }}>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => {
+                            const finalData = {
+                              products: productDataGet.map((p) => ({
+                                product_id: p.item_id,
+                                quantity: p.quantity,
+                              })),
+                              totalAmount: productDataGet.reduce(
+                                (sum, p) => sum + p.price * p.quantity,
+                                0
+                              ),
+                              totalMRP: productDataGet.reduce(
+                                (sum, p) =>
+                                  sum + (p.mrpPrice || p.price) * p.quantity,
+                                0
+                              ),
+                            };
+
+                            localStorage.setItem(
+                              "productsData",
+                              JSON.stringify(finalData)
+                            );
+                            window.location.href = "/checkout";
+                          }}
+                        >
                           <i className="bi-credit-card-2-back me-2" />
                           Proceed to Checkout
                         </button>
@@ -1039,7 +1075,6 @@ function HomeHeader() {
           </div>
         </div>
       </div>
-
     </>
   );
 }

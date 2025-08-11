@@ -316,7 +316,7 @@ const ScholarshipModal = () => {
             <div className="text-center">
               <img
                 src={
-                  process.env.PUBLIC_URL + "../assets/images/logo/fg_group.webp"
+                  process.env.PUBLIC_URL + "../assets/images/logo/three_style.webp"
                 }
                 width="50px"
                 alt="Fg Group"
@@ -461,7 +461,7 @@ const ScholarshipModal = () => {
             <div className="text-center">
               <img
                 src={
-                  process.env.PUBLIC_URL + "../assets/images/logo/fg_group.webp"
+                  process.env.PUBLIC_URL + "../assets/images/logo/three_style.webp"
                 }
                 width="50px"
                 alt="Fg Group"
@@ -539,7 +539,7 @@ const ScholarshipModal = () => {
             <div className="text-center">
               <img
                 src={
-                  process.env.PUBLIC_URL + "../assets/images/logo/fg_group.webp"
+                  process.env.PUBLIC_URL + "../assets/images/logo/three_style.webp"
                 }
                 width="50px"
                 alt="Fg Group"

@@ -79,7 +79,7 @@ root.render(
                     <img
                       src={
                         process.env.PUBLIC_URL +
-                        "../assets/images/logo/fg_group.webp"
+                        "../assets/images/logo/three_style.webp"
                       }
                       className="img-fluid"
                       width={35}

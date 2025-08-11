@@ -144,7 +144,7 @@
 //         <meta name="keyword" content="" />
 //         <meta property="og:title" content="User Profile" />
 //         <meta property="og:description" content="These Are The Diseases Is Can Not Be Controlled By Medicine Only, You Need To Have The Support Of Nutrition, Exercises, Recovery, And Rehab Parts Also." />
-//         <meta property="og:image" content="https://threestyle.in/assets/images/logo/fg_group.webp" />
+//         <meta property="og:image" content="https://threestyle.in/assets/images/logo/three_style.webp" />
 //         <meta property="og:url" content="https://threestyle.in" />
 //         <link rel="canonical" href={{ canonicalUrl }} />
 //       </Helmet>

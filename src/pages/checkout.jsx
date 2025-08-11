@@ -8,7 +8,6 @@ import { useLocation } from "react-router";
 const Checkout = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const item_id = searchParams.get("item_id");
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -77,9 +76,9 @@ const Checkout = () => {
     
     try {
       const updatedUserData = {
-        pin_code: userData.postalCode,
-        address_line_1: userData.officeName,
-        address_line_2: userData.roadName,
+        pin_code: userData.postalCode ? userData.postalCode : userData.pin_code,
+        address_line_1: userData.officeName ? userData.officeName : userData.address_line_1,
+        address_line_2: userData.roadName ? userData.roadName : userData.address_line_2,
         city: userData.city,
         state: userData.state,
         country: userData.country,
@@ -87,18 +86,19 @@ const Checkout = () => {
         first_name: userData.first_name,
         last_name: userData.last_name,
       };
+      console.log('userData :- ', userData);
       const payment_mode = paymentMode;
       if (!userData.username) {
         await updateUserData(updatedUserData);
       } else if (!compareUserData(updatedUserData)) {
         await updateUserData(updatedUserData);
       }
+      console.log('updatedUserData :- ', updatedUserData);
+      
       try {
         const coupon_ids = [prepaidCouponCode._id].filter(Boolean);
         await createPaymentProduct(
-          item_id
-            ? [{ product_id: "670a5a7b9a7dbcdce616398d", quantity: 1 }]
-            : productDatas,
+          productDatas,
           updatedUserData,
           coupon_ids,
           payment_mode

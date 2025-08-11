@@ -123,7 +123,7 @@ export const createProductOrder = async (
       quantity: parseInt(quantity),
       payment_mode,
     };
-
+    
     if (coupon_id) {
       payload.coupon_id = coupon_id;
     }
@@ -172,18 +172,21 @@ export const createProductOrder = async (
         expire: new Date().getTime() + 1000 * 60 * 60 * 5,
       })
     );
+    console.log('payload 0000 :- ', payload);
 
     // Check Authentication
     if (
-      localStorage.getItem("fg_group_user_authorization") === null ||
+      localStorage.getItem("three_style_user_authorization") === null ||
       localStorage.getItem("user_info") === null
     ) {
-      localStorage.removeItem("fg_group_user_authorization");
+      localStorage.removeItem("three_style_user_authorization");
       localStorage.removeItem("user_info");
 
       // expire in 5h
       return { showLoginModal: true };
     }
+
+    console.log('payload :- ', payload);
 
     const result = await axiosInstance.post("/meals/create-order", payload);
 

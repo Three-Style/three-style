@@ -169,7 +169,7 @@ const LoginModal = ({ onClose }) => {
             <div className="text-center">
               <img
                 src={
-                  process.env.PUBLIC_URL + "../assets/images/logo/fg_group.webp"
+                  process.env.PUBLIC_URL + "../assets/images/logo/three_style.webp"
                 }
                 width="20%"
                 alt="Fg Group"
@@ -232,7 +232,7 @@ const LoginModal = ({ onClose }) => {
             <div className="text-center">
               <img
                 src={
-                  process.env.PUBLIC_URL + "../assets/images/logo/fg_group.webp"
+                  process.env.PUBLIC_URL + "../assets/images/logo/three_style.webp"
                 }
                 width="20%"
                 alt="Fg Group"

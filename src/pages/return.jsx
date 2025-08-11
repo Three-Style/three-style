@@ -163,7 +163,7 @@ const Return = () => {
                                 </div>
                                 {/* Submit Button */}
                                 <div className="text-center">
-                                <button class="btn btn-primary flex-shrink-0" type="submit" fdprocessedid="3o2dqc">Submit Return Request</button>
+                                <button className="btn btn-primary flex-shrink-0" type="submit" fdprocessedid="3o2dqc">Submit Return Request</button>
                                 </div>
                             </form>
                         </div>
