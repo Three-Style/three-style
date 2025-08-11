@@ -40,9 +40,13 @@ const HomeProduct = () => {
                         <span>{data.discount_percentage}%</span>
                       </div>
                       <div className="product-action">
-                        <a href="#" className="btn">
-                          <i className="fi-heart" />{" "}
-                        </a>{" "}
+                        <a className="btn"
+                                data-bs-toggle="offcanvas"
+                                href="#modalMiniCart"
+                                role="button"
+                                aria-controls="modalMiniCart">
+                                <i className="fi-heart" />
+                              </a>
                         <a href="#" className="btn">
                           <i className="fi-shopping-cart" />
                         </a>

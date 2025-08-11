@@ -602,9 +602,7 @@ function HomeHeader() {
                       className="dropdown-menu dropdown-menu-end mt-2 shadow"
                       aria-labelledby="dropdown_myaccount"
                     >
-                      {/* <a className="dropdown-item" href="#">
-                    Login
-                  </a>{" "} */}
+                   
                       <Link className="dropdown-item" to="/account-order">
                         My Orders
                       </Link>{" "}
@@ -810,7 +808,7 @@ function HomeHeader() {
               </button>
             </div>
             <div className="mob-logo text-center w-100 d-flex justify-content-center">
-              <a href="../../index.html">
+              <a href="/">
                 <img
                   className="logo-dark"
                   src="assets/images/logo.svg"
@@ -845,15 +843,22 @@ function HomeHeader() {
                       className="dropdown-menu dropdown-menu-end mt-2 shadow"
                       aria-labelledby="dropdown_myaccount"
                     >
-                      <Link className="dropdown-item" to="/account-order">
+                      <Link className="dropdown-item d-flex  align-items-center gap-2" to="/account-order">
                         My Orders
+                        <i class="bi bi-bag"></i>
                       </Link>{" "}
-                      <Link className="dropdown-item" to="/account-wishlist">
+                      <Link className="dropdown-item d-flex  align-items-center gap-2" to="/account-wishlist">
                         Wishlist
+                        <i class="fi-heart"></i>
                       </Link>{" "}
-                      <Link className="dropdown-item" to="/account-profile">
+                      <Link className="dropdown-item d-flex  align-items-center gap-2" to="/account-profile">
                         My account
+                        <i class="fi-user"></i>
                       </Link>
+                      <button className="dropdown-item d-flex  align-items-center gap-2">
+                        Logout
+                        <i class="bi bi-box-arrow-left"></i>
+                      </button>
                     </div>
                   </div>
                 </>
@@ -898,313 +903,13 @@ function HomeHeader() {
               <i className="fi-user" /> <span>Login</span>
             </a>
           </div>
-          {/* <ul className="mob-extra">
-            <li className="nav-item">
-              <a href="#" className="nav-link">
-                <i className="fi-heart" /> <span>Wishlist</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link dropdown-toggle text-white"
-                href="#"
-                role="button"
-                id="dropdown_language"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img width={20} src="assets/images/uk.svg" alt="" /> English
-              </a>
-              <div
-                className="dropdown-menu mt-2 shadow"
-                aria-labelledby="dropdown_language"
-                style={{ margin: 0 }}
-              >
-                <div>
-                  <select className="form-select form-select-sm">
-                    <option value="usd">$ USD</option>
-                    <option value="eur">€ EUR</option>
-                    <option value="ukp">£ UKP</option>
-                    <option value="jpy">¥ JPY</option>
-                  </select>
-                </div>
-                <a className="dropdown-item" href="#">
-                  <img
-                    className="me-2"
-                    width={20}
-                    src="assets/images/sp.svg"
-                    alt=""
-                  />{" "}
-                  Español
-                </a>{" "}
-                <a className="dropdown-item" href="#">
-                  <img
-                    className="me-2"
-                    width={20}
-                    src="assets/images/fr.svg"
-                    alt=""
-                  />{" "}
-                  Français
-                </a>{" "}
-                <a className="dropdown-item" href="#">
-                  <img
-                    className="me-2"
-                    width={20}
-                    src="assets/images/gr.svg"
-                    alt=""
-                  />
-                  Deutsch
-                </a>
-              </div>
-            </li>
-          </ul> */}
+          
         </div>
         <div className="offcanvas-body">
           <MegaMenu />
-
-          {/* <ul className="navbar-nav mx-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="/">Home</a>
-            </li>
-
-            <li className="nav-item">
-              <a href="#" className="nav-link">Latest</a>
-            </li>
-
-            <li className="nav-item">
-              <a href="#" className="nav-link">Collection</a>
-            </li>
-
-            <li className="dropdown dropdown-full nav-item">
-              <a href="#" className="nav-link">Categories</a>
-              <label className="px-dropdown-toggle mob-menu"></label>
-              <div className="dropdown-menu dropdown-mega-menu py-0">
-                <div className="container-fluid p-3 p-lg-4">
-                  <div className="row gy-4">
-
-                    
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/shop-banner-12.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Living Room</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Sofa</a></li>
-                        <li><a href="#">Love Seat</a></li>
-                        <li><a href="#">Settee Sofa</a></li>
-                        <li><a href="#">Sleeper Sofas</a></li>
-                        <li><a href="#">Tuxedo</a></li>
-                        <li><a href="#">Chair & Ottomans</a></li>
-                        <li><a href="#">Wing Chair</a></li>
-                      </ul>
-                    </div>
-
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/shop-banner-13.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Women</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Fusion Wear</a></li>
-                        <li><a href="#">Dress Materials</a></li>
-                        <li><a href="#">Dupattas & Shawls</a></li>
-                        <li><a href="#">Ethnic Dresses</a></li>
-                        <li><a href="#">Jackets & Waistcoats</a></li>
-                        <li><a href="#">Kurtas & Suits</a></li>
-                        <li><a href="#">Sarees</a></li>
-                      </ul>
-                    </div>
-
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/shop-banner-14.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Western Wear</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Blazers & Waistcoats</a></li>
-                        <li><a href="#">Dresses</a></li>
-                        <li><a href="#">Jackets & Coats</a></li>
-                        <li><a href="#">Jeans & Jeggings</a></li>
-                        <li><a href="#">Jumpsuits</a></li>
-                        <li><a href="#">Shorts & Skirts</a></li>
-                        <li><a href="#">Shrugs</a></li>
-                      </ul>
-                    </div>
-
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/shop-banner-15.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Footwear</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Boots</a></li>
-                        <li><a href="#">Casual Shoes</a></li>
-                        <li><a href="#">Heels</a></li>
-                        <li><a href="#">Sports Shoes</a></li>
-                        <li><a href="#">Sports Wear</a></li>
-                        <li><a href="#">Gym Wear</a></li>
-                        <li><a href="#">Vintage</a></li>
-                      </ul>
-                    </div>
-
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/shop-banner-16.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Kids</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Boys Clothing</a></li>
-                        <li><a href="#">Clothing Sets</a></li>
-                        <li><a href="#">Jacket & Sweater</a></li>
-                        <li><a href="#">Jeans</a></li>
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Sleepwear</a></li>
-                        <li><a href="#">T-Shirts</a></li>
-                      </ul>
-                    </div>
-
-                    <div className="col-6 col-md-4 col-lg-2">
-                      <div className="hover-scale position-relative mb-3">
-                        <div className="hover-scale-in">
-                          <a href="#"><img src="assets/images/home-banner-6.jpg" alt="" /></a>
-                        </div>
-                        <div className="pt-2 text-center position-absolute bottom-0 start-0 mb-3">
-                          <h5 className="m-0 h6 bg-body px-3 py-2">
-                            <a className="text-reset link-effect" href="#">Accessories</a>
-                          </h5>
-                        </div>
-                      </div>
-                      <ul className="list-unstyled link-list-style-02">
-                        <li><a href="#">Handbags</a></li>
-                        <li><a href="#">Hand Purse</a></li>
-                        <li><a href="#">Laptop Bag</a></li>
-                        <li><a href="#">Leather Purse</a></li>
-                        <li><a href="#">Saddle Cross Bag</a></li>
-                        <li><a href="#">Shoulder Bag</a></li>
-                        <li><a href="#">Vintage</a></li>
-                      </ul>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li className="dropdown nav-item">
-              <a href="#" className="nav-link">Pages</a>
-              <label className="px-dropdown-toggle mob-menu"></label>
-              <ul className="dropdown-menu left shadow-lg">
-                <li><a className="dropdown-item" href="../pages/about.html">About</a></li>
-                <li><a className="dropdown-item" href="../pages/faq.html">FAQ's</a></li>
-                <li><a className="dropdown-item" href="../pages/policy.html">Policy</a></li>
-                <li><a className="dropdown-item" href="../pages/support.html">Support</a></li>
-                <li><a className="dropdown-item" href="../pages/support-topic.html">Support Topic</a></li>
-                <li><a className="dropdown-item" href="../pages/contact-us.html">Contact Us</a></li>
-              </ul>
-            </li>
-
-            <li className="nav-item">
-              <a href="#" className="nav-link">Blog</a>
-            </li>
-          </ul> */}
         </div>
       </div>
 
-      {/* LOGIN MODAL       */}
-      <div
-        className="modal fade"
-        id="loginAuthModal"
-        tabIndex="-1"
-        aria-labelledby="loginAuthModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content p-3">
-            <div className="modal-header border-0">
-              <h5
-                className="modal-title w-100 text-center"
-                id="loginAuthModalLabel"
-              >
-                <img src="assets/images/logo.svg" alt="Logo"></img>
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <form className="login-authentication-form">
-                <div className="row mb-3">
-                  <div className="col-12">
-                    <label htmlFor="mobileNumber" className="form-label">
-                      Enter Mobile Number
-                    </label>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      id="mobileNumber"
-                      placeholder="Enter your mobile"
-                    />
-                  </div>
-                </div>
-                <div className="row mb-3">
-                  <div className="col-12">
-                    <label htmlFor="otpCode" className="form-label">
-                      Enter OTP
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="otpCode"
-                      placeholder="Enter OTP"
-                    />
-                  </div>
-                </div>
-                <div className="row justify-content-center ">
-                  <div className="col-lg-6 col-8 text-center">
-                    <button type="submit" className="btn btn-primary w-100">
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* SEARCH OFFCANAS */}
       <div
@@ -1293,7 +998,7 @@ function HomeHeader() {
       <div className="mob-header-btn-fixed-01 d-lg-none">
         <div className="mob-hb-in">
           <div className="mob-hb-item">
-            <Link className="mob-hb-link" to="shop">
+            <Link className="mob-hb-link" to="/shop">
               <i className="fi-grid" /> <span>Shop</span>
             </Link>
           </div>
