@@ -6,6 +6,7 @@ import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import MegaMenu from "../../MenuItem";
 import LoginModal from "../../popup/login";
 import { axiosInstance } from "../../../assets/js/config/api";
+import About from "../../../pages/about";
 window.bootstrap = bootstrap;
 
 function HomeHeader() {
@@ -21,16 +22,7 @@ function HomeHeader() {
   const [totalMRP, setTotalMRP] = React.useState(0);
   const [totalAmount, setTotalAmount] = React.useState(0);
   const [productQuantity, setProductQuantity] = useState(1);
-  const [isFixed, setIsFixed] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsFixed(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
 
 
@@ -202,8 +194,12 @@ function HomeHeader() {
     <>
       <div>
 
-        {/* Header Top */}
-        <div className="header-main">
+        {showLoginModal && <LoginModal onClose={closeModal} />}
+        <header
+          className="header-main bg-mode-re header-light header-height header-option-1"
+        >
+          {/* Header Top */}
+
           <div className="header-top header-border-bottom small bg-black small offer-slider-main-wrapper">
             <div className="d-flex justify-content-between align-items-center">
               <div className="slider">
@@ -230,13 +226,9 @@ function HomeHeader() {
               </div>
             </div>
           </div>
-        </div>
-        {/* End Header Top */}
-        {showLoginModal && <LoginModal onClose={closeModal} />}
-        <header
-          className={`header-main bg-mode-re header-light header-height header-option-1 ${isFixed ? "fixed-header" : ""
-            }`}
-        >
+
+          {/* End Header Top */}
+
           <nav className="navbar navbar-expand-lg navbar-light d-none d-lg-flex">
             <div className="container">
               {/* Logo */}{" "}
@@ -546,54 +538,16 @@ function HomeHeader() {
                       </div>
                     </div>
                   </li>
-                  <li className="dropdown nav-item">
-                    <a href="#" className="nav-link">
-                      Pages
-                    </a>{" "}
-                    <label className="px-dropdown-toggle mob-menu" />
-                    <ul className="dropdown-menu left shadow-lg">
-                      <li>
-                        <a className="dropdown-item" href="../pages/about.html">
-                          About
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="../pages/faq.html">
-                          FAQ's
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="../pages/policy.html">
-                          Policy
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="../pages/support.html">
-                          Support
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          href="../pages/support-topic.html"
-                        >
-                          Support Topic
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="dropdown-item"
-                          href="../pages/contact-us.html"
-                        >
-                          Contact Us
-                        </a>
-                      </li>
-                    </ul>
+
+                  <li className="nav-item">
+                    <Link to="/about" className="nav-link">
+                      About us
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      Blog
-                    </a>
+                    <Link to="/contact-us" className="nav-link">
+                      Contact
+                    </Link>
                   </li>
                 </ul>
               </div>

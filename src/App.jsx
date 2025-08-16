@@ -15,13 +15,15 @@ import Checkout from "./pages/checkout";
 import ContactUs from "./pages/contact-us";
 import PrivacyPolicy from "./pages/privacy-policy";
 import ShippingPolicy from "./pages/shipping-policy";
-import ReturnandRefundPolicy from "./pages/return-and-refund-policy";
+import ReturnPolicy from "./pages/return-policy";
+import CookiePolicy from "./pages/cookie-policy";
 import TermsandConditions from "./pages/terms-and-conditions";
 import ProductDetails from "./pages/product-details";
 import Shop from "./pages/shop";
 import Support from "./pages/support";
 import OrderView from "./pages/order-view";
 import Return from "./pages/return";
+import RefundPolicy from "./pages/refund-policy";
 const NotFoundPage = lazy(() => import("./pages/404"));
 
 function App() {
@@ -40,7 +42,9 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/shipping-policy" element={<ShippingPolicy />} />
-        <Route path="/return-and-refund-policy" element={<ReturnandRefundPolicy />} />
+        <Route path="/return-policy" element={<ReturnPolicy />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="/terms-and-conditions" element={<TermsandConditions />} />
         <Route path="/product-details" element={<ProductDetails />} />
         <Route path="/shop" element={<Shop />} />

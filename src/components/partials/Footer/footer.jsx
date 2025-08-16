@@ -4,6 +4,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 
 function HomeFooter() {
+    const currentYear = new Date().getFullYear();
   return (
     <>
       <footer className="bg-dark footer">
@@ -74,13 +75,19 @@ function HomeFooter() {
                 <h6 className="text-white text-uppercase mb-5">Policies</h6>
                 <ul className="list-unstyled white-link footer-link-1 m-0">
                   <li className="pb-2">
+                    <Link to="/return-policy">Return Policy</Link>
+                  </li>
+                  <li className="pb-2">
+                    <Link to="/refund-policy">Refund Policy</Link>
+                  </li>
+                  <li className="pb-2">
+                    <Link to="/privacy-policy">Terms of Services</Link>
+                  </li>
+                  <li className="pb-2">
                     <Link to="/privacy-policy">Privacy Policy</Link>
                   </li>
                   <li className="pb-2">
-                    <Link to="/return-and-refund-policy">Return & Refund Policy</Link>
-                  </li>
-                    <li className="pb-2">
-                    <Link to="/privacy-policy">Terms of Services</Link>
+                    <Link to="/cookie-policy">Cookie Policy</Link>
                   </li>
                 </ul>
               </div>
@@ -118,14 +125,7 @@ function HomeFooter() {
             <div className="row justify-content-center">
               <div className="col-md-6 text-center py-1">
                 <p className="m-0 text-white text-opacity-85">
-                  © 2024 copyright by{" "}
-                  <a
-                    href="https://www.pxdraft.com/"
-                    target="_blank"
-                    className="text-reset"
-                  >
-                    pxdraft
-                  </a>
+                 © {currentYear} Threestyle. All Rights Reserved.
                 </p>
               </div>
             </div>

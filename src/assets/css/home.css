@@ -30158,7 +30158,7 @@ body .header-full-mobile-link .navbar-nav>.nav-item .mob-menu {
 
 .header-main:not(.fixed-top) {
     position: relative;
-    z-index: 1030
+    z-index: 1030;
 }
 
 .header-main .offer-slider-main-wrapper {
@@ -34249,7 +34249,7 @@ header [data-cart-items]:before {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--bs-primary-color);
+    background: #393b3c;
     border-radius: 5px;
     margin-right: 10px;
     font-size: 16px
