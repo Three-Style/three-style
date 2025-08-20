@@ -75,7 +75,7 @@ const HomeProduct = () => {
                         </Link>
                       </h6>
                       <div className="product-price">
-                        <span className="text-primary me-1">₹{data.discount_price}</span>
+                        <span className="text-primary me-1">₹{data.original_price}</span>
                         <del className="small text-muted">₹{data.price}</del>
                       </div>
                     </div>

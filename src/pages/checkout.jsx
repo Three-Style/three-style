@@ -24,6 +24,7 @@ const Checkout = () => {
   const [productDatas, setProductDatas] = useState([[]]);
   const [paymentMode, setPaymentMode] = useState("ONLINE");
   const [prepaidCouponCode, setPrepaidCouponCode] = useState({});
+  const [productDataGet, setProductDataGet] = React.useState([]);
 
   useEffect(() => {
     if (productData) {
@@ -39,10 +40,74 @@ const Checkout = () => {
     setTotalPrice(data.totalAmount);
   };
 
+  const fetchProductData = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/order-cart/get-carts?item_type=CLOTHING_PRODUCT&is_purchase=true"
+      );
+      const serverData = response.data.data[0];
+      // setServerDataID(serverData._id);
+      const existingData = JSON.parse(
+        localStorage.getItem("addItemInCart")
+      ) || { products: [] };
+
+      const priceMap = existingData.products.reduce((map, product) => {
+        map[product.product_id] = product.mrpPrice;
+        return map;
+      }, {});
+
+      const itemDataForGetQty = serverData?.items || [];
+      const itemDataForGetImgName = serverData?.items_details || [];
+
+      const combinedData = itemDataForGetQty.map((item) => {
+        const itemDetails = itemDataForGetImgName.find(
+          (details) => details._id === item.item_id
+        );
+        if (!itemDetails) {
+          console.warn(`No details found for item with id: ${item.item_id}`);
+          return item;
+        }
+
+        return {
+          ...item,
+          ...itemDetails,
+          items_id: item._id,
+        };
+      });
+
+      const updatedServerData = combinedData.map((product) => {
+        return {
+          ...product,
+          mrpPrice: priceMap[product.item_id] || product.mrpPrice,
+        };
+      });
+
+      // const updatedServerData = combinedData.map((product) => ({
+      //   ...product,
+      //   mrpPrice:
+      //     priceMap[product.item_id] || product.mrpPrice || product.price,
+      // }));
+
+      // Transform into final object
+      console.log('updatedServerData :- ', updatedServerData);
+      
+      setProductDataGet(updatedServerData);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  };
+
+  const is_cart_product = localStorage.getItem("is_cart_product");
+  useEffect(() => {
+    if (is_cart_product) {
+      fetchProductData();
+    }
+  }, [is_cart_product]);
+
   const getUserData = async () => {
     try {
-      console.log('aaaaaaaaaa');
-      
+      console.log("aaaaaaaaaa");
+
       const response = await axiosInstance.get("/account/profile");
       const userData = response.data.data;
       if (userData) {
@@ -71,14 +136,18 @@ const Checkout = () => {
   };
 
   const handleFormSubmit = async (e) => {
-    console.log('1111');
+    console.log("1111");
     e.preventDefault();
-    
+
     try {
       const updatedUserData = {
         pin_code: userData.postalCode ? userData.postalCode : userData.pin_code,
-        address_line_1: userData.officeName ? userData.officeName : userData.address_line_1,
-        address_line_2: userData.roadName ? userData.roadName : userData.address_line_2,
+        address_line_1: userData.officeName
+          ? userData.officeName
+          : userData.address_line_1,
+        address_line_2: userData.roadName
+          ? userData.roadName
+          : userData.address_line_2,
         city: userData.city,
         state: userData.state,
         country: userData.country,
@@ -86,15 +155,15 @@ const Checkout = () => {
         first_name: userData.first_name,
         last_name: userData.last_name,
       };
-      console.log('userData :- ', userData);
+      console.log("userData :- ", userData);
       const payment_mode = paymentMode;
       if (!userData.username) {
         await updateUserData(updatedUserData);
       } else if (!compareUserData(updatedUserData)) {
         await updateUserData(updatedUserData);
       }
-      console.log('updatedUserData :- ', updatedUserData);
-      
+      console.log("updatedUserData :- ", updatedUserData);
+
       try {
         const coupon_ids = [prepaidCouponCode._id].filter(Boolean);
         await createPaymentProduct(
@@ -146,90 +215,45 @@ const Checkout = () => {
                 <div className="card">
                   <div className="card-body">
                     <ul className="list-unstyled m-0 p-0">
-                      <li className="pb-3 mb-3 border-bottom">
-                        <div className="row align-items-center">
-                          <div className="col-4 col-md-2 col-lg-2">
-                            {/* Image */}{" "}
-                            <a href="#">
-                              <img
-                                className="img-fluid border"
-                                src="assets/images/product-2.jpg"
-                                alt="..."
-                              />
-                            </a>
-                          </div>
-                          <div className="col-8">
-                            {/* Title */}
-                            <p className="mb-1">
-                              <a className="text-mode fw-500" href="#">
-                                Cotton floral print Dress
-                              </a>{" "}
-                              <span className="m-0 text-muted w-100 d-block">
-                                $40.00
-                              </span>
-                            </p>
-                            {/* Remove */}
-                            {/* <a className="small link-danger ms-auto" href="#!"><i
+                      {productDataGet.map((data, index) => {
+                        const pData = JSON.parse(productData)
+                        console.log('pData :- ', pData);
+                        
+                        const sameData = pData.products.find((filterData) => filterData.product_id === data._id)
+                        console.log('sameData :- ', sameData);
+                        const productMRP = data?.price * sameData.quantity
+                        console.log('productMRP :- ', productMRP);
+                        
+                        return (
+                          <li className="pb-3 mb-3 border-bottom" key={index}>
+                            <div className="row align-items-center">
+                              <div className="col-4 col-md-2 col-lg-2">
+                                <a href="#">
+                                  <img
+                                    className="img-fluid border"
+                                    src={data?.display_image?.[0] ? `https://files.threestyle.in/${data?.display_image?.[0]}` : "assets/images/product-2.jpg"}
+                                    alt="..."
+                                  />
+                                </a>
+                              </div>
+                              <div className="col-8">
+                                {/* Title */}
+                                <p className="mb-1">
+                                  <a className="text-mode fw-500" href="#">
+                                    {data?.name + ' (x' + sameData.quantity + ')'} 
+                                  </a>{" "}
+                                  <span className="m-0 text-muted w-100 d-block">
+                                    ₹{productMRP ? productMRP : data?.price}
+                                  </span>
+                                </p>
+                                {/* Remove */}
+                                {/* <a className="small link-danger ms-auto" href="#!"><i
                                                       className="bi bi-x"></i> Remove</a> */}
-                          </div>
-                        </div>
-                      </li>
-                      <li className="pb-3 mb-3 border-bottom">
-                        <div className="row align-items-center">
-                          <div className="col-4 col-md-2 col-lg-2">
-                            {/* Image */}{" "}
-                            <a href="#">
-                              <img
-                                className="img-fluid border"
-                                src="assets/images/product-2.jpg"
-                                alt="..."
-                              />
-                            </a>
-                          </div>
-                          <div className="col-8">
-                            {/* Title */}
-                            <p className="mb-1">
-                              <a className="text-mode fw-500" href="#">
-                                Cotton floral print Dress
-                              </a>{" "}
-                              <span className="m-0 text-muted w-100 d-block">
-                                $40.00
-                              </span>
-                            </p>
-                            {/* Remove */}
-                            {/* <a className="small link-danger ms-auto" href="#!"><i
-                                                      className="bi bi-x"></i> Remove</a> */}
-                          </div>
-                        </div>
-                      </li>
-                      <li className="pb-3 mb-3 border-bottom">
-                        <div className="row align-items-center">
-                          <div className="col-4 col-md-2 col-lg-2">
-                            {/* Image */}{" "}
-                            <a href="#">
-                              <img
-                                className="img-fluid border"
-                                src="assets/images/product-2.jpg"
-                                alt="..."
-                              />
-                            </a>
-                          </div>
-                          <div className="col-8">
-                            {/* Title */}
-                            <p className="mb-1">
-                              <a className="text-mode fw-500" href="#">
-                                Cotton floral print Dress
-                              </a>{" "}
-                              <span className="m-0 text-muted w-100 d-block">
-                                $40.00
-                              </span>
-                            </p>
-                            {/* Remove */}
-                            {/* <a className="small link-danger ms-auto" href="#!"><i
-                                                      className="bi bi-x"></i> Remove</a> */}
-                          </div>
-                        </div>
-                      </li>
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      })}
                     </ul>
                     <ul className="list-unstyled m-0">
                       <li className="d-flex justify-content-between align-items-center mb-2">
@@ -254,114 +278,117 @@ const Checkout = () => {
                     <h5 className="border-bottom mb-4 pb-3">
                       Shipping address
                     </h5>
-                      <div className="row">
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">First Name</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter First Name"
-                            name="first_name"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.first_name}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">Last Name</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter Last Name"
-                            name="last_name"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.last_name}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">Email Address</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            id="exampleInputEmail3"
-                            placeholder="Enter Email"
-                            name="email"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.email}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">
-                            House No/Building Name/Office Name
-                          </label>{" "}
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="House No/Building Name/Office Name"
-                            name="officeName"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.address_line_1}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">
-                            Road Name/Area/Colony
-                          </label>{" "}
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Road Name/Area/Colony"
-                            name="roadName"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.address_line_2}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">City</label>{" "}
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="City"
-                            name="city"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.city}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">State</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Enter State Name"
-                            name="state"
-                            required
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.state}
-                          />
-                        </div>
-                        <div className="col-sm-6 mb-3">
-                          <label className="form-label">Pin Code</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Pin Code"
-                            name="pin_code"
-                            required
-                            maxLength="6"
-                            onChange={(e) => handleChange(e)}
-                            defaultValue={userData.pin_code}
-                          />
-                        </div>
+                    <div className="row">
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">First Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter First Name"
+                          name="first_name"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.first_name}
+                        />
                       </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">Last Name</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter Last Name"
+                          name="last_name"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.last_name}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">Email Address</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="exampleInputEmail3"
+                          placeholder="Enter Email"
+                          name="email"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.email}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">
+                          House No/Building Name/Office Name
+                        </label>{" "}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="House No/Building Name/Office Name"
+                          name="officeName"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.address_line_1}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">
+                          Road Name/Area/Colony
+                        </label>{" "}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Road Name/Area/Colony"
+                          name="roadName"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.address_line_2}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">City</label>{" "}
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="City"
+                          name="city"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.city}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">State</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter State Name"
+                          name="state"
+                          required
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.state}
+                        />
+                      </div>
+                      <div className="col-sm-6 mb-3">
+                        <label className="form-label">Pin Code</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Pin Code"
+                          name="pin_code"
+                          required
+                          maxLength="6"
+                          onChange={(e) => handleChange(e)}
+                          defaultValue={userData.pin_code}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="pt-4">
-                  <button className="btn btn-primary w-100" onClick={handleFormSubmit}>
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={handleFormSubmit}
+                  >
                     SAVE & CONTINUE
                   </button>
                   <p className="m-0 pt-3">

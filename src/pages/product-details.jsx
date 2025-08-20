@@ -191,6 +191,8 @@ const ProductDetails = () => {
         `/products?id=${product_id}`
       );
       const filteredData = response.data.data;
+      console.log('filteredData :- ', filteredData);
+      
       setProductData(filteredData);
     } catch (error) {
       console.error("Error in getUserData:", error);
@@ -331,7 +333,7 @@ const ProductDetails = () => {
                   </div>
                   <div className="product-price fs-3 fw-500 mb-2">
                     <span className="text-primary me-1">
-                      ₹{productData.discount_price}
+                      ₹{productData.original_price}
                     </span>
                     <del className="text-muted fs-6">₹{productData.price}</del>
                   </div>
@@ -339,6 +341,7 @@ const ProductDetails = () => {
                   <div className="product-attribute">
                     <label className="fs-6 text-mode pb-2 fw-500">Color</label>
                     <div className="nav-thumbs nav mb-3">
+                      {productData.name}
                       <div className="form-check radio-color large form-check-inline me-2">
                         <input
                           className="form-check-input"
@@ -349,39 +352,6 @@ const ProductDetails = () => {
                         />
                         <label className="radio-color-label" htmlFor="color_01">
                           <span style={{ backgroundColor: '#126532' }}></span>
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_2"
-                        />
-                        <label className="radio-color-label" htmlFor="color_2">
-                          <span style={{ backgroundColor: '#ff9922' }}></span>
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_3"
-                        />
-                        <label className="radio-color-label" htmlFor="color_3">
-                          <span style={{ backgroundColor: '#326598' }}></span>
-                        </label>
-                      </div>
-                      <div className="form-check radio-color large form-check-inline me-2">
-                        <input
-                          className="form-check-input"
-                          type="radio"
-                          name="color_1"
-                          id="color_4"
-                        />
-                        <label className="radio-color-label" htmlFor="color_4">
-                          <span style={{ backgroundColor: '#126578' }}></span>
                         </label>
                       </div>
                     </div>
