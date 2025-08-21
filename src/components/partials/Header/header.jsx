@@ -23,9 +23,6 @@ function HomeHeader() {
   const [totalAmount, setTotalAmount] = React.useState(0);
   const [productQuantity, setProductQuantity] = useState(1);
 
-
-
-
   const closeModal = () => {
     setShowLoginModal(false);
   };

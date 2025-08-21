@@ -2,8 +2,18 @@ import React from 'react'
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
 import { Link } from 'react-router-dom';
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
+window.bootstrap = bootstrap;
 
 const OrderView = () => {
+  const openModal = () => {
+    const modalEl = document.getElementById("reviewModal");
+    if (modalEl) {
+      const modal = new window.bootstrap.Modal(modalEl);
+      modal.show();
+    }
+  };
   return (
     <>
 
@@ -71,15 +81,48 @@ const OrderView = () => {
                 <div id="full-stars-example-two" className='border-bottom pb-4 text-center '>
                   <div className="rating-group m-auto">
                     <input disabled checked className="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
-                    <label aria-label="1 star" className="rating__label" for="rating3-1"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <label aria-label="1 star" className="rating__label" for="rating3-1"
+                      data-bs-toggle="modal"
+                      data-bs-target="#reviewModal">
+                      <i
+                        className="rating__icon rating__icon--star fa fa-star"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => openModal()}
+                      ></i>
+                    </label>
                     <input className="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
-                    <label aria-label="2 stars" className="rating__label" for="rating3-2"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <label aria-label="2 stars" className="rating__label" for="rating3-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#reviewModal">
+                      <i
+                        className="rating__icon rating__icon--star fa fa-star"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </label>
                     <input className="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
-                    <label aria-label="3 stars" className="rating__label" for="rating3-3"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <label aria-label="3 stars" className="rating__label" for="rating3-3"
+                      data-bs-toggle="modal"
+                      data-bs-target="#reviewModal"><i
+                        className="rating__icon rating__icon--star fa fa-star"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </label>
                     <input className="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
-                    <label aria-label="4 stars" className="rating__label" for="rating3-4"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <label aria-label="4 stars" className="rating__label" for="rating3-4"
+                      data-bs-toggle="modal"
+                      data-bs-target="#reviewModal"><i
+                        className="rating__icon rating__icon--star fa fa-star"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </label>
                     <input className="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
-                    <label aria-label="5 stars" className="rating__label" for="rating3-5"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                    <label aria-label="5 stars" className="rating__label" for="rating3-5"
+                      data-bs-toggle="modal"
+                      data-bs-target="#reviewModal"><i
+                        className="rating__icon rating__icon--star fa fa-star"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                    </label>
                     <input className="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
                   </div>
                 </div>
@@ -176,7 +219,92 @@ const OrderView = () => {
       </main>
 
       <HomeFooter />
+
+      {/* Review Modal */}
+      <div
+        className="modal fade"
+        id="reviewModal"
+        tabIndex="-1"
+        aria-labelledby="reviewModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content p-3">
+            <div className="modal-header border-0">
+              <h5
+                className="modal-title w-100 text-center"
+                id="reviewModalLabel"
+              >
+                Write a Review
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div className="modal-body">
+              <form className="review-form">
+                {/* Upload Images */}
+                <div className="mb-3">
+                  <label htmlFor="reviewImages" className="form-label">
+                    Upload Images
+                  </label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="reviewImages"
+                    accept="image/*"
+                    multiple
+                  />
+
+                  {/* Image Preview Example */}
+                  <div className="d-flex flex-wrap gap-2 mt-3">
+                    <div className="border rounded p-1">
+                      <img
+                        src="https://via.placeholder.com/80"
+                        alt="Preview"
+                        className="img-fluid rounded"
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Review Text */}
+                <div className="mb-3">
+                  <label htmlFor="reviewText" className="form-label">
+                    Your Review
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="reviewText"
+                    rows="4"
+                    placeholder="Write your experience..."
+                  ></textarea>
+                </div>
+
+                {/* Submit Button */}
+                <div className="text-center">
+                  <button type="submit" className="btn btn-primary w-100">
+                    Submit Review
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </>
+
+
   )
 }
 
