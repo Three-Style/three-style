@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import HomeHeader from "../components/partials/Header/header";
 import HomeFooter from "../components/partials/Footer/footer";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 window.bootstrap = bootstrap;
@@ -14,9 +14,37 @@ const OrderView = () => {
       modal.show();
     }
   };
+
+  const [images, setImages] = useState([]);
+
+  const handleImageChange = (e) => {
+    const files = Array.from(e.target.files);
+    const newImages = files.map((file) => ({
+      url: URL.createObjectURL(file),
+      file,
+    }));
+    setImages((prev) => [...prev, ...newImages]);
+  };
+
+  const removeImage = (index) => {
+    setImages((prev) => {
+      const updated = [...prev];
+      // revoke memory before removing
+      URL.revokeObjectURL(updated[index].url);
+      updated.splice(index, 1);
+      return updated;
+    });
+  };
+
+  // Cleanup on component unmount
+  useEffect(() => {
+    return () => {
+      images.forEach((img) => URL.revokeObjectURL(img.url));
+    };
+  }, [images]);
+
   return (
     <>
-
       <HomeHeader />
 
       <main>
@@ -228,9 +256,21 @@ const OrderView = () => {
         aria-labelledby="reviewModalLabel"
         aria-hidden="true"
       >
+
+
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content p-3">
+            <div className="d-flex align-items-center justify-content-center gap-3">
+              <i className="rating__icon rating__icon--star fa fa-star" style={{ color: "gold", fontSize: "1.4rem" }}></i>
+              <i className="rating__icon rating__icon--star fa fa-star" style={{ color: "gold", fontSize: "1.4rem" }}></i>
+              <i className="rating__icon rating__icon--star fa fa-star" style={{ color: "gold", fontSize: "1.4rem" }}></i>
+              <i className="rating__icon rating__icon--star fa fa-star" style={{ color: "gold", fontSize: "1.4rem" }}></i>
+              <i className="rating__icon rating__icon--star fa fa-star" style={{ color: "gold", fontSize: "1.4rem" }}></i>
+            </div>
+
             <div className="modal-header border-0">
+
+
               <h5
                 className="modal-title w-100 text-center"
                 id="reviewModalLabel"
@@ -258,22 +298,35 @@ const OrderView = () => {
                     id="reviewImages"
                     accept="image/*"
                     multiple
+                    onChange={handleImageChange}
                   />
 
-                  {/* Image Preview Example */}
+                  {/* Image Preview */}
                   <div className="d-flex flex-wrap gap-2 mt-3">
-                    <div className="border rounded p-1">
-                      <img
-                        src="https://via.placeholder.com/80"
-                        alt="Preview"
-                        className="img-fluid rounded"
-                        style={{
-                          width: "80px",
-                          height: "80px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
+                    {images.map((img, index) => (
+                      <div
+                        key={index}
+                        className="border rounded p-1 position-relative"
+                        style={{ width: "80px", height: "80px" }}
+                      >
+                        <img
+                          src={img.url}
+                          alt={`Preview ${index}`}
+                          className="img-fluid rounded"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                        <button
+                          type="button"
+                          className="btn-close position-absolute top-0 end-0"
+                          style={{ fontSize: "0.7rem" }}
+                          onClick={() => removeImage(index)}
+                        ></button>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -301,11 +354,8 @@ const OrderView = () => {
           </div>
         </div>
       </div>
-
     </>
+  );
+};
 
-
-  )
-}
-
-export default OrderView
+export default OrderView;
