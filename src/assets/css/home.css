@@ -39701,6 +39701,19 @@ input[type="checkbox"] {
     margin-top: 1rem;
 }
 
+.home-banner-vh-height {
+    height: calc(100vh - 130px) !important;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .home-banner-vh-height {
+        height: calc(100vh - 150px) !important;
+    }
+}
+
+
 /* Hover State - Pause Animation */
 /* .view-all-review:hover .all-reviews-main-wrapper,
 .view-all-review:hover .all-reviews-main-wrapper::after {

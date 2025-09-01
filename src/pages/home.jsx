@@ -373,14 +373,14 @@ function Home() {
                 {/* Slide 1 */}
                 <div className="swiper-slide">
                   <div
-                    className="bg-no-repeat bg-cover bg-center"
+                    className="bg-no-repeat bg-cover bg-center home-banner-vh-height"
                     style={{
                       backgroundImage:
                         "url(assets/images/home/banner-one.png)",
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
+                      <div className="row align-items-center py-xl-12 py-lg-10 py-6 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -406,14 +406,14 @@ function Home() {
                 {/* Slide 2 */}
                 <div className="swiper-slide">
                   <div
-                    className="bg-no-repeat bg-cover bg-center"
+                    className="bg-no-repeat bg-cover bg-center home-banner-vh-height"
                     style={{
                       backgroundImage:
                         "url(assets/images/home/banner-two.jpg)",
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
+                      <div className="row align-items-center py-xl-12 py-lg-10 py-6 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
@@ -439,14 +439,14 @@ function Home() {
                 {/* Slide 3 */}
                 <div className="swiper-slide">
                   <div
-                    className="bg-no-repeat bg-cover bg-center"
+                    className="bg-no-repeat bg-cover bg-center home-banner-vh-height"
                     style={{
                       backgroundImage:
                         "url(assets/images/home/banner-three.jpg)",
                     }}
                   >
                     <div className="container">
-                      <div className="row align-items-center py-12 justify-content-lg-end text-center">
+                      <div className="row align-items-center py-xl-12 py-lg-10 py-6 justify-content-lg-end text-center">
                         <div className="col-lg-6">
                           <h6 className="fw-500 text-primary mb-3 letter-spacing-2 text-white">
                             TRENDING NOW
