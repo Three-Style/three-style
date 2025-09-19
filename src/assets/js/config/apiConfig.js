@@ -11,8 +11,8 @@ if (hostname === "threestyle.in" || hostname === "www.threestyle.in") {
 } else if (hostname === "test.threestyle.in") {
   baseUrl = "https://dev-api.threestyle.in";
 } else {
-  baseUrl = "https://dev-api.threestyle.in";
-  // baseUrl = 'http://localhost';
+  // baseUrl = "https://dev-api.threestyle.in";
+  baseUrl = 'http://localhost';
 }
 
 const apiConfig = {
